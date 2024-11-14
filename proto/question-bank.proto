@@ -1,0 +1,4612 @@
+syntax = "proto3";
+
+package questionbank;
+
+service QuestionBankGrpcService {
+  rpc CreateQuestion (CreateQuestionRequest) returns (Question) {}
+  rpc GetAllQuestion (GetAllQuestionRequest) returns (GetAllQuestionResponse) {}
+  rpc GetQuestion (GetQuestionRequest) returns (Question) {}
+  rpc UpdateQuestion (UpdateQuestionRequest) returns (Question) {}
+  rpc DeleteQuestion (DeleteQuestionRequest) returns (DeleteQuestionResponse) {}
+  rpc UpdateStudentQuestion(UpdateStudentQuestionRequest) returns (UpdateStudentQuestionResponse) {}
+  rpc CreateExplanation(CreateExplanationRequest) returns (CreateExplanationResponse) {}
+  rpc ApproveStudentExplanation(ApproveStudentExplanationRequest) returns (ApproveStudentExplanationResponse){}
+  rpc QuestionDistributionByCategory(QuestionDistributionRequest) returns (QuestionDistributionCategoryResponse) {}
+  rpc QuestionDistributionByMarks(QuestionDistributionRequest) returns (QuestionDistributionMarksResponse) {}
+  rpc PracticeSummaryBySubject(PracticeSummaryBySubjectRequest) returns (PracticeSummaryBySubjectResponse) {}
+  rpc GetByPractice(PracticeQuestionsRequest) returns (PracticeQuestionsResponse) {}
+  rpc QuestionUsedCount(QuestionUsedCountRequest) returns (QuestionUsedCountResponse){}
+  rpc QuestionIsAttempt(QuestionIsAttemptRequest) returns (QuestionIsAttemptResponse) {}
+  rpc QuestionPerformance(QuestionPerformanceRequest) returns (QuestionPerformanceResponse) {}
+  rpc GetLast(GetLastRequest) returns (GetLastResponse) {}
+  rpc GetLastInPractice(GetLastInPracticeRequest) returns (GetLastInPracticeResponse) {}
+  rpc Search(InternalSearchRequest) returns (InternalSearchResponse) {}
+  rpc CountByPractice(CountByPracticeRequest) returns (CountByPracticeResponse) {}
+  rpc GetQuestionTags(GetQuestionTagsResquest) returns (GetQuestionTagsResponse) {}
+  rpc UpdateTags(UpdateTagsRequest) returns (UpdateTagsResponse) {}
+  rpc QuestionSummaryTopic(QuestionSummaryTopicRequest) returns (QuestionSummaryTopicResponse) {}
+  rpc GetQuestionForOnlineTest(GetQuestionForOnlineTestRequest) returns (GetQuestionForOnlineTestResponse) {}
+  rpc PersonalTopicAnalysis(PersonalTopicAnalysisRequest) returns (PersonalTopicAnalysisResponse) {}
+  rpc SummaryTopicOfPracticeBySubject(SummaryTopicOfPracticeBySubjectRequest) returns (SummaryTopicOfPracticeBySubjectResponse) {}
+  rpc SummaryTopicPractice(SummaryTopicPracticeRequest) returns (SummaryTopicPracticeResponse) {}
+  rpc SummarySubjectPractice(SummarySubjectPracticeRequest) returns (SummarySubjectPracticeResponse) {}
+  rpc TestSeriesSummaryBySubject(TestSeriesSummaryBySubjectRequest) returns (TestSeriesSummaryBySubjectResponse) {}
+  rpc GetByAttempt(GetByAttemptRequest) returns (GetByAttemptResponse) {}
+  rpc GetReusedCount(GetReusedCountRequest) returns (GetReusedCountResponse) {}
+  rpc FeedbackQuestion(FeedbackQuestionRequest) returns (FeedbackQuestionResponse) {}
+  rpc FeedbackQuestionCount(FeedbackQuestionCountRequest) returns (FeedbackQuestionCountResponse) {}
+  rpc QuestionDistribution(QuestionDistributionReq) returns (QuestionDistributionResponse) {}
+  rpc QuestionComplexityByTopic(QuestionComplexityByTopicRequest) returns (QuestionComplexityByTopicResponse) {}
+  rpc GenerateRandomTest(GenerateRandomTestRequest) returns (GenerateRandomTestResponse) {}
+  rpc GetRandomQuestions(GetRandomQuestionsRequest) returns (GetRandomQuestionsResponse) {}
+  rpc CreateTestFormPool(CreateTestFormPoolRequest) returns (CreateTestFormPoolResponse) {}
+  rpc ExecuteCode(ExecuteCodeRequest) returns (ExecuteCodeResponse) {}
+
+
+  // Adaptive Test
+  rpc GenerateAdaptiveTest(GenerateAdaptiveTestRequest) returns (GenerateAdaptiveTestResponse);
+  rpc CheckQuestionCountInAdaptiveTest(CheckQuestionCountInAdaptiveTestRequest) returns (CheckQuestionCountInAdaptiveTestResponse);
+  rpc GenerateAdaptiveLearningTest(GenerateAdaptiveLearningTestRequest) returns (GenerateAdaptiveLearningTestResponse);
+  rpc GetFirstQuestion(GetFirstQuestionRequest) returns (GetFirstQuestionResponse);
+  rpc GetNextQuestion(GetNextQuestionRequest) returns (GetNextQuestionResponse);
+  rpc GetAdaptiveTest(GetAdaptiveTestRequest) returns (GetAdaptiveTestResponse);
+  
+  // Ansync
+  rpc AnsyncAll(AnsyncAllRequest) returns (AnsyncAllResponse);
+  
+  // Certificate 
+  rpc Index(IndexRequest) returns (IndexResponse);
+  rpc Create(CreateCertificateRequest) returns (CreateCertificateResponse);
+  rpc GetPublicProfileCertificates(GetPublicProfileCertificatesRequest) returns (GetPublicProfileCertificatesResponse);
+
+  // Evaluation
+  rpc GetAssignedTests(GetAssignedTestsRequest) returns (GetAssignedTestsResponse);
+  rpc GetUnassignedTests(GetUnassignedTestsRequest) returns (GetUnassignedTestsResponse);
+  rpc FindEvaluators(FindEvaluatorsRequest) returns (FindEvaluatorsResponse);
+  rpc GetQuestionsForEvaluation(GetQuestionsForEvaluationRequest) returns (GetQuestionsForEvaluationResponse);
+  rpc GetPendingTests(GetPendingTestsRequest) returns (GetPendingTestsResponse);
+  rpc GetQuestionEvaluationsByTest(GetQuestionEvaluationsByTestRequest) returns (GetQuestionEvaluationsByTestResponse);
+  rpc GetStudentsForEvaluationByTest(GetStudentsForEvaluationByTestRequest) returns (GetStudentsForEvaluationByTestResponse);
+  rpc StartTestEvaluation(StartTestEvaluationRequest) returns (StartTestEvaluationResponse);
+  rpc GetTestEvaluationStat(GetTestEvaluationStatRequest) returns (GetTestEvaluationStatResponse);
+  rpc QuestionEvaluation(QuestionEvaluationRequest) returns (QuestionEvaluationResponse);
+  rpc AssignEvaluators(AssignEvaluatorsRequest) returns (AssignEvaluatorsResponse);
+  rpc RemoveEvaluators(RemoveEvaluatorsRequest) returns (RemoveEvaluatorsResponse);
+  
+  // Evaluation
+  rpc FindAllPractices(FindAllPracticesRequest) returns (FindAllPracticesResponse);
+  rpc FindByPractice(FindByPracticeRequest) returns (FindByPracticeResponse);
+  rpc CountByMe(CountByMeRequest) returns (CountByMeResponse);
+  rpc CreateFavorite(CreateFavoriteRequest) returns (CreateFavoriteResponse);
+  rpc DestroyByUser(DestroyByUserRequest) returns (DestroyByUserResponse);
+  
+  // Feedback
+  rpc FindAllByPractice(FindAllByPracticeRequest) returns (FindAllByPracticeResponse);
+  rpc SummaryByMe(SummaryByMeRequest) returns (SummaryByMeResponse);
+  rpc FindAllByMe(FindAllByMeRequest) returns (FindAllByMeResponse);
+  rpc GetQuestionFbPendingResponses(GetQuestionFbRequest) returns (GetQuestionFbResponse);
+  rpc GetTopFeedbacks(GetTopFeedbacksRequest) returns (GetTopFeedbacksResponse);
+  rpc CreateFeedback(CreateFeedbackRequest) returns (CreateFeedbackResponse);
+  rpc CreateQuestionFeedback(CreateQuestionFeedbackRequest) returns (CreateQuestionFeedbackResponse);
+  rpc RespondFeedback(RespondFeedbackRequest) returns (RespondFeedbackResponse);
+  
+  // Learning Test
+  rpc GetPracticeSet(GetPracticeSetRequest) returns (GetPracticeSetResponse);
+  rpc GetNextQuestionLearningTest(GetNextQuestionLearningTestRequest) returns (GetNextQuestionLearningTestResponse);
+  
+  // Session
+  rpc FilterTestLists(FilterTestListsRequest) returns (FilterTestListsResponse);
+  rpc GetSessions(GetSessionsRequest) returns (GetSessionsResponse);
+  rpc GetSessionById(GetSessionByIdRequest) returns (GetSessionByIdResponse);
+  rpc GetSessionDetails(GetSessionDetailsRequest) returns (GetSessionDetailsResponse);
+  rpc GetPracticesBySession(GetPracticesBySessionRequest) returns (GetPracticesBySessionResponse);
+  rpc GetStudentsByPractice(GetStudentsByPracticeRequest) returns (GetStudentsByPracticeResponse);
+  rpc UpdateStudentStatus(UpdateStudentStatusRequest) returns (UpdateStudentStatusResponse);
+  rpc TestStatus(TestStatusRequest) returns (TestStatusResponse);
+  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+  rpc UpdateSession(UpdateSessionRequest) returns (UpdateSessionResponse);
+  
+  // Mapping
+  rpc VideoForPracticeSet(VideoForPracticeSetRequest) returns (VideoForPracticeSetResponse);
+  
+  // TestSeries
+  rpc Find(FindRequest) returns (FindResponse);
+  rpc GetPublicListing(GetPublicListingRequest) returns (GetPublicListingResponse);
+  rpc SummaryTestseries(SummaryTestseriesRequest) returns (SummaryTestseriesResponse);
+  rpc GetAttemptedTestsOfTestseries(GetAttemptedTestsOfTestseriesRequest) returns (GetAttemptedTestsOfTestseriesResponse);
+  rpc GetTestseriesPublic(GetTestseriesPublicRequest) returns (GetTestseriesPublicResponse);
+  rpc SummaryPackages(SummaryPackagesRequest) returns (SummaryPackagesResponse);
+  rpc CountPackages(CountPackagesRequest) returns (CountPackagesResponse);
+  rpc SummaryPackagesByStudent(SummaryPackagesByStudentRequest) returns (SummaryPackagesByStudentResponse);
+  rpc RecommendedTestSeries(RecommendedTestSeriesRequest) returns (RecommendedTestSeriesResponse);
+  rpc BoughtTestSeriesByOthers(BoughtTestSeriesByOthersRequest) returns (BoughtTestSeriesByOthersResponse);
+  rpc GetMyTestSeries(GetMyTestSeriesRequest) returns (GetMyTestSeriesResponse);
+  rpc GetAuthors(GetAuthorsRequest) returns (GetAuthorsResponse);
+  rpc GetSubjects(GetSubjectsRequest) returns (GetSubjectsResponse);
+  rpc GetTeacherMostPopular(GetTeacherMostPopularRequest) returns (GetTeacherMostPopularResponse);
+  rpc GetTeacherHighestPaid(GetTeacherHighestPaidRequest) returns (GetTeacherHighestPaidResponse);
+  rpc TeacherSummaryTestseries(TeacherSummaryTestseriesRequest) returns (TeacherSummaryTestseriesResponse);
+  rpc LevelStatusOfPackage(LevelStatusOfPackageRequest) returns (LevelStatusOfPackageResponse);
+  rpc PackageHasLevel(PackageHasLevelRequest) returns (PackageHasLevelResponse);
+  rpc GetOngoingClasses(GetOngoingClassesRequest) returns (GetOngoingClassesResponse);
+  rpc SummaryPackagesByTeacher(SummaryPackagesByTeacherRequest) returns (SummaryPackagesByTeacherResponse);
+  rpc TeacherCountPackages(TeacherCountPackagesRequest) returns (TeacherCountPackagesResponse);
+  rpc GetPackageAttemptCount(GetPackageAttemptCountRequest) returns (GetPackageAttemptCountResponse);
+  rpc GetTestByPractice(GetTestByPracticeRequest) returns (TestSeries);
+  rpc GetTotalStudent(GetTotalStudentRequest) returns (GetTotalStudentResponse);
+  rpc GetFavoriteTs(GetFavoriteTsRequest) returns (GetFavoriteTsResponse);
+  rpc GetPublisherTestseries(GetPublisherTestseriesRequest) returns (GetPublisherTestseriesResponse);
+  rpc CreateTestseries(CreateTestseriesRequest) returns (CreateTestseriesResponse);
+  rpc AddFavorite(AddFavoriteRequest) returns (AddFavoriteResponse);
+  rpc Publish(PublishRequest) returns (PublishResponse);
+  rpc Revoke(RevokeRequest) returns (RevokeResponse);
+  rpc AddTest(AddTestRequest) returns (AddTestResponse);
+  rpc RemoveTest(RemoveTestRequest) returns (RemoveTestResponse);
+  rpc UpdateTestOrder(UpdateTestOrderRequest) returns (UpdateTestOrderResponse);
+  rpc RemoveClassroom(RemoveClassroomRequest) returns (RemoveClassroomResponse);
+  rpc UpdateTestseries(UpdateTestseriesRequest) returns (TestSeries);
+  rpc RemoveFavorite(RemoveFavoriteRequest) returns (RemoveFavoriteResponse);
+  rpc DeleteTestseries(DeleteTestseriesRequest) returns (TestSeries);
+  rpc GetStudentRank(GetStudentRankRequest) returns (GetStudentRankResponse);
+  rpc PercentCompleteTestseries(PercentCompleteTestseriesRequest) returns (PercentCompleteTestseriesResponse);
+  rpc PercentAccuracyTestseries(PercentAccuracyTestseriesRequest) returns (PercentAccuracyTestseriesResponse);
+  rpc PracticeHoursTestSeries(PracticeHoursTestSeriesRequest) returns (PracticeHoursTestSeriesResponse);
+  rpc AssesmentWiseMarksTestSeries(AssesmentWiseMarksTestSeriesRequest) returns (AssesmentWiseMarksTestSeriesResponse);
+  rpc QuestionCategoryTestSeries(QuestionCategoryTestSeriesRequest) returns (QuestionCategoryTestSeriesResponse);
+  rpc SubjectWiseMarksTestSeries(SubjectWiseMarksTestSeriesRequest) returns (SubjectWiseMarksTestSeriesResponse);
+  rpc SearchForMarketPlace(SearchForMarketPlaceRequest) returns (SearchForMarketPlaceResponse);
+  rpc GetBestSeller(GetBestSellerRequest) returns (GetBestSellerResponse);
+}
+
+message Empty{
+}
+
+message Subject {
+  string _id = 1;
+  string name = 2;
+}
+
+message Topic {
+  string _id = 1;
+  string name = 2;
+  int32 count = 3;
+}
+
+message Unit {
+  string _id = 1;
+  string name = 2;
+}
+
+message AudioFile {
+  string url = 1;
+  string name = 2;
+  int32 duration = 3;
+}
+
+message Answer {
+  string answerText = 1;
+  repeated string answerTextArray = 2;
+  bool isCorrectAnswer = 3;
+  string input = 4;
+  int32 marks = 5;
+  int32 score = 6;
+  string userText = 7;
+  string correctMatch = 8;
+  repeated AudioFile audioFiles = 9;
+  string meta = 10;
+  string iv = 11;
+  string _id = 12;
+  repeated Attachment attachments = 13;
+  repeated TestCase testcases = 14;
+}
+
+message UserCountry {
+  string code = 1;
+  string name = 2;
+  string currency = 3;
+  bool confirmed = 4;
+  repeated string callingCodes = 5;
+}
+
+message LevelHistory {
+  string _id = 1;
+  string subjectId = 2;
+  int32 level = 3;
+  string updateDate = 4;
+  string gradeName = 5;
+  string gradeId = 6;
+}
+
+message Preference {
+  string _id = 1;
+  bool publicProfile = 2;
+  bool myWatchList = 3;
+  bool leastPracticeDaily = 4;
+  bool resumesRequests = 5;
+  bool mentoringRequests = 6;
+  bool addingStudents = 7;
+  bool createAndPublishTest = 8;
+  bool viewExistingAssessment = 9;
+}
+
+message User {
+  string _id = 1;
+  string name = 2;
+  repeated string roles = 3;
+  UserCountry country = 4;
+  string activeLocation = 5;
+  string userId = 6;
+  repeated string subjects = 7;
+  repeated string practiceViews = 8;
+  repeated string locations = 9;
+  Preference preferences = 10;
+  bool isActive = 11;
+  string email = 12;
+  string phoneNumber = 13;
+  repeated LevelHistory levelHistory = 14;
+  string createdAt = 15;
+  repeated string grade = 16;
+}
+
+message AlternativeExplanation {
+  User user = 1;
+  string explanation = 2;
+  bool isApproved = 3;
+}
+
+message Testcase {
+  bool isSample = 1;
+  string args = 2;
+  string input = 3;
+  string output = 4;
+  string _id = 5;
+}
+
+message Coding {
+  string language = 1;
+  int32 timeLimit = 2;
+  int32 memLimit = 3;
+  string template = 4;
+  string solution = 5;
+  repeated TestCase testcases = 6;
+  string _id = 7;
+}
+
+message TopicRelated {
+  string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	string unit = 4;
+	bool active = 5;
+	string uid = 6;
+	bool synced = 7;
+	string isAllowReuse = 8;
+	string lastModifiedBy = 9;
+	string createdBy = 10;
+	repeated string tags = 11;
+  string createdby = 12;
+  string createdAt = 13;
+  string updatedAt = 14;
+}
+
+message Question {
+  string _id = 1;
+  string user = 2;
+  string userRole = 3;
+  repeated string practiceSets = 4;
+  Subject subject = 5;
+  Topic topic = 6;
+  Unit unit = 7;
+  repeated string tags = 8;
+  string complexity = 9;
+  string questionType = 10;
+  string isAllowReuse = 11;
+  Moderation moderation = 12;
+  string category = 13;
+  string questionText = 14;
+  repeated string questionTextArray = 15;
+  repeated AudioFile audioFiles = 16;
+  repeated string answerExplainArr = 17;
+  string answerExplain = 18;
+  repeated AudioFile answerExplainAudioFiles = 19;
+  repeated string prefferedLanguage = 20;
+  string questionHeader = 21;
+  int32 answerNumber = 22;
+  int32 minusMark = 23;
+  int32 plusMark = 24;
+  string createdAt = 25;
+  string updatedAt = 26;
+  bool isActive = 27;
+  int32 wordLimit = 28;
+  bool partialMark = 29;
+  string domain = 30;
+  int32 facet = 31;
+  repeated Answer answers = 32;
+  string userInputDescription = 33;
+  bool hasUserInput = 34;
+  string argumentDescription = 35;
+  bool hasArg = 36;
+  int32 modelId = 37;
+  int32 tComplexity = 38;
+  repeated Testcase testcases = 39;
+  repeated Coding coding = 40;
+  string approveStatus = 41;
+  repeated AlternativeExplanation alternativeExplanations = 42;
+  string lastModifiedBy = 43;
+  string uid = 44;
+  repeated string locations = 45;
+  TopicRelated topicRelated = 46;
+  Grade grade = 47;
+  string mig = 48;
+  string location = 49;
+  string question = 50;
+  string section = 51;
+  int32 order = 52;
+  string id = 53;
+}
+
+
+message Moderation {
+  string moderatedBy = 1;
+  string moderationDate = 2;
+}
+
+message CreateQuestionUser {
+  string _id = 1;
+  repeated string roles = 2;
+  string activeLocation = 3;
+}
+
+message CreateQuestionRequest {
+  repeated string practiceSets = 3;
+  Subject subject = 4;
+  Topic topic = 5;
+  Unit unit = 6;
+  repeated string tags = 7;
+  string complexity = 8;
+  string questionType = 9;
+  string isAllowReuse = 10;
+  Moderation moderation = 11;
+  string category = 12;
+  string questionText = 13;
+  repeated string questionTextArray = 14;
+  repeated AudioFile audioFiles = 15;
+  repeated string answerExplainArr = 16;
+  string answerExplain = 17;
+  repeated AudioFile answerExplainAudioFiles = 18;
+  repeated string prefferedLanguage = 19;
+  string questionHeader = 20;
+  int32 answerNumber = 21;
+  string createdAt = 24;
+  string updatedAt = 25;
+  bool isActive = 26;
+  int32 wordLimit = 27;
+  bool partialMark = 28;
+  string domain = 29;
+  int32 facet = 30;
+  repeated Answer answers = 31;
+  string userInputDescription = 32;
+  bool hasUserInput = 33;
+  string argumentDescription = 34;
+  bool hasArg = 35;
+  int32 modelId = 36;
+  int32 tComplexity = 37;
+  repeated Testcase testcases = 38;
+  repeated Coding coding = 39;
+  string approveStatus = 40;
+  repeated AlternativeExplanation alternativeExplanations = 41;
+  string uid = 43;
+  string instancekey = 45; 
+  CreateQuestionUser userData = 46;
+}
+
+message CreateQuestionResponse{
+  Question response = 1;
+}
+
+message GetAllQuestionRequest {
+  string instancekey = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string sort = 4;
+  string practiceSet = 5;
+  string subject = 6;
+  string keyword = 7;
+}
+
+message GetAllQuestionResponse{
+  repeated Question response = 1;
+}
+
+message GetQuestionRequest {
+  string instancekey = 1;
+  string _id = 2;
+  bool relatedTopic = 3;
+}
+
+message GetQuestionResponse{
+  Question response = 1;
+}
+
+message UpdateQuestionRequest {
+  string _id = 1;
+  string user = 2;
+  string userRole = 3;
+  repeated string practiceSets = 4;
+  Subject subject = 5;
+  Topic topic = 6;
+  Unit unit = 7;
+  repeated string tags = 8;
+  string complexity = 9;
+  string questionType = 10;
+  string isAllowReuse = 11;
+  Moderation moderation = 12;
+  string category = 13;
+  string questionText = 14;
+  repeated string questionTextArray = 15;
+  repeated AudioFile audioFiles = 16;
+  repeated string answerExplainArr = 17;
+  string answerExplain = 18;
+  repeated AudioFile answerExplainAudioFiles = 19;
+  repeated string prefferedLanguage = 20;
+  string questionHeader = 21;
+  int32 answerNumber = 22;
+  int32 minusMark = 23;
+  int32 plusMark = 24;
+  string createdAt = 25;
+  string updatedAt = 26;
+  bool isActive = 27;
+  int32 wordLimit = 28;
+  bool partialMark = 29;
+  string domain = 30;
+  int32 facet = 31;
+  repeated Answer answers = 32;
+  string userInputDescription = 33;
+  bool hasUserInput = 34;
+  string argumentDescription = 35;
+  bool hasArg = 36;
+  int32 modelId = 37;
+  int32 tComplexity = 38;
+  repeated Testcase testcases = 39;
+  repeated Coding coding = 40;
+  string approveStatus = 41;
+  repeated AlternativeExplanation alternativeExplanations = 42;
+  string lastModifiedBy = 43;
+  string uid = 44;
+  repeated string locations = 45;
+  string instancekey = 46;
+  string userId = 48;
+  string notUpdatetag = 49;
+  string section = 50;
+}
+
+message UpdateQuestionResponse {
+  Question response = 1;
+}
+
+message DeleteQuestionRequest{
+  string _id = 1;
+  string instancekey = 2;
+  string userId = 3;
+  repeated string userRoles = 4;
+}
+
+message DeleteQuestionResponse{
+  Question response = 1;
+}
+
+message UpdateStudentQuestionRequest{
+  string _id = 1;
+  string status = 2;
+  string instancekey = 3;
+}
+
+message UpdateStudentQuestionResponse {
+  Question response = 1;
+}
+
+message CreateExplanationRequest {
+  string _id = 1;
+  string explanation = 2;
+  string testId = 3;
+  string testTitle = 4;
+  User user = 5;
+  string instancekey = 6;
+}
+
+message CreateExplanationResponse {
+  Question response = 1;
+}
+
+message Explanation{
+  string _id = 1;
+  User user = 2;
+  string explanation = 3;
+  bool isApproved = 4;
+}
+
+message ApproveStudentExplanationRequest{
+  string _id = 1;
+  repeated Explanation explanations = 2;
+  string instancekey = 3;
+}
+
+message ApproveStudentExplanationResponse{
+  string message = 1;
+}
+
+// Question Distribution by category 
+message QuestionDistributionRequest{
+  string _id = 1;
+  string instancekey = 2;
+}
+
+message QuestionData {
+  int32 marks = 1;
+  string category = 2;
+  int32 count = 3;
+}
+
+message QuestionCategory {
+  repeated QuestionData questions = 1;
+  int32 count = 2;
+  string category = 3;
+}
+
+message QuestionDistributionCategoryResponse {
+  repeated QuestionCategory response = 1;
+}
+
+// Question Distribution by marks
+message QuestionByMarks {
+  string category = 1;
+  int32 minusMark = 2;
+  int32 plusMark = 3;
+  string instancekey = 4;
+}
+
+message QuestionDistributionMarksResponse {
+  repeated QuestionByMarks response = 1;
+}
+
+// Practice summary by subject
+message PracticeSummaryBySubjectRequest{
+  string practice = 1;
+  string instancekey = 2;
+}
+
+
+message UnitPracticeSummary {
+  string name = 1;
+  int32 count = 2;
+  string _id = 3;
+}
+
+message PracticeSummaryBySubject {
+  string _id = 1;
+  string name = 2;
+  repeated Topic topics = 3;
+  int32 count = 4;
+}
+
+message PracticeSummaryBySubjectResponse {
+  repeated PracticeSummaryBySubject response = 1;
+}
+
+
+// getByPractice
+message PracticeQuestionsRequest {
+  string practiceId = 1;
+  string instancekey = 2;
+}
+
+message PracticeQuestion {
+  string _id = 1;
+  string user = 2;
+  string userRole = 3;
+  repeated string practiceSets = 4;
+  Subject subject = 5;
+  Topic topic = 6;
+  Unit unit = 7;
+  repeated string tags = 8;
+  string complexity = 9;
+  string questionType = 10;
+  string isAllowReuse = 11;
+  Moderation moderation = 12;
+  string category = 13;
+  string questionText = 14;
+  repeated string questionTextArray = 15;
+  repeated AudioFile audioFiles = 16;
+  repeated string answerExplainArr = 17;
+  string answerExplain = 18;
+  repeated AudioFile answerExplainAudioFiles = 19;
+  repeated string prefferedLanguage = 20;
+  string questionHeader = 21;
+  int32 answerNumber = 22;
+  int32 minusMark = 23;
+  int32 plusMark = 24;
+  string createdAt = 25;
+  string updatedAt = 26;
+  bool isActive = 27;
+  int32 wordLimit = 28;
+  bool partialMark = 29;
+  string domain = 30;
+  int32 facet = 31;
+  repeated Answer answers = 32;
+  string userInputDescription = 33;
+  bool hasUserInput = 34;
+  string argumentDescription = 35;
+  bool hasArg = 36;
+  int32 modelId = 37;
+  int32 tComplexity = 38;
+  repeated Testcase testcases = 39;
+  repeated Coding coding = 40;
+  string approveStatus = 41;
+  repeated AlternativeExplanation alternativeExplanations = 42;
+  string lastModifiedBy = 43;
+  string uid = 44;
+  repeated string locations = 45;
+  string section = 46;
+  int32 order = 47;
+  bool canEdit = 48;
+}
+
+message PracticeQuestionsResponse {
+  repeated PracticeQuestion response = 1;
+}
+
+// Question used count
+message PracticeSetDetails {
+  string subjectName = 1;
+  string testId = 2;
+  string testName = 3;
+}
+ 
+message QuestionUsedCountRequest {
+  string instancekey = 1;
+
+}
+
+message QuestionUsedCount {
+  string qId = 1;
+  int32 totalPracticesetCount = 2;
+  repeated PracticeSetDetails details = 3;
+}
+
+message QuestionUsedCountResponse{
+  repeated QuestionUsedCount response = 1;
+}
+
+// getPracticesetClassroom
+// message GetPracticeSetClassroom {
+//   message _id {
+//     string classroomId = 1;
+//   }
+//   string name = 2;
+//   string seqCode = 3;
+//   string imageUrl = 4;
+//   string colorCode = 5;
+//   int32 studentsCount = 6;
+//   int32 attemptsCount = 7;
+//   bool joinByCode = 8;
+// }
+
+// message GetPracticeSetClassroomsResponse {
+//   repeated GetPracticeSetClassroom response = 1;
+// }
+
+message AttemptDetail {
+  string practicesetId = 1;
+  string user = 2;
+  string attempt = 3;
+  bool isAbandoned = 4;
+  repeated ArchiveQA archiveQA = 5;
+  repeated QA QA = 6;
+}
+
+message ArchiveQA {
+  // Define the fields for ArchiveQA here
+}
+
+
+message QA {
+  string question = 1;
+  int32 timeEslapse = 2;
+  int32 timeLeft = 3;
+  int32 stdTime = 4;
+  int32 index = 5;
+  int32 answerChanged = 6;
+  int32 status = 7;
+  string category = 8;
+  repeated int32 offscreen = 9;
+  bool feedback = 10;
+  string createdAt = 11;
+  bool isMissed = 12;
+  bool hasMarked = 13;
+  int32 actualMarks = 14;
+  int32 obtainMarks = 15;
+  Topic topic = 16;
+  Unit unit = 17;
+  Subject subject = 18;
+  repeated AnswerQA answers = 19;
+  string teacherComment = 20;
+  int32 reviewTimes = 21;
+  int32 reviewTimeSpent = 22;
+  int32 tComplexity = 23;
+  repeated string answerOrder = 24;
+  repeated string scratchPad = 25;
+  bool evaluatorAssigned = 26;
+  string _id = 27;
+  string tags = 28;
+}
+
+message AnswerQA {
+  string answerId = 1;
+  string answerText = 2;
+  string userText = 3;
+  string codeLanguage = 4;
+  string code = 5;
+  repeated TestcaseQA testcases = 6;
+  string userArgs = 7;
+  string userInput = 8;
+  string output = 9;
+  string compileMessage = 10;
+  int32 compileTime = 11;
+  string mathData = 12;
+  int32 timeElapse = 13;
+  repeated Attachment attachments = 14;
+}
+
+message TestcaseQA {
+  string args = 1;
+  string input = 2;
+  string output = 3;
+  bool status = 4;
+  int32 runTime = 5;
+  string error = 6;
+}
+
+message Attachment {
+  string url = 1;
+  string name = 2;
+  string type = 3;
+  string _id = 4;
+  string filename = 5;
+  bytes data = 6;
+}
+
+message QuestionIsAttemptRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message QuestionIsAttemptResponse {
+  AttemptDetail response = 1;
+}
+
+
+message QuestionPerformanceRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message QuestionPerformanceResponse {
+  float percentCorrect = 1;
+}
+
+message GetLastRequest {
+  string instancekey = 1;
+  string user = 2;
+}
+
+message GetLastResponse {
+  Question response = 1;
+}
+
+message GetLastInPracticeRequest {
+  string instancekey = 1;
+  string practice = 2;
+  string preDate = 3;
+}
+
+message GetLastInPractice{
+  Question questionInfo = 1;
+  string section = 2;
+}
+
+message GetLastInPracticeResponse {
+  GetLastInPractice response = 1;
+}
+
+message UserDto {
+  string _id = 1;
+  string roles = 2;
+  string activeLocation = 3;
+  repeated string subjects = 4;
+}
+
+message InternalSearchDto {
+  string level = 1;
+  bool unusedOnly = 2;
+  string notInTest = 3;
+  bool excludeTempt = 4;
+  repeated string usedQuestions = 5;
+  repeated string excludeQuestions = 6;
+  int32 marks = 7;
+  bool pendingReview = 8;
+  string category = 9;
+  bool isEasy = 10;
+  bool isModerate = 11;
+  bool isDifficult = 12;
+  repeated string tags = 13;
+  bool myquestion = 14;
+  repeated string owners = 15;
+  bool reUse = 16;
+  bool studentQuestions = 17;
+  bool pending = 18;
+  bool isActive = 19;
+  string subject = 20;
+  repeated string units = 21;
+  repeated string topics = 22;
+  string keyword = 23;
+  bool altSolution = 24;
+  bool toImport = 25;
+  bool includeCount = 26;
+  int32 page = 27;
+  int32 limit = 28;
+}
+
+message InternalSearchRequest {
+  string instancekey = 1;
+  UserDto user = 2;
+  InternalSearchDto params = 3;
+}
+
+message TopicData {
+  string _id = 1;
+  string name = 2;
+  string slugfly = 3;
+  string unit = 4;
+  bool active = 5;
+  string uid = 6;
+  bool synced = 7;
+  string isAllowReuse = 8;
+  string lastModifiedBy = 9;
+  string createdBy = 10;
+  repeated string tags = 11;
+  string createdby = 12;
+  string createdAt = 13;
+  string updatedAt = 14;
+}
+
+message InternalSearchTopic {
+  TopicData _id = 1;
+  string name = 2; 
+}
+
+message InternalSearchQuestionDto {
+  string _id = 1;
+  string createBy = 2;
+  string answerExplain = 3;
+  int32 answerNumber = 4;
+  int32 wordLimit = 5;
+  string complexity = 6;
+  string createdAt = 7;
+  int32 minusMark = 8;
+  int32 plusMark = 9;
+  repeated string practiceSets = 10;
+  string questionHeader = 11;
+  string questionText = 12;
+  repeated string questionTextArray = 13;
+  string questionType = 14;
+  Subject subject = 15;
+  Unit unit = 16;
+  InternalSearchTopic topic = 17;
+  string updatedAt = 18;
+  string user = 19;
+  string isAllowReuse = 20;
+  bool isActive = 21;
+  string category = 22;
+  repeated Answer answers = 23;
+  repeated string tags = 24;
+  repeated Coding coding = 25;
+  bool hasUserInput = 26;
+  string userInputDescription = 27;
+  bool hasArg = 28;
+  string argumentDescription = 29;
+  string approveStatus = 30;
+  repeated AlternativeExplanation alternativeExplanations = 31;
+  bool partialMark = 32;
+  Moderation moderation = 33;
+  repeated Testcase testcases = 34;
+}
+
+message InternalSearchResponse {
+  repeated InternalSearchQuestionDto questions = 1;
+  int32 count = 2;
+}
+
+message CountByPracticeRequest {
+  string instancekey = 1;
+  string practiceId = 2;
+  string keyword = 3;
+  string topics = 4;
+}
+
+message CountByPracticeResponse {
+  int32 count = 1;
+}
+
+message GetQuestionTagsResquest {
+  string instancekey = 1;
+}
+
+message GetQuestionTagsResponse {
+  repeated string tags = 1;
+}
+
+message UpdateTagsRequest {
+  string instancekey = 1;
+  repeated string questions = 2;
+  repeated string tags = 3;
+  string userId = 4;
+}
+
+message UpdateTagsResponse {
+  bool result = 1;
+}
+
+message QuestionSummaryTopicRequest {
+  string instancekey = 1;
+  string id = 2;
+  string isAllowReuse = 3;
+  string userId = 4;
+}
+
+message QuestionSummaryTopic {
+  string _id = 1;
+  string name = 2;
+  int32 count = 3;
+  string unit = 4;
+}
+
+message QuestionSummaryTopicResponse {
+  repeated QuestionSummaryTopic response = 1;
+}
+
+message GetQuestionForOnlineTestRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message GetQuestionForOnlineTestResponse {
+  Question response = 1;
+}
+
+message PersonalTopicAnalysisRequest {
+  string instancekey = 1;
+  string userId = 2;
+  string id = 3;
+}
+
+message PersonalTopicAnalysisResponse {
+  string _id = 1;
+  string correct = 2;
+  string incorrect = 3;
+  string accuracy = 4;
+}
+
+message SummaryTopicOfPracticeBySubjectRequest {
+  string instancekey = 1;
+  string unit = 2;
+  string practiceIds = 3;
+}
+
+message SummaryTopicOfPractice {
+  string _id = 1;
+  string name = 2;
+  int32 count = 4;
+  int32 marks = 3;
+  string unit = 5;
+}
+
+message SummaryTopicOfPracticeBySubjectResponse {
+  repeated SummaryTopicOfPractice response = 1;
+}
+
+message SummaryTopicPracticeRequest {
+  string instancekey = 1;
+  string practice = 2;
+  string unit = 3;
+}
+
+message SummaryTopicPracticeResponse {
+  repeated SummaryTopicOfPractice response = 1;
+}
+
+message SummarySubjectPracticeRequest {
+  string instancekey = 1;
+  string practice = 2;
+}
+
+message SummarySubjectPracticeResponse {
+  repeated SummaryTopicOfPractice response = 1;
+}
+
+message TestSeriesSummaryBySubjectRequest {
+  string instancekey = 1;
+  string practice = 2;
+}
+
+message TestSeriesSummaryBySubject {
+  string _id = 1;
+  string name = 2;
+  repeated Topic topics = 3;
+  int32 count = 4;
+}
+
+message TestSeriesSummaryBySubjectResponse {
+  repeated TestSeriesSummaryBySubject response = 1; 
+}
+
+message GetByAttemptRequest {
+  string instancekey = 1;
+  string attempt = 2;
+  repeated string userRoles = 3;
+}
+
+message GetByAttemptResponse {
+  repeated Question response = 1;
+}
+
+message GetReusedCountRequest {
+  string instancekey = 1;
+  string id = 2;
+  bool notAllowDelete = 3;
+}
+
+message GetReusedCountResponse {
+  int32 count = 1;
+}
+
+message FeedbackQuestionRequest {
+  string instancekey = 1;
+  string id = 2;
+  int32 page = 3;
+  int32 limit = 4;
+  string keyword = 5;
+}
+
+message Feedback {
+  string comment = 1;
+  repeated string feedbackComments = 2;
+  string responded = 3;
+  string studentId = 4;
+  string studentName = 5;
+  string updatedAt = 6;
+  string feedbackId = 7;
+}
+
+message QuestionId {
+  string questionId = 1;
+}
+
+message FeedbackQuestion {
+  QuestionId _id = 1;
+  repeated Feedback feedback = 2;
+  string updatedAt = 3;
+  int32 index = 4;
+  int32 order = 5;
+  string questionText = 6;
+  string questionHeader = 7;
+  string createdAt = 8;
+  Topic topic = 9;
+  Unit unit = 10;
+  string questionType = 11;
+  bool applyLastHeader = 12;
+}
+
+message FeedbackQuestionResponse {
+  repeated FeedbackQuestion response = 1;
+}
+
+message FeedbackQuestionCountRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message FeedbackQuestionCountResponse {
+  int32 count = 1;
+}
+message QuestionDistributionUser {
+  string _id = 1;
+  repeated string locations = 2;
+  repeated string roles = 3;
+  repeated string subjects = 4;
+}
+
+message QuestionDistributionReq {
+  string instancekey = 1;
+  QuestionDistributionUser user = 2;
+  bool myquestion = 3;
+  string owners = 4;
+  bool pendingReview = 5;
+  string grade = 6;
+  string units = 7;
+  string complexity = 8;
+  bool isActive = 9;
+  string tags = 10;
+  string keyword = 11;
+  bool unusedOnly = 12;
+  string notInTest = 13;
+  string excludeTempt = 14;
+}
+
+message QuestionDistribution {
+  string _id = 1;
+  int32 count = 2;
+  string name = 3;
+}
+
+message QuestionDistributionResponse {
+  repeated QuestionDistribution response = 1;
+}
+
+message QuestionComplexityByTopicRequest {
+  string instancekey = 1;
+  QuestionDistributionUser user = 2;
+  bool myquestion = 3;
+  string owners = 4;
+  bool pendingReview = 5;
+  bool studentQuestions = 6;
+  bool isApproved = 7;
+  string complexity = 8;
+  bool isActive = 9;
+  string tags = 10;
+  string subject = 11;
+  string unit = 12;
+  string topics = 13;
+  string keyword = 14;
+  bool unusedOnly = 15;
+  string notInTest = 16;
+  bool excludeTempt = 17;
+  bool pending = 18;
+}
+
+message QuestionComplexityByTopic {
+  string name = 1;
+  string _id = 2;
+  string complexity = 3;
+}
+
+message QuestionComplexityByTopicResponse {
+  repeated QuestionComplexityByTopic response = 1;
+}
+
+message GenerateRandomTestUser {
+  string _id = 1;
+  string name = 2;
+  string email = 3;
+  string phoneNumber = 4;
+  repeated string subjects = 5;
+  string activeLocation = 6;
+}
+
+message GenerateRandomTestRequest {
+  string instancekey = 1;
+  int32 year = 2;
+  int32 month = 3;
+  int32 day = 4;
+  string currentTime = 5;
+  GenerateRandomTestUser user = 6;
+}
+
+message GenerateRandomTestResponse {
+  string response = 1;
+}
+
+message CreateTestFormPoolUser {
+  string _id = 1;
+  string name = 2;
+  repeated string subjects = 3;
+  repeated string locations = 4;
+  repeated string roles = 5;
+  string activeLocation = 6;
+}
+
+message CreateTestFormPoolRequest {
+  string instancekey = 1;
+  CreateTestFormPoolUser user = 2;
+  string title = 3;
+  int32 totalQuestion = 4;
+  int32 marks = 5;
+  bool myquestion = 6;
+  string owners = 7;
+  bool pendingReview = 8;
+  bool studentQuestions = 9;
+  bool isApproved = 10;
+  string complexity = 11;
+  bool isActive = 12;
+  string tags = 13;
+  string subject = 14;
+  string units = 15;
+  string topics = 16;
+  string keyword = 17;
+  string sort = 18;
+  bool unusedOnly = 19;
+  string notInTest = 20;
+  bool excludeTempt = 21;
+  bool reUse = 22;
+  bool pending = 23;
+}
+
+
+message CreateTestFormPoolResponse {
+}
+
+message GetRandomQuestionsRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message GetRandomQuestionsResponse {
+ string response = 1;
+}
+
+message ExecuteCodeQuery {
+  string type = 1;
+  string testId = 2;
+  string questionId = 3;
+  string attemptDetailId = 4;
+}
+
+message ExecuteCodeBody {
+  string code = 1;
+  string testcases = 2;
+}
+
+message ExecuteCodeRequest {
+  string instancekey = 1;
+  ExecuteCodeQuery query = 2;
+  ExecuteCodeBody body = 3;
+  User user = 4;
+}
+
+message Result {
+  string input = 1;
+  string args = 2;
+  string out = 3;
+  string state = 4;
+  string err = 5;
+  int32 exitCode = 6;
+  string runTime = 7;
+  bool testCasePassed = 8;
+  string memoryUsageInMB = 9;
+}
+
+
+message Output {
+  int32 compileExitCode = 1;
+  repeated string compileMessage = 2;
+  repeated string result = 3;
+  int32 compileTime = 4;
+  repeated Result results = 5;
+  string memoryUsageInMB = 6;
+}
+
+message ExecuteCodeResponse {
+  Output output = 1;
+  string attemptDetailId = 2;
+}
+
+// Adaptive Test
+message GenerateAdaptiveTestBody {
+  string subject = 1;
+  string unit = 2;
+  string learningMode = 3;
+}
+
+message GenerateAdaptiveTestRequest {
+  string instancekey = 1;
+  GenerateAdaptiveTestBody body = 2;
+  User user = 3;
+}
+
+message Avatar {
+  string _id = 1;
+  string mimeType = 2;
+  int32 size = 3;
+  string fileUrl = 4;
+  string fileName = 5;
+  string path = 6;
+}
+
+message DossierUserInfo {
+  string user = 1;
+  string name = 2;
+}
+
+message Note {
+  int32 version = 1;
+  string comment = 2;
+  string updatedAt = 3;
+  string type = 4;
+  DossierUserInfo userInfo = 5;
+}
+
+message DossierFeedback {
+  string comment = 1;
+  string updatedAt = 2;
+  string type = 3;
+  DossierUserInfo userInfo = 4;
+}
+
+message MentorInfo {
+  string user = 1;
+  string name = 2;
+}
+
+message Dossier {
+  string status = 1;
+  string statusChangedAt = 2;
+  repeated Note notes = 3;
+  repeated DossierFeedback feedback = 4;
+  MentorInfo mentorInfo = 5;
+}
+
+
+message Experience {
+  string title = 1;
+  string employmentType = 2;
+  string company = 3;
+  string location = 4;
+  bool currentlyWorking = 5;
+  string startDate = 6;
+  string endDate = 7;
+  string description = 8;
+}
+
+message ProgrammingLang {
+  string name = 1;
+  double rating = 2;
+  string description = 3;
+}
+
+message EducationDetail {
+  string educationType = 1;
+  string board = 2;
+  string marksType = 3;
+  double marks = 4;
+  int32 passingYear = 5;
+  string stream = 6;
+}
+
+message EntranceExam {
+  string year = 1;
+  int32 rank = 2;
+  string name = 3;
+}
+
+message AcademicProject {
+  string name = 1;
+  string groupSize = 2;
+  string description = 3;
+  string startDate = 4;
+  string endDate = 5;
+  string document = 6;
+  string url = 7;
+  bool sysgen = 8;
+}
+
+message TrainingCertification {
+  string type = 1;
+  string provider = 2;
+  string city = 3;
+  string state = 4;
+  string startDate = 5;
+  string endDate = 6;
+  string expiredDate = 7;
+  string certificate = 8;
+  string url = 9;
+  string description = 10;
+  bool sysgen = 11;
+}
+
+message IndustryCertificate {
+  string name = 1;
+  string provider = 2;
+  string certificateDate = 3;
+  string expiredDate = 4;
+  string certificate = 5;
+  string url = 6;
+  bool sysgen = 7;
+}
+
+message ExternalAssessment {
+  string name = 1;
+  double mostRecentScore = 2;
+  int32 yearOfAssessment = 3;
+  double maximumScore = 4;
+}
+
+message AwardAndRecognition {
+  string awardDetails = 1;
+  string date = 2;
+}
+
+message ExtraCurricularActivity {
+  string activityDetails = 1;
+  string startDate = 2;
+  string endDate = 3;
+}
+
+message PackageSchedule {
+  string package = 1;
+  string code = 2;
+}
+
+message IdentityInfo {
+  string imageUrl = 1;
+  string fileUrl = 2;
+  double matchedPercentage = 3;
+}
+
+message Profile {
+  string name = 1;
+  string role = 2;
+  Avatar avatar = 3;
+  string _id = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string avatarUrlMD = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
+
+message Token {
+  string _id = 1;
+}
+
+message UserData {
+  string _id = 1;
+  string rollNumber = 2;
+  string registrationNo = 3;
+  Avatar avatar = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string passingYear = 7;
+  string userId = 8;
+  string phoneNumber = 9;
+  string email = 10;
+  UserCountry country = 11;
+  string provider = 12;
+  repeated string subjects = 13;
+  repeated string roles = 14;
+  string ref = 15;
+  string birthdate = 16;
+  string gender = 17;
+  string district = 18;
+  string interest = 19;
+  string knowAboutUs = 20;
+  string city = 21;
+  string state = 22;
+  bool isVerified = 23;
+  bool whiteboard = 24;
+  Dossier dossier = 25;
+  string name = 26;
+  bool emailVerified = 27;
+  bool status = 28;
+  bool isActive = 29;
+  MentorInfo mentorInfo = 30;
+  Avatar avatarSM = 31;
+  Avatar avatarMD = 32;
+  string phoneNumberFull = 33;
+  bool isPublic = 34;
+  bool allowOnlineClass = 35;
+  int32 profileCompleted = 36;
+  int32 trainingProfileCompleted = 37;
+  repeated string programs = 38;
+  string coreBranch = 39;
+  repeated string locations = 40;
+  bool managerStudent = 41;
+  bool managerPractice = 42;
+  repeated string practiceViews = 43;
+  repeated string practiceAttempted = 44;
+  repeated string emailStudents = 45;
+  string lastLogin = 46;
+  string lastAttempt = 47;
+  string theme = 48;
+  string videoResume = 49;
+  string streamUrl = 50;
+  string instagram = 51;
+  bool studentExclusive = 52;
+  string activeLocationId = 53;
+  string placementStatus = 54;
+  string expertise = 55;
+  bool forcePasswordReset = 56;
+  string institute = 57;
+  repeated string followings = 58;
+  int32 pin = 59;
+  string street = 60;
+  string designation = 61;
+  int32 loginCount = 62;
+  string about = 63;
+  string openai = 64;
+  repeated string interestedSubject = 65;
+  repeated string specialization = 66;
+  Preference preferences = 67;
+  repeated Experience experiences = 68;
+  string emailVerifyExpired = 69;
+  bool liveboard = 70;
+  bool canCreateMultiLocations = 71;
+  string instituteUrl = 72;
+  bool isMentor = 73;
+  repeated string blockedUsers = 74;
+  string optoutDate = 75;
+  bool ambassador = 76;
+  bool onboarding = 77;
+  string optoutReason = 78;
+  bool optoutEmail = 79;
+  string createdBy = 80;
+  string createdAt = 81;
+  string updatedAt = 82;
+  repeated ProgrammingLang programmingLang = 83;
+  repeated EducationDetail educationDetails = 84;
+  repeated EntranceExam entranceExam = 85;
+  repeated AcademicProject academicProjects = 86;
+  repeated TrainingCertification trainingCertifications = 87;
+  repeated IndustryCertificate industryCertificates = 88;
+  repeated ExternalAssessment externalAssessment = 89;
+  repeated AwardAndRecognition awardsAndRecognition = 90;
+  repeated ExtraCurricularActivity extraCurricularActivities = 91;
+  repeated PackageSchedule packageSchedules = 92;
+  IdentityInfo identityInfo = 93;
+  string codingExperience = 94;
+  repeated LevelHistory levelHistory = 95;
+  repeated string followers = 96;
+  string passwordResetToken = 97;
+  string emailVerifyToken = 98;
+  string activeLocation = 99;
+  Token token = 100;
+  string hashedPassword = 101;
+  repeated string grade = 102;
+  string salt = 103;
+  Profile profile = 104;
+  Profile publicProfile = 105;
+}
+message UserInfo {
+  string _id = 1;
+  string name = 2;
+  Avatar avatarSM = 3;
+  Avatar avatar = 4;
+  Avatar avatarMD = 5;
+}
+
+message Country {
+  string code = 1;
+  string name = 2;
+  string currency = 3;
+  int32 price = 4;
+  int32 marketPlacePrice = 5;
+  int32 discountValue = 6;
+}
+
+message DemographicData {
+  bool city = 1;
+  bool state = 2;
+  bool dob = 3;
+  bool gender = 4;
+  bool rollNumber = 5;
+  bool identificationNumber = 6;
+  bool passingYear = 7;
+  bool coreBranch = 8;
+  bool collegeName = 9;
+  bool identityVerification = 10;
+  FieldEntry field1 = 11;
+  FieldEntry field2 = 12;
+}
+
+message FieldEntry {
+  string label = 1;
+  bool value = 2;
+}
+
+message RandomTestDetails {
+  string topic = 1;
+  int32 questions = 2;
+  int32 quesMarks = 3;
+}
+
+message BuyerEntry {
+  string item = 1;
+  string user = 2;
+}
+
+message QuestionEntry {
+  string question = 1;
+  string section = 2;
+  int32 minusMark = 3;
+  int32 plusMark = 4;
+  string createdAt = 5;
+  int32 order = 6;
+  string _id = 7;
+}
+
+message SectionEntry {
+  string name = 1;
+  int32 time = 2;
+  bool showCalculator = 3;
+  int32 optionalQuestions = 4;
+}
+
+
+message GenerateAdaptiveTest {
+  string _id = 1;
+  UserData user = 2;
+  string lastModifiedBy = 3;
+  string lastModifiedDate = 4;
+  bool active = 5;
+  UserInfo userInfo = 6;
+  repeated Unit units = 7;
+  repeated Subject subjects = 8;
+  int32 level = 9;
+  string testMode = 10;
+  string accessMode = 11;
+  repeated Country countries = 12;
+  string title = 13;
+  string titleLower = 14;
+  repeated string courses = 15;
+  repeated string testseries = 16;
+  repeated string tags = 17;
+  DemographicData demographicData = 18;
+  string description = 19;
+  repeated string inviteeEmails = 20;
+  repeated string inviteePhones = 21;
+  repeated string classRooms = 22;
+  repeated string studentEmails = 23;
+  string instructions = 24;
+  bool isMarksLevel = 25;
+  bool enableMarks = 26;
+  bool randomQuestions = 27;
+  bool randomizeAnswerOptions = 28;
+  bool sectionJump = 29;
+  bool sectionTimeLimit = 30;
+  int32 minusMark = 31;
+  double plusMark = 32;
+  string notes = 33;
+  int32 attemptAllowed = 34;
+  string status = 35;
+  string statusChangedAt = 36;
+  string expiresOn = 37;
+  string startDate = 38;
+  int32 startTimeAllowance = 39;
+  bool requireAttendance = 40;
+  int32 totalJoinedStudent = 41;
+  string createdAt = 42;
+  string updatedAt = 43;
+  int32 rating = 44;
+  int32 totalQuestion = 45;
+  int32 questionsToDisplay = 46;
+  bool isPartnerExam = 47;
+  int32 totalTime = 48;
+  int32 questionsPerTopic = 49;
+  int32 totalAttempt = 50;
+  bool isShowResult = 51;
+  bool allowTeacher = 52;
+  repeated string locations = 53;
+  bool allowStudent = 54;
+  bool isShowAttempt = 55;
+  string createMode = 56;
+  string testCode = 57;
+  string dirPath = 58;
+  bool isAdaptive = 59;
+  string adaptiveTest = 60;
+  repeated RandomTestDetails randomTestDetails = 61;
+  bool showCalculator = 62;
+  bool showFeedback = 63;
+  bool peerVisibility = 64;
+  string initiator = 65;
+  string testType = 66;
+  repeated QuestionEntry questions = 67;
+  repeated SectionEntry sections = 68;
+  repeated string enabledCodeLang = 69;
+  bool enableSection = 70;
+  bool camera = 71;
+  bool fraudDetect = 72;
+  bool pinTop = 73;
+  bool autoEvaluation = 74;
+  bool fullLength = 75;
+  string imageUrl = 76;
+  int32 offscreenLimit = 77;
+  repeated BuyerEntry buyers = 78;
+  repeated string instructors = 79;
+  bool randomSection = 80;
+  string uid = 81;
+  bool synced = 82;
+  string owner = 83;
+  string origin = 84;
+}
+
+message GenerateAdaptiveTestResponse {
+  GenerateAdaptiveTest response = 1;
+}
+
+message CheckQuestionCountInAdaptiveTestBody {
+  string subject = 1;
+  string unit = 2;
+}
+
+message CheckQuestionCountInAdaptiveTestRequest {
+  string instancekey = 1;
+  User user = 2;
+  CheckQuestionCountInAdaptiveTestBody body = 3;
+}
+
+message QuestionPresented {
+  string _id = 1;
+  string complexity = 2;
+  int32 tComplexity = 3;
+}
+
+message SubjectsOfQuestions {
+  string _id = 1;
+  string name = 2;
+}
+
+message CheckQuestionCountInAdaptiveTestResponse {
+  repeated QuestionPresented questions = 1;
+  repeated SubjectsOfQuestions subjects = 2;
+  repeated Unit units = 3;
+}
+
+message GenerateAdaptiveLearningTestBody {
+  string subject = 1;
+  string unit = 2;
+}
+
+message GenerateAdaptiveLearningTestRequest {
+  string instancekey = 1;
+  User user = 2;
+  GenerateAdaptiveLearningTestBody body = 3;
+}
+
+message GenerateAdaptiveLearningTestResponse {
+  string _id = 1;
+}
+
+message GetFirstQuestionQuery {
+  string practiceset = 1;
+}
+
+message GetFirstQuestionRequest {
+  string instancekey = 1;
+  User user = 2;
+  GetFirstQuestionQuery query = 3;
+}
+
+message GetFirstQuestionResponse {
+  // Define fields if needed
+}
+
+message UseAnswer {
+  string answerId = 1;
+  string codeLanguage = 2;
+  repeated Testcase testcases = 3;
+}
+
+message GetNextQuestionBody {
+  string testId = 1;
+  string question = 2;
+  string attempt = 3;
+  string finish = 4;
+  repeated UseAnswer answers = 5;
+  string category = 6;
+  string scratchPad = 7;
+  int32 qSpendTime = 8;
+  string feedback = 9;
+  string index = 10;
+  string adaptiveObject = 11;
+  repeated string answersArray = 12;
+}
+
+message GetNextQuestionRequest {
+  string instancekey = 1;
+  GetNextQuestionBody body = 2;
+  User user = 3;
+}
+
+
+message QuestionDetails {
+  Topic topic = 1;
+  Subject subject = 2;
+  Unit unit = 3;
+  double tComplexity = 4;
+  string category = 5;
+  repeated Answer answers = 6;
+  string question = 7;
+  string scratchPad = 8;
+  int32 timeEslapse = 9;
+  int32 answerChanged = 10;
+  double actualMarks = 11;
+  double minusMark = 12;
+  bool feedback = 13;
+  int32 status = 14;
+  double obtainMarks = 15;
+}
+
+message GetNextQuestionResponse {
+  int32 status = 1;
+  string message = 2;
+  QuestionDetails previousResponse = 3;
+}
+
+message GetAdaptiveTestRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message GetAdaptiveTestResponse {
+  GenerateAdaptiveTest response = 1;
+}
+
+// Ansync
+message FeedbackItem {
+  string name = 1;
+  bool value = 2;
+  string user = 3;
+}
+
+message ShareLinkBody {
+  string practiceSetId = 1;
+  string emails = 2;
+  repeated string phones = 3;
+}
+message AttemptTopic {
+  string _id = 1; 
+  string name = 2;
+  double speed = 3;
+  double accuracy = 4;
+  int32 correct = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  int32 missed = 8;
+  int32 incorrect = 9;
+  double mark = 10;
+  double maxMarks = 11;
+}
+
+message AttemptUnit {
+  string _id = 1; 
+  string name = 2;
+  double speed = 3;
+  double accuracy = 4;
+  int32 correct = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  int32 missed = 8;
+  int32 incorrect = 9;
+  double mark = 10;
+  double maxMarks = 11;
+  repeated AttemptTopic topics = 12;
+}
+
+message AttemptSubject {
+  string _id = 1; 
+  string name = 2;
+  int32 correct = 3;
+  int32 missed = 4;
+  int32 incorrect = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  double mark = 8;
+  double speed = 9;
+  double accuracy = 10;
+  double maxMarks = 11;
+  double offscreenTime = 12;
+  repeated AttemptUnit units = 13;
+}
+
+message Grade {
+  string _id = 1;
+  string name = 2;
+  int32 level = 3;
+}
+
+message PracticeSetInfo {
+  string title = 1;
+  string titleLower = 2;
+  repeated AttemptUnit units = 3;
+  repeated AttemptSubject subjects = 4;
+  string createdBy = 5; 
+  string accessMode = 6;
+  repeated string classRooms = 7; // equivalent to repeated Types.ObjectId
+  bool isAdaptive = 8;
+  string adaptiveTest = 9; 
+  int32 level = 10;
+  repeated Grade grades = 11;
+}
+
+message FaceDetectionFrame {
+  string captured = 1;
+  int32 headCount = 2;
+  bool candidate = 3;
+  string image = 4;
+}
+
+message FaceDetection {
+  repeated FaceDetectionFrame frames = 1;
+  bool fraud = 2;
+}
+
+
+message CreatedBy {
+  string user = 1; 
+  string name = 2;
+}
+
+message Attempt {
+  string practicesetId = 1; 
+  string user = 2; 
+  string studentName = 3;
+  string email = 4;
+  string userId = 5;
+  int32 lastIndex = 6;
+  string attemptdetails = 7; 
+  string idOffline = 8;
+  int32 totalQuestions = 9;
+  string createdAt = 10;
+  string updatedAt = 11;
+  bool isEvaluated = 12;
+  int32 partial = 13;
+  bool partiallyAttempted = 14;
+  bool isLevelReset = 15;
+  int32 pending = 16;
+  double maximumMarks = 17;
+  bool isShowAttempt = 18;
+  bool isFraudulent = 19;
+  bool markedSuspicious = 20;
+  bool isAnsync = 21;
+  bool isCratedOffline = 22;
+  double totalMark = 23;
+  double plusMark = 24;
+  double minusMark = 25;
+  int32 totalMissed = 26;
+  int32 totalErrors = 27;
+  int32 totalTime = 28;
+  int32 totalCorrects = 29;
+  bool isAbandoned = 30;
+  int32 totalMarkeds = 31;
+  CreatedBy createdBy = 32;
+  string attemptType = 33;
+  repeated AttemptSubject subjects = 34;
+  PracticeSetInfo practiceSetInfo = 35;
+  double offscreenTime = 36;
+  repeated string fraudDetected = 37;
+  bool terminated = 38;
+  int32 resumeCount = 39;
+  int32 timeLimitExhaustedCount = 40;
+  bool ongoing = 41;
+  FaceDetection face_detection = 42;
+  IdentityInfo identityInfo = 43;
+  string referenceId = 44; 
+  string referenceType = 45;
+  string referenceData = 46;
+  string location = 47; 
+  repeated QA QA = 48;
+  string _id = 49;
+}
+message AnsyncAllBody {
+  repeated Attempt attempts = 1;
+  repeated FeedbackItem feedbacks = 2;
+  repeated ShareLinkBody shareLinks = 3;
+}
+
+
+message AnsyncAllRequest {
+  string instancekey = 1;
+  User user = 2;
+  AnsyncAllBody body = 3;
+}
+
+message AnsyncAllResponse {
+    repeated Attempt attemptNotAsync = 1;
+    repeated Attempt attemptAsync = 2;
+    repeated FeedbackItem feedbackNotAsync = 3;
+    repeated FeedbackItem feedbackAsync = 4;
+}
+
+// Certificates
+
+message IndexQuery {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message IndexRequest {
+  string instancekey = 1;
+  string id = 2;
+  IndexQuery query = 3;
+}
+
+message Course {
+  string _id = 1;
+  string title = 2;
+  bool certificate = 3;
+  string expiresOn = 4;
+  string imageUrl = 5;
+}
+
+message Certificate {
+  string _id = 1;
+  Course course = 2;
+  bool issuedCertificate = 3;
+  string issuedCertificateDate = 4;
+}
+
+message IndexResponse {
+  repeated Certificate response = 1;
+}
+
+message CreateCertificateBody {
+  string course = 1;
+  string issuedBy = 2;
+  string issuedTo = 3;
+  string title = 4;
+  string description = 5;
+  string imageUrl = 6;
+}
+
+message CreateCertificateRequest {
+  string instancekey = 1;
+  User user = 2;
+  CreateCertificateBody body = 3;
+}
+
+message CreateCertificateResponse {
+  string _id = 1;
+}
+
+message GetPublicProfileCertificatesRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message GetPublicProfileCertificatesResponse {
+  repeated Certificate response = 1;
+}
+
+
+// Evaluation
+message GetAssignedTestsQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string text = 3;
+  bool includeCount = 4;
+}
+
+message GetAssignedTestsRequest {
+  string instancekey = 1;
+  GetAssignedTestsQuery query = 2;
+  User user = 3;
+}
+
+message Teacher {
+  string _id = 1;
+  int32 students = 2;
+  int32 questions = 3;
+  int32 evaluated = 4;
+  string evaluationDate = 5; 
+  string name = 6;
+}
+
+message Test {
+  string _id = 1;
+  string title = 2;
+  repeated Teacher teachers = 3;
+  int32 attempts = 4;
+}
+
+message GetAssignedTestsResponse {
+  repeated Test tests = 1;
+  int32 count = 2;
+}
+
+
+message GetUnassignedTestsQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string text = 3;
+  bool includeCount = 4;
+}
+
+message GetUnassignedTestsRequest {
+  string instancekey = 1;
+  User user = 2;
+  GetUnassignedTestsQuery query = 3;
+}
+
+
+message UnassignedTest {
+  string _id = 1;
+  string testTitle = 2;
+  int32 pendingQuestions = 3;
+  int32 pendingAttempts = 4;
+}
+
+message GetUnassignedTestsResponse {
+  repeated UnassignedTest tests = 1;
+  int32 count = 2;
+}
+
+message FindEvaluatorsQuery {
+  optional string name = 1;
+  optional string test = 2;
+}
+
+message FindEvaluatorsRequest {
+  string instancekey = 1;
+  FindEvaluatorsQuery query = 2;
+  User user = 3;
+}
+
+message Evaluator {
+  string _id = 1;
+  string userId = 2;
+  string name = 3;
+  repeated string locations = 4;
+}
+
+message FindEvaluatorsResponse {
+  repeated Evaluator response = 1;
+}
+
+message GetQuestionsForEvaluationQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string pendingEvaluation = 3;
+  bool includeCount = 4;
+}
+
+message GetQuestionsForEvaluationRequest {
+  string instancekey = 1;
+  User user = 2;
+  GetQuestionsForEvaluationQuery query = 3;
+}
+
+message TestCase {
+  string _id = 1;
+  string output = 2;
+  string input = 3;
+  string args = 4;
+  bool useTestFramework = 5;
+  string expectedOutput = 6;
+}
+
+
+message QuestionEvaluation {
+  string _id = 1;
+  string attemptId = 2;
+  string practicesetId = 3;
+  bool evaluated = 4;
+  string attemptDetail = 5;
+  int32 timeSpent = 6;
+  QA QA = 7;
+}
+
+message GetQuestionsForEvaluationResponse {
+  repeated QuestionEvaluation questions = 1;
+  int32 count = 2;
+}
+
+message GetPendingTestsQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string title = 3;
+  bool includeCount = 4;
+}
+
+message GetPendingTestsRequest {
+  string instancekey = 1;
+  GetPendingTestsQuery query = 2;
+  User user = 3;
+}
+
+message ClassRoom {
+  string _id = 1;
+  string name = 2;
+}
+
+message PendingTest {
+  string _id = 1;
+  int32 questions = 2;
+  string title = 3;
+  repeated ClassRoom classRooms = 4;
+  string testMode = 5;
+}
+
+message GetPendingTestsResponse {
+  repeated PendingTest tests = 1;
+  int32 count = 2;
+}
+
+message GetQuestionEvaluationsByTestQuery {
+  string attemptId = 1;
+  string system = 2;
+  string isPending = 3;
+}
+
+message GetQuestionEvaluationsByTestRequest {
+  string instancekey = 1;
+  string testId = 2;
+  User user = 3;
+  GetQuestionEvaluationsByTestQuery query = 4;
+}
+
+message EvaluationQuestion {
+  string _id = 1;
+  int32 order = 2;
+  string questionText = 3;
+  double plusMark = 4;
+  double minusMark = 5;
+}
+
+message EvaluationsByTest {
+  string _id = 1;
+  double plusMark = 2;
+  double minusMark = 3;
+  bool enableMarks = 4;
+  bool isMarksLevel = 5;
+  repeated EvaluationQuestion questions = 6;
+}
+
+message Student {
+  string _id = 1;
+  string userId = 2;
+  string name = 3;
+  string rollNumber = 4;
+}
+
+message Evaluation {
+  string _id = 1;
+  bool evaluated = 2;
+  int32 timeSpent = 3;
+  bool active = 4;
+  string QAId = 5;
+  string question = 6;
+  string attemptId = 7;
+  string evaluationDate = 8;
+  Student student = 9;
+  repeated Answer answers = 10;
+  float obtainMarks = 11;
+  string teacherComment = 12;
+}
+
+message EvaluationsResponse {
+  repeated Evaluation evaluations = 1;
+}
+
+message GetQuestionEvaluationsByTestResponse {
+  EvaluationsByTest test = 1;
+  repeated Evaluation evaluations = 2;
+}
+
+message GetStudentsForEvaluationByTestQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string system = 3;
+  string attemptId = 4;
+  string isPending = 5;
+  string searchText = 6;
+  bool countInclude = 7;
+}
+
+message GetStudentsForEvaluationByTestRequest {
+  string instancekey = 1;
+  string testId = 2;
+  GetStudentsForEvaluationByTestQuery query = 3;
+  User user = 4;
+}
+
+message DocQuestion {
+  string _id = 1;
+  int32 order = 2;
+  string questionText = 3;
+  double plusMark = 4;
+  double minusMark = 5;
+}
+
+message StudentTest {
+  string id = 1;
+  double plusMark = 2;
+  double minusMark = 3;
+  bool enableMarks = 4;
+  bool isMarksLevel = 5;
+  repeated DocQuestion questions = 6;
+}
+
+message StudentQuestion {
+  string id = 1;
+  string attemptId = 2;
+  string QAId = 3;
+  string evaluationDate = 4;
+  bool evaluated = 5;
+  int32 timeSpent = 6;
+  repeated Answer answers = 7;
+  int32 obtainMarks = 8;
+  string teacherComment = 9;
+}
+
+message StudentData {
+  string _id = 1;
+  string studentId = 2;
+  string name = 3;
+  string rollNumber = 4;
+  string userId = 5;
+  repeated StudentQuestion questions = 6;
+}
+
+message GetStudentsForEvaluationByTestResponse {
+  repeated StudentData students = 1;
+  StudentTest test = 2;
+  int32 total = 3;
+}
+
+message StartTestEvaluationQuery {
+  string system = 1;
+  string attemptId = 2;
+}
+
+message StartTestEvaluationRequest {
+  string instancekey = 1;
+  string testId = 2;
+  StartTestEvaluationQuery query = 3;
+  User user = 4;
+}
+
+message StartTestEvaluationResponse {
+    string _id = 1;
+    string testMode = 2;
+    string title = 3;
+    string startDate = 4;
+    int32 totalTime = 5;
+    int32 evaluatedQ = 6;
+    int32 pendingQ = 7;
+    int32 evaluatedS = 8;
+    int32 pendingS = 9;
+}
+
+message GetTestEvaluationStatQuery {
+  string attemptId = 1;
+  string system = 2;
+}
+
+message GetTestEvaluationStatRequest {
+  string instancekey = 1;
+  string testId = 2;
+  User user = 3;
+  GetTestEvaluationStatQuery query = 4;
+}
+
+message GetTestEvaluationStatResponse {
+  int32 evaluatedQ = 1;
+  int32 pendingQ = 2;
+  int32 evaluatedS = 3;
+  int32 pendingS = 4;
+}
+
+message QuestionEvaluationBody {
+  string question = 1;
+  int32 status = 2;
+  string teacherComment = 3;
+  double marks = 4;
+  string eId = 5;
+  int32 timeSpent = 6;
+}
+
+message QuestionEvaluationRequest {
+  string instancekey = 1;
+  string id = 2;
+  QuestionEvaluationBody body = 3;
+}
+
+message EvaluationSubject {
+  string id = 1;
+  string name = 2;
+  int32 correct = 3;
+  int32 missed = 4;
+  int32 incorrect = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  int32 mark = 8;
+  double speed = 9;
+  double accuracy = 10;
+  int32 maxMarks = 11;
+  int32 offscreenTime = 12;
+  repeated EvaluationUnit units = 13;
+}
+
+message EvaluationUnit {
+  string _id = 1;
+  string name = 2;
+  double speed = 3;
+  double accuracy = 4;
+  int32 correct = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  int32 missed = 8;
+  int32 incorrect = 9;
+  int32 mark = 10;
+  int32 maxMarks = 11;
+  repeated EvaluationTopic topics = 12;
+}
+
+message EvaluationTopic {
+  string _id = 1;
+  string name = 2;
+  double speed = 3;
+  double accuracy = 4;
+  int32 correct = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  int32 missed = 8;
+  int32 incorrect = 9;
+  int32 mark = 10;
+  int32 maxMarks = 11;
+}
+
+message SubjectDetails {
+  string _id = 1;
+  string name = 2;
+  int32 correct = 3;
+  int32 missed = 4;
+  int32 incorrect = 5;
+  int32 pending = 6;
+  int32 partial = 7;
+  int32 mark = 8;
+  double speed = 9;
+  double accuracy = 10;
+  int32 maxMarks = 11;
+  int32 offscreenTime = 12;
+  repeated EvaluationUnit units = 13;
+}
+
+message EvaluationPracticeSetInfo {
+  string title = 1;
+  repeated Subject subjects = 2;
+  repeated string classRooms = 3;
+  repeated Unit units = 4;
+  string titleLower = 5;
+  string accessMode = 6;
+  string createdBy = 7;
+}
+
+message PracticeSet {
+  string _id = 1;
+  CreatedBy createdBy = 2;
+  EvaluationPracticeSetInfo practiceSetInfo = 3;
+  FaceDetection face_detection = 4;
+  IdentityInfo identityInfo = 5;
+  int32 lastIndex = 6;
+  bool isEvaluated = 7;
+  int32 partial = 8;
+  bool partiallyAttempted = 9;
+  bool isLevelReset = 10;
+  int32 pending = 11;
+  int32 maximumMarks = 12;
+  bool isShowAttempt = 13;
+  bool isFraudulent = 14;
+  bool markedSuspicious = 15;
+  bool isAnsync = 16;
+  bool isCratedOffline = 17;
+  int32 totalMark = 18;
+  double plusMark = 19;
+  double minusMark = 20;
+  int32 totalMissed = 21;
+  int32 totalErrors = 22;
+  int32 totalTime = 23;
+  int32 totalCorrects = 24;
+  bool isAbandoned = 25;
+  int32 totalMarkeds = 26;
+  int32 offscreenTime = 27;
+  repeated string fraudDetected = 28;
+  bool terminated = 29;
+  int32 resumeCount = 30;
+  bool ongoing = 31;
+  string practicesetId = 32;
+  string user = 33;
+  string createdAt = 34;
+  string updatedAt = 35;
+  repeated SubjectDetails subjects = 36;
+  string attemptdetails = 37;
+  string attemptType = 38;
+  string email = 39;
+  string idOffline = 40;
+  string studentName = 41;
+  int32 totalQuestions = 42;
+  string userId = 43;
+  string location = 44;
+}
+
+message QuestionEvaluationResponse {
+  PracticeSet result = 1;
+}
+
+message AssignEvaluatorsBody {
+  repeated string evaluators = 1;
+}
+
+message AssignEvaluatorsRequest {
+  string instancekey = 1;
+  string testId = 2;
+  AssignEvaluatorsBody body = 3;
+  User user = 4;
+}
+
+message AssignEvaluatorsResponse {
+  string status = 1;
+}
+
+message RemoveEvaluatorsBody {
+  string evaluator = 1;
+  string option = 2;
+  repeated string newEvaluators = 3;
+}
+
+message RemoveEvaluatorsRequest {
+  string instancekey = 1;
+  string testId = 2;
+  RemoveEvaluatorsBody body = 3;
+  User user = 4;
+}
+
+message RemoveEvaluatorsResponse {
+  string status = 1;
+}
+
+
+// Favorite
+message FindAllPracticesQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string sort = 3;
+}
+
+message FindAllPracticesRequest {
+  string instancekey = 1;
+  FindAllPracticesQuery query = 2;
+  User user = 3;
+}
+
+message Practice {
+  string _id = 1;
+  string uid = 2;
+  int32 questionsToDisplay = 3;
+  int32 totalTime = 4;
+  UserData user = 5;
+  int32 offscreenLimit = 6;
+  bool fullLength = 7;
+  bool autoEvaluation = 8;
+  bool pinTop = 9;
+  bool camera = 10;
+  bool enableSection = 11;
+  repeated string enabledCodeLang = 12;
+  repeated QuestionEntry questions = 13;
+  string testType = 14;
+  string initiator = 15;
+  bool peerVisibility = 16;
+  bool showFeedback = 17;
+  bool showCalculator = 18;
+  bool isAdaptive = 19;
+  string dirPath = 20;
+  string testCode = 21;
+  string createMode = 22;
+  bool isShowAttempt = 23;
+  bool allowStudent = 24;
+  repeated string locations = 25;
+  bool allowTeacher = 26;
+  bool packageOnly = 27;
+  bool isShowResult = 28;
+  int32 totalAttempt = 29;
+  int32 totalQuestion = 30;
+  int32 rating = 31;
+  string updatedAt = 32;
+  string createdAt = 33;
+  int32 totalJoinedStudent = 34;
+  bool requireAttendance = 35;
+  string startDate = 36;
+  string expiresOn = 37;
+  string statusChangedAt = 38;
+  string status = 39;
+  int32 attemptAllowed = 40;
+  string notes = 41;
+  double plusMark = 42;
+  double minusMark = 43;
+  bool sectionTimeLimit = 44;
+  bool sectionJump = 45;
+  bool randomizeAnswerOptions = 46;
+  bool randomQuestions = 47;
+  bool enableMarks = 48;
+  bool isMarksLevel = 49;
+  string instructions = 50;
+  repeated string studentEmails = 51;
+  repeated string classRooms = 52;
+  repeated string inviteePhones = 53;
+  repeated string inviteeEmails = 54;
+  string description = 55;
+  DemographicData demographicData = 56;
+  string titleLower = 57;
+  string title = 58;
+  string accessMode = 59;
+  string testMode = 60;
+  Grade grades = 61;
+  UserInfo userInfo = 62;
+  int32 __v = 63;
+  string lastModifiedBy = 64;
+  string lastModifiedDate = 65;
+  repeated Unit units = 66;
+  repeated Subject subjects = 67;
+  bool isUsed = 68;
+  repeated Country countries = 69;
+  bool active = 70;
+  repeated User instructors = 71;
+  string owner = 72;
+  repeated string tags = 73;
+  repeated string buyers = 74;
+  string origin = 75;
+  string viewTemplate = 76;
+  repeated string courses = 77;
+  bool fraudDetect = 78;
+  bool isPartnerExam = 79;
+  int32 level = 80;
+  bool randomSection = 81;
+  repeated string randomTestDetails = 82;
+  bool synced = 83;
+  repeated string testseries = 84;
+  int32 startTimeAllowance = 85;
+  repeated SectionEntry sections = 86;
+}
+
+message FindAllPracticesResponse {
+  repeated Practice response = 1;
+}
+
+message FindByPracticeRequest {
+  string instancekey = 1;
+  string practice = 2;
+  User user = 3;
+}
+
+message FindByPracticeResponse {
+  string _id = 1;
+  string user = 2;
+  string practiceSet = 3;
+  string updatedAt = 4;
+  string createdAt = 5;
+  string location = 6;
+}
+
+message CountByMeQuery {
+  string title = 1;
+  string publisher = 2;
+  string subject = 3;
+  string grades = 4;
+}
+
+message CountByMeRequest {
+  string instancekey = 1;
+  User user = 2;
+  CountByMeQuery query = 3;
+}
+
+message CountByMeResponse {
+  int32 count = 1;
+}
+
+message CreateFavoriteBody {
+  string practiceSetId = 1;
+}
+
+message CreateFavoriteRequest {
+  string instancekey = 1;
+  User user = 2;
+  CreateFavoriteBody body = 3;
+}
+
+message CreateFavoriteResponse {
+  string status = 1;
+}
+
+message DestroyByUserRequest {
+  string instancekey = 1;
+  User user = 2;
+  string practiceSet = 3;
+}
+
+message DestroyByUserResponse {
+  string status = 1;
+}
+
+// Feedback
+message FindAllByPracticeQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string rating = 3;
+  string tags = 4;
+  string keywords = 5;
+}
+
+message FindAllByPracticeRequest {
+  string instancekey = 1;
+  string practiceSetId = 2;
+  FindAllByPracticeQuery query = 3;
+}
+
+message FeedbackData {
+  string id = 1;
+  UserData user = 2;
+  string practiceSetId = 3; 
+  string attemptId = 4; 
+  string owner = 5;
+  string updatedAt = 6;
+  string createdAt = 7;
+  int32 rating = 8;
+  string comment = 9;
+  int32 composite = 10;
+  int32 negative = 11;
+  int32 neutral = 12;
+  int32 positive = 13;
+  int32 length = 14;
+}
+
+message FindAllByPracticeResponse {
+  repeated FeedbackData data = 1;
+  int32 count = 2;
+}
+
+message SummaryByMeRequest {
+  string instancekey = 1;
+  User user = 2;
+}
+
+message SummaryByMe {
+  string _id = 1;
+  double avgRating = 2;
+}
+
+message SummaryByMeResponse {
+  repeated SummaryByMe response = 1;
+}
+
+message FindAllByMeQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string rating = 3;
+  int32 day = 4;
+  string name = 5;
+  string sort = 6;
+}
+
+message FindAllByMeRequest {
+  string instancekey = 1;
+  FindAllByMeQuery query = 2;
+  User user = 3;
+}
+
+message FindAllByMeUser {
+  string name = 1;
+  Avatar avatar = 2;
+  string facebook = 3;
+}
+
+message FindAllByMe {
+  string id = 1;
+  FindAllByMeUser user = 2;
+  string comment = 3;
+  int32 rating = 4;
+  string createdAt = 5;
+  string practiceSet = 6;
+}
+
+message FindAllByMeResponse {
+  repeated FindAllByMe data = 1;
+  int32 count = 2;
+}
+
+message GetQuestionFbQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  bool count = 3;
+}
+
+message GetQuestionFbRequest {
+  string instancekey = 1;
+  GetQuestionFbQuery query = 2;
+  User user = 3;
+}
+
+message QFStudent {
+  string _id = 1;
+  string name = 2;
+  Avatar avatar = 3;
+}
+
+message QFTest {
+  string _id = 1;
+  string title = 2;
+  UserInfo userInfo = 3;
+}
+
+message QFeedback {
+  string student = 1;
+  string test = 2;
+}
+
+message GetQuestionFbPending {
+  QFeedback _id = 1;
+  int32 question = 2;
+  int32 count = 3;
+  string oldest = 4;
+  QFTest test = 5;
+  QFStudent student = 6;
+  repeated Course course = 7;
+}
+
+
+message GetQuestionFbResponse {  
+  repeated GetQuestionFbPending feedbacks = 1;
+  int32 count = 2;
+}
+
+message GetTopFeedbacksRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message FeedbackId {
+  string practice = 1;
+  string tags = 2;
+}
+
+message TopFeedbacks {
+  FeedbackId _id = 1;
+  int32 count = 2;
+}
+
+message GetTopFeedbacksResponse {
+  repeated TopFeedbacks response = 1;
+}
+
+message CreateFeedbackBody {
+  string rating = 1;
+  string comment = 2;
+  string attemptId = 3;
+  string practiceSetId = 4;
+  string owner = 5;
+  string idOffline = 6;
+  repeated FeedbackData feedbacks = 7;
+}
+
+message CreateFeedbackRequest {
+  string instancekey = 1;
+  User user = 2;
+  CreateFeedbackBody body = 3;
+  string token = 4;
+}
+
+message CreateFeedbackResponse {
+  string status = 1;
+}
+
+message CreateQuestionFeedbackBody {
+  string teacherId = 1;
+  string attemptId = 2;
+  string questionId = 3;
+  string studentId = 4;
+  string practicesetId = 5;
+  string feedbacks = 6;
+  string comment = 7;
+}
+
+message CreateQuestionFeedbackRequest {
+  string instancekey = 1;
+  CreateQuestionFeedbackBody body = 2;
+  User user = 3;
+}
+
+message CreateQuestionFeedbackResponse {
+  string _id = 1;
+  string studentId = 2;
+  string teacherId = 3;
+  string questionId = 4;
+  string practicesetId = 5;
+  string attemptId = 6;
+  repeated string feedbacks = 7;
+  bool responded = 8;
+  string comment = 9;
+  string location = 10;
+  string createdAt = 11;
+  string updatedAt = 12;
+}
+
+message StudentQ {
+  string studentId = 1;
+  string feedbackId = 2;
+}
+
+message TeacherR {
+  string comment = 1;
+}
+
+message RespondFeedbackBody {
+  repeated StudentQ studentQ = 1;
+  TeacherR teacherR = 2;
+  string test = 3;
+  string question = 4;
+}
+
+
+message RespondFeedbackRequest {
+  string instancekey = 1;
+  RespondFeedbackBody body = 2;
+  User user = 3;
+}
+
+message RespondFeedbackResponse {
+  string status = 1;
+}
+
+// Learning Test
+message GetPracticeSetQuery {
+  string practiceset = 1;
+  string referenceType = 2;
+  string referenceId = 3;
+  string referenceData = 4;
+  string attempt = 5;
+  string packageId = 6;
+}
+
+message GetPracticeSetRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+  GetPracticeSetQuery query = 4;
+}
+
+message GetPracticeSetResponse {
+  Practice practice = 1;
+  Question question = 2;
+  string attemptDetailId = 3;
+  string attempt = 4;
+  int32 currPage = 5;
+}
+
+message GetNextQuestionLearningTestBody {
+  string testId = 1;
+  repeated string answers = 2;
+  string attempt = 3;
+  string packageId = 4;
+  string question = 5;
+  int32 index = 6;
+  string category = 7;
+  int32 qSpendTime = 8;
+  bool feedback = 9;
+  repeated string scratchPad = 10;
+  bool finish = 11;
+}
+
+message GetNextQuestionLearningTestRequest {
+  string instancekey = 1;
+  GetNextQuestionLearningTestBody body = 2;
+  User user = 3;
+}
+
+message PreviousResponse {
+  string question = 1;
+  double timeEslapse = 2;
+  double timeLeft = 3;
+  double stdTime = 4;
+  int32 index = 5;
+  int32 answerChanged = 6;
+  int32 status = 7;
+  string category = 8;
+  repeated string offscreen = 9;
+  bool feedback = 10;
+  string createdAt = 11;
+  bool isMissed = 12;
+  bool hasMarked = 13;
+  double actualMarks = 14;
+  double obtainMarks = 15;
+  Topic topic = 16;
+  Unit unit = 17;
+  Subject subject = 18;
+  repeated Answer answers = 19;
+  repeated string answerOrder = 20;
+  repeated string scratchPad = 21;
+  string _id = 22;
+}
+
+message GetNextQuestionLearningTestResponse {
+  string _id = 1;
+  string uid = 2;
+  string user = 3;
+  repeated string alternativeExplanations = 4;
+  string approveStatus = 5;
+  repeated Coding coding = 6;
+  bool hasArg = 7;
+  string argumentDescription = 8;
+  bool hasUserInput = 9;
+  string userInputDescription = 10;
+  repeated Answer answers = 11;
+  bool partialMark = 12;
+  int32 wordLimit = 13;
+  bool isActive = 14;
+  string updatedAt = 15;
+  string createdAt = 16;
+  double plusMark = 17;
+  double minusMark = 18;
+  int32 answerNumber = 19;
+  string questionHeader = 20;
+  repeated string prefferedLanguage = 21;
+  string answerExplain = 22;
+  repeated string answerExplainArr = 23;
+  repeated string questionTextArray = 24;
+  string questionText = 25;
+  string category = 26;
+  Moderation moderation = 27;
+  string isAllowReuse = 28;
+  string questionType = 29;
+  string complexity = 30;
+  repeated string tags = 31;
+  Grade grade = 32;
+  Subject subject = 33;
+  repeated string practiceSets = 34;
+  string __v = 35;
+  string mig = 36;
+  Unit unit = 37;
+  Topic topic = 38;
+  string location = 39;
+  repeated string locations = 40;
+  int32 currPage = 41;
+  PreviousResponse previousResponse = 42;
+}
+
+// Session
+message FilterTestListsQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  int32 skip = 3;
+  string sort = 4;
+  string selectedSubjects = 5;
+  string searchText = 6;
+  string tags = 7;
+}
+
+message FilterTestListsRequest {
+  string instancekey = 1;
+  FilterTestListsQuery query = 2;
+  User user = 3;
+}
+
+message FilterTestList {
+  string id = 1;
+  int32 questionsToDisplay = 2;
+  int32 totalTime = 3;
+  string user = 4;
+  string testType = 5;
+  bool isAdaptive = 6;
+  int32 totalQuestion = 7;
+  string startDate = 8;
+  string expiresOn = 9;
+  string status = 10;
+  string instructions = 11;
+  repeated string classRooms = 12;
+  string description = 13;
+  string title = 14;
+  string accessMode = 15;
+  string testMode = 16;
+  repeated Unit units = 17;
+  repeated Subject subjects = 18;
+}
+
+message FilterTestListsResponse {
+  repeated FilterTestList tests = 1;
+  int32 count = 2;
+}
+
+message GetSessionsQuery {
+  string selectedSlot = 1;
+}
+
+message GetSessionsRequest {
+  string instancekey = 1;
+  GetSessionsQuery query = 2;
+  User user = 3;
+  string timezoneoffset = 4;
+}
+
+message GetSession {
+  string sessionId = 1;
+  int32 totalStudents = 2;
+  int32 classroomCount = 3;
+  string title = 4;
+  int32 studentActive = 5;
+  int32 studentInactive = 6;
+  string loginAllowanceTime = 7;
+  string startDate = 8;
+  int32 totalTime = 9;
+  bool deactivateRemainingStudents = 10;
+  int32 practiceCount = 11;
+}
+
+message GetSessionsResponse {
+  repeated GetSession response = 1;
+}
+
+message GetSessionByIdRequest {
+  string instancekey = 1;
+  string session = 2;
+}
+
+message PracticeId {
+  string _id = 1;
+  string title = 2;
+  repeated string classRooms = 3;
+  string status = 4;
+  int32 totalQuestion = 5;
+  int32 totalTime = 6;
+  repeated Subject subjects = 7;
+}
+
+message GetSessionByIdResponse {
+  string _id = 1;
+  repeated PracticeId practiceIds = 2;
+  string startDate = 3;
+  bool isMarksLevel = 4;
+  int32 loginAllowanceTime = 5;
+  bool deactivateRemainingStudents = 6;
+  float minusMark = 7;
+  float plusMark = 8;
+  int32 startTimeAllowance = 9;
+  int32 totalTime = 10;
+  bool randomQuestions = 11;
+  bool randomizeAnswerOptions = 12;
+  bool requireAttendance = 13;
+  bool autoEvaluation = 14;
+  bool camera = 15;
+  bool isShowAttempt = 16;
+  bool allowTeacher = 17;
+  bool isShowResult = 18;
+  bool showFeedback = 19;
+  int32 offscreenLimit = 20;
+  int32 attemptAllowed = 21; 
+  string title = 22;
+  string user = 23;
+  string createdAt = 24;
+  string updatedAt = 25;
+  int32 __v = 26;
+  bool activeReset = 27;
+}
+
+message GetSessionDetailsRequest {
+  string instancekey = 1;
+  string session = 2;
+}
+
+message SessionId {
+  string sessionId = 1;
+}
+
+message SessionData {
+  SessionId _id = 1;
+  int32 totalQuestion = 2;
+  int32 totalStudents = 3;
+  int32 classroomCount = 4;
+  string title = 5;
+  string createdAt = 6;
+  int32 loginAllowanceTime = 7;
+  int32 published = 8;
+  int32 draft = 9;
+}
+
+message GetSessionDetailsResponse {
+  repeated SessionData response = 1;
+}
+
+message GetPracticesBySessionRequest {
+  string instancekey = 1;
+  string session = 2;
+}
+
+message PracticeID {
+  string practiceId = 1;
+}
+
+message Classroom {
+  string classroomId = 1;
+  string classroomName = 2;
+  int32 studentActive = 3;
+  int32 studentInactive = 4;
+  bool classroomActive = 5;
+}
+
+message PracticeData {
+  PracticeID _id = 1;
+  int32 totalQuestion = 2;
+  int32 totalStudents = 3;
+  int32 classroomCount = 4;
+  string status = 5;
+  repeated Subject subjects = 6;
+  string title = 7;
+  repeated Classroom classroom = 8;
+}
+
+message GetPracticesBySessionResponse {
+  repeated PracticeData response = 1;
+}
+
+message GetStudentsByPracticeQuery {
+  string practiceId = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message GetStudentsByPracticeRequest {
+  string instancekey = 1;
+  string session = 2;
+  GetStudentsByPracticeQuery query = 3;
+}
+
+message Id {
+  string studentId = 1;
+  string classroomId = 2;
+}
+
+message GetStudentsByPractice {
+  Id _id = 1;
+  string sessionId = 2;
+  string studentId = 3;
+  int32 clsStudents = 4;
+  string studentName = 5;
+  Avatar avatar = 6;
+  string studentUserId = 7;
+  bool studentStatus = 8;
+  string title = 9;
+  string practiceId = 10;
+  string classroomName = 11;
+  string classroomId = 12;
+}
+
+message GetStudentsByPracticeResponse {
+  repeated GetStudentsByPractice response = 1;
+}
+
+message UpdateStudentStatusBody {
+  string classroom = 1;
+  string active = 2;
+  string student = 3;
+  string isActive = 4;
+}
+
+message UpdateStudentStatusRequest {
+  string instancekey = 1;
+  UpdateStudentStatusBody body = 2;
+}
+
+message UpdateStudentStatusResponse {
+  bool acknowledged = 1;
+  int32 modifiedCount = 2;
+  string upsertedId = 3;
+  int32 upsertedCount = 4;
+  int32 matchedCount = 5;
+  string _id = 6;
+  string userId = 7;
+  string phoneNumber = 8;
+  string email = 9;
+  bool isActive = 10;
+}
+
+message TestStatusQuery {
+  int32 totalTime = 1;
+}
+
+message TestStatusRequest {
+  string instancekey = 1;
+  string practiceId = 2;
+  TestStatusQuery query = 3;
+}
+
+message TestStatus {
+  string _id = 1;
+  repeated string practiceIds = 2;
+}
+
+message TestStatusResponse {
+  repeated TestStatus response = 1 ;
+}
+
+message CreateSessionBody {
+  string title = 1;
+  repeated string practiceIds = 2;
+  string startDate = 3;
+}
+
+message CreateSessionRequest {
+  string instancekey = 1;
+  CreateSessionBody body = 2;
+  User user = 3;
+}
+
+message CreateSessionResponse {
+  string _id = 1;
+  string title = 2;
+  string user = 3;
+  repeated string practiceIds = 4;
+  string startDate = 5;
+  bool isMarksLevel = 6;
+  int32 loginAllowanceTime = 7;
+  bool deactivateRemainingStudents = 8;
+  int32 minusMark = 9;
+  int32 plusMark = 10;
+  int32 startTimeAllowance = 11;
+  int32 totalTime = 12;
+  bool randomQuestions = 13;
+  bool randomizeAnswerOptions = 14;
+  bool requireAttendance = 15;
+  bool autoEvaluation = 16;
+  bool camera = 17;
+  bool isShowAttempt = 18;
+  bool allowTeacher = 19;
+  bool isShowResult = 20;
+  bool showFeedback = 21;
+  int32 offscreenLimit = 22;
+  int32 attemptAllowed = 23;
+  string createdAt = 24;
+  string updatedAt = 25;
+}
+
+message UpdateSessionBody {
+  string title = 1;
+  bool camera = 2;
+  bool plusMark = 3;
+  bool minusMark = 4;
+  bool isMarksLevel = 5;
+  int32 startTimeAllowance = 6;
+  bool randomQuestions = 7;
+  bool randomizeAnswerOptions = 8;
+  bool requireAttendance = 9;
+  bool autoEvaluation = 10;
+  bool isShowAttempt = 11;
+  bool isShowResult = 12;
+  bool allowTeacher = 13;
+  bool showFeedback = 14;
+  int32 offscreenLimit = 15;
+  int32 attemptAllowed = 16;
+  string startDate = 17;
+  int32 totalTime = 18;
+  repeated string practiceIds = 19;
+  bool deactivateRemainingStudents = 20;
+}
+
+message UpdateSessionRequest {
+  string id = 1;
+  string instancekey = 2;
+  UpdateSessionBody body = 3;
+  User user = 4;
+}
+
+message UpdateSessionResponse {
+  string _id = 1;
+  string title = 2;
+  string user = 3;
+  repeated string practiceIds = 4;
+  string startDate = 5;
+  bool isMarksLevel = 6;
+  int32 loginAllowanceTime = 7;
+  bool deactivateRemainingStudents = 8;
+  int32 minusMark = 9;
+  int32 plusMark = 10;
+  int32 startTimeAllowance = 11;
+  int32 totalTime = 12;
+  bool randomQuestions = 13;
+  bool randomizeAnswerOptions = 14;
+  bool requireAttendance = 15;
+  bool autoEvaluation = 16;
+  bool camera = 17;
+  bool isShowAttempt = 18;
+  bool allowTeacher = 19;
+  bool isShowResult = 20;
+  bool showFeedback = 21;
+  int32 offscreenLimit = 22;
+  int32 attemptAllowed = 23;
+  string createdAt = 24;
+  string updatedAt = 25;
+}
+
+// Mapping
+message VideoForPracticeSetRequest {
+  string instancekey = 1;
+}
+
+message VideoForPracticeSetResponse {
+}
+
+// TestSeries
+message FindQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  string subject = 3;
+  string accessMode = 4;
+  string level = 5;
+  string author = 6;
+  string price = 7;
+  string status = 8;
+  string title = 9;
+  bool includeCount = 10;
+  bool countStudent = 11;
+  bool countQuestion = 12;
+}
+
+message FindRequest {
+  string instancekey = 1;
+  FindQuery query = 2;
+  User user = 3;
+  string ip = 4;
+}
+
+message Series {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated string practiceIds = 4;
+  repeated string classrooms = 5;
+  repeated Country countries = 6;
+  UserInfo user = 7;
+  string status = 8;
+  string startDate = 9;
+  string expiresOn = 10;
+  string description = 11;
+  string accessMode = 12;
+  string imageUrl = 13;
+  repeated string instructors = 14;
+  int32 totalTests = 15;
+  int32 students = 16;
+  int32 questions = 17;
+  double price = 18;
+  double marketPlacePrice = 19;
+  double discountValue = 20;
+  string currency = 21;
+}
+
+message FindResponse {
+  repeated Series series = 1;
+  int32 count = 2;
+}
+
+message GetPublicListingQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  int32 skip = 3;
+  bool count = 4;
+}
+
+message GetPublicListingRequest {
+  string instancekey = 1;
+  GetPublicListingQuery query = 2;
+  string ip = 3;
+}
+
+message GetPublicListing {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated Country countries = 4;
+  UserInfo user = 5;
+  string status = 6;
+  string expiresOn = 7;
+  string accessMode = 8;
+  string imageUrl = 9;
+  string statusChangedAt = 10;
+  string level = 11;
+  float price = 12;
+  float marketPlacePrice = 13;
+  float discountValue = 14;
+  string currency = 15;
+}
+
+message GetPublicListingResponse {
+  repeated GetPublicListing testseries = 1;
+  int32 count = 2;
+}
+
+message SummaryTestseriesRequest {
+  string instancekey = 1;
+  User user = 2;
+  string id = 3;
+  string ip = 4;
+}
+
+message PracticeInfo {
+  string practicesetId = 1;
+  int32 order = 2;
+  string createdAt = 3; 
+  string _id = 4;
+}
+
+message SummaryTestseriesResponse {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated string practiceIds = 4;
+  repeated string classrooms = 5;
+  repeated Country countries = 6;
+  User user = 7;
+  bool enableOrdering = 8;
+  string status = 9;
+  string startDate = 10; 
+  string expiresOn = 11; 
+  string description = 12;
+  string includes = 13;
+  string accessMode = 14;
+  bool favorite = 15;
+  int32 attemptAllowed = 16;
+  repeated string enabledCodeLang = 17;
+  string imageUrl = 18;
+  string summary = 19;
+  bool active = 20;
+  string testseriesCode = 21;
+  string lastModifiedBy = 22;
+  repeated string instructors = 23;
+  bool synced = 24;
+  repeated string locations = 25;
+  string origin = 26;
+  repeated PracticeInfo praticeinfo = 27;
+  string statusChangedAt = 28;
+  repeated string buyers = 29;
+  string createdAt = 30;
+  string updatedAt = 31;
+  string uid = 32;
+  int32 __v = 33;
+  int32 totalEnrollUsers = 34;
+  int32 totalTests = 35;
+  int32 totalTimes = 36;
+  int32 totalQuestions = 37;
+  repeated string attempttestIds = 38;
+  float totalHours = 39;
+  float price = 40;
+  float marketPlacePrice = 41;
+  float discountValue = 42;
+  string currency = 43;
+  bool enrolled = 44;
+  int32 enrolledCount = 45;
+}
+
+message GetAttemptedTestsOfTestseriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message GetAttemptedTestsOfTestseriesResponse {
+  repeated string attemptedTestIds = 1; 
+}
+
+message GetTestseriesPublicRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+  string ip = 4;
+}
+
+message PublicPracticeSet {
+  string _id = 1;
+  repeated Subject subjects = 2;
+  string testMode = 3;
+  string accessMode = 4;
+  string title = 5;
+  DemographicData demographicData = 6;
+  int32 attemptAllowed = 7;
+  string status = 8;
+  int32 totalQuestion = 9;
+  int32 totalTime = 10;
+  bool camera = 11;
+  string imageUrl = 12;
+  string colorCode = 13;
+  bool discountValue = 14;
+}
+
+message GetTestseriesPublicResponse {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated PublicPracticeSet practiceIds = 4;
+  repeated string classrooms = 5;
+  repeated Country countries = 6;
+  UserInfo user = 7;
+  bool enableOrdering = 8;
+  string status = 9;
+  string startDate = 10;
+  string expiresOn = 11;
+  string description = 12;
+  string includes = 13;
+  string accessMode = 14;
+  bool favorite = 15;
+  int32 attemptAllowed = 16;
+  repeated string enabledCodeLang = 17;
+  string imageUrl = 18;
+  string summary = 19;
+  bool active = 20;
+  string testseriesCode = 21;
+  string lastModifiedBy = 22;
+  repeated User instructors = 23;
+  bool synced = 24;
+  repeated string locations = 25;
+  string origin = 26;
+  repeated PracticeInfo praticeinfo = 27;
+  string statusChangedAt = 28;
+  repeated User buyers = 29;
+  string createdAt = 30;
+  string updatedAt = 31;
+  string uid = 32;
+  int32 __v = 33;
+  int32 totalEnrollUsers = 34;
+  int32 totalTests = 35;
+  int32 totalTimes = 36;
+  int32 totalQuestions = 37;
+  bool enrolled = 38;
+  int32 price = 39;
+  int32 marketPlacePrice = 40;
+  int32 discountValue = 41;
+  string currency = 42;
+  int32 totalHours = 43;
+}
+
+message SummaryPackagesQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  string accessMode = 3;
+  string keywords = 4;
+  int32 level = 5;
+  string price = 6;
+  string author = 7;
+  string name = 8;
+  repeated string subject = 9;
+  bool count = 10;
+  bool enrolled = 11;
+  bool home = 12;
+}
+
+message SummaryPackagesRequest {
+  SummaryPackagesQuery query = 1;
+  User user = 2;                
+  string instancekey = 3;
+  string ip = 4;
+}
+
+message TestSeries {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated string practiceIds = 4;
+  repeated string classrooms = 5;
+  repeated Country countries = 6;
+  UserInfo user = 7;
+  bool enableOrdering = 8;
+  string status = 9;
+  string startDate = 10;
+  string expiresOn = 11;
+  string description = 12;
+  string includes = 13;
+  string accessMode = 14;
+  bool favorite = 15;
+  int32 attemptAllowed = 16;
+  repeated string enabledCodeLang = 17;
+  string imageUrl = 18;
+  string summary = 19;
+  bool active = 20;
+  string testseriesCode = 21;
+  string lastModifiedBy = 22;
+  repeated string instructors = 23;
+  bool synced = 24;
+  repeated string locations = 25;
+  string origin = 26;
+  repeated PracticeInfo praticeinfo = 27;
+  string statusChangedAt = 28;
+  repeated string buyers = 29;
+  string createdAt = 30;
+  string updatedAt = 31;
+  string uid = 32;
+  int32 __v = 33;
+  string level = 34;
+  int32 totalEnrollUsers = 35;
+  bool enrolled = 36;
+  float price = 37;
+  float marketPlacePrice = 38;
+  float discountValue = 39;
+  string currency = 40;
+  int32 totalTests = 41;
+  int32 totalTimes = 42;
+  int32 totalQuestions = 43;
+  int32 totalHours = 44;
+  int32 totalStudents = 45;
+  string userName = 46;
+  int32 contentCount = 47;
+  int32 rating = 48;
+  string videoUrl = 49;
+  string colorCode = 50;
+  int32 duration = 51;
+  string owner = 52;
+}
+
+message SummaryPackagesResponse {
+  repeated TestSeries response = 1;
+  int32 total = 2;
+}
+
+message CountPackagesQuery {
+  string accessMode = 1;
+  string keywords = 2;
+  int32 level = 3;
+  string price = 4;
+  string author = 5;
+  string name = 6;
+  string subject = 7;
+  string cart = 8;
+}
+
+message CountPackagesRequest {
+  string instancekey = 1;
+  CountPackagesQuery query = 2;
+  User user = 3;
+}
+
+message CountPackagesResponse {
+  int32 count = 1;
+}
+
+
+message SummaryPackagesByStudentQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  string accessMode = 3;
+  string keywords = 4;
+  int32 level = 5;
+  string price = 6;
+  string author = 7;
+  string name = 8;
+  repeated string subject = 9;
+  string cart = 10;
+  bool count = 11;
+  bool enrolled = 12;
+  bool home = 13;
+}
+
+message SummaryPackagesByStudentRequest {
+  string instancekey = 1;
+  User user = 2;
+  SummaryPackagesByStudentQuery query = 3;
+  string id = 4;
+}
+
+
+message SummaryPackagesByStudentResponse {
+  repeated TestSeries response = 1;
+  int32 total = 2;
+}
+
+message RecommendedTestSeriesQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  string subjects = 3;
+  string searchText = 4;
+  string cart = 5;
+}
+
+message RecommendedTestSeriesRequest {
+  string instancekey = 1;
+  User user = 2;
+  RecommendedTestSeriesQuery query = 3;
+  string ip = 4;
+}
+
+message RecommendedTestSeries {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated string practiceIds = 4;
+  repeated Country countries = 5;
+  UserInfo user = 6;
+  string status = 7;
+  string accessMode = 8;
+  string imageUrl = 9;
+  float price = 10;
+  float marketPlacePrice = 11;
+  float discountValue = 12;
+  string currency = 13;
+}
+
+message RecommendedTestSeriesResponse {
+  repeated RecommendedTestSeries response = 1;
+}
+
+message BoughtTestSeriesByOthersQuery {
+  int32 limit = 1;
+  int32 page = 2;
+}
+
+message BoughtTestSeriesByOthersRequest {
+  string instancekey = 1;
+  BoughtTestSeriesByOthersQuery query = 2;
+  User user = 3;
+  string ip = 4;
+}
+
+message BoughtTestSeriesByOthers {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated string practiceIds = 4;
+  repeated Country countries = 5;
+  UserInfo user = 6;
+  string accessMode = 7;
+  string imageUrl = 8;
+  float price = 9;
+  float marketPlacePrice = 10;
+  float discountValue = 11;
+  string currency = 12;
+}
+
+message BoughtTestSeriesByOthersResponse {
+  repeated BoughtTestSeriesByOthers response = 1;
+}
+
+message GetMyTestSeriesQuery {
+  string attemptCount = 1;
+  string user = 2;
+}
+
+message GetMyTestSeriesRequest {
+  string instancekey = 1;
+  GetMyTestSeriesQuery query = 2;
+  User user = 3;
+}
+
+message GetMyTestSeries{
+    string _id = 1;
+    string title = 2;
+    repeated Subject subjects = 3;
+    repeated string practiceIds = 4;
+    UserInfo user = 5;
+    string accessMode = 6;
+    string imageUrl = 7;
+}
+
+message GetMyTestSeriesResponse {
+  repeated GetMyTestSeries response = 1;
+}
+
+message GetAuthorsRequest {
+  string instancekey = 1;
+  User user = 2;
+}
+
+message GetAuthors {
+  string _id = 1;
+  repeated string name = 2;
+}
+
+message GetAuthorsResponse {
+  repeated GetAuthors response = 1;
+}
+
+message GetSubjectsQuery {
+  string title = 1;
+}
+
+message GetSubjectsRequest {
+  string instancekey = 1;
+  User user = 2;
+  GetSubjectsQuery query = 3;
+}
+
+message GetSubjects {
+  string _id = 1;
+  string name = 2;
+}
+
+message GetSubjectsResponse {
+  repeated GetSubjects response = 1;
+}
+
+message GetTeacherMostPopularQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  string mode = 3;
+  string title = 4;
+}
+
+message GetTeacherMostPopularRequest {
+  string instancekey = 1;
+  GetTeacherMostPopularQuery query = 2;
+  User user = 3;
+  string ip = 4;
+}
+
+message GetTeacherMostPopular {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated Country countries = 4;
+  UserInfo user = 5;
+  string accessMode = 6;
+  string imageUrl = 7;
+  float price = 8;
+  float marketPlacePrice = 9;
+  float discountValue = 10;
+  string currency = 11;
+}
+
+message GetTeacherMostPopularResponse {
+  repeated GetTeacherMostPopular response = 1;
+}
+
+message GetTeacherHighestPaidQuery {
+  int32 limit = 1;
+}
+
+message GetTeacherHighestPaidRequest {
+  string instancekey = 1;
+  GetTeacherHighestPaidQuery query = 2;
+  User user = 3;
+  string ip = 4;
+}
+
+message GetTeacherHighestPaid {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated Country countries = 4;
+  UserInfo user = 5;
+  string accessMode = 6;
+  string imageUrl = 7;
+  float price = 8;
+  float marketPlacePrice = 9;
+  float discountValue = 10;
+  string currency = 11;
+  string status = 12;
+}
+
+message GetTeacherHighestPaidResponse {
+  repeated GetTeacherHighestPaid response = 1;
+}
+
+message TeacherSummaryTestseriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  string ip = 3;
+  User user = 4;
+}
+
+message UserTeacherSummary {
+  string name = 1;
+  Avatar avatar = 2;
+  string userId = 3;
+}
+
+message TeacherSummaryTestseriesResponse {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated string practiceIds = 4;
+  repeated string classrooms = 5;
+  repeated Country countries = 6;
+  UserTeacherSummary user = 7;
+  bool enableOrdering = 8;
+  string status = 9;
+  string startDate = 10;
+  string expiresOn = 11;
+  string description = 12;
+  string includes = 13;
+  string accessMode = 14;
+  int32 attemptAllowed = 15;
+  repeated string enabledCodeLang = 16;
+  string imageUrl = 17;
+  string summary = 18;
+  string testseriesCode = 19;
+  UserInfo lastModifiedBy = 20;
+  repeated UserTeacherSummary instructors = 21;
+  repeated UserInfo locations = 22;
+  string createdAt = 23;
+  string updatedAt = 24;
+  int32 totalTests = 25;
+  int32 totalQuestions = 26;
+  int32 totalStudents = 27;
+  double price = 28;
+  double marketPlacePrice = 29;
+  double discountValue = 30;
+  string currency = 31;
+}
+
+message LevelStatusOfPackageQuery {
+  string currentLevel = 1;
+}
+
+message LevelStatusOfPackageRequest {
+  string instancekey = 1;
+  string id = 2;
+  LevelStatusOfPackageQuery query = 3;
+  User user = 4;
+}
+
+message LevelStatusOfPackageResponse {
+  double percentage = 1;
+}
+
+message PackageHasLevelRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message PackageHasLevelResponse {
+  bool levelExist = 1;
+}
+
+message GetOngoingClassesRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message GetOngoingClasses {
+  string _id = 1;
+  string name = 2;
+  string imageUrl = 3;
+  int32 students = 4;
+  string colorCode = 5;
+  string seqCode = 6;
+}
+
+message GetOngoingClassesResponse {
+  repeated GetOngoingClasses response = 1;
+}
+
+message SummaryPackagesByTeacherQuery {
+  string multiStatus = 1;
+  string name = 2;
+  int32 limit = 3;
+  string grades = 4;
+  int32 page = 5;
+  string sort = 6;
+}
+
+message SummaryPackagesByTeacherRequest {
+  string instancekey = 1;
+  User user = 2;
+  SummaryPackagesByTeacherQuery query = 3;
+}
+
+message SummaryPackagesByTeacherResponse {
+  repeated TestSeries response = 1;
+}
+
+message TeacherCountPackagesQuery {
+  string multi_status = 1;
+  string name = 2;
+  string grades = 3;
+}
+
+message TeacherCountPackagesRequest {
+  string instancekey = 1;
+  User user = 2;
+  TeacherCountPackagesQuery query = 3;
+}
+
+message TeacherCountPackagesResponse {
+  int32 count = 1;
+}
+
+message GetPackageAttemptCountQuery {
+  string practice = 1;
+  string test_series = 2;
+}
+
+message GetPackageAttemptCountRequest {
+  string instancekey = 1;
+  GetPackageAttemptCountQuery query = 2;
+  User user = 3;
+}
+
+message GetPackageAttemptCountResponse {
+  bool attemptAllowed = 1;
+  int32 attemptAllowedCount = 2;
+}
+
+message GetTestByPracticeRequest {
+  string instancekey = 1;
+  string practice = 2;
+}
+
+message GetTotalStudentRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message GetTotalStudentResponse {
+  int32 count = 1;
+}
+
+message GetFavoriteTsQuery {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message GetFavoriteTsRequest {
+  string instancekey = 1;
+  User user = 2;
+  string ip = 3;
+  GetFavoriteTsQuery query = 4;
+}
+
+message GetFavoriteTs {
+  string _id = 1;
+  string itemId = 2;
+  repeated Subject subjects = 3;
+  string title = 4;
+  repeated Country countries = 5;
+  string accessMode = 6;
+  string imageUrl = 7;
+  string authorName = 8;
+}
+
+message GetFavoriteTsResponse {
+  repeated GetFavoriteTs response = 1;
+}
+
+message GetPublisherTestseriesQuery {
+  int32 limit = 1;
+  int32 page = 2;
+  int32 skip = 3;
+  string title = 4;
+  bool count = 5;
+}
+
+message GetPublisherTestseriesRequest {
+  string instancekey = 1;
+  GetPublisherTestseriesQuery query = 2;
+  User user = 3;
+}
+
+message GetPublisherTestseriesResponse {
+  repeated TestSeries response = 1;
+  int32 total = 2;
+}
+
+message TestSeriesSubject {
+  string _id = 1;
+  string name = 2;
+}
+
+message CreateTestseriesBody {
+  string title = 1;
+  repeated TestSeriesSubject subjects = 2;
+  string summary = 3;
+  string imageUrl = 4;
+}
+
+message CreateTestseriesRequest {
+  string instancekey = 1;
+  CreateTestseriesBody body = 2;
+  User user = 3;
+}
+
+message CreateTestseriesResponse {
+  string _id = 1;
+}
+
+message AddFavoriteRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message AddFavoriteResponse {
+  string _id = 1;
+}
+
+message PublishRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message PublishResponse {
+  string status = 1;
+  string statusChangedAt = 2;
+}
+
+message RevokeRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message RevokeResponse {
+  string status = 1;
+  string statusChangedAt = 2;
+}
+
+message AddTestBody {
+  string testId = 1;
+}
+
+message AddTestRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+  AddTestBody body = 4;
+}
+
+message AddTestResponse {
+  int32 totalTests = 1;
+  int32 totalQuestions = 2;
+  int32 totalStudents = 3;
+}
+
+message RemoveTestBody {
+  string testId = 1;
+}
+
+message RemoveTestRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+  RemoveTestBody body = 4;
+}
+
+message RemoveTestResponse {
+  int32 totalTests = 1;
+  int32 totalQuestions = 2;
+  int32 totalStudents = 3;
+}
+
+message UpdateTestOrderBody {
+  string test = 1;
+  int32 order = 2;
+}
+
+message UpdateTestOrderRequest {
+  string instancekey = 1;
+  string id = 2;
+  UpdateTestOrderBody body = 3;
+}
+
+message UpdateTestOrderResponse {
+  map<string, int32> response = 1;
+  string status = 2;
+}
+
+message RemoveClassroomBody {
+  string classroom = 1;
+}
+
+message RemoveClassroomRequest {
+  string instancekey = 1;
+  string id = 2;
+  RemoveClassroomBody body = 3;
+}
+
+message RemoveClassroomResponse {
+  string status = 1;
+}
+
+message UpdateTestseriesBody {
+  repeated string enabledCodeLang = 1;
+  repeated string practiceIds = 2;
+  repeated string classrooms = 3;
+  string status = 4;
+  string accessMode = 5;
+}
+
+message UpdateTestseriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  UpdateTestseriesBody body = 3;
+  User user = 4;
+}
+
+message RemoveFavoriteRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message RemoveFavoriteResponse {
+  string status = 1;
+}
+
+message DeleteTestseriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message GetStudentRankRequest {
+  string instancekey = 1;
+  string id = 2;
+}
+
+message GetStudentRank {
+  string _id = 1;
+  double marks = 2;
+  string email = 3;
+  string name = 4; 
+  repeated string subjectName = 5;
+  repeated string unitName = 6;
+  double maxMarks = 7;
+  repeated string attemptId = 8;
+  Avatar avatar = 9;
+}
+
+message GetStudentRankResponse {
+  repeated GetStudentRank response = 1;
+}
+
+message PercentCompleteTestseriesQuery {
+  int32 limit = 1;
+}
+
+message PercentCompleteTestseriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  PercentCompleteTestseriesQuery query = 3;
+  User user = 4;
+}
+
+message PercentComplete {
+  double percentComplete = 1;
+}
+
+message PercentCompleteTestseriesResponse {
+  PercentComplete user = 1;
+  PercentComplete average = 2;
+  PercentComplete topper = 3;
+}
+
+message PercentAccuracyTestseriesQuery {
+  int32 daysLimit = 1;
+  bool userOnly = 2;
+}
+
+message PercentAccuracyTestseriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  PercentAccuracyTestseriesQuery query = 3;
+  User user = 4;
+}
+
+message PercentAccuracy {
+  double accuracy = 1;
+}
+
+message PercentAccuracyTestseriesResponse {
+  PercentAccuracy user = 1;
+  PercentAccuracy average = 2;
+  PercentAccuracy topper = 3;
+}
+
+message PracticeHoursTestSeriesQuery {
+  int32 daysLimit = 1;
+  bool userOnly = 2;
+  int32 limit = 3;
+}
+
+message PracticeHoursTestSeriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  PracticeHoursTestSeriesQuery query = 3;
+  User user = 4;
+}
+
+message PracticeHours {
+  double totalTime = 1;
+}
+
+message PracticeHoursTestSeriesResponse {
+  PracticeHours user = 1;
+  PracticeHours average = 2;
+  PracticeHours topper = 3;
+}
+
+message AssesmentWiseMarksTestSeriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message TestResult {
+  string testId = 1;
+  string subjectId = 2;
+  string testName = 3;
+  string subjectName = 4;
+  float marks = 5;
+}
+
+message AssesmentWiseMarksTestSeriesResponse {
+  repeated TestResult user = 1;
+  repeated TestResult average = 2;
+  repeated TestResult topper = 3;
+}
+
+message QuestionCategoryTestSeriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message SubjectCategory {
+  string subject = 1;
+  string category = 2;
+}
+
+message QuestionCategoryTestSeries {
+  SubjectCategory _id = 1;
+  string subjectName = 2;
+  int32 partial = 3;
+  int32 missed = 4;
+  int32 correct = 5;
+  int32 incorrect = 6;
+  int32 skipped = 7;
+  int32 totalAttempt = 8;
+  string subjectId = 9;
+  string category = 10;
+}
+
+message QuestionCategoryTestSeriesResponse {
+  repeated QuestionCategoryTestSeries response = 1;
+}
+
+message SubjectWiseMarksTestSeriesRequest {
+  string instancekey = 1;
+  string id = 2;
+  User user = 3;
+}
+
+message SubjectWiseMarksTestSeries {
+  string subjectId = 1;
+  string unitId = 2;
+  string subjectName = 3;
+  string unitName = 4;
+  int32 marks = 5;
+}
+
+message SubjectWiseMarksTestSeriesResponse {
+  repeated SubjectWiseMarksTestSeries user = 1;
+  repeated SubjectWiseMarksTestSeries average = 2;
+  repeated SubjectWiseMarksTestSeries topper = 3;
+}
+
+message SearchForMarketPlaceQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string title = 3;
+}
+
+message SearchForMarketPlaceRequest {
+  string instancekey = 1;
+  SearchForMarketPlaceQuery query = 2;
+}
+
+message NoteData {
+  string type = 1;
+  string data = 2;
+  string _id = 3;
+}
+
+message Content {
+  string summary = 1;
+  string title = 2;
+  string type = 3;
+  string source = 4;
+  repeated NoteData note = 5;
+  bool active = 6;
+  bool optional = 7;
+  string _id = 8;
+}
+
+message Section {
+  string title = 1;
+  string summary = 2;
+  string name = 3;
+  string status = 4;
+  bool optional = 5;
+  bool locked = 6;
+  bool active = 7;
+  bool isDemo = 8;
+  repeated Content contents = 9;
+  string _id = 10;
+}
+
+message SearchForMarketPlace {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  string accessMode = 4;
+  string testMode = 5;
+  repeated Country countries = 6;
+  double rating = 7;
+  string userName = 8;
+  string user = 9;
+  string type = 10;
+  repeated Section sections = 11;
+  int32 totalRatings = 12;
+}
+
+message SearchForMarketPlaceResponse {
+  repeated SearchForMarketPlace response = 1;
+}
+
+message GetBestSellerQuery {
+  int32 page = 1;
+  int32 limit = 2;
+  string title = 3;
+}
+
+message GetBestSellerRequest {
+  string instancekey = 1;
+  User user = 2;
+  GetBestSellerQuery query = 3;
+  string ip = 4;
+}
+
+message GetBestSellerUser {
+  string _id = 1;
+  string name = 2; 
+}
+
+message GetBestSeller {
+  string _id = 1;
+  string title = 2;
+  repeated Subject subjects = 3;
+  repeated PracticeInfo praticeinfo = 4;
+  repeated string practiceIds = 5;
+  repeated string classrooms = 6;
+  repeated Country countries = 7;
+  GetBestSellerUser user = 8;
+  string statusChangedAt = 9;
+  bool enableOrdering = 10;
+  string status = 11;
+  string startDate = 12;
+  string expiresOn = 13;
+  string description = 14;
+  string includes = 15;
+  string accessMode = 16;
+  bool favorite = 17;
+  string level = 18;
+  int32 rating = 19;
+  int32 attemptAllowed = 20;
+  string videoUrl = 21;
+  repeated string enabledCodeLang = 22;
+  string colorCode = 23;
+  string imageUrl = 24;
+  string summary = 25;
+  bool active = 26;
+  repeated Buyer buyers = 27;
+  int32 duration = 28;
+  string testseriesCode = 29;
+  string lastModifiedBy = 30;
+  repeated string instructors = 31;
+  int32 totalEnrollUsers = 32;
+  string uid = 33;
+  bool synced = 34;
+  repeated string locations = 35;
+  string owner = 36;
+  string origin = 37;
+}
+
+message Buyer {
+  string item = 1;
+  string user = 2;
+}
+
+message GetBestSellerResponse {
+  repeated GetBestSeller response = 1;
+}

@@ -1,0 +1,1976 @@
+syntax = "proto3";
+
+package classroom;
+
+service ClassroomGrpcService {
+  rpc CreateClassroom (CreateClassroomReq) returns (CreateClassroomRes) {}
+  rpc FindAll (FindAllReq) returns (FindAllRes) {}
+  rpc FindMe (FindMeReq) returns (FindMeRes) {}
+  rpc CountMe (FindMeReq) returns (CountMeRes) {}
+  rpc GetLocationByMe (FindMeReq) returns (GetLocationByMeRes) {}
+  rpc FindMentorClassroom (FindMeReq) returns (FindMentorClassroomRes) {}
+  rpc FindMeOneById (FindByIdReq) returns (FindByIdRes) {}
+  rpc FindMeOne (FindMeReq) returns (FindByIdRes) {}
+  rpc FindById (FindByIdReq) returns (ClassroomFindById) {}
+  rpc FindStudents (FindMeReq) returns (FindStudentsRes) {}
+  rpc CountStudents (FindMeReq) returns (CountStudentsRes) {}
+  rpc FindTeachers (FindByIdReq) returns (FindTeachersRes) {}
+  rpc FindClassroomStudents (FindByIdReq) returns (FindClassroomStudentsRes) {}
+  rpc ClassroomSummaryAttemptedAllClassrooms (FindMeReq) returns (CRSumAtptAllClassroomsRes) {}
+  rpc FindByClassRoom (FindMeReq) returns (FindByClassRoomRes) {}
+  rpc CountByClassRoom (FindMeReq) returns (FindByClassRoomRes) {}
+  rpc ListSubjectStudentDo (FindMeReq) returns (ListSubjectStudentDoRes) {}
+  rpc ClassroomSummaryQuestionBySubject (FindMeReq) returns (SummaryQuestionBySubjectRes) {}
+  rpc ClassroomListTopicStudentDo (FindMeReq) returns (ListTopicStudentDoRes) {}
+  rpc ClassroomSummaryQuestionByTopic (FindMeReq) returns (CRSummaryQuestionByTopicRes) {}
+  rpc ClassroomSummaryCorrectByDate (FindMeReq) returns (CRSummaryCorrectByDateRes) {}
+  rpc ClassroomSummaryCorrect (ClassroomSummaryCorrectReq) returns (ClassroomSummaryCorrectRes) {}
+  rpc GetClassRoomByLocation (FindMeReq) returns (GetClassRoomByLocationRes) {}
+  rpc GetClassroomLeaderBoard (ClassroomSummaryCorrectReq) returns (GetClassroomLeaderBoardRes) {}
+  rpc GetFiles (GetAllStudentsReq) returns (GetFilesRes) {}
+  rpc GetClassroomByUserLocation (FindMeReq) returns (GetClassroomByUserLocationRes) {}
+  rpc GetStudents (GetStudentsReq) returns (GetStudentsRes) {}
+  rpc FindSubjectAccuracyAndSpeed (FindMeReq) returns (FindSubAccuracyAndSpeedRes) {}
+  rpc GetStreamingUrlAndStatus (GetAllStudentsReq) returns (GetStreamingUrlAndStatusRes) {}
+  rpc GetAttendants (GetStudentsReq) returns (GetAttendantsRes) {}
+  rpc CountAttendants (GetClassroomStudentsReq) returns (CountAttendantsRes) {}
+  rpc FindStudent (FindByIdReq) returns (FindStudentRes) {}
+  rpc GetAllAssignments (GetAllStudentsReq) returns (GetAllAssignmentsRes) {}
+  rpc RecentEvaluatedAssignment (FindMeReq) returns (RecentEvaluatedAssignmentRes) {}
+  rpc GetAllAssignmentByCount (GetAllAssignmentByCountReq) returns (GetAllAssignmentByCountRes) {}
+  rpc GetAssignmentById (GetAllAssignmentByCountReq) returns (GetAssignmentByIdRes) {}
+  rpc UpdateStudentAssignment (UpdateStudentAssignmentReq) returns (UpdateStudentAssignmentRes) {}
+  rpc GetUserAssignment (GetUserAssignmentReq) returns (GetUserAssignmentRes) {}
+  rpc AssignAssignmentMarks (AssignAssignmentMarksReq) returns (AssignAssignmentMarksRes) {}
+  rpc GetAllUserAssignment (DeleteClassroomReq) returns (GetAllUserAssignmentRes) {}
+  rpc CreateAssignment (CreateAssignmentReq) returns (CreateAssignmentRes) {}
+  rpc GetTeacherAssignments (GetTeacherAssignmentsReq) returns (GetTeacherAssignmentsRes) {}
+  rpc UpdateTeacherAssignmentsStatus (UpdateTeacherAssignmentsStatusReq) returns (UpdateTeacherAssignmentsStatusRes) {}
+  rpc DeleteTeacherAssignment (DeleteTeacherAssignmentReq) returns (UpdateTeacherAssignmentsStatusRes) {}
+  rpc EditTeacherAssignment (EditTeacherAssignmentReq) returns (CreateAssignmentRes) {}
+  rpc GetWbSessions (FindMeReq) returns (GetWbSessionsRes) {}
+  rpc AddFolderItem (AddFolderItemReq) returns (AddFolderItemRes) {}
+  rpc UpdateClassroom(UpdateClassroomReq) returns (UpdateClassroomRes) {}
+  rpc ResetWbSession(GetAllStudentsReq) returns (ResetWbSessionRes) {}
+  rpc UpdateAttendant(UpdateAttendantReq) returns (UpdateAttendantRes) {}
+  rpc UpdateSteamingStatus(UpdateSteamingStatusReq) returns (UpdateSteamingStatusRes) {}
+  rpc UpdateStudentStatus(UpdateStudentStatusReq) returns (UpdateStudentStatusRes) {}
+  rpc SaveAs(SaveAsReq) returns (SaveAsRes) {}
+  rpc StartWbSession(StartWbSessionReq) returns (StartWbSessionRes) {}
+  rpc AddStudents(AddStudentsReq) returns (AddStudentsRes) {}
+  rpc GetClassroomStudents (GetClassroomStudentsReq) returns (GetClassroomStudentsRes) {}
+  rpc GetAllStudents (GetAllStudentsReq) returns (GetAllStudentsRes) {}
+  rpc UpdateClassStatus(UpdateClassStatusReq) returns (UpdateClassStatusRes) {}
+  rpc DeleteClassroom(DeleteClassroomReq) returns (DeleteClassroomRes) {}
+  rpc DeleteFolderItem(DeleteFolderItemReq) returns (DeleteFolderItemRes) {}
+  rpc RemoveStudent(RemoveStudentReq) returns (RemoveStudentRes) {}
+  rpc CheckAllowAdd(CheckAllowAddReq) returns (CheckAllowAddRes) {}
+  rpc GetRequestStudent(GetRequestStudentReq) returns (GetRequestStudentRes) {}
+  rpc GetMentorStudents(FindByIdReq) returns (GetMentorStudentsRes) {}
+  rpc GetMentoringTime(GetMentoringTimeReq) returns (GetMentoringTimeRes) {}
+  rpc GetPracticeTime(GetPracticeTimeReq) returns (GetPracticeTimeRes) {}
+  rpc GetLearningTime(GetPracticeTimeReq) returns (GetLearningTimeRes) {}
+  rpc GetLeastPracticeTime(GetAllStudentsReq) returns (GetLeastPracticeTimeRes) {}
+  rpc GetMentorStudentData(GetAllStudentsReq) returns (GetMentorStudentRes) {}
+  rpc TodayAttemptQuestions(GetAllStudentsReq) returns (TodayAttemptQuestionsRes) {}
+  rpc GetClassroomStudent(GetPracticeTimeReq) returns (GetClassroomStudentRes) {}
+  rpc FindReviewStudents(GetAllStudentsReq) returns (FindReviewStudentsRes) {}
+  rpc GetAssignedTasks(GetPracticeTimeReq) returns (GetAssignedTasksRes) {}
+  rpc AssignMentorTasks(AssignMentorTasksReq) returns (AssignMentorTasksRes) {}
+  rpc GetStudentAssignedTasks(GetAllStudentsReq) returns (GetStudentAssignedTasksRes) {}
+  rpc AddToClsWatchList(AddToClsWatchListReq) returns (AssignMentorTasksRes) {}
+  rpc GetWatchListStatus(GetPracticeTimeReq) returns (GetWatchListStatusRes) {}
+  rpc SetDailyGoals(SetDailyGoalsReq) returns (AssignMentorTasksRes) {}
+  rpc GetSessionInfo(GetAllStudentsReq) returns (GetSessionInfoRes) {}
+  rpc JoinSession(DeleteClassroomReq) returns (JoinSessionRes) {}
+  rpc GetRecordings(GetAllStudentsReq) returns (GetRecordingsRes) {}
+  rpc GetPublicMentorStudents(GetAllStudentsReq) returns (GetPublicMentorStudentsRes) {}
+  rpc ImportStudent(ImportStudentReq) returns (ImportStudentRes) {}
+  rpc ImportMentor(ImportStudentReq) returns (ImportStudentRes) {}
+  rpc ImportStudentAdmin(ImportStudentReq) returns (ImportStudentRes) {}
+
+}
+
+
+message Country {
+	string code = 1;
+	string name = 2;
+	string currency = 3;
+	int32 price = 4;
+	int32 marketPlacePrice = 5;
+	int32 discountValue = 6;
+}
+message User {
+	string _id = 1;
+	string name = 2;
+	repeated string roles = 3;
+	string activeLocation = 4;
+	Country country = 5;
+	repeated string subjects = 6;
+	int32 viewCount = 7;
+	string classroom = 8;
+  repeated string locations = 9;
+  string userData = 10;
+  string createdAt = 11;
+  repeated string blockedUsers = 12;
+  string email = 13;
+  string provider = 14;
+  string userId = 15;
+  map<string, string> avatar = 16;
+  map<string, string> avatarSM = 17;
+  map<string, string> avatarMD = 18;
+}
+message Avatar {
+	string _id = 1;
+	string mimeType = 2;
+	int32 size = 3;
+	string fileUrl = 4;
+	string fileName = 5;
+	string path = 6;
+}
+message Dossier {
+  string status = 1;
+  string statusChangedAt = 2;
+  repeated Note notes = 3;
+  repeated Feedback feedback = 4;
+}
+message DossierUserInfo {
+  string user = 1;
+  string name = 2;
+}
+message Note {
+  int32 version = 1;
+  string comment = 2;
+  string updatedAt = 3;
+  string type = 4;
+  DossierUserInfo userInfo = 5;
+  string _id = 6;
+}
+message Feedback {
+  string comment = 1;
+  string updatedAt = 2;
+  string type = 3;
+  DossierUserInfo userInfo = 4;
+}
+message Attachment {
+  string url = 1;
+  string name = 2;
+  string type = 3;
+  string _id = 4;
+}
+message Assignment {
+  message Feedback {
+    string user = 1;
+    string text = 2;
+  }
+  string assignment = 1;
+  string title = 2;
+  string ansTitle = 3;
+  string answerText = 4;
+  string submittedOn = 5;
+  repeated Attachment attachments = 6;
+  bool evaluated = 7;
+  int32 maximumMarks = 8;
+  string dueDate = 9;
+  int32 totalMark = 10;
+  Feedback feedback = 11;
+  string _id = 12;
+  string description = 13;
+  string createdAt = 14;
+  string status = 15;
+  string user = 16;
+}
+
+message Classroom {
+  string _id = 1;
+  string name = 2;
+  string user = 3;
+  string userRole = 4;
+  string location = 5;
+  repeated string owners = 6;
+  string imageUrl = 7;
+  bool showAnalysis = 8;
+  bool joinByCode = 9;
+  bool active = 10;
+  string seqCode = 11;
+  repeated Student students = 12;
+  int32 totalStudents = 13;
+  bool sessionStarted = 14;
+  bool sessionJoined = 15;
+  string colorCode = 16;
+  bool allowDelete = 17;
+  bool stream = 18;
+  repeated string practiceIds = 19;
+  repeated Assignment assignments = 20;
+  string createdAt = 21;
+  string updatedAt = 22;
+  int32 count = 23;
+  string nameLower = 24;
+  bool isDefault = 25;
+  bool sysGen = 27;
+  repeated string folder = 28;
+  string slugfly = 29;
+}
+message ClassroomFindById {
+  message User {
+    string _id = 1;
+    string name = 2;
+  }
+  message StuAssignment {
+    string title = 1;
+    string description = 2;
+    string dueDate = 3;
+    string status = 4;
+    string createdAt = 5;
+    repeated Attachment attachments = 6;
+    int32 maximumMarks = 7;
+    string user = 8;
+    string _id = 9;
+  }
+  message Student {
+    message StuAssignment {
+        message Feedback {
+          string user = 1;
+          string text = 2;
+        }
+        string title = 1;
+        string ansTitle = 2;
+        string answerText = 3;
+        string submittedOn = 4;
+        repeated Attachment attachments = 5;
+        bool evaluated = 6;
+        int32 maximumMarks = 7;
+        string dueDate = 8;
+        int32 totalMark = 9;
+        Feedback feedback = 10;
+        string _id = 11;
+        string description = 12;
+        string createdAt = 13;
+        string assignment = 14;
+        string status = 15;
+        string user = 16;
+    }
+    string studentId = 7;
+    bool status = 4;
+    bool autoAdd = 5;
+    string studentUserId = 8;
+    string registeredAt = 10;
+    string createdAt = 3;
+    bool iRequested = 6;
+    bool isWatchList = 27;
+    repeated string tasks = 29;
+    repeated StuAssignment assignments = 30;
+    string _id = 1;
+    string createdBy = 2;
+  }
+  string _id = 1;
+  User user = 2;
+  string isDefault = 3;
+  string joinByCode = 4;
+  string sysGen = 5;
+  string userRole = 6;
+  string location = 7;
+  repeated string owners = 8;
+  repeated string folder = 9;
+  string name = 10;
+  bool active = 11;
+  string nameLower = 12;
+  bool showAnalysis = 13;
+  bool allowDelete = 14;
+  bool stream = 15;
+  string imageUrl = 16;
+  repeated string practiceIds = 17;
+  repeated Student students = 18;
+  string createdAt = 19;
+  string updatedAt = 20;
+  repeated Assignment assignments = 21;
+  string slugfly = 22;
+  string colorCode = 23;
+  string seqCode = 24;
+  int32 totalStudents = 25;
+  bool sessionStarted = 26;
+  bool sessionJoined = 27;
+}
+message ClassroomForId {
+  string _id = 1;
+  string name = 2;
+  User user = 3;
+  string userRole = 4;
+  string location = 5;
+  repeated User owners = 6;
+  string imageUrl = 7;
+  bool showAnalysis = 8;
+  bool joinByCode = 9;
+  bool active = 10;
+  string seqCode = 11;
+  repeated Student students = 12;
+  int32 totalStudents = 13;
+  bool sessionStarted = 14;
+  bool sessionJoined = 15;
+  string colorCode = 16;
+  bool allowDelete = 17;
+  bool stream = 18;
+  repeated string practiceIds = 19;
+  repeated string assignments = 20;
+  string createdAt = 21;
+  string updatedAt = 22;
+}
+
+message CreateClassroomReq{
+  string name = 1;
+  string location = 2;
+  repeated string owners = 3;
+  string imageUrl = 4;
+  bool showAnalysis = 5; 
+  bool joinByCode = 6;
+  string instancekey = 7;
+	User user = 8;
+}
+
+message CreateClassroomRes{
+  string name = 1;
+  string user = 2;
+  string userRole = 3;
+  string location = 4;
+  repeated string owners = 5;
+  string imageUrl = 6;
+  bool showAnalysis = 7; 
+  bool joinByCode = 8;
+  bool active = 9;
+  string _id = 10;
+  string nameLower = 11;
+}
+
+message FindAllReq{
+  string location = 1;
+  string instancekey = 2;
+	User user = 3;
+}
+
+message FindAllRes{
+ repeated ClassroomForId response = 1;
+}
+
+message FindByIdReq{
+  string _id = 1;
+  string instancekey = 2;
+  Query query = 3;
+  User user = 4;
+  string token = 5;
+}
+
+message Query {
+  bool assignment = 1;
+  bool classroomSetting = 2;
+  bool includeUser = 3;
+  bool owners = 4;
+  bool includeStudentInfo = 5;
+  bool studentNotCount = 6;
+  bool checkSession = 7;
+  int32 page = 8;
+  int32 limit = 9;
+  bool home = 10;
+  string searchText = 11;
+  string name = 12;
+  string locations = 13;
+  bool all = 14;
+  string sort = 15;
+  string neClassRoom = 16;
+  bool count = 17;
+  bool isExport = 18;
+  string classroom = 19;
+  bool inactive = 20;
+  bool chatSupport = 21;
+  string interval = 22;
+  string practice = 23;
+  bool mymentee = 24;
+  string lastDay = 25;
+  string subjects = 26;
+  string topic = 27;
+  string locationsIds = 28;
+  bool course = 29;
+  string search = 30;
+  string ongoingTest = 31;
+  bool includeCount = 32;
+  bool isMentee = 33;
+  bool isMyCircle = 34;
+}
+
+message ApiQuery {
+  string classroom = 1;
+  string assignment = 2;
+  string student = 3;
+}
+
+message FindByIdRes{
+  ClassroomForId response = 1;
+}
+message FindStudentsRes{
+  message Student {
+    string _id = 1;
+    string createdBy = 2;
+    string createdAt = 3;
+    bool status = 4;
+    bool autoAdd = 5;
+    bool iRequested = 6;
+    string studentId = 7;
+    string studentUserId = 8;
+    Classroom classRoom = 9;
+    string registeredAt = 10;
+    User user = 11;
+    string name = 12;
+    string lastLogin = 13;
+    string rollNumber = 14;
+    repeated string level = 15;
+    string lastAttempted = 16;
+    double accuracy = 17;
+    double speed = 18;
+    string email = 19;
+    string userId = 20;
+    Dossier dossier = 21;
+    Avatar avatar = 22;
+    string provider = 23;
+    string google = 24;
+    string facebook = 25;
+    bool isMentee = 26;
+    bool isWatchList = 27;
+    int32 dailyGoal = 28;
+    repeated string tasks = 29;
+    repeated string assignments = 30;
+  }
+  repeated Student response = 1;
+}
+
+message CountStudentsRes{
+  message Count {
+    int32 allstudent = 1;
+    int32 registeredUser = 2;
+  }
+  Count count = 1;
+}
+message FindTeachersRes{
+  message Teacher {
+    string _id = 1;
+    string name = 2;
+    string email = 3;
+    Avatar avatar = 4;
+    int32 count = 5;
+  }
+  repeated Teacher response = 1;
+}
+
+message FindClassroomStudentsRes{
+  message UserData {
+    string _id = 1;
+    string name = 2;
+    repeated string roles = 3;
+    string provider = 4;
+    string lastLogin = 5;
+    map<string, string> avatarMD = 6;
+    map<string, string> avatarSM = 7;
+    map<string, string> avatar = 8;
+    string email = 9;
+  }
+  message Student {
+    string _id = 1;
+    UserData userData = 2;
+    string studentId = 3;
+    int32 count = 4;
+    bool isOnline = 5;
+  }
+  repeated Student response = 1;
+}
+
+message CRSumAtptAllClassroomsRes{
+  string _id = 1;
+  int32 totalQuestions = 2;
+  int32 totalQuestionDo = 3;
+  int32 totalMissed = 4;
+  int32 totalCorrects = 5;
+  int32 totalTimeTaken = 6;
+  int32 totalAttempt = 7;
+  int32 totalPractices = 8;
+  double marksPercent = 9;
+  int32 totalTestQuestions = 10;
+}
+
+message Subject {
+  string _id = 1;
+  string name = 2;
+}
+message Unit {
+  string _id = 1;
+  string name = 2;
+}
+message UserInfo {
+  string _id = 1;
+  string name = 2;
+}
+message Field {
+  bool value = 1;
+}
+message DemographicData {
+  bool city = 1;
+  bool state = 2;
+  bool dob = 3;
+  bool gender = 4;
+  bool rollNumber = 5;
+  bool identificationNumber = 6;
+  bool passingYear = 7;
+  bool coreBranch = 8;
+  bool collegeName = 9;
+  bool identityVerification = 10;
+  Field field1 = 11;
+  Field field2 = 12;
+}
+message Question {
+  string question = 1;
+  string section = 2;
+  int32 minusMark = 3;
+  int32 plusMark = 4;
+  string createdAt = 5;
+  int32 order = 6;
+  string _id = 7;
+}
+message PracticeSet {
+  string _id = 1;
+  string user = 2;
+  bool active = 3;
+  UserInfo userInfo = 4;
+  repeated Unit units = 5;
+  repeated Subject subjects = 6;
+  int32 level = 7;
+  string testMode = 8;
+  string accessMode = 9;
+  repeated Country countries = 10;
+  string title = 11;
+  string titleLower = 12;
+  repeated string courses = 13;
+  repeated string testseries = 14;
+  // repeated string tags = 15;
+  DemographicData demographicData = 16;
+  string description = 17;
+  string inviteeEmails = 18;
+  repeated string inviteePhones = 19;
+  repeated string classRooms = 20;
+  repeated string studentEmails = 21;
+  string instructions = 22;
+  bool isMarksLevel = 23;
+  bool enableMarks = 24;
+  bool randomQuestions = 25;
+  bool randomizeAnswerOptions = 26;
+  bool sectionJump = 27;
+  bool sectionTimeLimit = 28;
+  int32 minusMark = 29;
+  int32 plusMark = 30;
+  string notes = 31;
+  int32 attemptAllowed = 32;
+  string status = 33;
+  string statusChangedAt = 34;
+  string expiresOn = 35;
+  string startDate = 36;
+  int32 startTimeAllowance = 37;
+  bool requireAttendance = 38;
+  int32 totalJoinedStudent = 39;
+  string createdAt = 40;
+  string updatedAt = 41;
+  int32 rating = 42;
+  int32 totalQuestion = 43;
+  int32 questionsToDisplay = 44;
+  bool isPartnerExam = 45;
+  int32 totalTime = 46;
+  int32 questionsPerTopic = 47;
+  int32 totalAttempt = 48;
+  bool isShowResult = 49;
+  bool allowTeacher = 50;
+  repeated string locations = 51;
+  bool allowStudent = 52;
+  bool isShowAttempt = 53;
+  string createMode = 54;
+  string testCode = 55;
+  string dirPath = 56;
+  bool isAdaptive = 57;
+  repeated string randomTestDetails = 58;
+  bool showCalculator = 59;
+  bool showFeedback = 60;
+  bool peerVisibility = 61;
+  string initiator = 62;
+  string testType = 63;
+  repeated Question questions = 64;
+  repeated string sections = 65;
+  repeated string enabledCodeLang = 66;
+  bool enableSection = 67;
+  bool camera = 68;
+  bool fraudDetect = 69;
+  bool pinTop = 70;
+  bool autoEvaluation = 71;
+  bool fullLength = 72;
+  int32 offscreenLimit = 73;
+  repeated string buyers = 74;
+  repeated string instructors = 75;
+  bool randomSection = 76;
+  string uid = 77;
+  bool synced = 78;
+  string origin = 79;
+  int32 __v = 80;
+  string lastModifiedBy = 81;
+  string lastModifiedDate = 82;
+  string slugfly = 83;
+}
+
+message FindByClassRoomRes{
+  message Result {
+    PracticeSet practice = 1;
+    int32 numberQuestions = 2;
+  }
+  repeated Result result = 1;
+  int32 count = 2;
+}
+
+message ListSubjectStudentDoRes{
+  message Result {
+    string _id = 1;
+    string name = 2;
+  }
+  repeated Result results = 1;
+}
+
+message SummaryQuestionBySubjectRes{
+  message Result {
+    string _id = 1;
+    int32 total = 2;
+    Subject subject =3;
+    string name = 4;
+  }
+  repeated Result results = 1;
+}
+
+message ListTopicStudentDoRes{
+  message Result {
+    string _id = 1;
+    string name = 2;
+    string subject =3;
+  }
+  repeated Result results = 1;
+}
+
+message CRSummaryQuestionByTopicRes{
+  message Result {
+    string _id = 1;
+    string name = 2;
+    string total =3;
+  }
+  repeated Result results = 1;
+}
+
+message CRSummaryCorrectByDateRes{
+  message Date {
+      int32 year = 1;
+      int32 month = 2;
+      int32 day = 3;
+  }
+  message SummaryByDate {
+      Date day = 1;
+      User userData = 2;
+      int32 totalQuestionsDo = 3;
+      int32 totalQuestions = 4;
+      int32 totalCorrects = 5;
+      float avgTimeDoQuestion = 6;
+      float percentCorrects = 7;
+      int32 totalTimeTaken = 8;
+      float marks = 9;
+      float obtainMarks = 10;
+  }
+  repeated SummaryByDate results = 1;
+}
+
+message ClassroomSummaryCorrectReq{
+  Query query = 1;
+  string instancekey = 2;
+}
+
+message ClassroomSummaryCorrectRes{
+  string status = 1;
+  string message = 2;
+  repeated string data = 3;
+}
+
+message GetClassRoomByLocationRes{
+  repeated Classroom response = 1;
+  string message = 2;
+}
+
+message GetClassroomLeaderBoardRes{
+  message LeaderBoardData {
+    string userId = 1;
+    User user = 2;
+  }
+  string status = 1;
+  string message = 2;
+  repeated LeaderBoardData response = 3;
+}
+
+message GetFilesRes{
+  message File {
+    string id = 1;
+    string type = 2;
+    User owner = 3;
+    string path = 4;
+    string fileName = 5;
+    string mimeType = 6;
+    int32 size = 7;
+    string fileUrl = 8;
+    string updatedAt = 9;
+    string createdAt = 10;
+    bool isActive = 11;
+    string thumbType = 12;
+    int32 v = 13;
+  }
+  repeated File files = 1;
+  string message = 2;
+}
+
+message GetClassroomByUserLocationRes{
+  repeated Classroom response = 1;
+  string message = 2;
+}
+
+message GetStudentsReq{
+  string _id =1;
+  Query query = 2;
+  string instancekey = 3;
+  string timezoneoffset = 4;
+  User user = 5;
+}
+
+message GetStudentsRes{
+  repeated Student students = 1;
+  int32 total = 2;
+  string message = 3;
+}
+
+message FindSubAccuracyAndSpeedRes{
+  message SubjectAccuracyAndSpeed {
+    Subject subject = 1;
+    float avgTimeDoQuestion = 2;
+    float accuracyPercent = 3;
+  }
+  repeated SubjectAccuracyAndSpeed subjects = 1;
+  string message = 3;
+}
+
+message GetStreamingUrlAndStatusRes{
+  message StreamingUrlAndStatus {
+    bool stream = 1;
+    string streamUrl = 2;
+  }
+  repeated StreamingUrlAndStatus results = 1;
+}
+
+message GetAttendantsRes{
+  repeated Student students = 1;
+  string message = 3;
+}
+
+message CountAttendantsRes{
+  string count = 1;
+}
+
+message FindStudentRes{
+  message ClassObject {
+    string id = 1;
+    string seqCode = 2;
+    string slugfly = 3;
+    string name = 4;
+    string user = 5;
+    string userRole = 6;
+    string location = 7;
+    string imageUrl = 8;
+    string updatedAt = 9;
+    string createdAt = 10;
+    repeated Student students = 11;
+    bool allowDelete = 12;
+    bool showAnalysis = 13;
+    string nameLower = 14;
+    bool active = 15;
+    repeated string owners = 16;
+    int32 version = 17;
+    repeated Assignment assignments = 18;
+  }
+  ClassObject classObject = 1;
+  User user = 2;
+}
+
+message GetAllAssignmentsRes{
+  message Assignment {
+    string title = 1;
+    string description = 2;
+    string dueDate = 3;
+    string status = 4;
+    string createdAt = 5;
+    repeated Attachment attachments = 6;
+    int32 maximumMarks = 7;
+    string userId = 8;
+    string user = 9;
+    string _id = 10;
+  }
+  repeated Assignment assignments = 1;
+}
+
+message RecentEvaluatedAssignmentRes{
+  message AssignmentEvaluation {
+    Assignment assignment = 1;
+    int32 total = 2;
+    int32 evaluated = 3;
+  }
+  repeated AssignmentEvaluation results = 1;
+}
+
+message GetAllAssignmentByCountReq {
+  string classroom = 1;
+  string assignment = 2;
+  bool teacher = 3;
+  string instancekey = 4;
+}
+message GetAllAssignmentByCountRes{
+  message AssignmentStats {
+    int32 totalStud = 1;
+    Assignment assignment = 2;
+    int32 totalAttempted = 3;
+    int32 eva = 4;
+    float evaluated = 5;
+    float notEvaluated = 6;
+  }
+  repeated AssignmentStats data = 1;
+  string error = 2;
+}
+
+message GetAssignmentByIdRes{
+  message StudentSubmission {
+    Assignment assignment = 1;
+    User student = 2;
+  }
+  message Data{
+    Assignment assignment = 1;
+    int32 total = 2;
+    int32 submitted = 3;
+    User createdBy = 4;
+    repeated StudentSubmission studSub = 5;
+  }
+  Data data = 1;
+  int32 status = 7;
+  string error = 8;
+}
+
+message UpdateStudentAssignmentReq {
+  string classroom = 1;
+  string assignment = 2;
+  string title = 3;
+  string answerText = 4;
+  Attachment attachments = 5;
+  string instancekey = 6;
+  User user = 7;
+}
+
+message UpdateStudentAssignmentRes {
+  Classroom classroom = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message GetUserAssignmentReq {
+  ApiQuery query = 1;
+  string instancekey = 2;
+}
+
+message GetUserAssignmentRes {
+  message Data{
+    Assignment assignment = 1;
+    string user = 2;
+  }
+  Data data = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message AssignAssignmentMarksReq {
+  message Feedback {
+    string user = 1;
+    string text = 2;
+  }
+  string classroom = 1;
+  string assignment = 2;
+  string student = 3;
+  int32 totalMark = 4;
+  Feedback feedback = 5;
+  string instancekey = 6;
+}
+message AssignAssignmentMarksRes {
+  string _id = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message GetAllUserAssignmentRes {
+  repeated Assignment assignment = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message CreateAssignmentReq {
+  string _id = 1;
+  Assignment assignment = 2;
+  string instancekey = 3;
+}
+message CreateAssignmentRes {
+  Classroom classroom = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message GetTeacherAssignmentsReq {
+  string _id = 1;
+  string status = 2;
+  string instancekey = 3;
+}
+message GetTeacherAssignmentsRes {
+  message TeacherAssignmentData {
+    string _id = 1;
+    Assignment assignments = 2;
+    int32 totalStud = 3;
+    int32 totalAttempted = 4;
+    int32 eva = 5;
+    double evaluated = 6;
+    double notEvaluated = 7;
+  }
+  repeated TeacherAssignmentData data = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message UpdateTeacherAssignmentsStatusReq {
+  string classroom = 1;
+  string assignment = 2;
+  string status = 3;
+  string instancekey = 4;
+}
+message UpdateTeacherAssignmentsStatusRes {
+  string _id = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message DeleteTeacherAssignmentReq {
+  string classroom = 1;
+  string assignment = 2;
+  string instancekey = 4;
+}
+
+message EditTeacherAssignmentReq {
+  string title = 1;
+  string description = 2;
+  string status = 3;
+  repeated Attachment attachments = 4;
+  int32 maximumMarks = 5;
+  string dueDate = 6;
+  string classroom = 7;
+  string assignment = 8;
+  string instancekey = 9;
+}
+
+message GetWbSessionsRes {
+  message Session {
+    string _id = 1;
+    User user = 2;
+    string createdAt = 3;
+    string updatedAt = 4;
+    string ip = 5;
+    Classroom classroom = 6;
+    string status = 7;
+  }
+  repeated Session sessions = 1;
+  int32 count = 2;
+  int32 status = 3;
+  string error = 4;
+}
+
+message AddFolderItemReq {
+  message Item {
+    string fileName = 1;
+    string originalname = 2;
+    string fileUrl = 3;
+    string path = 4;
+    bool isActive = 5;
+    string type = 6;
+    string ownerId = 7;
+    int32 size = 8;
+    string mimeType = 9;
+    string thumbType = 10;
+  }
+  string instancekey = 1;
+  string _id = 2;
+  Item item = 3;
+}
+message AddFolderItemRes{
+  string fileId = 1;
+  int32 status = 2;
+  string error = 3;
+}
+
+message UpdateClassroomReq {
+  string _id = 1;
+  string name = 2;
+  string location = 3;
+  repeated string owners = 4;
+  string imageUrl = 5;
+  bool showAnalysis = 6; 
+  bool joinByCode = 7;
+  string instancekey = 8;
+}
+
+message UpdateClassroomRes{
+  Classroom response = 1;
+}
+
+message ResetWbSessionRes{
+  string message = 1;
+  int32 status = 2;
+}
+
+message UpdateAttendantReq{
+  string _id = 1;
+  string classId = 2;
+  bool admitted = 3;
+  string timezoneoffset = 4;
+  string instancekey = 5;
+  User user = 6;
+}
+message UpdateAttendantRes{
+  bool admitted = 1;
+  string status = 2;
+  string updatedAt = 3;
+  int32 statusCode = 4;
+  string message = 5;
+}
+
+message UpdateSteamingStatusReq{
+  string _id = 1;
+  bool stream = 2;
+  string instancekey = 3;
+}
+message UpdateSteamingStatusRes{
+  Classroom classroom = 1;
+  int32 statusCode = 2;
+  string message = 3;
+}
+
+message UpdateStudentStatusReq{
+  string _id = 1;
+  string studentId = 2;
+  string instancekey = 3;
+}
+message UpdateStudentStatusRes{
+  int32 status = 2;
+  string message = 3;
+}
+
+message SaveAsReq{
+  string _id = 1;
+  string name = 2;
+  string instancekey = 3;
+  User user = 4;
+}
+message SaveAsRes{
+  Classroom classroom = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message StartWbSessionReq{
+  string room = 1;
+  string subject = 2;
+  string teacher = 3;
+  string instancekey = 4;
+  string ip = 5;
+  User user = 6;
+  string token = 7;
+}
+message StartWbSessionRes{
+  message SessionResult {
+    string sessionId = 1;
+    string url = 2;
+  }
+  SessionResult result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message Task {
+  string assignDate = 1;
+  string practiceId = 2;
+}
+
+message Student {
+  string _id = 1;
+  string studentId = 2;
+  bool status = 3;
+  bool autoAdd = 4;
+  string studentUserId = 5;
+  string registeredAt = 6;
+  string name = 7;
+  Avatar avatar = 8;
+  string provider = 9;
+  string facebook = 10;
+  string google = 11;
+  string rollNumber = 12;
+  string className = 13;
+  string user = 14;
+  string userId = 15;
+  string attendantId = 16;
+  bool admitted = 17;
+  string updatedAt = 18;
+  repeated Assignment assignments = 19;
+  bool iRequested = 20;
+  string createdAt = 21;
+  repeated Task tasks = 22;
+  bool isWatchList = 23;
+  int32 dailyGoal = 24;
+}
+
+message Location {
+  string _id = 1;
+  string name = 2;
+}
+message AddStudentsReq {
+  string name = 1;
+  string classRoom = 2;
+  repeated string studentUserId = 3;
+  Location location = 4;
+  bool isMentee = 5;
+  bool isMyCircle = 6;
+  User user = 7;
+  string instancekey = 8;
+  string token = 9;
+}
+message StudentToAdd {
+  string studentId = 1;
+  bool status = 2;
+  bool autoAdd = 3;
+  string studentUserId = 4;
+  string registeredAt = 5;
+  bool iRequested = 6;
+  string createdAt = 7;
+  bool isWatchList = 8;
+  int32 dailyGoal = 9;
+  repeated Task tasks = 10;
+  repeated Assignment assignments = 11;
+}
+message AddStudentsRes {
+  repeated StudentToAdd students = 1;
+  string classRoom = 2;
+  string classroomCode = 3;
+  Location institute = 4;
+}
+
+message RemoveStudentReq {
+  string classRoomId = 1;
+  string studentId = 2;
+  User user = 3;
+  string instancekey = 4;
+  string token = 5;
+}
+
+message RemoveStudentRes {
+  string message = 1; 
+}
+
+message CheckAllowAddReq {
+  string classroom = 1;
+  string studentId = 2;
+  User user = 3;
+  string instancekey = 4;
+}
+
+message CheckAllowAddRes {
+  string msg = 1; 
+  bool allowed = 2; 
+  string studentId = 3; 
+}
+
+message GetClassroomStudentsReq{
+  string _id = 1;
+  Query query = 2;
+  string instancekey = 3;
+}
+
+message DossierFeedback {
+  string comment = 1;
+  string updatedAt = 2;
+  string type = 3;
+  DossierUserInfo userInfo = 4;
+}
+
+message MentorInfo {
+  string user = 1;
+  string name = 2;
+}
+
+message Preference {
+  string _id = 1;
+  bool publicProfile = 2;
+  bool myWatchList = 3;
+  bool leastPracticeDaily = 4;
+  bool resumesRequests = 5;
+  bool mentoringRequests = 6;
+  bool addingStudents = 7;
+  bool createAndPublishTest = 8;
+  bool viewExistingAssessment = 9;
+}
+
+message Experience {
+  string title = 1;
+  string employmentType = 2;
+  string company = 3;
+  string location = 4;
+  bool currentlyWorking = 5;
+  string startDate = 6;
+  string endDate = 7;
+  string description = 8;
+  string _id = 9;
+}
+
+message ProgrammingLang {
+  string name = 1;
+  double rating = 2;
+  string description = 3;
+  string _id = 4;
+}
+
+message MarksType {
+ repeated string enum = 1;
+}
+
+message EducationDetail {
+  string educationType = 1;
+  string board = 2;
+  MarksType marksType = 3;
+  double marks = 4;
+  int32 passingYear = 5;
+  string stream = 6;
+  string _id = 7;
+}
+
+message EntranceExam {
+  string year = 1;
+  int32 rank = 2;
+  string name = 3;
+  string _id = 4;
+}
+
+message AcademicProject {
+  string name = 1;
+  string groupSize = 2;
+  string description = 3;
+  string startDate = 4;
+  string endDate = 5;
+  string document = 6;
+  string url = 7;
+  bool sysgen = 8;
+  string _id = 9;
+}
+
+message TrainingCertification {
+  string type = 1;
+  string provider = 2;
+  string city = 3;
+  string state = 4;
+  string startDate = 5;
+  string endDate = 6;
+  string expiredDate = 7;
+  string certificate = 8;
+  string url = 9;
+  string description = 10;
+  bool sysgen = 11;
+  string _id = 12;
+}
+
+message IndustryCertificate {
+  string name = 1;
+  string provider = 2;
+  string certificateDate = 3;
+  string expiredDate = 4;
+  string certificate = 5;
+  string url = 6;
+  bool sysgen = 7;
+  string _id = 8;
+}
+
+message ExternalAssessment {
+  string name = 1;
+  double mostRecentScore = 2;
+  int32 yearOfAssessment = 3;
+  double maximumScore = 4;
+  string _id = 5;
+}
+
+message AwardAndRecognition {
+  string awardDetails = 1;
+  string date = 2;
+  string _id = 3;
+}
+
+message ExtraCurricularActivity {
+  string activityDetails = 1;
+  string startDate = 2;
+  string endDate = 3;
+  string _id = 4;
+}
+
+message PackageSchedule {
+  string package = 1;
+  string code = 2;
+  string _id = 3;
+}
+
+message IdentityInfo {
+  string imageUrl = 1;
+  string fileUrl = 2;
+  double matchedPercentage = 3;
+  string _id = 4;
+}
+
+message Profile {
+  string name = 1;
+  string role = 2;
+  Avatar avatar = 3;
+  string _id = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string avatarUrlMD = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
+
+message UserCountry {
+  string code = 1;
+  string name = 2;
+  string currency = 3;
+  bool confirmed = 4;
+  repeated string callingCodes = 5;
+}
+
+message LevelHistory {
+  string _id = 1;
+  string subjectId = 2;
+  int32 level = 3;
+  string updateDate = 4;
+  string gradeName = 5;
+  string gradeId = 6;
+}
+
+message Token {
+  string _id = 1;
+}
+
+message FieldEntry {
+  string label = 1;
+  string value = 2;
+  string _id = 3;
+}
+
+message UserData {
+  string _id = 1;
+  string rollNumber = 2;
+  string registrationNo = 3;
+  Avatar avatar = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string passingYear = 7;
+  string userId = 8;
+  string phoneNumber = 9;
+  string email = 10;
+  UserCountry country = 11;
+  string provider = 12;
+  repeated string subjects = 13;
+  repeated string roles = 14;
+  string ref = 15;
+  string birthdate = 16;
+  string gender = 17;
+  string district = 18;
+  string interest = 19;
+  string knowAboutUs = 20;
+  string city = 21;
+  string state = 22;
+  bool isVerified = 23;
+  bool whiteboard = 24;
+  Dossier dossier = 25;
+  string name = 26;
+  bool emailVerified = 27;
+  bool status = 28;
+  bool isActive = 29;
+  MentorInfo mentorInfo = 30;
+  Avatar avatarSM = 31;
+  Avatar avatarMD = 32;
+  string phoneNumberFull = 33;
+  bool isPublic = 34;
+  bool allowOnlineClass = 35;
+  double profileCompleted = 36;
+  int32 trainingProfileCompleted = 37;
+  repeated string programs = 38;
+  string coreBranch = 39;
+  repeated string locations = 40;
+  bool managerStudent = 41;
+  bool managerPractice = 42;
+  repeated string practiceViews = 43;
+  repeated string practiceAttempted = 44;
+  repeated string emailStudents = 45;
+  string lastLogin = 46;
+  string lastAttempt = 47;
+  string theme = 48;
+  string videoResume = 49;
+  string streamUrl = 50;
+  string instagram = 51;
+  bool studentExclusive = 52;
+  string activeLocationId = 53;
+  string placementStatus = 54;
+  string expertise = 55;
+  bool forcePasswordReset = 56;
+  string institute = 57;
+  repeated string followings = 58;
+  int32 pin = 59;
+  string street = 60;
+  string designation = 61;
+  int32 loginCount = 62;
+  string about = 63;
+  string openai = 64;
+  repeated string interestedSubject = 65;
+  repeated string specialization = 66;
+  Preference preferences = 67;
+  repeated Experience experiences = 68;
+  string emailVerifyExpired = 69;
+  bool liveboard = 70;
+  bool canCreateMultiLocations = 71;
+  string instituteUrl = 72;
+  bool isMentor = 73;
+  repeated string blockedUsers = 74;
+  string optoutDate = 75;
+  bool ambassador = 76;
+  bool onboarding = 77;
+  string optoutReason = 78;
+  bool optoutEmail = 79;
+  string createdBy = 80;
+  string createdAt = 81;
+  string updatedAt = 82;
+  repeated ProgrammingLang programmingLang = 83;
+  repeated EducationDetail educationDetails = 84;
+  repeated EntranceExam entranceExam = 85;
+  repeated AcademicProject academicProjects = 86;
+  repeated TrainingCertification trainingCertifications = 87;
+  repeated IndustryCertificate industryCertificates = 88;
+  repeated ExternalAssessment externalAssessment = 89;
+  repeated AwardAndRecognition awardsAndRecognition = 90;
+  repeated ExtraCurricularActivity extraCurricularActivities = 91;
+  repeated PackageSchedule packageSchedules = 92;
+  IdentityInfo identityInfo = 93;
+  string codingExperience = 94;
+  repeated LevelHistory levelHistory = 95;
+  repeated string followers = 96;
+  string passwordResetToken = 97;
+  string emailVerifyToken = 98;
+  string activeLocation = 99;
+  Token token = 100;
+  string hashedPassword = 101;
+  repeated string grade = 102;
+  string salt = 103;
+  Profile profile = 104;
+  Profile publicProfile = 105;
+  string lastModifiedBy = 106;
+  int32 __v = 107;
+  string passwordResetExpired = 108;
+  FieldEntry field1 = 109;
+  FieldEntry field2 = 110;
+  string coverImageUrl = 111;
+  string facebook = 112;
+  string linkedIn = 113;
+  string youtube = 114;
+}
+
+message GetClassroomStudentsRes {
+   message Subject {
+      string _id = 1;
+      string name = 2;
+      string slugfly = 3;
+      string countryCode = 4;
+      string grade = 5;
+      repeated string topics = 6;
+      string createdAt = 7;
+      string updatedAt = 8;
+      bool active = 9;
+      repeated string levels = 10;
+  }
+  message Student {
+      string _id = 1;
+      int32 allCourseContents = 2;
+      int32 completedCourseContents = 3;
+      int32 totalAttempt = 4;
+      int32 totalPractice = 5;
+      UserData userData = 6;
+  }
+  repeated Student students = 1;
+  int32 count = 2;
+}
+
+message GetAllStudentsReq{
+  string _id = 1;
+  string instancekey = 4;
+}
+
+message GetAllStudentsRes{
+  message Student {
+    Id _id = 1;
+    repeated string attemptPractice = 2;
+    repeated string totalTest = 3;
+    UserData userData = 4;
+    int32 totalPractice = 5;
+    repeated string uc = 6;
+  }
+
+  message Id {
+    string class = 1;
+    string user = 2;
+  }
+  
+  message UserData {
+    string _id = 1;
+    string name = 2;
+    string role = 3;
+    string provider = 4;
+    string lastLogin = 5;
+    map<string, string> avatarMD = 6;
+    map<string, string> avatarSM = 7;
+    map<string, string> avatar = 8;
+    string email = 9;
+  }
+  repeated Student response = 1;
+}
+
+message FindMeReq {
+  Query query = 1;
+  string instancekey = 2;
+  User user = 3;
+  string token = 4;
+}
+
+message FindMeRes {
+  message Classroom {
+    string _id = 1;
+    string name = 2;
+    User user = 3;
+    string userRole = 4;
+    Location location = 5;
+    repeated string owners = 6;
+    string imageUrl = 7;
+    bool showAnalysis = 8;
+    bool joinByCode = 9;
+    bool active = 10;
+    string seqCode = 11;
+    repeated Student students = 12;
+    int32 totalStudents = 13;
+    bool sessionStarted = 14;
+    bool sessionJoined = 15;
+    string colorCode = 16;
+    bool allowDelete = 17;
+    bool stream = 18;
+    repeated string practiceIds = 19;
+    repeated string assignments = 20;
+    string createdAt = 21;
+    string updatedAt = 22;
+  }
+  repeated Classroom response = 1;
+}
+
+message FindMentorClassroomRes {
+  Classroom classroom = 1;
+}
+
+message CountMeRes {
+  int32 count = 2;
+}
+
+message GetLocationByMeRes {
+  message Location {
+    string _id = 1;
+    string name = 2;
+    int32 classroom = 3;
+  }
+  repeated Location response = 1;
+}
+
+message UpdateClassStatusReq {
+  string _id = 1;
+  bool active = 2;
+  string instancekey = 3;
+}
+
+message UpdateClassStatusRes {
+  Classroom response = 1;
+  int32 statusCode = 2;
+  string message = 3;
+}
+
+message DeleteClassroomReq {
+  string _id = 1;
+  string instancekey = 2;
+	User user = 3;
+}
+
+message DeleteClassroomRes{
+  int32 statusCode = 1;
+  string message = 2;
+}
+
+message DeleteFolderItemReq {
+  string _id = 1;
+	string itemId = 2;
+  string instancekey = 3;
+}
+
+message DeleteFolderItemRes{
+  int32 status = 1;
+  string message = 2;
+  string result = 3;
+}
+
+message GetRequestStudentReq {
+  string _id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string sort = 4;
+  string instancekey = 5;
+}
+
+message GetRequestStudentRes {
+  repeated Student response = 1;
+}
+
+message GetMentorStudentsRes {
+  message User {
+    string _id = 1;
+    string name = 2;
+    repeated string roles = 3;
+    string locations = 4;
+    string provider = 5;
+    string userId = 6;
+    map<string, string> avatar = 7;
+    map<string, string> avatarSM = 8;
+    map<string, string> avatarMD = 9;
+  }
+  message Attempt {
+    string _id = 1;
+    repeated string attemptId = 2;
+    string createdAt = 3;
+    double accuracy = 4;
+    double totalTime = 5;
+  }
+  message UserCourse {
+    string _id = 1;
+    repeated string usercourseId = 2;
+    string createdAt = 3;
+    double timeSpent = 4;
+  }
+  message Student {
+    string _id = 1;
+    User u = 2;
+    repeated Location loc = 3;
+    repeated Attempt a = 4;
+    repeated UserCourse uc = 5;
+    bool isWatch = 6;
+  }
+  int32 status = 1;
+  repeated Student students = 2;
+}
+
+message GetMentoringTimeReq {
+  User user = 1;
+  string instancekey = 2;
+}
+
+message GetMentoringTimeRes {
+  message MentoringTimeId {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+  }
+  message MentoringTimeEntry {
+    MentoringTimeId _id = 1;
+    double timeActive = 2;
+  }
+  int32 status = 1;
+  repeated MentoringTimeEntry data = 2;
+}
+
+message GetPracticeTimeReq {
+  string _id = 1;
+  string studentId = 2;
+  bool limit = 3;
+  string instancekey = 4;
+}
+
+message GetPracticeTimeRes {
+  message PracticeTimeId {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+    string studentId = 4;
+  }
+  message PracticeTimeEntry {
+    PracticeTimeId _id = 1;
+    double totalAttemptTime = 2;
+    string studentName = 3;
+  }
+  int32 status = 1;
+  repeated PracticeTimeEntry data = 2;
+}
+
+message GetLearningTimeRes {
+  message LearningTimeId {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+    string studentId = 4;
+  }
+  message LearningTimeEntry {
+    LearningTimeId _id = 1;
+    double timeSpent = 2;
+    string studentName = 3;
+  }
+  int32 status = 1;
+  repeated LearningTimeEntry data = 2;
+}
+
+message GetLeastPracticeTimeRes {
+  message CurrentDay {
+    string _id = 1;
+    string studentName = 2;
+    double totalAttemptTime = 3;
+  }
+  int32 status = 1;
+  CurrentDay currentDay = 2;
+  string message = 3;
+}
+
+message GetMentorStudentRes {
+  message MentorStudentDataEntry {
+    string _id = 1;
+    string studentName = 2;
+    double totalAttemptTime = 3;
+    double accuracy = 4;
+    double speed = 5;
+    Avatar avatar = 6;
+    int32 totalAttempts = 7;
+    int32 totalTests = 8;
+    string userId = 9;
+    int32 doQuestion = 10;
+  }
+  int32 status = 1;
+  repeated MentorStudentDataEntry students = 2;
+  string message = 3;
+}
+
+message TodayAttemptQuestionsRes {
+  message AttemptQuestionsEntry {
+    AttemptDate _id = 1;
+    int32 doQuestion = 2;
+  }
+  
+  message AttemptDate {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+  }
+  repeated AttemptQuestionsEntry students = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message GetClassroomStudentRes {
+  message ClassroomStudent {
+    string _id = 1;
+    Student students = 2;
+  }
+  repeated ClassroomStudent students = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message FindReviewStudentsRes {
+  message ReviewStudent {
+    string _id = 1;
+    string studentId = 2;
+    string avatar = 3;
+    string name = 4;
+    string email = 5;
+    string statusChangedAt = 6;
+  }
+  repeated ReviewStudent students = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message GetAssignedTasksRes {
+  message AssignedTask {
+    string _id = 1;
+    string name = 2;
+    string assignDate = 3;
+    string practiceName = 4;
+    string practiceId = 5;
+    repeated Attempt attempts = 6;
+  }
+  message Attempt {
+    string _id = 1;
+    string createdAt = 2;
+    string user = 3;
+  }
+  repeated AssignedTask result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message AssignMentorTasksReq {
+  string _id = 1;
+  string studentId = 2;
+  repeated Task tasks = 3;
+  string instancekey = 4;
+}
+message AssignMentorTasksRes {
+  Classroom result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message GetStudentAssignedTasksRes {
+  message AssignedTask {
+    string title = 1;
+    string practiceId = 2;
+    string classId = 3;
+    string assignDate = 4;
+    string user = 5;
+    string mentor = 6;
+    repeated Mentor mentors = 7;
+    repeated Attempt attempts = 8;
+  }
+  message Mentor {
+    string _id = 1;
+    string name = 2;
+  }
+  message Attempt {
+    string _id = 1;
+    string createdAt = 2;
+    string practicesetId = 3;
+  }
+  repeated AssignedTask results = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message AddToClsWatchListReq {
+  string _id = 1;
+  string studentId = 2;
+  string status = 3;
+  string instancekey = 4;
+}
+
+message GetWatchListStatusRes {
+  message Data{
+    string _id = 1;
+    Student students = 2;
+  }
+  repeated Data data = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message SetDailyGoalsReq {
+  string _id = 1;
+  string studentId = 2;
+  string goal = 3;
+  string instancekey = 4;
+}
+
+message GetSessionInfoRes {
+  message Meeting{
+    string _id = 1;
+    string name = 2;
+  }
+  Meeting meeting = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message JoinSessionRes {
+  message Meeting{
+    string error = 1;
+    string url = 2;
+  }
+  Meeting result = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message GetRecordingsRes {
+  message Recording {
+    bool published = 1;
+    int64 startTime = 2;
+    int64 endTime = 3;
+    string participants = 4;
+    string sessionId = 5;
+    string playback = 6;
+    int32 length = 7;
+    string teacher = 8;
+    string subject = 9;
+    string video = 10;
+  }
+  repeated Recording recordings = 1;
+  int32 status = 2;
+  string message = 3;
+}
+
+message GetPublicMentorStudentsRes {
+  int32 total = 1;
+  int32 status = 2;
+}
+
+message FileMetadata {
+	string fieldname = 1;
+	string originalname = 2;
+	string encoding = 3;
+	string mimetype = 4;
+	bytes buffer = 5;
+	int32 size = 6;
+}
+message ImportStudentReq{
+	string instancekey = 1;
+	User user = 2;
+	FileMetadata file = 3;
+  string classRoom = 5;
+  string mentorEmail = 6;
+}
+message ImportStudentRes{
+	string message = 1;
+	int32 code = 2;
+	string error = 3;
+  int32 totalStudentCount = 4;
+  int32 addedStudentCount = 5;
+  int32 returnStudentCount = 6;
+  int32 errorCount = 7;
+  string data = 8;
+}
+
+message ImportStudentAdminReq{
+	string instancekey = 1;
+	User user = 2;
+	FileMetadata file = 3;
+  string timezoneoffset = 4;
+  string resetPass = 5;
+  string token = 6;
+}

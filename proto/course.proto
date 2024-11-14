@@ -1,0 +1,1592 @@
+syntax = "proto3";
+
+package course;
+
+service CourseGrpcService {
+  rpc CreateCourse (CourseRequest) returns (Course) {}
+  rpc GetCourse (GetCourseRequest) returns (GetCourseResponse) {}
+  rpc GetCourseById (GetCourseByIdRequest) returns (GetCourseByIdResponse) {}
+  rpc UpdateCourse(UpdateCourseRequest) returns (UpdateCourseResponse) {}
+  rpc DeleteCourse(DeleteCourseRequest) returns (DeleteCourseResponse) {}
+  rpc GetCourseByClassroom(GetCourseByClassroomRequest) returns (GetCourseByClassroomResponse) {}
+  rpc AddClassToCourse(AddClassToCourseRequest) returns (AddClassToCourseResponse) {}
+  rpc RemoveClassFromCourse(RemoveClassFromCourseRequest) returns (RemoveClassFromCourseResponse) {}
+  rpc GetAvgRatingByCourse(GetAvgRatingByCourseRequest) returns (GetAvgRatingByCourseResponse) {}
+  rpc GetRatingByCourse(GetRatingByCourseReq) returns (GetRatingByCourseRes){}
+  rpc AddFavorite(AddToFavoriteRequest) returns (AddToFavoriteResponse){}
+  rpc RemoveFavorite(RemoveFavoriteRequest) returns (RemoveFavoriteResponse){}
+  rpc AddFeedback(AddFeedbackRequest) returns (AddFeedbackResponse){}
+  rpc GetRatingCountByCourse(GetRatingCountByCourseRequest) returns (GetRatingCountByCourseResponse){}
+  rpc AddSection(AddSectionRequest) returns (AddSectionResponse){}
+  rpc UpdateSectionsOrder(UpdateSectionsOrderRequest) returns (UpdateSectionsOrderResponse){}
+  rpc UpdateCourseContent(UpdateCourseContentRequest) returns (UpdateCourseContentResponse){}
+  rpc DeleteContent(DeleteContentRequest) returns (DeleteContentResponse){}
+  rpc DeleteSection(DeleteSectionRequest) returns (DeleteSectionResponse){}
+  rpc AddContentFavorite(AddContentFavoriteRequest) returns (AddContentFavoriteResponse){}
+  rpc RemoveContentFavorite(RemoveContentFavoriteRequest) returns (RemoveContentFavoriteResponse){} 
+  rpc GetFavoriteCourse(GetFavoriteCourseRequest) returns (GetFavoriteCourseResponse){}
+  rpc GetCourseSubjects(GetCourseSubjectsRequest) returns (GetCourseSubjectsResponse){}
+  rpc GetOngoingClasses(GetOngoingClassesRequest) returns (GetOngoingClassesResponse){}
+  rpc GetCourseProgress(GetCourseProgressRequest) returns (GetCourseProgressResponse){}
+  rpc GetUserCourse(GetUserCourseRequest) returns (GetUserCourseResponse){}
+  rpc FetchTeacherAssessment(FetchTeacherAssessmentRequest) returns (FetchTeacherAssessmentResponse){}
+  rpc GetClassesTimeSpent(GetClassesTimeSpentRequest) returns (GetClassesTimeSpentResponse){}
+  rpc GetAuthors(GetAuthorsReq) returns (GetAuthorsRes){}
+  rpc GetCourseSectionsReport(GetCourseSectionsReportRequest) returns (GetCourseSectionsReportResponse){}
+  rpc GetStudentCourseOverview(GetStudentCourseOverviewRequest) returns (GetStudentCourseOverviewResponse){}
+  rpc GetCourseSectionByStatus(GetCourseSectionByStatusRequest) returns (GetCourseSectionByStatusResponse){}
+  rpc VerifyCourseUserProgress(VerifyCourseUserProgressRequest) returns (VerifyCourseUserProgressResponse){}
+  rpc PublicEnrolledCourse(PublicEnrolledCourseRequest) returns (PublicEnrolledCourseResponse){}
+  rpc GetCourseContentAnalytics(GetCourseContentAnalyticsRequest) returns (GetCourseContentAnalyticsResponse){}
+  rpc GetCourseSubject(GetCourseSubjectRequest) returns (GetCourseSubjectResponse){}
+  rpc GetStudentCourses(GetStudentCoursesRequest) returns (GetStudentCoursesResponse){}
+  rpc GetTeacherHighestPaidCourses(GetTeacherHighestPaidCoursesRequest) returns (GetTeacherHighestPaidCoursesResponse){}
+  rpc GetTopCategoriesCourse(GetTopCategoriesCourseRequest) returns (GetTopCategoriesCourseResponse){}
+  rpc GetPublisherCourse(GetPublisherCourseRequest) returns (GetPublisherCourseResponse){}
+  rpc UserWithoutEnroll(UserWithoutEnrollRequest) returns (UserWithoutEnrollResponse){}
+  rpc GetCourseMembers(GetCourseMembersRequest) returns (GetCourseMembersResponse){}
+  rpc GetTeacherCourse(GetTeacherCourseRequest) returns (GetTeacherCourseResponse){}
+  rpc GetOngoingCourse(GetOngoingCourseRequest) returns (GetOngoingCourseResponse){}
+  rpc GetOngoingCourseContent(GetOngoingCourseContentReq) returns (GetOngoingCourseContentRes){}
+  rpc EditContentInSection(EditContentInSectionRequest) returns (EditContentInSectionResponse){}
+  rpc GetAllMyCourseProgress(GetAllMyCourseProgressRequest) returns (GetAllMyCourseProgressResponse){}
+  rpc GetCoursePublic(GetCoursePublicReq) returns (GetCoursePublicRes){}
+  rpc GetTeacherCourseDetail(GetTeacherCourseDetailRequest) returns (GetTeacherCourseDetailResponse){}
+  rpc UpdateContentTimeSpent(UpdateContentTimeSpentRequest) returns (UpdateContentTimeSpentResponse){}
+  rpc CompleteContent(CompleteContentRequest) returns (CompleteContentResponse){}
+  rpc StartContent(StartContentRequest) returns (StartContentResponse){}
+  rpc GetCoursesPublic(GetCoursesPublicReq) returns (GetCoursesPublicRes){}
+  rpc GetCourses(GetCoursesRequest) returns (GetCoursesResponse){}
+  rpc GetTeacherArchivedCourses(GetTeacherArchivedCoursesRequest) returns (GetTeacherArchivedCoursesResponse){}
+  rpc GetTeacherMostPopularCourses(GetTeacherMostPopularCoursesRequest) returns (GetTeacherMostPopularCoursesResponse){}
+  rpc GetAllTeacherCourses(GetAllTeacherCoursesRequest) returns (GetAllTeacherCoursesResponse){}
+  rpc GetPublicListing(GetPublicListingRequest) returns (GetPublicListingResponse){}
+  rpc GetBestSellerCourse(GetBestSellerCourseRequest) returns (GetBestSellerCourseResponse){}
+  rpc GetPopularCourse(GetPopularCourseRequest) returns (GetPopularCourseResponse){}
+  rpc GetArchiveCourses(GetArchiveCoursesRequest) returns (GetArchiveCoursesResponse){}
+  rpc GetQuestionDistributionAnalytics(GetQuestionDistributionAnalyticsRequest) returns (GetQuestionDistributionAnalyticsResponse){}
+  rpc GetRankingAnalytics(GetRankingAnalyticsRequest) returns (GetRankingAnalyticsResponse){}
+  rpc GetCourseContentAttemptByStudent(GetCourseContentAttemptByStudentRequest) returns (GetCourseContentAttemptByStudentResponse){}
+  rpc GetPracticeTimeAnalytics(GetPracticeTimeAnalyticsRequest) returns (GetPracticeTimeAnalyticsResponse){}
+  rpc GetLearningTimeAnalytics(GetLearningTimeAnalyticsRequest) returns (GetLearningTimeAnalyticsResponse){}
+  rpc GetCompletionAnalytics(GetCompletionAnalyticsRequest) returns (GetCompletionAnalyticsResponse){}
+  rpc GetAccuracyAnalytics(GetAccuracyAnalyticsRequest) returns (GetAccuracyAnalyticsResponse){}
+  rpc GetMyFavorite(GetMyFavoriteRequest) returns (GetMyFavoriteResponse){}
+  rpc GetFavoriteSubjects(GetFavoriteSubjectsRequest) returns (GetFavoriteSubjectsResponse){}
+  rpc Count(CountRequest) returns (CountResponse){}
+  rpc NotifyStudentsAfterWithdrawal(NotifyStudentsAfterWithdrawalRequest) returns (NotifyStudentsAfterWithdrawalResponse){}
+  rpc Find(FindRequest) returns (FindResponse){}
+  rpc PublishSection(PublishSectionReq) returns (PublishSectionRes){}
+}
+
+message UserCountry {
+  string code = 1;
+  string name = 2;
+  string currency = 3;
+  bool confirmed = 4;
+  repeated string callingCodes = 5;
+}
+
+message Preference {
+  string _id = 1;
+  bool publicProfile = 2;
+  bool myWatchList = 3;
+  bool leastPracticeDaily = 4;
+  bool resumesRequests = 5;
+  bool mentoringRequests = 6;
+  bool addingStudents = 7;
+  bool createAndPublishTest = 8;
+  bool viewExistingAssessment = 9;
+}
+
+message LevelHistory {
+  string _id = 1;
+  string subjectId = 2;
+  int32 level = 3;
+  string updateDate = 4;
+  string gradeName = 5;
+  string gradeId = 6;
+}
+
+message UserDto {
+  string _id = 1;
+  string name = 2;
+  repeated string roles = 3;
+  UserCountry country = 4;
+  string activeLocation = 5;
+  string userId = 6;
+  repeated string subjects = 7;
+  repeated string practiceViews = 8;
+  repeated string locations = 9;
+  Preference preferences = 10;
+  bool isActive = 11;
+  string email = 12;
+  string phoneNumber = 13;
+  repeated LevelHistory levelHistory = 14;
+  string createdAt = 15;
+}
+
+message CourseOfferedBy {
+  string providerId = 1;
+  string imageUrl = 2;
+  string name = 3;
+  string description = 4;
+}
+message CourseUser {
+  string _id = 1;
+  string name = 2;
+  UserAvatar avatar = 3;
+  UserAvatar avatarSM = 4;
+  UserAvatar avatarMD = 5;
+  string activeLocation = 6;
+}
+message CourseInstructor {
+  string _id = 1;
+  string name = 2;
+}
+message CourseSubject {
+  string _id = 1;
+  string name = 2;
+}
+message CourseCountry {
+  string code = 1;
+  string name = 2;
+  string currency = 3;
+  float price = 4;
+  float marketPlacePrice = 5;
+  float discountValue = 6;
+}
+message Note {
+  string type = 1;
+  string data = 2;
+  string _id = 3;
+}
+message CourseContent {
+  string summary = 1;
+  string title = 2;
+  string type = 3;
+  string source = 4;
+  string startDate = 5;
+  repeated Note note = 6;
+  bool active = 7;
+  bool optional = 8;
+  string _id = 9;
+  bool completed = 10;
+  string section = 11;
+  string start = 12;
+  int32 timeSpent = 13;
+  string updatedAt = 14;
+}
+
+message Analytics {
+  double accuracy = 1;
+  double attempt = 2;
+  double quiz = 3;
+  double test = 4;
+}
+
+message CourseSection {
+  string title = 1;
+  string summary = 2;
+  string name = 3;
+  string status = 4;
+  bool optional = 5;
+  bool locked = 6;
+  bool active = 7;
+  bool isDemo = 8;
+  repeated CourseContent contents = 9;
+  string _id = 10;
+  bool completed = 11;
+  Analytics analytics = 12;
+}
+
+message CourseBuyer {
+  string item = 1;
+  string user = 2;
+}
+
+message CourseRequest {
+  string title = 1;
+  repeated CourseSubject subjects = 2;
+  string summary = 3;
+  string imageUrl = 4;
+  CourseUser user = 5;
+  repeated CourseCountry countries = 6;
+  string origin = 7;
+  repeated string locations = 8;
+  string lastModifiedBy = 9;
+  string userid = 10;
+  string instancekey=11;
+}
+
+message CourseResponse{
+  string _id = 1;
+  string title = 2;
+  string summary = 3;
+  repeated string subjects = 4;
+  string imageUrl = 5;
+  string message = 6;  //For response
+}
+
+message Course {
+  string title = 1;
+  string summary = 2;
+  string imageUrl = 3;
+  string startDate = 4;
+  string expiresOn = 5;
+  string status = 6;
+  string type = 7;
+  string statusChangedAt = 8;
+  bool certificate = 9;
+  CourseOfferedBy offeredBy = 10;
+  CourseUser user = 11;
+  repeated CourseInstructor instructors = 12;
+  repeated CourseSubject subjects = 13;
+  string accessMode = 14;
+  repeated CourseCountry countries = 15;
+  repeated string classrooms = 16;
+  string duration = 17;
+  int32 credits = 18;
+  repeated CourseSection sections = 19;
+  string level = 20;
+  string courseCode = 21;
+  string colorCode = 22;
+  string description = 23;
+  string requirements = 24;
+  string includes = 25;
+  string learningIncludes = 26;
+  string notificationMsg = 27;
+  bool active = 28;
+  string lastModifiedBy = 29;
+  float rating = 30;
+  float totalRatings = 31;
+  string videoUrl = 32;
+  repeated CourseBuyer buyers = 33;
+  string uid = 34;
+  bool synced = 35;
+  repeated string locations = 36;
+  bool enableOrdering = 37;
+  string owner = 38;
+  string origin = 39;
+  string userid = 40;
+  string _id = 41;
+  int32 discountValue = 42;
+  string currency = 43;
+  int32 marketPlacePrice = 44;
+  int32 students = 45;
+  int32 timeSpent = 46;
+  string updatedAt = 47;
+  int32 price = 48;
+  string createdAt = 49;
+}
+
+message Empty {};
+message GetCourseRequest{
+  string instancekey = 1;
+}
+message GetCourseResponse{
+ repeated Course response = 1;
+}
+
+message GetCourseByIdRequest{
+  string _id = 1;
+  string instancekey=2;
+}
+
+message GetCourseByIdResponse{
+  Course response = 1;
+}
+
+message UpdateCourseRequest {
+  string title = 1;
+  string summary = 2;
+  string imageUrl = 3;
+  string startDate = 4;
+  string expiresOn = 5;
+  string status = 6;
+  string type = 7;
+  string statusChangedAt = 8;
+  bool certificate = 9;
+  CourseOfferedBy offeredBy = 10;
+  CourseUser user = 11;
+  repeated CourseInstructor instructors = 12;
+  repeated CourseSubject subjects = 13;
+  string accessMode = 14;
+  repeated CourseCountry countries = 15;
+  repeated string classrooms = 16;
+  string duration = 17;
+  int32 credits = 18;
+  repeated CourseSection sections = 19;
+  string level = 20;
+  string courseCode = 21;
+  string colorCode = 22;
+  string description = 23;
+  string requirements = 24;
+  string includes = 25;
+  string learningIncludes = 26;
+  string notificationMsg = 27;
+  bool active = 28;
+  string lastModifiedBy = 29;
+  float rating = 30;
+  float totalRatings = 31;
+  string videoUrl = 32;
+  repeated CourseBuyer buyers = 33;
+  string uid = 34;
+  bool synced = 35;
+  repeated string locations = 36;
+  bool enableOrdering = 37;
+  string owner = 38;
+  string origin = 39;
+  string userid = 40;
+  string _id = 41;
+  string instancekey=42;
+}
+
+message UpdateCourseResponse{
+  Course response = 1;
+}
+
+message DeleteCourseRequest {
+  string _id = 1;
+  string instancekey=2;
+}
+
+message DeleteCourseResponse{
+  string _id = 1;
+  string title = 2;
+  string type = 3;
+  string summary = 4;
+}
+
+message GetCourseByClassroomRequest{
+  string _id = 1;
+  string instancekey=2;
+}
+
+message GetCourseByClassroomResponse{
+  Course response = 1;
+}
+message AddClassToCourseRequest{
+  string _id = 1;
+  repeated string itemIds = 2;
+  string instancekey=3;
+}
+message AddClassToCourseResponse{
+  repeated string classrooms = 1;
+}
+message RemoveClassFromCourseRequest{
+  string _id = 1;
+  string itemId = 2;
+  string instancekey=3;
+}
+message RemoveClassFromCourseResponse{
+  string removedItemId = 1;
+}
+
+message Query {
+  int32 page = 1;
+  int32 limit = 2;
+  int32 rating = 3;
+  string keywords = 4;
+}
+message GetRatingByCourseReq {
+  string _id = 1;
+  Query query = 2;
+  string instancekey = 3;
+}
+message GetRatingByCourseRes {
+  message RatingData{
+    string _id = 1;
+    CourseUser user = 2;
+    string practiceSetId = 3;
+    string attemptId = 4;
+    string courseId = 5;
+    string idOffline = 6;
+    string owner = 7;
+    string updatedAt = 8;
+    string createdAt = 9;
+    int32 rating = 10;
+    string comment = 11;
+    int32 composite = 12;
+    int32 negative = 13;
+    int32 neutral = 14;
+    int32 positive = 15;
+  }
+  repeated RatingData result = 2;
+}
+
+message GetAvgRatingByCourseRequest{
+  string _id=1;
+  string instancekey=2;
+}
+message Ratings{
+  optional int32 rating=1;
+  optional int32 count=2;
+  optional double avgRating=3;
+}
+message GetAvgRatingByCourseResponse{
+  repeated Ratings ratings=1;
+  optional int32 totalRatings=2;
+  optional int32 count=3;
+  optional double avgRating=4;
+  string _id = 5;
+}
+message AddToFavoriteRequest{
+  string _id=1;
+  string userId=2;
+  string instancekey=3;
+  string activeLocation = 4;
+}
+message AddToFavoriteResponse{
+  string  _id=1;
+}
+message RemoveFavoriteRequest{
+  string _id=1;
+  string userId=2;
+  string instancekey=3;
+}
+message RemoveFavoriteResponse{
+  string status=1;
+}
+message AddFeedbackRequest{
+  string user = 1;
+  string courseId = 2;
+  int32 rating = 3;
+  string feedback = 4;
+  string instancekey = 5;
+}
+message AddFeedbackResponse{
+  int32 courseRating =1;
+}
+message GetRatingCountByCourseRequest{
+  string id=1;
+  string keywords=2;
+  int32 rating=3;
+  string instancekey=4;
+}
+message GetRatingCountByCourseResponse{
+  int32 count=1;
+}
+
+message AddSectionBody {
+  string title = 1; 
+  string summary = 2;
+  string name = 3;
+  bool locked = 4;
+  repeated CourseContent contents = 5;
+}
+
+message AddSectionRequest{
+  string _id = 1;
+  string userId = 2;
+  AddSectionBody body = 3;
+  string instancekey = 4;
+}
+message AddSectionResponse{
+  CourseSection section=1;
+}
+message UpdateSectionsOrderRequest{
+    string _id = 1;
+    string userId = 2;
+    CourseSection sectionToAdd = 3;
+    string instancekey = 4;
+}
+message UpdateSectionsOrderResponse{
+  string _id = 1;
+}
+message UpdateCourseContentRequest{
+   string courseId = 1;
+  string _id = 2;
+  string title = 3;
+  string summary = 4;
+  string type = 5;
+  repeated Note note = 6;
+  string source = 7;
+  string instancekey = 8;
+}
+message UpdateCourseContentResponse{
+  string response = 1;
+}
+
+message DeleteContentRequest{
+  string courseId = 1;
+  string contentId = 2;
+  string instancekey = 3;
+}
+message DeleteContentResponse{
+  string id = 1;
+}
+message DeleteSectionRequest{
+  string courseId = 1;
+  string sectionId = 2;
+  string userId = 3;
+  string instancekey = 4;
+}
+message DeleteSectionResponse{
+  string id = 1;
+}
+message AddContentFavoriteRequest{
+  string id = 1;
+  string contentId = 2;
+  string userId = 3;
+  string instancekey = 4;
+  string activeLocation = 5;
+}
+message AddContentFavoriteResponse{
+  string id = 1;
+}
+message RemoveContentFavoriteRequest{
+  string id = 1;
+  string contentId = 2;
+  string userId = 3;
+  string instancekey = 4;
+}
+message RemoveContentFavoriteResponse{
+  string status = 1;
+}
+message GetFavoriteCourseRequest{
+  string userId = 1;
+  string instancekey = 2;
+  string activeLocation = 3;
+}
+message GetFavoriteCourseDto{
+  string _id = 1;
+  string title = 2;
+}
+message GetFavoriteCourseResponse{
+  repeated GetFavoriteCourseDto response = 1;
+}
+message GetCourseSubjectsRequest{
+  string instancekey = 1;
+  string _id = 2;
+}
+message GetCourseSubjectsResponse{
+  repeated CourseSubject subjects = 1;
+}
+message GetOngoingClassesRequest{
+ string courseId=1;
+ string userId = 2;
+ string role = 3;
+ string instancekey = 4;
+ string activeLocation = 5;
+}
+
+message GetOngoingClassesDto{
+  string _id=1;
+  string classroomId=2;
+  string title = 3;
+  string seqCode = 4;
+  string students = 5;
+  string colorCode =6;
+}
+message GetOngoingClassesResponse{
+  repeated GetOngoingClassesDto response=1;
+}
+message GetCourseProgressRequest{
+  string userId = 1;
+  string courseId = 2;
+  string instancekey = 3;
+}
+message GetCourseProgressDto{
+  int32 progress = 1;
+  int32 totalContent = 2;
+  int32 completedContents = 3;
+}
+message GetCourseProgressResponse{
+  GetCourseProgressDto response = 1;
+}
+message GetUserCourseRequest{
+  string id = 1;
+  string userId = 2;
+  string userRole = 3;
+  string demoSection = 4;
+  string instancekey = 5;
+  string activeLocation = 6;
+}
+message UserCourseContentDto{
+  string _id = 1;
+  string section = 2;
+  string source = 3;
+  string type = 4;
+  string title = 5;
+  string end = 6;
+  int32 timeSpent = 7;
+  string completed = 8;
+  string updatedAt = 9;
+  string attempt = 10;
+}
+message UserCourseAnalytics{
+  int32 quiz = 1;
+  int32 test = 2;
+  int32 attempt = 3;
+  int32 accuracy = 4;
+  int32 mark = 5;
+  int32 maxMark = 6;
+}
+message UserCourseSectionDto{
+  string _id = 1;
+  string title = 2;
+  string completed = 3;
+  UserCourseAnalytics analytics = 4;
+}
+message GetUserCourseResponse{
+  string course = 1;
+  string user = 2;
+  repeated UserCourseContentDto contents = 3;
+  bool active = 4;
+  bool completed = 5;
+  bool issuedCertificate = 6;
+  repeated UserCourseSectionDto sections = 7;
+}
+message FetchTeacherAssessmentRequest{
+  string id = 1;
+  string status = 2;
+  string testMode = 3;
+  string instancekey = 4;
+}
+message FetchTeacherAssessmentDto{
+  CourseUser userInfo = 1;
+  repeated CourseUser units = 2;
+  repeated CourseUser subjects = 3;
+  string testMode = 4;
+  string title = 5;
+  string status = 6;
+  string statusChangedAt = 7;
+  int32 totalQuestion = 8;
+  int32 totalTime = 9;
+  string id = 10;
+}
+message FetchTeacherAssessmentResponse{
+  repeated FetchTeacherAssessmentDto result = 1;
+}
+message GetClassesTimeSpentRequest{
+  string id = 1;
+  string instancekey = 2;
+}
+message CourseAndClassroomObj{
+  string course = 1;
+  string classroom = 2;
+}
+message GetClassesTimeSpentDto{
+  CourseAndClassroomObj _id = 1;
+  int32 time = 2;
+}
+message GetClassesTimeSpentResponse{
+ repeated GetClassesTimeSpentDto response = 1;
+}
+
+message GetAuthorsReq{
+  string instancekey = 1;
+}
+message GetAuthorsRes{
+  message Author{
+    string _id = 1;
+    string name = 2;
+  }
+  repeated Author authors = 1;
+}
+
+message GetCourseSectionsReportRequest{
+  string courseId= 1;
+  string studentId = 2;
+  string section = 3;
+  string instancekey = 4;
+}
+message GetCourseSectionsReportDto{
+  string _id = 1;
+  int32 total = 2;
+  int32 partial = 3;
+  int32 skipped = 4;
+  int32 correct = 5;
+  int32 incorrect = 6;
+  int32 pending = 7;
+}
+message GetCourseSectionsReportResponse{
+  GetCourseSectionsReportDto response = 1;
+}
+message GetStudentCourseOverviewRequest{
+  string studentId = 1;
+  string courseId = 2;
+  string instancekey = 3;
+}
+message GetStudentCourseOverviewDto{
+  CourseUser user = 1;
+  repeated CourseSection sections = 2;
+  string title =3 ;
+  repeated CourseSubject subjects = 4;
+  string accessMode = 5;
+  int32 timeSpent = 6;
+  int32 totalContents = 7;
+  int32 completedContents = 8;
+}
+message GetStudentCourseOverviewResponse{
+  GetStudentCourseOverviewDto response = 1;
+}
+message GetCourseSectionByStatusRequest{
+  string studentId = 1;
+  string courseId = 2;
+  string status = 3;
+  string instancekey = 4;
+}
+message GetCourseSectionByStatusDto{
+  string _id =1;
+  repeated CourseContent contents =2;
+}
+message GetCourseSectionByStatusResponse{
+  repeated GetCourseSectionByStatusDto response = 1;
+}
+message VerifyCourseUserProgressRequest{
+  string instancekey = 1;
+  string userId = 2;
+  string courseId = 3;
+}
+message VerifyCourseUserProgressResponse{
+  string response = 1;
+}
+message PublicEnrolledCourseRequest{
+  string instancekey = 1;
+  string studentId = 2;
+}
+message PublicEnrolledCourseCourse{
+  string title = 1;
+  repeated CourseSubject subjects = 2;
+}
+message PublicEnrolledCourseDto{
+  PublicEnrolledCourseCourse course = 1;
+  string user = 2;
+  string userRole = 3;
+  bool active = 4;
+  bool completed = 5;
+  bool issuedCertificate = 6;
+  string location = 7;
+  repeated CourseSection sections = 8;
+  string createdBy = 9;
+}
+message PublicEnrolledCourseResponse{
+  repeated PublicEnrolledCourseDto response = 1;
+}
+message GetCourseContentAnalyticsRequest{
+  string instancekey = 1;
+  string userId = 2;
+  string id = 3;
+}
+
+message GetCourseContentAnalyticsCourseDto{
+  string title =1;
+  repeated CourseSubject subjects = 2;
+  repeated CourseSection sections = 3;
+}
+message GetCourseContentAnalyticsUserCourseDto{
+  repeated UserCourseContentDto contents = 1;
+  repeated UserCourseSectionDto sections = 2;
+}
+message GetCourseContentAnalyticsResponse{
+  GetCourseContentAnalyticsCourseDto course =1;
+  GetCourseContentAnalyticsUserCourseDto userCourse = 2;
+}
+message GetCourseSubjectRequest{
+  string instancekey = 1;
+  string userId = 2;
+  repeated string userRole = 3;
+  bool excludeEnrolled = 4;
+  string activeLocation = 5;
+}
+message GetCourseSubjectResponse{
+  repeated CourseSubject response = 1;
+}
+
+message GetStudentCoursesRequest{
+  string instancekey = 1;
+  string userId = 2;
+  string userRole = 3;
+  int32 page = 4;
+  int32 limit = 5;
+  string id = 6;
+}
+
+message GetStudentCourseDto{
+  string _id = 1;
+  string title = 2;
+  int32 progress = 3;
+  repeated CourseSubject subject = 4;
+  string imageUrl = 5;
+  string colorCode = 6;
+}
+message GetStudentCoursesResponse{
+  repeated GetStudentCourseDto response = 1;
+}
+message GetTeacherHighestPaidCoursesRequest{
+  string instancekey = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string userId = 4;
+  string userRole = 5;
+  string title = 6;
+  string activeLocation = 7;
+}
+message GetTeacherHighestPaidCoursesDto{
+  string title = 1;
+  string status = 2;
+  int32 totalRating = 3;
+  string imageUrl = 4;
+  repeated CourseInstructor instructors = 5;
+  string type = 6;
+  int32 rating = 7;
+  repeated CourseSubject subjects = 8;
+  string accessMode = 9;
+  int32 price = 10;
+  int32 discountValues = 11;
+  repeated CourseCountry countries = 12;
+  string _id = 13;
+  int32 totalRatings = 14;
+}
+message GetTeacherHighestPaidCoursesResponse{
+  repeated GetTeacherHighestPaidCoursesDto response = 1;
+}
+message GetTopCategoriesCourseRequest{
+  string instancekey = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string activeLocation = 4;
+}
+message GetTopCategoriesCourseResponse{
+  repeated Course response = 1;
+}
+message GetPublisherCourseRequest{
+  int32 limit = 1;
+  int32 page = 2;
+  string title =3;
+  string userId = 4;
+  int32 count = 5;
+  string instancekey = 6;
+  int32 skip = 7;
+  string activeLocation = 8;
+}
+message GetPublisheCourseDto{
+  int32 total = 1;
+}
+message GetPublisherCourseResponse{
+  repeated Course response = 1;
+  repeated GetPublisheCourseDto count = 2;
+}
+message UserWithoutEnrollRequest{
+  string instancekey = 1;
+  string userId = 2;
+}
+message UserWithoutEnrollDto{
+  string _id = 1;
+  string title = 2;
+}
+message UserWithoutEnrollResponse{
+  repeated UserWithoutEnrollDto response = 1;
+}
+message GetCourseMembersRequest{
+  string instancekey = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string courseId = 4;
+  string searchText = 5;
+}
+message UserInfo{
+  string avatar = 1;
+  string email = 2;
+  string userId = 3;
+  string name = 4;
+  string role = 5;
+}
+message GetCourseMemberDto{
+  int32 progress = 1;
+  int32 totalContent = 2;
+  int32 completedContents = 3;
+  UserInfo student = 4;
+  string lastActive = 5;
+  bool isCerti = 6;
+}
+message GetCourseMembersResponse{
+  repeated GetCourseMemberDto result = 1;
+  int32 totalCount = 2;
+}
+message GetTeacherCourseRequest{
+  string instancekey = 1;
+  string courseId = 2;
+}
+message GetTeacherCourseResponse{
+  Course response = 1;
+}
+message GetOngoingCourseRequest{
+  int32 limt = 1;
+  bool home = 2;
+  string userId = 3;
+  string instancekey = 4;
+  string activeLocation = 5;
+}
+message GetOngoingCourseDto{
+  bool active = 1;
+  bool completed = 2;
+  bool issuedCertificate = 3;
+  string user = 4;
+  Course course = 5;
+  string location = 6;
+  repeated CourseSection sections = 7;
+  repeated CourseContent contents = 8;
+  string userRole = 9;
+  string _id = 10;
+  string createdAt = 11;
+  string createdBy = 12;
+  string updatedAt = 13;
+}
+message GetOngoingCourseResponse{
+  repeated GetOngoingCourseDto response = 1;
+}
+message GetOngoingCourseContentReq{
+  string courseId = 1;
+  string userId = 2;
+  string instancekey = 3;
+}
+message GetOngoingCourseContentRes{
+  string title = 1;
+  int32 chapter = 2;
+}
+
+message EditContentInSectionRequest{
+  string courseId = 1;
+  string sectionId=2;
+  string title=3;
+  string summary=4;
+  string name=5;
+  bool locked=6;
+  bool optional=7;
+  repeated CourseContent contents=8;
+  string userId = 9;
+  string instancekey = 10;
+  
+}
+message EditContentInSectionResponse{
+  Course response=1;
+}
+message GetAllMyCourseProgressRequest{
+  string userId = 1;
+  string status = 2;
+  string userRole = 3;
+  string instancekey = 4;
+  string activeLocation = 5;
+}
+message GetAllMyCourseProgressDto{
+  string title = 1;
+  int32 progress = 2;
+  string type = 3;
+  repeated CourseSubject subjects = 4;
+  string colorCode = 5;
+  string imageUrl = 6;
+  string status = 7;
+}
+message GetAllMyCourseProgressResponse{
+  repeated GetAllMyCourseProgressDto response = 1;
+}
+message GetCoursePublicReq{
+  string instancekey = 1;
+  string courseId = 2;
+  string userId = 3;
+}
+message GetCoursePublicRes{
+  repeated Course response = 1;
+}
+message GetTeacherCourseDetailRequest{
+  string instancekey = 1;
+  string courseId = 2;
+}
+
+message IdName {
+  string _id = 1;
+  string name = 2;
+}
+
+message IdNameAvatar {
+  string _id = 1;
+  string name = 2;
+  UserAvatar avatar = 3;
+}
+
+message GetTeacherCourseDetailInstructor {
+  IdNameAvatar _id = 1;
+  string name = 2;
+}
+
+message GetTeacherCourseDetail {
+  string title = 1;
+  string summary = 2;
+  string imageUrl = 3;
+  string startDate = 4;
+  string expiresOn = 5;
+  string status = 6;
+  string type = 7;
+  string statusChangedAt = 8;
+  bool certificate = 9;
+  CourseOfferedBy offeredBy = 10;
+  CourseUser user = 11;
+  repeated CourseInstructor instructors = 12;
+  repeated CourseSubject subjects = 13;
+  string accessMode = 14;
+  repeated CourseCountry countries = 15;
+  repeated IdName classrooms = 16;
+  string duration = 17;
+  int32 credits = 18;
+  repeated CourseSection sections = 19;
+  string level = 20;
+  string courseCode = 21;
+  string colorCode = 22;
+  string description = 23;
+  string requirements = 24;
+  string includes = 25;
+  string learningIncludes = 26;
+  string notificationMsg = 27;
+  bool active = 28;
+  IdName lastModifiedBy = 29;
+  float rating = 30;
+  float totalRatings = 31;
+  string videoUrl = 32;
+  repeated CourseBuyer buyers = 33;
+  string uid = 34;
+  bool synced = 35;
+  repeated IdName locations = 36;
+  bool enableOrdering = 37;
+  string owner = 38;
+  string origin = 39;
+  string userid = 40;
+  string _id = 41;
+  int32 discountValue = 42;
+  string currency = 43;
+  int32 marketPlacePrice = 44;
+  int32 students = 45;
+  int32 timeSpent = 46;
+  string updatedAt = 47;
+  int32 price = 48;
+  string createdAt = 49;
+}
+
+message GetTeacherCourseDetailResponse{
+  GetTeacherCourseDetail response = 1;
+}
+message UpdateContentTimeSpentRequest{
+  string instancekey = 1;
+  string userId = 2;
+  string courseId = 3;
+  string contentId = 4;
+  int32 timeSpent = 5;
+}
+message UpdateContentTimeSpentResponse{
+  int32 timeSpent = 1;
+}
+message CompleteContentRequest{
+  string userId = 1;
+  string courseId = 2;
+  string instancekey = 3;
+  int32 timeSpent = 4;
+  string contentId = 5;
+}
+message CompleteContentResponse{
+  int32 completedContents = 1;
+}
+message StartContentRequest{
+  string courseId = 1;
+  string section = 2;
+  string content = 3;
+  string instancekey = 4;
+  UserDto user = 5;
+}
+
+message StartContentResponse{
+  string section = 1;
+  string content = 2;
+  string start = 3;
+  bool completed = 4;
+  bool favorite = 5;
+}
+
+message GetCoursesPublicReq {
+  string userId = 1;
+  Query query = 2;
+  string instancekey = 3;
+}
+message GetCoursesPublicRes {
+  repeated Course result = 1;
+}
+
+message GetCoursesRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  repeated string userRole = 3;
+  string activeLocation = 4;
+  string keyword = 5;
+  string accessMode = 6;
+  string userId = 7;
+  string instancekey = 8;
+  string type = 9;
+  bool ownLocation = 10;
+  CourseUser userData = 11;
+}
+message GetCoursesResponse{
+  repeated Course courses = 1;
+  int32 total = 2;
+}
+message GetTeacherArchivedCoursesRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  string userId = 3;
+  repeated string userRole = 4;
+  bool ownLocation = 6;
+  string instancekey = 5;
+  string activeLocation = 7;
+}
+message GetTeacherArchivedCoursesResponse{
+  repeated Course response = 1;
+}
+message GetTeacherMostPopularCoursesRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  string title = 5;
+  repeated string userRole = 3;
+  string accessMode = 4;
+  string activeLocation = 6;
+  string instancekey=7;
+  string userId = 8;
+}
+message GetTeacherMostPopularCoursesResponse{
+  repeated Course courses = 1;
+}
+message GetAllTeacherCoursesRequest{
+  int32 page = 1;
+  int32 limit =2;
+  string status = 5;
+  bool home = 6;
+  string instancekey = 7;
+  UserDto user = 8;
+}
+message GetAllTeacherCoursesResponse{
+  repeated Course courses = 1;
+}
+message GetPublicListingRequest{
+  int32 number = 1;
+  int32 page= 2;
+  int32 skip =3;
+  string instancekey = 4;
+  bool count = 5;
+}
+message GetPublicListingResponse{
+  repeated Course courses = 1;
+  int32 total = 2;
+}
+message GetBestSellerCourseRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  string instancekey = 3;
+  string activeLocation = 4;
+  string userRole = 5;
+  string userId = 6;
+}
+message GetBestSellerCourseResponse{
+  repeated Course courses= 1;
+}
+message GetPopularCourseRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  string activeLocation = 3;
+  string userId = 4;
+  string userLocation = 5;
+  string instancekey = 6;
+
+}
+message GetPopularCourseResponse{
+  repeated Course courses = 1;
+}
+message GetArchiveCoursesRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  string userId = 3;
+  string activeLocation = 4;
+  string instancekey = 5;
+}
+message GetArchiveCoursesResponse{
+  repeated Course result = 1;
+}
+message GetQuestionDistributionAnalyticsRequest{
+  string createdAt = 1;
+  string referenceId = 2;
+  string instancekey = 3;
+}
+message Distribution{
+  int32 status = 1;
+  int32 count = 2;
+}
+message GetQuestionDistributionAnalyticsDto{
+  repeated Distribution distribution = 1;
+}
+message GetQuestionDistributionAnalyticsResponse{
+  repeated GetQuestionDistributionAnalyticsDto dis = 1;
+}
+message GetRankingAnalyticsRequest{
+  string referenceId = 1;
+  string userId = 2;
+  string instancekey = 3;
+  string createdAt = 4;
+}
+
+message UserAvatar{
+  string mimeType = 1;
+  int32 size = 2;
+  string fileUrl = 3;
+  string fileName = 4;
+  string path = 5;
+  string _id = 6;
+}
+message GetRankingAnalyticsDto{
+  int32 score = 1;
+  int32 speed = 2;
+  string studentName = 3;
+  string userId = 4;
+  UserAvatar avatar = 5;
+  string google = 6;
+  string facebook = 7;
+}
+message GetRankingAnalyticsResponse{
+  repeated GetRankingAnalyticsDto top = 1;
+  repeated GetRankingAnalyticsDto student = 2;
+}
+message GetCourseContentAttemptByStudentRequest{
+  string userId = 1;
+  string practiceSetId = 2;
+  string userRole = 3;
+  string instancekey = 4;
+}
+message TestcaseQA {
+  string args = 1;
+  string input = 2;
+  string output = 3;
+  bool status = 4;
+  int32 runTime = 5;
+  string error = 6;
+}
+
+message Attachment {
+  string url = 1;
+  string name = 2;
+  string type = 3;
+}
+message AnswerQA {
+  string answerId = 1;
+  string answerText = 2;
+  string userText = 3;
+  string codeLanguage = 4;
+  string code = 5;
+  repeated TestcaseQA testcases = 6;
+  string userArgs = 7;
+  string userInput = 8;
+  string output = 9;
+  string compileMessage = 10;
+  int32 compileTime = 11;
+  string mathData = 12;
+  int32 timeElapse = 13;
+  repeated Attachment attachments = 14;
+}
+
+message Topic {
+  string _id = 1;
+  string name = 2;
+}
+
+message Unit {
+  string _id = 1;
+  string name = 2;
+}
+message QA {
+  string question = 1;
+  int32 timeEslapse = 2;
+  int32 timeLeft = 3;
+  int32 stdTime = 4;
+  int32 index = 5;
+  int32 answerChanged = 6;
+  int32 status = 7;
+  string category = 8;
+  repeated int32 offscreen = 9;
+  bool feedback = 10;
+  string createdAt = 11;
+  bool isMissed = 12;
+  bool hasMarked = 13;
+  int32 actualMarks = 14;
+  int32 obtainMarks = 15;
+  Topic topic = 16;
+  Unit unit = 17;
+  CourseSubject subject = 18;
+  repeated AnswerQA answers = 19;
+  string teacherComment = 20;
+  int32 reviewTimes = 21;
+  int32 reviewTimeSpent = 22;
+  int32 tComplexity = 23;
+  repeated string answerOrder = 24;
+  repeated string scratchPad = 25;
+  bool evaluatorAssigned = 26;
+}
+message CreatedBy{
+  string user = 1;
+  string name = 2;
+  string  _id = 3;
+}
+message AttemptTopics{
+  string name = 1;
+  int32 correct = 2;
+  int32 missed = 3;
+  int32 incorrect = 4;
+  int32 pending = 5;
+  int32 partial = 6;
+  int32 mark = 7;
+  int32 speed = 8;
+  int32 accuracy = 9;
+  int32 maxMarks = 10;
+}
+message AttemptUnits{
+  string name = 1;
+  int32 correct = 2;
+  int32 missed = 3;
+  int32 incorrect = 4;
+  int32 pending = 5;
+  int32 partial = 6;
+  int32 mark = 7;
+  int32 speed = 8;
+  int32 accuracy = 9;
+  int32 maxMarks = 10;
+  repeated AttemptTopics topics = 11;
+}
+message AttemptSubject{
+  string name = 1;
+  int32 correct = 2;
+  int32 missed = 3;
+  int32 incorrect = 4;
+  int32 pending = 5;
+  int32 partial = 6;
+  int32 mark = 7;
+  int32 speed = 8;
+  float accuracy = 9;
+  int32 maxMarks = 10;
+  int32 offscreenTime = 11;
+  repeated AttemptUnits units = 12;
+}
+message AttemptClassroom{
+  string id = 1;
+}
+message PracticeSetInfo{
+  string title = 1;
+  repeated AttemptSubject subjects = 2;
+  repeated AttemptClassroom classRooms = 3;
+  repeated AttemptUnits units = 4;
+  string titleLower = 5;
+  string accessMode = 6;
+  string CreatedBy = 7;
+  int32 level = 8;
+}
+message GetCourseContentAttemptByStudentDto{
+  int32 timeLimitExhaustedCount = 1;
+  int32 lastIndex = 2;
+  bool isEvaluated = 3;
+  int32 partial = 4;
+  bool partiallyAttempted = 5;
+  bool isLevelReset = 6;
+  int32 pending = 7;
+  int32 maximumMarks = 8;
+  bool isShowAttempt = 9;
+  bool isFraudlent = 10;
+  bool markedSuspicious = 11;
+  bool isAnsync = 12;
+  int32 totalMark = 13;
+  int32 plusMark = 14;
+  int32 minusMark = 15;
+  int32 totalMissed = 16;
+  int32 totalErrors = 17;
+  int32 totalTime = 18;
+  int32 totalCorrects = 19;
+  bool isAbandoned = 20;
+  int32 totalMarkeds = 21;
+  int32 offscreenTime = 22;
+  bool terminated = 23;
+  int32 resumeContent = 24;
+  int32 ongoing = 25;
+  string practiceSetId = 26;
+  string createdAt = 27;
+  string updatedAt = 28;
+  string attemptdetails = 29;
+  string attemptType = 30;
+  string email = 31;
+  string idOffline = 32;
+  string studentName = 33;
+  int32 totalQuestions = 34;
+  string userId = 35;
+  string location = 36;
+  string id = 37;
+  repeated QA QA = 38;
+  CreatedBy createdBy = 39;
+  PracticeSetInfo practiceSetInfp = 40;
+  AttemptClassroom identityInfo = 41;
+  repeated AttemptSubject subjects = 42;
+}
+message GetCourseContentAttemptByStudentResponse{
+  GetCourseContentAttemptByStudentDto response = 1;
+}
+message GetPracticeTimeAnalyticsRequest{
+  string courseId = 1;
+  string createdAt = 2;
+  string userId = 3;
+  string instancekey = 4;
+  string timezoneOffset = 5;
+  int32 lastDays = 6;
+}
+message LastDaysData{
+  int32 top = 1;
+  int32 average = 2;
+  int32 student = 3;
+}
+message GetPracticeTimeAnalyticsResponse{
+  int32 top = 1;
+  int32 average = 2;
+  int32 student = 3;
+  LastDaysData lastDaysData = 4;
+}
+message GetLearningTimeAnalyticsRequest{
+  string instancekey = 1;
+  string createdAt = 2;
+  string courseId = 3;
+  string userId = 4;
+  int32 lastDays = 5;
+  int32 timezoneOffset = 6;
+}
+message GetLearningTimeAnalyticsResponse{
+  int32 top = 1;
+  int32 average = 2;
+  int32 student = 3;
+  LastDaysData lastDaysData = 4;
+}
+message GetCompletionAnalyticsRequest{
+  string instancekey = 1;
+  string createdAt = 2;
+  string courseId = 3;
+  string userId = 4;
+  int32 lastDays = 5;
+  int32 timezoneOffset = 6;
+}
+message GetCompletionAnalyticsResponse{
+  int32 top = 1;
+  int32 average = 2;
+  int32 student = 3;
+  LastDaysData lastDaysData = 4;
+}
+message GetAccuracyAnalyticsRequest{
+  string instancekey = 1;
+  string activeLocation = 2;
+  string createdAt = 3;
+  string userId = 4;
+  int32 lastDays = 5;
+  int32 timezoneOffset = 6;
+  string referenceId = 7;
+}
+message GetAccuracyAnalyticsResponse{
+  float top = 1;
+  float average = 2;
+  float student = 3;
+  LastDaysData lastDaysData = 4;
+}
+message GetMyFavoriteRequest{
+  int32 page = 1;
+  int32 limit = 2;
+  string name = 3;
+  string subject = 4;
+  string course = 5;
+  string userId = 6;
+  string activeLocation = 7;
+  string includeCourse = 8;
+  int32 count = 9;
+  string instancekey = 10;
+}
+message ContentCourse{
+  string _id = 1;
+  string title = 2;
+}
+
+message GetMyFavoriteContentDto{
+  ContentCourse course = 1;
+  string type = 2;
+  string title = 3;
+  string contentType = 4;
+  string itemId = 5;
+  GetMyFavoriteCourseDto courses = 6;
+}
+message GetMyFavoriteCourseDto{
+  string type = 1;
+  string itemId = 2;
+  string title = 3;
+}
+message GetMyFavoriteResponse{
+  repeated GetMyFavoriteContentDto response = 1;
+  int32 totalCount = 2;
+}
+message GetFavoriteSubjectsRequest{
+  string instancekey = 1;
+  string userId = 2;
+  string activeLocation = 3;
+}
+message GetFavoriteSubjectsResponse{
+  repeated CourseSubject response = 1;
+}
+message CountRequest{
+  repeated string userRole = 1;
+  string activeLocation = 2;
+  string instancekey = 3;
+  string userId = 4;
+  string accessMode = 5;
+  string keywords = 6;
+  string subject = 7;
+  string level = 8;
+  string price = 9;
+  string duration =10 ;
+  string author = 11;
+}
+message CountResponse{
+  int32 total = 1;
+}
+message NotifyStudentsAfterWithdrawalRequest{
+  string courseId = 1;
+  string notificationMsg = 2;
+  string instancekey = 3;
+}
+message NotifyStudentsAfterWithdrawalResponse{
+  string msg = 1;
+}
+message FindRequest{
+  int32 page = 1;
+  int32 number = 2;
+  int32 limit = 3;
+  repeated string userRole = 4;
+  string activeLocation = 5;
+  string userId = 6;
+  string accessMode = 7;
+  string keywords = 8;
+  string subject = 9;
+  int32 level = 10;
+  string price = 11;
+  string duration = 12;
+  string author = 13;
+  bool count = 14;
+  bool isCheckEnroll = 15;
+  string instancekey = 16;
+}
+message FindResponse{
+  repeated Course courses = 1;
+  int32 total = 2;
+}
+
+message PublishSectionReq{
+  string _id = 1;
+  string status = 2;
+  string courseId = 3;
+  string instancekey = 4;
+}
+message PublishSectionRes{
+  Course result = 1;
+}

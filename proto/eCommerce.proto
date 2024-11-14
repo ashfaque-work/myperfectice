@@ -1,0 +1,585 @@
+syntax = "proto3";
+
+package ecommerce;
+
+service EcommerceGrpcService {
+	//Coupon
+	rpc FindOneCoupon (FindOneCouponReq) returns (Coupon) {}
+	rpc GetAmbassadorCode (GetAmbassadorCodeReq) returns (Coupon) {}
+	rpc FindByItem (FindByItemReq) returns (FindByItemRes) {}
+	rpc FindAvailableCoupons (FindAvailableCouponsReq) returns (FindAvailableCouponsRes) {}
+	rpc CreateCoupon (CreateCouponsReq) returns (Coupon) {}
+	rpc UpdateCoupon (UpdateCouponsReq) returns (Coupon) {}
+	
+	//Payment
+	rpc FindByMe (FindByMeReq) returns (FindByMeRes) {}
+	rpc RevenueAll (RevenueAllReq) returns (RevenueAllRes) {}
+	rpc RevenueThisMonth (RevenueAllReq) returns (RevenueAllRes) {}
+	rpc RevenueToday (RevenueAllReq) returns (RevenueAllRes) {}
+	rpc RevenueWeek (RevenueAllReq) returns (RevenueAllRes) {}
+	rpc FindAllPaymentDetail (FindByMeReq) returns (FindAllPaymentDetailRes) {}
+	rpc CountAllPaymentDetail (FindByMeReq) returns (CountAllPaymentDetailRes) {}
+	rpc LastRevenue (RevenueAllReq) returns (LastRevenueRes) {}
+	rpc FindOneByMe (FindOneByMeReq) returns (FindOneByMeRes) {}
+	rpc FindPaymentDetails (FindOneByMeReq) returns (FindPaymentDetailsRes) {}
+	rpc CountByMe (FindByMeReq) returns (CountAllPaymentDetailRes) {}
+	rpc GetTransaction (GetTransactionReq) returns (GetTransactionRes) {}
+	rpc FindOnePayment (GetTransactionReq) returns (FindOneByMeRes) {}
+	rpc InitCCA (InitCCAReq) returns (InitCCARes) {}
+	rpc FinishCCA (FinishCCAReq) returns (FinishCCARes) {}
+	rpc CancelCCA (GetTransactionReq) returns (CancelCCARes) {}
+	rpc EnrollItems (EnrollItemsReq) returns (EnrollItemsRes) {}
+	rpc CreatePayment (CreatePaymentReq) returns (CreatePaymentRes) {}
+	rpc PaymentResult (PaymentResultReq) returns (PaymentResultRes) {}
+	rpc PaymentFinish (PaymentFinishReq) returns (PaymentFinishRes) {}
+}
+
+//Common
+message Country {
+	string code = 1;
+	string name = 2;
+	string currency = 3;
+	int32 price = 4;
+	int32 marketPlacePrice = 5;
+	int32 discountValue = 6;
+}
+message User {
+	string _id = 1;
+	string name = 2;
+	repeated string roles = 3;
+	string activeLocation = 4;
+	Country country = 5;
+	repeated string subjects = 6;
+	int32 viewCount = 7;
+	string classroom = 8;
+	repeated string locations = 9;
+	string userData = 10;
+	string createdAt = 11;
+	repeated string blockedUsers = 12;
+	string email = 13;
+	string provider = 14;
+	string userId = 15;
+	map<string, string> avatar = 16;
+	map<string, string> avatarSM = 17;
+	map<string, string> avatarMD = 18;
+}
+message Query{
+	int32 skip = 1;
+	int32 limit = 2;
+	string items = 3;
+	int32 page = 4;
+	string sort = 5;
+	bool isReferral = 6;
+	string id = 7;
+	string keyword = 8;
+}
+
+
+//Coupon - start
+message FindOneCouponReq{
+  	string code = 1;
+  	string instancekey = 2;
+	User user = 3;
+}
+
+message Coupon{
+  	string _id = 1;
+  	string name = 2;
+  	string code = 3;
+  	int32 price = 4;
+  	int32 percent = 5;
+  	string discountType = 6;
+  	repeated string itemIds = 7;
+  	int32 usageLimit = 8;
+  	bool isReferral = 9;
+  	string startDate = 10;
+  	string endDate = 11;
+  	bool status = 12;
+  	string lastModifiedBy = 13;
+  	bool showMe = 14;
+
+	//optionals
+	int32 totalUsed = 15;
+	int32 statusCode = 16;
+  	string error = 17;
+	string createdAt = 18;
+	string updatedAt = 19;
+}
+
+message GetAmbassadorCodeReq{
+	string instancekey = 1;
+  	User user = 2;
+}
+
+message FindByItemReq{
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message FindByItemRes{
+	string _id = 1;
+	repeated Coupon couponList = 2;
+	int32 statusCode = 3;
+}
+
+message FindAvailableCouponsReq{
+	Query query = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+message FindAvailableCouponsRes{
+	repeated Coupon couponList = 1;
+}
+
+message CreateCouponBody{
+	string name = 1;
+	string code = 2;
+	int32 price = 3;
+	int32 percent = 4;
+	string discountType = 5;
+	repeated string itemIds = 6;
+	string usageLimit = 7;
+	bool isReferral = 8;
+	string startDate = 9;
+	string endDate = 10;
+	bool status = 11;
+	bool showMe = 12;
+}
+message CreateCouponsReq{
+	CreateCouponBody body = 1;
+	User user = 2;
+	string instancekey = 3;
+	int32 statusCode = 4;
+	string error = 5;
+}
+message UpdateCouponsReq{
+	string _id = 1;
+	CreateCouponBody body = 2;
+	User user = 3;
+	string instancekey = 4;
+	int32 statusCode = 5;
+	string error = 6;
+}
+//Coupon - end
+
+
+//Payment - start
+message ReferralData {
+	double amount = 1;
+	string settlementDate = 2;
+	string userId = 3;
+	string status = 4;
+	string name = 5;
+	string user = 6;
+}
+message Payment{
+	string user = 1;
+	double amount = 2;
+	string forUser = 3;
+	string transaction = 4;
+	string billing_name = 5;
+	string billing_tel = 6;
+	string billing_email = 7;
+	string billing_city = 8;
+	string billing_zip = 9;
+	string billing_state = 10;
+	string billing_address = 11;
+	string billing_country = 12;
+	double discountValue = 13;
+	repeated string discountData = 14;
+	repeated string couponIds = 15;
+	string promoCode = 16;
+	string currency = 17;
+	bool hasDiscount = 18;
+	double totalPayment = 19;
+	string reponse = 20;
+	string status = 21;
+	string paymentMeThod = 22;
+	repeated string paymentDetails = 23;
+	string createdAt = 24;
+	string updatedAt = 25;
+	ReferralData referralData = 26;
+	string customData = 27;
+}
+message PaymentDetail{
+	string _id = 1;
+	string payment = 2;
+	string byUser = 3;
+	string practice = 4;
+	string testseries = 5;
+	string course = 6;
+	string service = 7;
+	string itemName = 8;
+	string forUser = 9;
+	double discountValue = 10;
+	repeated string couponData = 11;
+	bool isMembershipEligible = 12;
+	double expirationValue = 13;
+	string model = 14;
+	double price = 15;
+	double amount = 16;
+	double totalPayment = 17;
+	string currency = 18;
+	string status = 19;
+	string note = 20;
+	string createdAt = 21;
+	string updatedAt = 22;
+}
+
+message FindByMeReq{
+	Query query = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+message FindByMeRes{
+	repeated Payment payments = 1;
+}
+
+message RevenueAllReq{
+	User user = 1;
+	string instancekey = 2;
+}
+message RevenueAllRes{
+	message Revenue{
+		double totalPayment = 1;
+		string currency = 2;
+		int32 year = 3;
+		int32 month = 4;
+		int32 day = 5;
+		string updatedAt = 6;
+	}
+	repeated Revenue result = 1;
+}
+message FindAllPaymentDetailRes{
+	repeated PaymentDetail paymentDetails = 1;
+}
+
+message CountAllPaymentDetailRes{
+	int32 statusCode = 1;
+	int32 count = 2;
+}
+message LastRevenueRes{
+	int32 statusCode = 1;
+	Payment payment = 2;
+}
+
+message FindOneByMeReq{
+	string _id = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+message FindOneByMeRes{
+	message Payment{
+		string user = 1;
+		double amount = 2;
+		string forUser = 3;
+		string transaction = 4;
+		string billing_name = 5;
+		string billing_tel = 6;
+		string billing_email = 7;
+		string billing_city = 8;
+		string billing_zip = 9;
+		string billing_state = 10;
+		string billing_address = 11;
+		string billing_country = 12;
+		double discountValue = 13;
+		repeated string discountData = 14;
+		repeated string couponIds = 15;
+		string promoCode = 16;
+		string currency = 17;
+		bool hasDiscount = 18;
+		double totalPayment = 19;
+		string reponse = 20;
+		string status = 21;
+		string paymentMeThod = 22;
+		repeated PaymentDetail paymentDetails = 23;
+		string createdAt = 24;
+		string updatedAt = 25;
+		ReferralData referralData = 26;
+		string customData = 27;
+	}
+	int32 statusCode = 1;
+	Payment payment = 2;
+	string message = 3;
+}
+message FindPaymentDetailsRes{
+	message Subject {
+		string _id = 1;
+		string name = 2;
+	}
+	message Buyer {
+		string item = 1;
+		string user = 2;
+	}
+	message PracticeSet {
+		string _id = 1;
+		string title = 2;
+		string description = 3;
+		string accessMode = 4;
+		string type = 5;
+		repeated Subject subjects = 6;
+		string model = 7;
+		repeated Buyer buyers = 8;
+		string imageUrl = 9;
+		string testMode = 10;
+	}
+	message TestSeries {
+		string _id = 1;
+		string title = 2;
+		string description = 3;
+		string accessMode = 4;
+		string type = 5;
+		repeated Subject subjects = 6;
+		string model = 7;
+		repeated Buyer buyers = 8;
+		string imageUrl = 9;
+	}
+	message Course {
+		string _id = 1;
+		string title = 2;
+		string summary = 3;
+		string accessMode = 4;
+		string type = 5;
+		repeated Subject subject = 6;
+		string model = 7;
+		repeated Buyer buyers = 8;
+		string imageUrl = 9;
+	}
+	message Service {
+		string _id = 1;
+		string title = 2;
+		string description = 3;
+		string shortDescription = 4;
+		string type = 5;
+		string imageUrl = 6;
+		int32 duration = 7;
+		string durationUnit = 8;
+		repeated string highlights = 9;
+		repeated string tags = 10;
+		bool active = 11;
+		repeated Country countries = 12;
+		User user = 13;
+		string status = 14;
+		int32 statusCode = 15;
+		string message = 16;
+	}
+	message PaymentDetail{
+		string _id = 1;
+		string payment = 2;
+		string byUser = 3;
+		PracticeSet practice = 4;
+		TestSeries testseries = 5;
+		Course course = 6;
+		Service service = 7;
+		string itemName = 8;
+		User forUser = 9;
+		double discountValue = 10;
+		repeated string couponData = 11;
+		bool isMembershipEligible = 12;
+		double expirationValue = 13;
+		string model = 14;
+		double price = 15;
+		double amount = 16;
+		double totalPayment = 17;
+		string currency = 18;
+		string status = 19;
+		string note = 20;
+		string createdAt = 21;
+		string updatedAt = 22;
+	}
+	int32 statusCode = 1;
+	repeated PaymentDetail response = 2;
+}
+
+message GetTransactionReq{
+	string _id = 1;
+	string instancekey = 2;
+}
+message GetTransactionRes{
+	message Transaction {
+		string status = 3;
+		string transaction = 4;
+		string redirectUrl = 5;
+		string courseid = 6;
+		string sessionid = 7;
+		string studentid = 8;
+	}
+	int32 statusCode = 1;
+	string message = 2;
+	Transaction response = 3;	
+}
+
+message InitCCAReq{
+	message PaymentData {
+		string billing_name = 1;
+		string billing_address = 2;
+		string billing_city = 3;
+		string billing_state = 4;
+		string billing_zip = 5;
+		string billing_country = 6;
+		double amount = 7;
+		string billing_email = 8;
+		string billing_tel = 9;
+		string billingCountryCode = 10;
+	}
+	message OrderDetail {
+		string user = 1;
+		string typeItem = 2;
+		string _id = 3;
+		double price = 4;
+		repeated string couponData = 5;
+		int32 expirationValue = 6;
+		repeated string practiceIds = 7;
+		bool isMembershipEligible = 8;
+	}
+	User user = 1;
+	string instancekey = 2;	
+	PaymentData payment = 3;
+  	repeated OrderDetail orderDetail = 4;
+  	int32 amount = 5;
+}
+message InitCCARes{
+	message CCAvenueData {
+		string encRequest = 1;
+		string orderId = 2;
+		string accessCode = 3;
+		string merchantId = 4;
+		string redirectUrl = 5;
+		string cancelUrl = 6;
+	}
+	int32 statusCode = 1;
+	string message = 2;	
+	Payment payment = 3;
+	CCAvenueData ccavenueData = 4;
+}
+
+message FinishCCAReq{
+	User user = 1;
+	string instancekey = 2;
+	string _id = 3;
+	string encResp = 4;
+}
+message FinishCCARes{
+	int32 statusCode = 1;
+	string message = 2;	
+	string params = 3;	
+	string msg = 4;	
+	string redirectUrl = 5;
+}
+
+message CancelCCARes{
+	int32 statusCode = 1;
+	string redirectUrl = 2;
+}
+
+message EnrollItemsReq{
+	User user = 1;
+	string instancekey = 2;
+	string type = 3;
+	string testseries = 4;
+	string practice = 5;
+	string course = 6;
+	string service = 7;
+	string enrollingLocation = 8;
+}
+message EnrollItemsRes{
+	int32 statusCode = 1;
+	string message = 2;	
+}
+
+message CreatePaymentReq{
+	message CountryCode {
+		string name = 1;
+	}
+	message PaymentData {
+		string billing_name = 1;
+		string billing_address = 2;
+		string billing_city = 3;
+		string billing_state = 4;
+		string billing_zip = 5;
+		string billing_country = 6;
+		double amount = 7;
+		CountryCode billingCountryCode = 8;
+	}
+	message OrderDetail {
+		string user = 1;
+		double price = 2;
+		repeated string practiceIds = 3;
+		bool isMembershipEligible = 4;
+		double expirationValue = 5;
+		double discountValue = 6;
+		double totalPayment = 7;
+		string note = 8;
+		repeated string couponData = 9;
+		string typeItem = 10;
+		string title = 11;
+		string name = 12;
+		string _id = 13;
+	}  
+	User user = 1;
+	string instancekey = 2;
+	string paymentMethod = 3;
+	PaymentData payment = 4;
+	repeated OrderDetail orderDetail = 5;
+}
+message CreatePaymentRes{
+	message Payment {
+		string _id = 1;
+		string billing_name = 2;
+		string billing_address = 3;
+		string billing_city = 4;
+		string billing_state = 5;
+		string billing_zip = 6;
+		string billing_country = 7;
+		double amount = 8;
+		string user = 9;
+		string status = 10;
+		string currency = 11;
+		bool hasDiscount = 12;
+		string referralData = 13;
+		string paymentMethod = 14;
+		repeated string discountData = 15;
+		repeated string couponIds = 16;
+		double discountValue = 17;
+		double totalPayment = 18;
+		repeated PaymentDetail paymentDetails = 19;
+	}
+	int32 statusCode = 1;
+	string message = 2;	
+	Payment payment = 3;
+}
+
+
+message PaymentResultReq{
+	User user = 1;
+	string instancekey = 2;
+	string encResp = 3;
+	string _id = 4;
+}
+message PaymentResultRes{
+	string payment = 1;
+	string status = 2;
+	string transaction = 3;
+	bool isDemo = 4;
+	string redirectUrl = 5;
+	string courseid = 6;
+	string sessionid = 7;
+	string studentid = 8;
+	int32 statusCode = 9;
+	string message = 10;	
+}
+
+message PaymentFinishReq{
+	User user = 1;
+	string instancekey = 2;
+	string _id = 3;
+	map<string, string> customData = 4;
+}
+message PaymentFinishRes{
+	int32 statusCode = 1;
+	string params = 2;	
+	string msg = 3;	
+	string payment = 4;
+}
+
+//Payment - end

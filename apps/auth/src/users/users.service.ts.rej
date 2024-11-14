@@ -1,0 +1,22 @@
+diff a/apps/auth/src/users/users.service.ts b/apps/auth/src/users/users.service.ts	(rejected hunks)
+@@ -4,17 +4,17 @@
+   UnprocessableEntityException,
+ } from '@nestjs/common';
+ import * as bcrypt from 'bcryptjs';
+-import { CreateUserDto, UpdateUserDto, UsersRepository } from '@app/common';
++import { CreateUserDto } from '../../../../libs/common/src/dto/create-user.dto';
++import { UsersRepository } from '@app/common';
+ import { GetUserDto } from './dto/get-user.dto';
+ import { NotifyGrpcClientService } from '@app/common/grpc-clients/notify';
+-import { ObjectId } from 'mongodb';
+ 
+ @Injectable()
+ export class UsersService {
+   constructor(
+     private readonly usersRepository: UsersRepository,
+     private notifyGrpcClientService: NotifyGrpcClientService,
+-  ) { }
++  ) {}
+ 
+   async create(createUserDto: CreateUserDto) {
+     try {

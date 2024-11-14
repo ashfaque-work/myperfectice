@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package notify;
+
+service NotifyService {
+  rpc NotifyEmail (NotifyEmailMessage) returns (Empty) {}
+  rpc Index(GetNotificationsReq) returns (GetNotificationsRes) {}
+  rpc CountUnread(GetNotificationsReq) returns (CountUnreadRes) {}
+  rpc FindOne(FindOneReq) returns (Notification) {}
+  rpc SetReadMsg(FindOneReq) returns (Notification) {}
+  rpc RemoveByUser(FindOneReq) returns (RemoveByUserRes) {}
+}
+
+message Empty {}
+
+message NotifyEmailMessage {
+  string email = 1;
+  string text = 2;
+}
+
+
+message User {
+  message Country {
+    string code = 1;
+    string name = 2;
+    string currency = 3;
+    int32 price = 4;
+    int32 marketPlacePrice = 5;
+    int32 discountValue = 6;
+  }
+	string _id = 1;
+	string name = 2;
+	repeated string roles = 3;
+	string activeLocation = 4;
+	Country country = 5;
+	repeated string subjects = 6;
+	int32 viewCount = 7;
+	string classroom = 8;
+  repeated string locations = 9;
+  string userData = 10;
+  string createdAt = 11;
+  repeated string blockedUsers = 12;
+  string email = 13;
+  string provider = 14;
+  string userId = 15;
+  map<string, string> avatar = 16;
+  map<string, string> avatarSM = 17;
+  map<string, string> avatarMD = 18;
+}
+
+message Query {
+  bool isNew = 3;
+  string notficationType = 4;
+  string notIn = 5;
+  string type = 6;
+  string page = 7;
+  string limit = 8;
+  string sort = 9;
+  string keyword = 10;
+}
+message GetNotificationsReq {
+  string instancekey = 1;
+  User user = 2;
+  Query query = 3;
+}
+
+message Notification {
+  string _id = 1;
+  string receiver = 2;
+  string modelId = 3;
+  string message = 4;
+  string subject = 5;
+  bool isRead = 6;
+  bool active = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+  Notification previousNoti = 10;
+  Notification nextNoti = 11;
+  bool isEmail = 12;
+  bool isScheduled = 13;
+  bool isSent = 14;
+  string key = 15;
+  string to = 16;
+  string type = 17;
+  string itemId = 18;
+}
+
+message GetNotificationsRes {
+  repeated Notification notifications = 1;
+}
+
+message CountUnreadRes {
+  int32 count = 1;
+}
+
+message FindOneReq {
+  string _id = 1;
+  string instancekey = 2;
+  User user = 3;
+  string token = 4;
+}
+
+message RemoveByUserRes {
+  int32 statusCode = 1;
+  string message = 2;
+}

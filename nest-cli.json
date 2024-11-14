@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/gateway/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/gateway/tsconfig.app.json"
+  },
+  "projects": {
+    "auth": {
+      "type": "application",
+      "root": "apps/auth",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth/tsconfig.app.json"
+      }
+    },
+    "gateway": {
+      "type": "application",
+      "root": "apps/gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/gateway/tsconfig.app.json"
+      }
+    },
+    "notify": {
+      "type": "application",
+      "root": "apps/notify",
+      "entryFile": "main",
+      "sourceRoot": "apps/notify/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/notify/tsconfig.app.json"
+      }
+    },
+    "common": {
+      "type": "library",
+      "root": "libs/common",
+      "entryFile": "index",
+      "sourceRoot": "libs/common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    },
+    "course": {
+      "type": "application",
+      "root": "apps/course",
+      "entryFile": "main",
+      "sourceRoot": "apps/course/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/course/tsconfig.app.json"
+      }
+    },
+    "classroom": {
+      "type": "application",
+      "root": "apps/classroom",
+      "entryFile": "main",
+      "sourceRoot": "apps/classroom/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/classroom/tsconfig.app.json"
+      }
+    },
+    "assessment": {
+      "type": "application",
+      "root": "apps/assessment",
+      "entryFile": "main",
+      "sourceRoot": "apps/assessment/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/assessment/tsconfig.app.json"
+      }
+    },
+    "administration": {
+      "type": "application",
+      "root": "apps/administration",
+      "entryFile": "main",
+      "sourceRoot": "apps/administration/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/administration/tsconfig.app.json"
+      }
+    },
+    "question-bank": {
+      "type": "application",
+      "root": "apps/question-bank",
+      "entryFile": "main",
+      "sourceRoot": "apps/question-bank/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/question-bank/tsconfig.app.json"
+      }
+    },
+    "attempt": {
+      "type": "application",
+      "root": "apps/attempt",
+      "entryFile": "main",
+      "sourceRoot": "apps/attempt/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/attempt/tsconfig.app.json"
+      }
+    },
+    "ecommerce": {
+      "type": "application",
+      "root": "apps/ecommerce",
+      "entryFile": "main",
+      "sourceRoot": "apps/ecommerce/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/ecommerce/tsconfig.app.json"
+      }
+    },
+    "video-streaming": {
+      "type": "application",
+      "root": "apps/video-streaming",
+      "entryFile": "main",
+      "sourceRoot": "apps/video-streaming/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/video-streaming/tsconfig.app.json"
+      }
+    }
+  },
+  "monorepo": true,
+  "root": "apps/gateway"
+}

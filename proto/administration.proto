@@ -1,0 +1,3246 @@
+syntax = "proto3";
+
+package administration;
+
+service AdministrationGrpcService {
+	rpc CreateLocation (LocationRequest) returns (LocationResponse) {}
+	rpc GetLocation (LocationRequest) returns (GetLocationResponse) {}
+	rpc GetOneLocation (GetOneLocationRequest) returns (GetOneLocationResponse) {}
+	rpc UpdateLocation(UpdateLocationRequest) returns (UpdateLocationResponse) {}
+	rpc UpdateStatus(UpdateLocationRequest) returns (UpdateLocationResponse) {}
+	rpc DeleteLocation(DeleteLocationRequest) returns (DeleteLocationResponse) {}
+	rpc GetUserLocation (GetUserLocationRequest) returns (GetUserLocationResponse) {}
+	rpc ImportLocation (ImportLocationReq) returns (ImportLocationRes) {}
+
+	rpc CreateProgram (ProgramRequest) returns (Program) {}
+	rpc GetProgram (GetAllProgramRequest) returns (GetAllProgramResponse) {}
+	rpc GetOneProgram (GetOneProgramRequest) returns (GetOneProgramResponse) {}
+	rpc UpdateProgram(UpdateProgramRequest) returns (UpdateProgramResponse) {}
+	rpc UpdateProgramStatus(UpdateProgramRequest) returns (UpdateProgramResponse) {}
+	rpc DeleteProgram(DeleteProgramRequest) returns (DeleteProgramResponse) {}
+	rpc GetInstitutePrograms (GetInstProgReq) returns (GetProgramResponse) {}
+	rpc GetPublisherPrograms (GetInstProgReq) returns (GetProgramResponse) {}
+
+	rpc CreateSetting (SettingRequest) returns (SettingResponse) {}
+	rpc GetSetting (Empty) returns (GetSettingResponse) {}
+	rpc GetOneSetting (GetOneSettingRequest) returns (GetOneSettingResponse) {}
+	rpc UpdateSetting(UpdateSettingRequest) returns (UpdateSettingResponse) {}
+	rpc AddAdvertismentImage(AddAdvertismentImageReq) returns (AddAdvertismentImageRes) {}
+	rpc Update(GetUpdateRequest) returns (GetUpdateResponse) {}
+	rpc DeleteAdvertismentImage(DeleteAdvertismentImageReq) returns (DeleteAdvertismentImageRes) {}
+	rpc DeleteSetting(DeleteSettingRequest) returns (DeleteSettingResponse) {}
+	rpc FindOne(FindOneRequest) returns (FindOneResponse) {}
+	rpc GetCurrentDateTime(Empty) returns (GetCurrentDateTimeRes) {}
+	rpc GetCodeEngineAddress(Empty) returns (GetCodeEngineAddressRes) {}
+	rpc GetWhiteLabel(GetWhiteLabelReq) returns (GetWhiteLabelRes) {}
+	rpc FindAll(GetFindAllReq) returns (GetFindAllRes) {}
+	rpc GetPaymentMethods(GetPaymentMethodsReq) returns (GetPaymentMethodsRes) {}
+	rpc GetAllInstances(Empty) returns (GetAllInstancesRes) {}
+	rpc GetWebConfig(Empty) returns (GetWebConfigRes) {}
+	rpc Show(Empty) returns (ShowRes) {}
+	rpc GetDeploymentStatus(Empty) returns (GetDeploymentStatusRes) {}
+	rpc GetCountryByIp(GetCountryByIpReq) returns (GetCountryByIpRes) {}
+	rpc GetVideoStreaming(GetVideoStreamingReq) returns (GetVideoStreamingRes) {}
+	rpc ConvertCurrency(GetConvertCurrencyReq) returns (GetConvertCurrencyRes) {}
+
+	rpc CreateSubject (SubjectRequest) returns (CreateSubjectResponse) {}
+	rpc GetSubject (GetAllSubjectRequest) returns (GetSubjectResponse) {}
+	rpc GetOneSubject (GetOneSubjectRequest) returns (GetOneSubjectResponse) {}
+	rpc UpdateSubject(UpdateSubjectRequest) returns (UpdateSubjectResponse) {}
+	rpc DeleteSubject(DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
+	rpc GetMySubjects (GetMySubjectsRequest) returns (GetSubjectResponse) {}
+	rpc GetSubjectBySlug(GetSubjectBySlugReq) returns (GetOneSubjectResponse) {}
+	rpc GetTeachersBySubjects(GetTeachersBySubjectsReq) returns (GetTeachersBySubjectsRes) {}
+	rpc GetAdaptiveSubjects(GetTeachersBySubjectsReq) returns (GetSubjectResponse) {}
+	rpc UpdateSubjectStatus(UpdateSubStatusReq) returns (UpdateSubjectResponse) {}
+	rpc GetUnitsBySub(GetUnitsBySubReq) returns (GetUnitsBySubRes) {}
+	rpc GetTopicsByUnits(GetTopicsByUnitReq) returns (GetTopicsByUnitRes) {}
+	rpc GetInstituteSubjects(GetInstSubReq) returns (GetSubjectResponse) {}
+	rpc GetPublisherSubjects(GetPubSubReq) returns (GetSubjectResponse) {}
+	rpc GetSubjectList(GetPubSubReq) returns (GetPubSubRes) {}
+	rpc GetSubjectsInAllExams(GetAllSubjectRequest) returns (GetSubjectResponse) {}
+	rpc GetSubjectsByTest(GetSubByTestReq) returns (GetSubByTestRes) {}
+	rpc GetAttemptTrend(GetAttemptTrendByGradeReq) returns (GetAttemptTrendByGradeRes) {}
+	rpc GetSignUpTrend(GetAttemptTrendByGradeReq) returns (GetAttemptTrendByGradeRes) {}
+	rpc AttemptTrend(AttemptTrendReq) returns (AttemptTrendRes) {}
+	rpc SignUpTrend(AttemptTrendReq) returns (SignUpTrendRes) {}
+	rpc QuestionAddedTrend(AttemptTrendReq) returns (QuestionAddedTrendRes) {}
+	rpc LoginTrend(GetAttemptTrendByGradeReq) returns (QuestionAddedTrendRes) {}
+	rpc HighestAttemptedStudent(AttemptTrendReq) returns (HighestAttemptedStudentRes) {}
+	rpc MostAbandonedStudent(AttemptTrendReq) returns (HighestAttemptedStudentRes) {}
+	rpc MostAbandonedTest(AttemptTrendReq) returns (MostAbandonedTestRes) {}
+	rpc ImportSubjects (ImportLocationReq) returns (ImportLocationRes) {}
+
+	rpc CreateTopic (TopicRequest) returns (Topic) {}
+	rpc GetTopic (GetAllTopicRequest) returns (GetTopicResponse) {}
+	rpc GetOneTopic (GetOneTopicRequest) returns (GetOneTopicResponse) {}
+	rpc UpdateTopic(UpdateTopicRequest) returns (UpdateTopicResponse) {}
+	rpc UpdateTopicStatus(UpdateTopicStatusRequest) returns (UpdateTopicResponse) {}
+	rpc DeleteTopic(DeleteTopicRequest) returns (DeleteTopicResponse) {}
+	rpc GetTopicBySlug (GetTopicBySlugRequest) returns (GetOneTopicResponse) {}
+	rpc GetTopicByUnit (GetTopicByUnitRequest) returns (GetTopicResponse) {}
+
+	rpc CreateUnit (UnitRequest) returns (Unit) {}
+	rpc GetUnit (GetAllUnitRequest) returns (GetUnitResponse) {}
+	rpc GetOneUnit (GetOneUnitRequest) returns (GetOneUnitResponse) {}
+	rpc UpdateUnit(UpdateUnitRequest) returns (UpdateUnitResponse) {}
+	rpc UpdateUnitStatus(UpdateUnitStatusRequest) returns (UpdateUnitResponse) {}
+	rpc DeleteUnit(DeleteUnitRequest) returns (DeleteUnitResponse) {}
+	rpc GetUnitsBySubject (GetUnitsBySubjectRequest) returns (GetUnitResponse) {}
+
+	rpc FindSupport (Empty) returns (FindSupportRes) {}
+	rpc FindAllStates (FindAllStatesReq) returns (GetStateRes) {}
+	rpc GetInfo (GetInfoReq) returns (GetInfoRes) {}
+	rpc GetState (GetStateReq) returns (GetStateRes) {}
+
+	rpc GetAllContents (GetAllContentReq) returns (GetAllContentRes) {}
+	rpc CountContent (GetAllContentReq) returns (CountContentRes) {}
+	rpc CreateContent (ContentRequest) returns (Content) {}
+	rpc GetContentById (GetContentByIdRequest) returns (GetContentByIdResponse) {}
+	rpc UpdateContent (UpdateContentRequest) returns (Content) {}
+	rpc GetRemoteContent (GetContentByIdRequest) returns (GetContentByIdResponse) {}
+	rpc ContentfindByCode (GetContentByCodeReq) returns (GetContentByIdResponse) {}
+	rpc ExportViewer (GetContentByIdRequest) returns (ExportViewerRes) {}
+	rpc GetContentsTaggedWithTopic (getContentsTaggedWithTopicReq) returns (GetAllContentRes) {}
+	rpc FindSubjectUnitAndTopics (FindSubjectUnitAndTopicsReq) returns (FindSubjectUnitAndTopicsRes) {}
+	rpc DeleteContent (GetContentByIdRequest) returns (GetContentByIdResponse) {}
+	rpc UpdateContentCount (UpdateContentCountReq) returns (Content) {}
+	
+	rpc Upload (FileRequest) returns (File) {}
+	rpc UploadElearning (FileRequest) returns (File) {}
+	rpc UploadCertificate (FileRequest) returns (File) {}
+	rpc UploadAccreditaionfiles (FileRequest) returns (File) {}
+	rpc DiscussionUpload (DiscussionUploadReq) returns (DiscussionUploadRes) {}
+	rpc CkUpload (CkUploadReq) returns (DiscussionUploadRes) {}
+
+	rpc CreateService (CreateServiceReq) returns (CreateServiceRes) {}
+	rpc GetTaggingForStudents (GetTaggingForStudentsReq) returns (GetTaggingForStudentsRes) {}
+	rpc RevokeService (RevokeServiceReq) returns (Service) {}
+	rpc PublishService (RevokeServiceReq) returns (Service) {}
+	rpc EditService (EditServiceReq) returns (Service) {}
+	rpc DeleteService (DeleteServiceReq) returns (Service) {}
+	rpc FindServices (FindServicesReq) returns (FindServicesRes) {}
+	rpc FindPublicServices (FindServicesReq) returns (FindServicesRes) {}
+	rpc GetServiceMembers (GetServiceMembersReq) returns (GetServiceMembersRes) {}
+	rpc GetTaggingServicesForStudent (GetServiceReq) returns (GetTaggingServicesForStudentRes) {}
+	rpc GetService (GetServiceReq) returns (Service) {}
+	
+	rpc GetBackpack (BackpackReq) returns (GetBackpackRes) {}
+	rpc UpdateBackpack (UpdateBackpackReq) returns (Backpack) {}
+	rpc DeleteBackpack (DeleteBackpackReq) returns (Backpack) {}
+	rpc CreateBackpack (BackpackReq) returns (Backpack) {}
+	
+	rpc FindCodesnippet (FindCodesnippetReq) returns (FindCodesnippetRes) {}
+	rpc GetCodeByUID (GetCodeByUIDReq) returns (CodeSnippet) {}
+	rpc UpdateCodesnippet (UpdateCodesnippetReq) returns (UpdateCodesnippetRes) {}
+	rpc ChangePairCoding (ChangePairCodingReq) returns (UpdateCodesnippetRes) {}
+	rpc CreateCodesnippet (CreateCodesnippetReq) returns (CodeSnippet) {}
+	rpc DeleteCodesnippet (DeleteCodesnippetReq) returns (UpdateCodesnippetRes) {}
+	
+	// Platform
+	// HostRate
+	rpc CreateHostRate (CreateHostRateReq) returns (HostRateRes) {}
+	rpc ShareLink (ShareLinkReq) returns (HostRateRes) {}
+	rpc Feedback (FeedbackReq) returns (HostRateRes) {}
+	rpc TestSendMail (TestSendMailReq) returns (HostRateRes) {}
+	// PlatformByNumbers
+	rpc GetplatformByNumbers (TestSendMailReq) returns (GetplatformByNumbersRes) {}
+	// Tool
+	rpc ImportGST (ImportGSTReq) returns (ImportGSTRes) {}
+	rpc GetContact (GetContactReq) returns (HostRateRes) {}
+	
+	// Provider
+	rpc InfinityUserAttemptDetails (TestSendMailReq) returns (UserAttemptDetailsRes) {}
+	rpc NiitUserAttemptDetails (TestSendMailReq) returns (UserAttemptDetailsRes) {}
+
+	// Recruitment
+	rpc GetRegion (GetRegionRequest) returns (GetRegionResponse) {}
+	rpc GetTier (GetTierRequest) returns (GetTierResponse) {}
+	rpc GetBehavior (GetBehaviorRequest) returns (GetBehaviorResponse) {}
+	rpc GetMetadata (GetMetadataRequest) returns (GetMetadataResponse) {}
+	rpc GetColleges (GetCollegesRequest) returns (GetCollegesResponse) {}
+	rpc GetSavedSearch (GetSavedSearchRequest) returns (GetSavedSearchResponse) {}
+	rpc GetSearchDetail (GetSearchDetailRequest) returns (GetSearchDetailResponse) {}
+	rpc ViewProfile (ViewProfileRequest) returns (ViewProfileResponse) {}
+	rpc GetGradeSummary (GetGradeSummaryRequest) returns (GetGradeSummaryResponse) {}
+	rpc Save (SaveRequest) returns (SaveResponse) {}
+	rpc Search (SearchRequest) returns (SearchResponse) {}
+	rpc AddFavorite (AddFavoriteRequest) returns (AddFavoriteResponse) {}
+	rpc DeleteById (DeleteByIdRequest) returns (DeleteByIdResponse) {}
+	rpc RemoveFavorite (RemoveFavoriteRequest) returns (RemoveFavoriteResponse) {}
+}
+
+message Empty {};
+
+message IdName {
+	string _id = 1;
+	string name = 2;
+}
+
+message UsersInfo {
+	string name = 1;
+	string userId = 2;
+	string email = 3;
+	Avatar avatar = 4;
+	Country country = 5;
+}
+message User {
+	string _id = 1;
+	string name = 2;
+	repeated string roles = 3;
+	string activeLocation = 4;
+	Country country = 5;
+	repeated string subjects = 6;
+	int32 viewCount = 7;
+	string classroom = 8;
+	Avatar avatar = 9;
+	string provider = 10;
+	string google = 11;
+	string facebook = 12;
+	string userId = 13;
+	UsersInfo userInfo = 14;
+	repeated string locations = 15;
+	repeated string grade = 16;
+}
+message Avatar {
+	string _id = 1;
+	string mimeType = 2;
+	int32 size = 3;
+	string fileUrl = 4;
+	string fileName = 5;
+	string path = 6;
+}
+//Location - start
+message Preferences {
+	message Assessment {
+		bool is_show = 1;
+		bool allow_to_create = 2;
+		bool adaptive = 3;
+		bool proctor = 4;
+		bool live_board = 5;
+		bool evaluation = 6;
+	}
+
+	message TestSeries {
+		bool is_show = 1;
+		bool allow_to_create = 2;
+	}
+
+	message Course {
+		bool is_show = 1;
+		bool allow_to_create = 2;
+	}
+
+	message Roles {
+		bool mentor = 1;
+		bool teacher = 2;
+		bool operator = 3;
+	}
+
+	message Classroom {
+		bool is_show = 1;
+		bool assignment = 2;
+		bool folder = 3;
+	}
+
+	message General {
+		bool edit_profile_subject = 1;
+		bool resume = 2;
+		bool chat = 3;
+		bool notification = 4;
+		bool signup = 5;
+		bool session_management = 6;
+	}
+
+	message Certificate {
+		string name = 1;
+		string template = 2;
+	}
+
+	bool question_bank = 1;
+	bool reports = 2;
+	bool code_editor = 3;
+	Assessment assessment = 4;
+	TestSeries testSeries = 5;
+	Course course = 6;
+	Roles roles = 7;
+	Classroom classroom = 8;
+	General general = 9;
+	Certificate certificate = 10;
+}
+
+message Invitee {
+	string email = 1;
+	bool joined = 2;
+	string invitation_at = 3;
+	string joined_at = 4;
+}
+
+message ClassroomInfo {
+	string _id = 1;
+	string name = 2;
+	bool active = 3;
+	int32 studentCount = 4;
+	int32 teacherCount = 5;
+}
+message LocationRequest {
+	User user = 1;
+	string name = 2;
+	string slugfly = 3;
+	string description = 4;
+	bool active = 5;
+	bool is_default = 6;
+	string code = 7;
+	repeated string programs = 8;
+	repeated string subjects = 9;
+	repeated string specialization = 10;
+	string logo = 11;
+	string image_url = 12;
+	repeated string teachers = 13;
+	Preferences preferences = 14;
+	string cover_image_url = 15;
+	string linked_in = 16;
+	string youtube = 17;
+	string instagram = 18;
+	string facebook = 19;
+	string twitter = 20;
+	string google = 21;
+	repeated Invitee invitees = 22;
+	string last_modified_by = 23;
+	string type = 24;
+	string instancekey = 25;
+}
+
+message LocationResponse {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	bool is_default = 4;
+	string user = 5;
+}
+
+message Location {
+	string _id = 1;
+	string user = 2;
+	string name = 3;
+	string slugfly = 4;
+	string description = 5;
+	bool active = 6;
+	bool is_default = 7;
+	string code = 8;
+	repeated string programs = 9;
+	repeated string subjects = 10;
+	repeated string specialization = 11;
+	string logo = 12;
+	string image_url = 13;
+	repeated string teachers = 14;
+	Preferences preferences = 15;
+	string cover_image_url = 16;
+	string linked_in = 17;
+	string youtube = 18;
+	string instagram = 19;
+	string facebook = 20;
+	string twitter = 21;
+	string google = 22;
+	repeated Invitee invitees = 23;
+	string last_modified_by = 24;
+	string type = 25;
+}
+
+message LocationDto {
+	string _id = 1;
+	bool isDefault = 2;
+	bool active = 3;
+	string updatedAt = 4;
+	repeated ClassroomInfo cls = 5;
+	int32 studentCount = 6;
+	int32 teacherCount = 7;
+	string locationId = 8;
+	string locationName = 9;
+}
+
+message GetLocationResponse {
+	repeated LocationDto response = 1;
+}
+
+message GetOneLocationRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message GetOneLocationResponse {
+	Location response = 1;
+}
+
+message LocationFields{
+	string _id = 1;
+	string name = 2;
+	bool isDefault = 3;
+	string updatedAt = 4;
+	string lastModifiedBy = 5;
+	string userid = 6;
+	string active = 7;
+}
+
+message UpdateLocationRequest {
+	string _id = 1;
+	string name = 2;
+	bool isDefault = 3;
+	string updatedAt = 4;
+	string lastModifiedBy = 5;
+	string userid = 6;
+	string active = 7;
+	string instancekey = 8;
+}
+
+message UpdateLocationResponse {
+	LocationFields response = 1;
+}
+
+message DeleteLocationRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message DeleteLocationResponse {
+	string _id = 1;
+	string name = 2;
+	string code = 3;
+	string type = 4;
+}
+
+message GetUserLocationRequest{
+	string userid = 1;
+	string instancekey = 2;
+}
+message LocationName{
+	string name = 1;
+}
+message GetUserLocationResponse{
+	repeated LocationName response = 1;
+}
+
+message ImportLocationReq{
+	string instancekey = 1;
+	User user = 2;
+	FileMetadata file = 3;
+}
+message ImportLocationRes{
+	string message = 1;
+	int32 code = 2;
+	string error = 3;
+}
+//Location - end
+
+//Program - start
+message ProgramRequest {
+	string name = 1;
+	repeated string subjects = 2;
+	repeated Country countries = 3;
+	string slugfly = 4;
+	string isAllowReuse = 5;
+	string createdBy = 6;
+	string location = 7;
+	string instancekey = 8;
+	User user = 9;
+}
+message LastModifiedBy{
+	string _id = 1;
+	string name = 2;
+}
+message CreatedBy{
+	string _id = 1;
+	string name = 2;
+}
+message Program {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	bool active = 4;
+	repeated Subject subjects = 5;
+	string isAllowReuse = 6;
+	LastModifiedBy lastModifiedBy = 7;
+	CreatedBy createdBy = 8;
+	string uid = 9;
+	repeated Country countries = 10;
+	string location = 11;
+	string updatedAt = 12;
+	string createdAt = 13;
+}
+
+message GetAllProgramRequest {
+	string _id = 1;
+	string name = 2;
+	string includeDeactivated = 3;
+	string country = 4;
+	User user = 5;
+	string instancekey = 6;
+}
+
+message GetAllProgramResponse {
+	message Program {
+		string _id = 1;
+		string name = 2;
+		string slugfly = 3;
+		bool active = 4;
+		repeated IdName subjects = 5;
+		string isAllowReuse = 6;
+		LastModifiedBy lastModifiedBy = 7;
+		CreatedBy createdBy = 8;
+		string uid = 9;
+		repeated Country countries = 10;
+		string location = 11;
+		string updatedAt = 12;
+		string createdAt = 13;
+	}
+	repeated Program response = 1;
+}
+
+message GetProgramResponse {
+	message Program {
+		string _id = 1;
+		string name = 2;
+		string slugfly = 3;
+		bool active = 4;
+		repeated string subjects = 5;
+		string isAllowReuse = 6;
+		LastModifiedBy lastModifiedBy = 7;
+		CreatedBy createdBy = 8;
+		string uid = 9;
+		repeated Country countries = 10;
+		string location = 11;
+		string updatedAt = 12;
+		string createdAt = 13;
+	}
+	repeated Program response = 1;
+}
+
+message GetOneProgramRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message GetOneProgramResponse {
+	Program response = 1;
+}
+
+message UpdateProgramRequest {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	bool active = 4;
+	repeated string subjects = 5;
+	string isAllowReuse = 6;
+	string lastModifiedBy = 7;
+	string createdBy = 8;
+	string uid = 9;
+	repeated Country countries = 10;
+	string location = 11;
+	string instancekey = 12;
+}
+
+message UpdateProgramResponse {
+	Program response = 1;
+}
+
+message DeleteProgramRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message DeleteProgramResponse {
+	string _id = 1;
+	string name = 2;
+}
+message GetInstProgReq {
+	string includeDeactivated = 1;
+	string subject = 2;
+	User user = 3;
+	string instancekey = 4;
+}
+//Program - end
+
+//Setting - start
+message Urls {
+	string facebookUrl = 1;
+	string googleUrl = 2;
+	string twitterUrl = 3;
+	string linkedinUrl = 4;
+	string blog = 5;
+	string forum = 6;
+}
+
+message MobileUrl {
+	string android = 1;
+	string ios = 2;
+}
+
+message Contact {
+	string phoneNumber = 1;
+	string email = 2;
+	string address = 3;
+	string legalName = 4;
+}
+
+message SignupType {
+	bool google = 1;
+	bool facebook = 2;
+	bool local = 3;
+}
+
+message FacebookAuth {
+	string clientID = 1;
+	string clientSecret = 2;
+	string callbackURL = 3;
+}
+
+message GoogleAuth {
+	string clientID = 1;
+	string clientSecret = 2;
+	string callbackURL = 3;
+}
+
+message Features {
+	// feature tabs
+	bool chat = 1;
+	bool hideCodeQuestionOutput = 2;
+	bool examschedules = 3;
+	bool triviaGame = 4;
+	bool classAttendance = 5;
+	bool editProfile = 6;
+	bool liveBoardForTeacher = 7;
+	bool classroomProctoring = 8;
+	bool evaluation = 9;
+	bool partialCodingMark = 10;
+
+	// role Tab
+	bool parent = 11;
+	bool students = 12;
+	bool teacher = 13;
+	bool operators = 14;
+	bool support = 15;
+	bool director = 16;
+
+	// modules tabs
+	bool liveboard = 17;
+	bool course = 18;
+	bool testseries = 19;
+	bool classroom = 20;
+	bool dashboard = 21;
+	bool resume = 22;
+	bool mentors = 23;
+	bool marketplace = 24;
+	bool adaptive = 25;
+
+	// exam & proctor
+	bool faceDetect = 26;
+	bool fraudDetect = 27;
+	bool universityExam = 28;
+	bool whiteboard = 29;
+
+	bool captureAdditionalInfo = 30;
+	bool courseReminder = 31;
+	bool services = 32;
+
+	bool showBanner = 33;
+
+	bool myEffort = 34;
+	bool myOutcome = 35;
+	bool myProfile = 36;
+	bool myEducoins = 37;
+	bool codeEditor = 38;
+	bool ambassadorProgram = 39;
+	bool accountVerification = 40;
+	bool studentLevel = 41;
+
+	// weekly report 
+	bool studentWeeklyReport = 42;
+	bool newInstitute = 43;
+	bool joinInstitute = 44;
+}
+
+message Payment {
+	message CcA {
+		string workingKey = 1;
+		string accessCode = 2;
+		int32 merchantId = 3;
+	}
+	CcA ccA = 1;
+	string redirectUrl = 2;
+	string cancelUrl = 3;
+}
+
+message Roles {
+	bool student = 1;
+	bool teacher = 2;
+	bool director = 3;
+	bool support = 4;
+	bool operator = 5;
+	bool publisher = 6;
+	bool mentor = 7;
+}
+
+message TipOfDay {
+	string imageUrl = 1;
+	string title = 2;
+	string summary = 3;
+	string url = 4;
+}
+
+message Country {
+	string code = 1;
+	string name = 2;
+	string currency = 3;
+	int32 price = 4;
+	int32 marketPlacePrice = 5;
+	int32 discountValue = 6;
+	string _id = 7;
+	bool default = 8;
+}
+
+message PageLogoSocial {
+	string twitter = 1;
+	string facebook = 2;
+}
+
+message PageLogo {
+	string id = 1;
+	string path = 2;
+	string url = 3;
+	string name = 4;
+}
+
+message CurrencyUsEx {
+	float INR = 1;
+	float USD = 2;
+}
+
+message BannerImage {
+	string type = 1;
+	string header = 2;
+	string title = 3;
+	string url = 4;
+	string redirect = 5;
+	string _id = 6;
+}
+
+message IdentityInfo {
+	string identityVerification = 1;
+	string collegeName = 2;
+	string coreBranch = 3;
+	string passingYear = 4;
+	string identificationNumber = 5;
+	string rollNumber = 6;
+	string gender = 7;
+	string dob = 8;
+	string state = 9;
+	string city = 10;
+}
+
+message ResumeTemplate {
+	string displayName = 1;
+	string htmlFile = 2;
+	bool active = 3;
+}
+
+message SettingRequest {
+	string slug = 1;
+	Urls urls = 2;
+	MobileUrl mobileUrl = 3;
+	Contact contact = 4;
+	SignupType signupType = 5;
+	bool eCommerce = 6;
+	string themeColor = 7;
+	string adminName = 8;
+	string emailLogo = 9;
+	string browserIcon = 10;
+	string supportEmail = 11;
+	string productName = 12;
+	string logOutState = 13;
+	string fbAppId = 14;
+	string copyRight = 15;
+	string website = 16;
+	bool isWhiteLabelled = 17;
+	FacebookAuth facebookAuth = 18;
+	GoogleAuth googleAuth = 19;
+	Features features = 20;
+	Roles roles = 21;
+	repeated TipOfDay tipOfDay = 22;
+	string linkedInOrgId = 23;
+	bool publisher = 24;
+	repeated Country countries = 25;
+	map<string, string> value = 26;
+	Payment payment = 27;
+	string mobileVersion = 28;
+	PageLogoSocial pageLogoSocial = 29;
+	PageLogo pageLogo = 30;
+	string currency = 31;
+	string pageTitle = 32;
+	repeated string testimonials = 33;
+	string notification = 34;
+	bool singleSignOn = 35;
+	bool detectFraud = 36;
+	bool allowMarksChange = 37;
+	string updatedAt = 38;
+	CurrencyUsEx currencyUsEx = 39;
+	ProfileDistribution profileDistribution = 40;
+	string contentVisibility = 41;
+	int32 identityMatchThreshold = 42;
+	repeated BannerImage bannerImages = 43;
+	repeated string contentProviders = 44;
+	IdentityInfo identityInfo = 45;
+	string signupMsg = 46;
+	string assessmentInstructions = 47;
+	repeated ResumeTemplate resumeTemplates = 48;
+	int32 ambassadorDiscount = 49;
+	bool useAttemptQueue = 50;
+	string baseUrl = 51;
+	string instancekey = 52;
+}
+
+message Setting {
+	string _id = 1;
+	string slug = 2;
+	Urls urls = 3;
+	MobileUrl mobileUrl = 4;
+	Contact contact = 5;
+	SignupType signupType = 6;
+	bool eCommerce = 7;
+	string themeColor = 8;
+	string adminName = 9;
+	string emailLogo = 10;
+	string browserIcon = 11;
+	string supportEmail = 12;
+	string productName = 13;
+	string logOutState = 14;
+	string fbAppId = 15;
+	string copyRight = 16;
+	string website = 17;
+	bool isWhiteLabelled = 18;
+	FacebookAuth facebookAuth = 19;
+	GoogleAuth googleAuth = 20;
+	Features features = 21;
+	Roles roles = 22;
+	repeated TipOfDay tipOfDay = 23;
+	string linkedInOrgId = 24;
+	bool publisher = 25;
+	repeated Country countries = 26;
+	map<string, string> value = 27;
+	Payment payment = 28;
+	string mobileVersion = 29;
+	PageLogoSocial pageLogoSocial = 30;
+	PageLogo pageLogo = 31;
+	string currency = 32;
+	string pageTitle = 33;
+	repeated string testimonials = 34;
+	string notification = 35;
+	bool singleSignOn = 36;
+	bool detectFraud = 37;
+	bool allowMarksChange = 38;
+	string updatedAt = 39;
+	CurrencyUsEx currencyUsEx = 40;
+	ProfileDistribution profileDistribution = 41;
+	string contentVisibility = 42;
+	int32 identityMatchThreshold = 43;
+	repeated BannerImage bannerImages = 44;
+	repeated string contentProviders = 45;
+	IdentityInfo identityInfo = 46;
+	string signupMsg = 47;
+	string assessmentInstructions = 48;
+	repeated ResumeTemplate resumeTemplates = 49;
+	int32 ambassadorDiscount = 50;
+	bool useAttemptQueue = 51;
+	string name = 52;
+	bool active = 53;
+	string lastModified = 54;
+    bool allowDescriptiveUpload = 55;
+    bool allowGradeChange = 56;
+    bool allowRegistration = 57;
+    string baseUrl = 58;
+    bool captureAdditionalInfo = 59;
+    string category = 60;
+    string chatId = 61;
+    bool controlSession = 62;
+    bool enablePackages = 63;
+    bool endTimeFixed = 64;
+    int32 IdentityMatchThreshold = 65;
+    bool landingTopMenu = 66;
+    bool loginWithRegistration = 67;
+    MailSms mail_sms = 68;
+    string mobileUrlAndroid = 69;
+    string mobileUrlIos = 70;
+    PushNotification pushNotification = 71;
+    string blog = 72;
+    string facebookUrl = 73;
+    string forum = 74;
+    string linkedinUrl = 75;
+    string twitterUrl = 76;
+    bool useAPI = 77;
+    string view = 78;
+    repeated ViewTemplate viewTemplates = 79;
+}
+
+message SettingResponse {
+	Setting response = 1;
+}
+
+message GetSettingResponse {
+	repeated Setting response = 1;
+}
+
+message GetOneSettingRequest {
+	string slug = 1;
+}
+
+message GetOneSettingResponse {
+	Setting response = 1;
+}
+
+message UpdateSettingRequest {
+	string _id = 1;
+	string slug = 2;
+	Urls urls = 3;
+	MobileUrl mobileUrl = 4;
+	Contact contact = 5;
+	SignupType signupType = 6;
+	bool eCommerce = 7;
+	string themeColor = 8;
+	string adminName = 9;
+	string emailLogo = 10;
+	string browserIcon = 11;
+	string supportEmail = 12;
+	string productName = 13;
+	string logOutState = 14;
+	string fbAppId = 15;
+	string copyRight = 16;
+	string website = 17;
+	bool isWhiteLabelled = 18;
+	FacebookAuth facebookAuth = 19;
+	GoogleAuth googleAuth = 20;
+	Features features = 21;
+	Roles roles = 22;
+	repeated TipOfDay tipOfDay = 23;
+	string linkedInOrgId = 24;
+	bool publisher = 25;
+	repeated Country countries = 26;
+	map<string, string> value = 27;
+	Payment payment = 28;
+	string mobileVersion = 29;
+	PageLogoSocial pageLogoSocial = 30;
+	PageLogo pageLogo = 31;
+	string currency = 32;
+	string pageTitle = 33;
+	repeated string testimonials = 34;
+	string notification = 35;
+	bool singleSignOn = 36;
+	bool detectFraud = 37;
+	bool allowMarksChange = 38;
+	string updatedAt = 39;
+	CurrencyUsEx currencyUsEx = 40;
+	ProfileDistribution profileDistribution = 41;
+	string contentVisibility = 42;
+	int32 identityMatchThreshold = 43;
+	repeated BannerImage bannerImages = 44;
+	repeated string contentProviders = 45;
+	IdentityInfo identityInfo = 46;
+	string signupMsg = 47;
+	string assessmentInstructions = 48;
+	repeated ResumeTemplate resumeTemplates = 49;
+	int32 ambassadorDiscount = 50;
+	bool useAttemptQueue = 51;
+}
+
+message UpdateSettingResponse {
+	Setting response = 1;
+}
+
+message AddAdvertismentImageReq {
+	string url = 1;
+	string title = 2;
+}
+
+message AddAdvertismentImageRes {
+	Setting response = 1;
+}
+
+message NotificationTemplates {
+	string _id = 1;
+	bool active = 2;
+}
+
+message GetUpdateRequest {
+	Features features = 1;
+	IdentityInfo identityInfo = 2;
+	Roles roles = 3;
+	string signupMsg = 4;
+	string assessmentInstructions = 5;
+	PageLogo pageLogo = 6;
+	bool detectFraud = 7;
+	bool allowMarksChange = 8;
+	int32 identityMatchThreshold = 9;
+	SignupType signupType = 10;
+	int32 ambassadorDiscount = 11;
+	repeated NotificationTemplates notificationTemplates = 12;
+}
+
+message GetUpdateResponse {
+	Setting id = 1;
+	bool isSuccess = 2;
+}
+
+message DeleteAdvertismentImageReq {
+	string _id = 1;
+}
+
+message DeleteAdvertismentImageRes {
+	Setting response = 1;
+}
+
+message DeleteSettingRequest {
+	string _id = 1;
+}
+
+message DeleteSettingResponse {
+	string _id = 1;
+	string slug = 2;
+}
+
+message FindOneRequest {
+	string slug = 1;
+}
+
+message PassingYear {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message EducationType {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message Board {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message EntranceExamType {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message Certificates {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message CertificateProvider {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+	repeated Certificates certificates = 5;
+}
+
+message TrainingType {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message GroupRange {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message ProgLang {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message ExternalAssessment {
+	string name = 1;
+	bool active = 2;
+	string lastModified = 3;
+}
+
+message FindOne {
+	string _id = 1;
+	string slug = 2;
+	Urls urls = 3;
+	MobileUrl mobileUrl = 4;
+	Contact contact = 5;
+	SignupType signupType = 6;
+	bool eCommerce = 7;
+	string themeColor = 8;
+	string adminName = 9;
+	string emailLogo = 10;
+	string browserIcon = 11;
+	string supportEmail = 12;
+	string productName = 13;
+	string logOutState = 14;
+	string fbAppId = 15;
+	string copyRight = 16;
+	string website = 17;
+	bool isWhiteLabelled = 18;
+	FacebookAuth facebookAuth = 19;
+	GoogleAuth googleAuth = 20;
+	Features features = 21;
+	Roles roles = 22;
+	repeated TipOfDay tipOfDay = 23;
+	string linkedInOrgId = 24;
+	bool publisher = 25;
+	repeated Country countries = 26;
+	map<string, string> value = 27;
+	Payment payment = 28;
+	string mobileVersion = 29;
+	PageLogoSocial pageLogoSocial = 30;
+	PageLogo pageLogo = 31;
+	string currency = 32;
+	string pageTitle = 33;
+	repeated string testimonials = 34;
+	string notification = 35;
+	bool singleSignOn = 36;
+	bool detectFraud = 37;
+	bool allowMarksChange = 38;
+	string updatedAt = 39;
+	CurrencyUsEx currencyUsEx = 40;
+	ProfileDistribution profileDistribution = 41;
+	string contentVisibility = 42;
+	int32 identityMatchThreshold = 43;
+	repeated BannerImage bannerImages = 44;
+	repeated string contentProviders = 45;
+	IdentityInfo identityInfo = 46;
+	string signupMsg = 47;
+	string assessmentInstructions = 48;
+	repeated ResumeTemplate resumeTemplates = 49;
+	int32 ambassadorDiscount = 50;
+	bool useAttemptQueue = 51;
+	string name = 52;
+	bool active = 53;
+	string lastModified = 54;
+    bool allowDescriptiveUpload = 55;
+    bool allowGradeChange = 56;
+    bool allowRegistration = 57;
+    string baseUrl = 58;
+    bool captureAdditionalInfo = 59;
+    string category = 60;
+    string chatId = 61;
+    bool controlSession = 62;
+    bool enablePackages = 63;
+    bool endTimeFixed = 64;
+    int32 IdentityMatchThreshold = 65;
+    bool landingTopMenu = 66;
+    bool loginWithRegistration = 67;
+    MailSms mail_sms = 68;
+    string mobileUrlAndroid = 69;
+    string mobileUrlIos = 70;
+    PushNotification pushNotification = 71;
+    string blog = 72;
+    string facebookUrl = 73;
+    string forum = 74;
+    string linkedinUrl = 75;
+    string twitterUrl = 76;
+    bool useAPI = 77;
+    string view = 78;
+    repeated ViewTemplate viewTemplates = 79;
+	repeated PassingYear passingYear = 80;
+	repeated EducationType educationType = 81;
+	repeated Board board = 82;
+	repeated EntranceExamType entranceExamType = 83;
+	repeated CertificateProvider certificateProvider = 84;
+	repeated TrainingType trainingType = 85;
+	repeated GroupRange groupRange = 86;
+	repeated ProgLang progLang = 87;
+	repeated ExternalAssessment externalAssessment = 88;
+	int32 target_count = 89;
+	int32 pause_interval = 90;
+	repeated int32 slot_weights = 91;
+	repeated Turn turns = 92;
+	bool useSocket = 93;
+	repeated Provider providers = 94;
+	string header = 95;
+	string footer = 96;
+	string image_dir = 97;
+	repeated EmailConfig email = 100;
+	repeated SmsConfig sms = 101;
+	AvailableFeatures availableFeatures = 102;
+	map<string, double> pairs = 103;
+
+	message EmailConfig {
+		string id = 1;
+		string service = 2;
+		bool active = 3;
+		string from = 4;
+		Config config = 5;
+
+		message Config {
+			string host = 1;
+			int32 port = 2;
+			bool secure = 3;
+			Auth auth = 4;
+			Tls tls = 5;
+			string API = 6;
+			string Url = 7;
+			string key = 8;
+
+			message Auth {
+				string user = 1;
+				string pass = 2;
+			}
+
+			message Tls {
+				bool rejectUnauthorized = 1;
+			}
+		}
+	}
+
+	message SmsConfig {
+		string id = 1;
+		string service = 2;
+		bool active = 3;
+		SmsConfigDetails config = 4;
+
+		message SmsConfigDetails {
+			string AUTH_ID = 1;
+			string AUTH_TOKEN = 2;
+			string NUMBER = 3;
+		}
+	}
+
+	message AvailableFeatures {
+		bool payment = 1;
+		bool certification = 2;
+		bool weekly_report = 3;
+		bool level_deadline = 4;
+		bool student_not_attempt = 5;
+		bool student_not_login = 6;
+		bool descriptive_attempt = 7;
+		bool level_changed = 8;
+		bool test_evaluation = 9;
+		bool upload_student = 10;
+		bool upload_user = 11;
+		bool sms_payment = 12;
+		bool share_link = 13;
+		bool test_email = 14;
+		bool host_rate = 15;
+		bool contact = 16;
+		bool question_feedback = 17;
+		bool student_explanation = 18;
+		bool publish_practice = 19;
+		bool invite_test = 20;
+		bool share_practice = 21;
+		bool fail_upload_test = 22;
+		bool attendance = 23;
+		bool update_answer = 24;
+		bool activate_account = 25;
+		bool confirm_email = 26;
+		bool recover_pass = 27;
+		bool change_pass = 28;
+		bool admin_update_user = 29;
+		bool sms = 30;
+		bool new_attempt = 31;
+		bool classroom = 32;
+		bool mentor = 33;
+		bool attempt_submitted = 34;
+	}
+}
+
+message Provider {
+  string name = 1;
+  bool active = 2;
+  repeated string countries = 3;
+}
+
+message Turn {
+  string server = 1;
+  string secret = 2;
+  bool active = 3;
+}
+
+message FindOneResponse {
+	FindOne response = 1;
+}
+
+message GetCurrentDateTimeRes {
+	string response = 1;
+}
+
+message GetCodeEngineAddressRes {
+	string url = 1;
+}
+
+message GetWhiteLabelReq {
+	string instancekey = 1;
+}
+
+message GetWhiteLabelRes {
+	Setting response = 1;
+}
+
+message GetFindAllReq {
+	string slugs = 1;
+}
+
+message GetFindAllRes {
+	Setting response = 1;
+}
+
+message GetPaymentMethodsReq {
+	Country country = 1;
+	string instancekey = 2;
+}
+
+message PaymentMethods {
+	string name = 1;
+	bool isSandbox = 2;
+	string id = 3;
+	string keyId = 4;
+}
+
+message GetPaymentMethodsRes {
+	repeated PaymentMethods methods = 1;
+	string currency = 2;
+}
+
+message Dbs {
+	string name = 1;
+	string origin = 2;
+	string instancekey = 3;
+	string domain = 4;
+	string assests = 5;
+}
+
+message UserAssets{
+	string bucket= 1;
+	string accessKeyId=2;
+	string secretAccessKey=3;
+	string baseFilePath= 4;
+}
+message FaceReg{
+	string bucket= 1;
+	string accessKeyId=2;
+	string secretAccessKey=3;
+	string baseFilePath= 4;
+}
+message S3{
+	UserAssets userAssets= 1;
+	FaceReg faceReg=2;
+}
+
+message AWS {
+	string region = 1;
+	S3 s3 = 2;
+}
+
+message GetAllInstancesRes {
+	repeated Dbs response = 1;
+}
+
+message GetWebConfigRes {
+	AWS aws = 1;
+	repeated Dbs sites = 2;
+}
+
+message ShowRes {
+    string copyRight = 1;
+    bool captureAdditionalInfo = 2;
+    string themeColor = 3;
+    string emailLogo = 4;
+    string chatId = 5;
+    string browserIcon = 6;
+    string supportEmail = 7;
+    string productName = 8;
+    string logOutState = 9;
+    bool useAPI = 10;
+    string fbAppId = 11;
+    repeated Country countries = 12;
+    Features features = 13;
+    bool singleSignOn = 14;
+    bool detectFraud = 15;
+    string view = 16;
+    MobileUrl mobileUrl = 17;
+    SignupType signupType = 18;
+    Contact contact = 19;
+    Urls urls = 20;
+    bool isWhiteLabelled = 21;
+    bool allowGradeChange = 22;
+    bool allowRegistration = 23;
+    string currency = 24;
+    PageLogoSocial pageLogoSocial = 25;
+    PageLogo pageLogo = 26;
+    string pageTitle = 27;
+    CurrencyUsEx currencyUsEx = 28;
+    repeated ContentProvider contentProviders = 29;
+    string baseUrl = 30;
+    bool enablePackages = 31;
+    repeated BannerImage bannerImages = 32;
+    repeated Testimonial testimonials = 33;
+    string notification = 34;
+    string mobileVersion = 35;
+    string adminName = 36;
+    string category = 37;
+    MailSms mailSms = 38;
+    PushNotification pushNotification = 39;
+    ProfileDistribution profileDistribution = 40;
+    string contentVisibility = 41;
+    bool allowMarksChange = 42;
+    bool controlSession = 43;
+    int32 IdentityMatchThreshold = 44;
+    IdentityInfo identityInfo = 45;
+    Landing landing = 46;
+    bool endTimeFixed = 47;
+    bool loginWithRegistration = 48;
+    Roles roles = 49;
+    string assessmentInstructions = 50;
+    string signupMsg = 51;
+    repeated TipOfDay tipOfDay = 52;
+    string linkedInOrgId = 53;
+    int32 ambassadorDiscount = 54;
+    bool useAttemptQueue = 55;
+    repeated ViewTemplate viewTemplates = 56;
+    bool allowDescriptiveUpload = 57;
+    string updatedAt = 58;
+    repeated SsoConfig ssoConfig = 59;
+}
+
+message ContentProvider {
+}
+
+message Testimonial {
+}
+
+message MailSms {
+    repeated Mail mail = 1;
+    repeated Sms sms = 2;
+    bool enabled = 3;
+    AvailableFeatures availableFeatures = 4;
+}
+
+message Mail {
+    string _id = 1;
+    string service = 2;
+    bool active = 3;
+    MailConfig config = 4;
+    string from = 5;
+}
+
+message MailConfig {
+    string host = 1;
+    int32 port = 2;
+    bool secure = 3;
+    Auth auth = 4;
+    Tls tls = 5;
+	string API = 6;
+	string Url = 7;
+	string key = 8;
+}
+
+message Auth {
+    string user = 1;
+    string pass = 2;
+}
+
+message Tls {
+    bool rejectUnauthorized = 1;
+}
+
+message Sms {
+    string _id = 1;
+    string service = 2;
+    bool active = 3;
+    SmsConfig config = 4;
+}
+
+message SmsConfig {
+    string AUTH_ID = 1;
+    string AUTH_TOKEN = 2;
+    string NUMBER = 3;
+}
+
+message AvailableFeatures {
+    bool payment = 1;
+    bool certification = 2;
+    bool weeklyReport = 3;
+    bool levelDeadline = 4;
+    bool studentNotAttempt = 5;
+    bool studentNotLogin = 6;
+    bool descriptiveAttempt = 7;
+    bool levelChanged = 8;
+    bool testEvaluation = 9;
+    bool uploadStudent = 10;
+    bool uploadUser = 11;
+    bool smsPayment = 12;
+    bool shareLink = 13;
+    bool testEmail = 14;
+    bool hostRate = 15;
+    bool contact = 16;
+    bool questionFeedback = 17;
+    bool studentExplanation = 18;
+    bool publishPractice = 19;
+    bool inviteTest = 20;
+    bool sharePractice = 21;
+    bool failUploadTest = 22;
+    bool attendance = 23;
+    bool updateAnswer = 24;
+    bool activateAccount = 25;
+    bool confirmEmail = 26;
+    bool recoverPass = 27;
+    bool changePass = 28;
+    bool adminUpdateUser = 29;
+    bool sms = 30;
+    bool newAttempt = 31;
+    bool classroom = 32;
+    bool mentor = 33;
+    bool attemptSubmitted = 34;
+}
+
+message PushNotification {
+    bool chat = 1;
+}
+
+message ProfileDistribution {
+    int32 basicProfile = 1;
+    int32 industryCertificates = 2;
+    int32 trainingCertifications = 3;
+    int32 educationDetails = 4;
+    int32 entranceExam = 5;
+    int32 interestedSubject = 6;
+    int32 longTermGoal = 7;
+    int32 shortTermGoal = 8;
+    int32 programmingLang = 9;
+    int32 externalAssessment = 10;
+    int32 academicProjects = 11;
+    int32 awardsAndRecognition = 12;
+    int32 extraCurricularActivities = 13;
+}
+
+message Landing {
+    bool topMenu = 1;
+}
+
+message AssessmentInstructions {
+}
+
+message ViewTemplate {
+    string name = 1;
+    bool active = 2;
+    bool default = 3;
+}
+
+message SsoConfig {
+    string clientID = 1;
+    string clientSecret = 2;
+}
+
+message GetDeploymentStatusRes {
+	string status = 1;
+}
+
+message GetCountryByIpReq {
+	string instancekey = 1;
+	string ip = 2;
+}
+
+message GetCountryByIpRes {
+	string code = 1;
+	string name = 2;
+}
+
+message Socket {
+	bool active = 1;
+}
+
+message Webrtc {
+	bool active = 1;
+}
+
+message Turns {
+	string server = 1;
+	string secret = 2;
+	bool active = 3;
+}
+
+message VideoStream {
+	string _id = 1;
+	string slug = 2;
+	Socket socket = 3;
+	Webrtc webrtc = 4;
+	repeated Turns turns = 5;
+}
+
+message GetVideoStreamingReq {
+	string instancekey = 1;
+}
+
+message GetVideoStreamingRes {
+	VideoStream response = 1;
+}
+
+
+message GetConvertCurrencyReq {
+	string to = 1;
+	string from = 2;
+	string instancekey = 3;
+	User user = 4;
+}
+
+message GetConvertCurrencyRes {
+	string code = 1;
+	double rate = 2;
+}
+//Setting - end
+
+//Subject - start
+message Level {
+	string name = 1;
+	double value = 2;
+	int32 quantity = 3;
+	int32 quality = 4;
+}
+message SubjectRequest {
+	string code = 1;
+	string name = 2;
+	string slugfly = 3;
+	repeated string programs = 4;
+	string location = 5;
+	string instancekey = 6;
+	User user = 7;
+}
+message Subject {
+	string _id = 1;
+	string code = 2;
+	string name = 3;
+	string createdAt = 4;
+	string updatedAt = 5;
+	string slugfly = 6;
+	bool active = 7;
+	repeated Program programs = 8;
+	repeated Unit units = 9;
+	string isAllowReuse = 10;
+	string lastModifiedBy = 11;
+	string createdBy = 12;
+	string uid = 13;
+	bool synced = 14;
+	repeated string tags = 15;
+	repeated Level levels = 16;
+	string location = 17;
+	string subjectName = 18;
+	int32 unitCount = 19;
+	int32 topicCount = 20;
+	int32 questionCount = 21;
+}
+
+message CreateSubjectResponse {
+	string _id = 1;
+	string code = 2;
+	string name = 3;
+	string createdAt = 4;
+	string updatedAt = 5;
+	string slugfly = 6;
+	bool active = 7;
+	repeated string programs = 8;
+	repeated string units = 9;
+	string isAllowReuse = 10;
+	string lastModifiedBy = 11;
+	string createdBy = 12;
+	string uid = 13;
+	bool synced = 14;
+	repeated string tags = 15;
+	repeated Level levels = 16;
+	string location = 17;
+	string subjectName = 18;
+	int32 unitCount = 19;
+	int32 topicCount = 20;
+	int32 questionCount = 21;
+}
+
+message GetAllSubjectQuery {
+	bool unit = 1;
+}
+
+message GetAllSubjectRequest {
+	string _id = 1;
+	User user = 2;
+	string instancekey = 3;
+	GetAllSubjectQuery query = 4;
+}
+
+message GetSubjectResponse {
+	message Unit {
+		string _id = 1;
+		string name = 2;
+		repeated Topic topics = 3;
+	}
+	message Subject {
+		string _id = 1;
+		bool active = 2;
+		string updatedAt = 3;
+		string subjectName = 4;
+		int32 unitCount = 5;
+		int32 topicCount = 6;
+		repeated string programs = 7;
+		int32 questionCount = 8;
+		string name = 9;
+		repeated Unit units = 10;
+	}
+	repeated Subject response = 1;
+}
+
+message GetOneSubjectRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message GetOneSubjectResponse {
+	string _id = 1;
+	string slugfly = 2;
+	string grade = 3;
+	string name = 4;
+	string updatedAt = 5;
+	string createdAt = 6;
+	bool active = 7;
+	int32 __v = 8;
+	repeated Level levels = 9;
+	string uid = 10;
+	bool synced = 11;
+	bool adaptive = 12;
+	bool isDefault = 13;
+	repeated string programs = 14;
+	repeated string units = 15;
+	string code = 16;
+	repeated string tags = 17;
+	string isAllowReuse = 18;
+	string lastModifiedBy = 19;
+}
+
+message UpdateSubjectRequest {
+	string _id = 1;
+	string name = 2;
+	string updatedAt = 3;
+	string slugfly = 4;
+	repeated string programs = 5;
+	string lastModifiedBy = 6;
+	repeated string tags = 7;
+	string instancekey = 8;
+	User user = 9;
+}
+
+message UpdateSubjectResponse {
+	Subject response = 1;
+}
+
+message DeleteSubjectRequest {
+	string _id = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+
+message DeleteSubjectResponse {
+	string _id = 1;
+	string name = 2;
+}
+
+message GetMySubjectsRequest {
+	string queryUser = 1;
+	string unit = 2;
+	string topic = 3;
+	User user = 4;
+	string instancekey = 5;
+}
+message GetSubjectBySlugReq {
+	string subjectName = 1;
+	string program = 2;
+	string instancekey = 3;
+}
+
+message GetTeachersBySubjectsReq {
+	User user = 1;
+	string instancekey = 2;
+}
+
+message GetTeachersBySubjects {
+	string _id = 1;
+	string name = 2;
+}
+
+message GetTeachersBySubjectsRes {
+  repeated GetTeachersBySubjects response = 1;
+}
+
+message UpdateSubStatusReq {
+	string _id = 1;
+	string isAllowReuse = 2;
+	bool active = 3;
+	string instancekey = 4;
+	User user = 5;
+}
+
+message GetUnitsBySubReq {
+	string _id = 1;
+	string subjects = 2;
+	string instancekey = 3;
+}
+
+message UnitsBySub{
+	string _id = 1;
+	string name = 2;
+	repeated Unit units = 3;
+}
+message GetUnitsBySubRes {
+	repeated UnitsBySub response = 1;
+}
+
+message GetTopicsByUnitReq {
+	string _id = 1;
+	string units = 2;
+	string instancekey = 3;
+}
+
+message TopicsByUnit{
+	string _id = 1;
+	string name = 2;
+	repeated Topic topics = 3;
+}
+message GetTopicsByUnitRes {
+	repeated TopicsByUnit response = 1;
+}
+message GetInstSubReq {
+	string activeOnly = 1;
+	int32 page = 2;
+	int32 limit = 3;
+	string searchText = 4;
+	string instancekey = 5;
+	User user = 6;
+}
+message GetPubSubReq {
+	int32 page = 1;
+	int32 limit = 2;
+	string searchText = 3;
+	string instancekey = 4;
+	User user = 5;
+}
+
+message PubSub {
+	string _id = 1;
+	string updatedAt = 2;
+	bool active = 3;
+	repeated string programs = 4;
+	string subjectName = 5;
+	int32 unitCount = 6;
+	int32 topicCount = 7;
+	int32 questionCount = 8;
+}
+
+message GetPubSubRes {
+	repeated PubSub response = 1;
+}
+
+message GetSubByTestReq {
+	string testId = 1;
+	string testDetails = 2;
+	string instancekey = 4;
+	User user = 5;
+}
+
+// For Test used in GetSubByTestRes - start
+message DemographicData {
+	bool city = 1;
+	bool state = 2;
+	bool dob = 3;
+	bool gender = 4;
+	bool rollNumber = 5;
+	bool identificationNumber = 6;
+	bool passingYear = 7;
+	bool coreBranch = 8;
+	bool collegeName = 9;
+	bool identityVerification = 10;
+	FieldEntry field1 = 11;
+	FieldEntry field2 = 12;
+}
+message FieldEntry {
+	string label = 1;
+	bool value = 2;
+}
+message UserInfo {
+	string _id = 1;
+	string name = 2;
+}
+message RandomTestDetails {
+	string topic = 1;
+	int32 questions = 2;
+	int32 quesMarks = 3;
+}
+message BuyerEntry {
+	string item = 1;
+	string user = 2;
+}
+message QuestionEntry {
+	string question = 1;
+	string section = 2;
+	int32 minusMark = 3;
+	int32 plusMark = 4;
+	string createdAt = 5;
+	int32 order = 6;
+}
+message SectionEntry {
+	string name = 1;
+	int32 time = 2;
+	bool showCalculator = 3;
+	int32 optionalQuestions = 4;
+}
+message Test {
+	string _id = 1;
+	string user = 2;
+	string lastModifiedBy = 3;
+	string lastModifiedDate = 4;
+	bool active = 5;
+	UserInfo userInfo = 6;
+	repeated Unit units = 7;
+	repeated Subject subjects = 8;
+	int32 level = 9;
+	string testMode = 10;
+	string accessMode = 11;
+	repeated Country countries = 12;
+	string title = 13;
+	string titleLower = 14;
+	repeated string courses = 15;
+	repeated string testseries = 16;
+	repeated string tags = 17;
+	DemographicData demographicData = 18;
+	string description = 19;
+	repeated string inviteeEmails = 20;
+	repeated string inviteePhones = 21;
+	repeated string classRooms = 22;
+	repeated string studentEmails = 23;
+	string instructions = 24;
+	bool isMarksLevel = 25;
+	bool enableMarks = 26;
+	bool randomQuestions = 27;
+	bool randomizeAnswerOptions = 28;
+	bool sectionJump = 29;
+	bool sectionTimeLimit = 30;
+	int32 minusMark = 31;
+	int32 plusMark = 32;
+	string notes = 33;
+	int32 attemptAllowed = 34;
+	string status = 35;
+	string statusChangedAt = 36;
+	string expiresOn = 37;
+	string startDate = 38;
+	int32 startTimeAllowance = 39;
+	bool requireAttendance = 40;
+	int32 totalJoinedStudent = 41;
+	string createdAt = 42;
+	string updatedAt = 43;
+	int32 rating = 44;
+	int32 totalQuestion = 45;
+	int32 questionsToDisplay = 46;
+	bool isPartnerExam = 47;
+	int32 totalTime = 48;
+	int32 questionsPerTopic = 49;
+	int32 totalAttempt = 50;
+	bool isShowResult = 51;
+	bool allowTeacher = 52;
+	repeated string locations = 53;
+	bool allowStudent = 54;
+	bool isShowAttempt = 55;
+	string createMode = 56;
+	string testCode = 57;
+	string dirPath = 58;
+	bool isAdaptive = 59;
+	string adaptiveTest = 60;
+	repeated RandomTestDetails randomTestDetails = 61;
+	bool showCalculator = 62;
+	bool showFeedback = 63;
+	bool peerVisibility = 64;
+	string initiator = 65;
+	string testType = 66;
+	repeated QuestionEntry questions = 67;
+	repeated SectionEntry sections = 68;
+	repeated string enabledCodeLang = 69;
+	bool enableSection = 70;
+	bool camera = 71;
+	bool fraudDetect = 72;
+	bool pinTop = 73;
+	bool autoEvaluation = 74;
+	bool fullLength = 75;
+	string imageUrl = 76;
+	int32 offscreenLimit = 77;
+	repeated BuyerEntry buyers = 78;
+	repeated string instructors = 79;
+	bool randomSection = 80;
+	string uid = 81;
+	bool synced = 82;
+	string owner = 83;
+	string origin = 84;
+}
+// For Test used in GetSubByTestRes - end
+message GetSubByTestRes {
+	Test test = 1;
+	repeated Subject subjects = 2;
+}
+message Query {
+	int32 value = 1;
+	string grade = 2;
+	int32 day = 3;
+	string classroom = 4;
+	string locations = 5;
+	int32 limit = 6;
+	int32 skip = 7;
+	bool count = 8;
+	string language = 9;
+	string search = 10;
+}
+message GetAttemptTrendByGradeReq {
+	Query query = 1;
+	string instancekey = 2;
+}
+message GetAttemptTrendByGradeRes {
+	message AttemptTrendData {
+		AttemptTrendDate _id = 1;
+		int32 count = 2;
+	}
+	message AttemptTrendDate {
+		int32 year = 1;
+		int32 month = 2;
+		int32 day = 3;
+	}
+	repeated AttemptTrendData response = 1;
+}
+
+message AttemptTrendReq {
+	Query query = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+message AttemptTrendRes {
+	message AttemptTrendDate {
+		string date = 1;
+	}
+	message AttemptTrendData {
+		int32 count = 1;
+		AttemptTrendDate createdAt = 2;
+	}
+	repeated AttemptTrendData response = 1;
+}
+message SignUpTrendRes {
+	message SignUpTrendData {
+		int32 count = 1;
+		SignUpTrendDate createdAt = 2;
+	}
+	message SignUpTrendDate {
+		string date = 1;
+	}
+	repeated SignUpTrendData  response = 1;
+}
+message QuestionAddedTrendRes {
+	message TrendDate {
+		string date = 1;
+	}
+	message Trend {
+		int32 count = 1;
+		TrendDate createdAt = 2;
+	}
+	repeated Trend trend = 1;
+}
+message HighestAttemptedStudentRes {
+	message StudentAttempt {
+		int32 count = 1;
+		string studentName = 2;
+	}
+	repeated StudentAttempt response = 1;
+}
+message MostAbandonedTestRes {
+	message MostAbandonedTest {
+		int32 count = 1;
+		string title = 2;
+	}
+	repeated MostAbandonedTest response = 1;
+}
+//Subject - end
+
+//Topic - start
+message TopicRequest {
+	string name = 1;
+	string slugfly = 2;
+	string unit = 3;
+	string isAllowReuse = 4;
+	string lastModifiedBy = 5;
+	string createdBy = 6;
+	repeated string tags = 7;
+	string instancekey = 8;
+	User user = 9;
+}
+
+message Topic {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	string unit = 4;
+	bool active = 5;
+	string uid = 6;
+	bool synced = 7;
+	string isAllowReuse = 8;
+	string lastModifiedBy = 9;
+	string createdBy = 10;
+	repeated string tags = 11;
+	string topicName = 12;
+	string updatedAt = 13;
+	int32 questionCount = 14;
+}
+
+message GetAllTopicRequest {
+	string id = 1;
+	string units = 2;
+	string active = 3;
+	string instancekey = 4;
+}
+
+message GetTopicResponse {
+	repeated Topic response = 1;
+}
+
+message GetOneTopicRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message GetOneTopicResponse {
+	Topic response = 1;
+}
+
+message UpdateTopicRequest {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	string unit = 4;
+	bool active = 5;
+	string uid = 6;
+	bool synced = 7;
+	string isAllowReuse = 8;
+	string lastModifiedBy = 9;
+	string createdBy = 10;
+	repeated string tags = 11;
+	string instancekey = 12;
+	User user = 13;
+}
+
+message UpdateTopicStatusRequest {
+	string _id = 1;
+	bool active = 2;
+	string lastModifiedBy = 3;
+	string instancekey = 4;
+	User user = 5;
+}
+
+message UpdateTopicResponse {
+	Topic response = 1;
+}
+
+message DeleteTopicRequest {
+	string _id = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+
+message DeleteTopicResponse {
+	string _id = 1;
+	string name = 2;
+	bool active = 3;
+}
+message GetTopicBySlugRequest {
+	string slug = 1;
+	string unit = 4;
+	string instancekey = 5;
+}
+message GetTopicByUnitRequest {
+	string unitId = 1;
+	int32 page = 2;
+	int32 limit = 3;
+	string searchText = 4;
+	string instancekey = 5;
+}
+//Topic - end
+
+//Unit - start
+message UnitRequest {
+	string name = 1;
+	string slugfly = 2;
+	string subject = 3;
+	string code = 4;
+	string isAllowReuse = 5;
+	string lastModifiedBy = 6;
+	string createdBy = 7;
+	repeated string tags = 8;
+	string instancekey = 9;
+	User user = 10;
+}
+
+message Unit {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	bool active = 4;
+	string subject = 5;
+	repeated Topic topics = 6;
+	string code = 7;
+	string isAllowReuse = 8;
+	string uid = 9;
+	string lastModifiedBy = 10;
+	string createdBy = 11;
+	bool synced = 12;
+	repeated string tags = 13;
+	string updatedAt = 14;
+	string unitName = 15;
+	int32 topicsCount = 16;
+	int32 questionCount = 17;
+}
+
+message GetAllUnitRequest {
+	string id = 1;
+	string topics = 2;
+	string active = 3;
+	string instancekey = 4;
+}
+
+message GetUnitResponse {
+	repeated Unit response = 1;
+}
+
+message GetOneUnitRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message GetOneUnitResponse {
+	Unit response = 1;
+}
+
+message UpdateUnitRequest {
+	string _id = 1;
+	string name = 2;
+	string slugfly = 3;
+	bool active = 4;
+	string subject = 5;
+	repeated string topics = 6;
+	string code = 7;
+	string isAllowReuse = 8;
+	string uid = 9;
+	string lastModifiedBy = 10;
+	string createdBy = 11;
+	bool synced = 12;
+	repeated string tags = 13;
+	string instancekey = 14;
+	User user = 15;
+}
+
+message UpdateUnitStatusRequest {
+	string _id = 1;
+	bool active = 2;
+	string lastModifiedBy = 3;
+	string instancekey = 4;
+	User user = 5;
+}
+
+message UpdateUnitResponse {
+	Unit response = 1;
+}
+
+message DeleteUnitRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message DeleteUnitResponse {
+	string _id = 1;
+	string name = 2;
+}
+
+message GetUnitsBySubjectRequest {
+	string subject = 1;
+	int32 page = 2;
+	int32 limit = 3;
+	string searchText = 4;
+	string instancekey = 5;
+}
+//Unit - end
+
+//Country - start
+message FindAllStatesReq {
+	string countryCode = 1;
+}
+message GetStateReq {
+	string code = 1;
+}
+message GetStateRes {
+	repeated string response = 1;
+}
+message GetInfoReq {
+	string code = 1;
+	string iso = 2;
+}
+
+message Properties {
+	string name = 1;
+}
+message Coordinate {
+    repeated double values = 1;
+}
+message Geometry {
+	string type = 1;
+	repeated double coordinates = 2;
+}
+message GeoJSONGeometry {
+	string type = 1;
+    repeated Features features = 2; 
+	message Features {
+		string type = 1;
+		string id = 2;
+		Properties properties = 3;
+		Geometry geometry = 4;
+	}
+}
+message ISO {
+    string two_letter = 1;
+    string three_letter = 2;
+    string alpha2 = 3;
+    string alpha3 = 4;
+}
+message Translations {
+    string de = 1;
+    string es = 2;
+    string fr = 3;
+    string ja = 4;
+    string it = 5;
+}
+message GetInfoRes {
+    string name = 1;
+    repeated string alt_spellings = 2;
+    double area = 3;
+    repeated string borders = 4;
+    repeated string calling_codes = 5;
+    string capital = 6;
+    repeated string currencies = 7;
+    string demonym = 8;
+    string flag = 9;
+    GeoJSONGeometry geoJSON = 10;
+    ISO iso = 11;
+    repeated string languages = 12;
+    repeated double latlng = 13;
+    string native_name = 14;
+    int64 population = 15;
+    repeated string provinces = 16;
+    string region = 17;
+    string subregion = 18;
+    repeated string timezones = 19;
+    repeated string tld = 20;
+    Translations translations = 21;
+    string wiki = 22;
+}
+message FindSupportRes {
+	repeated Country response = 1;
+}
+//Country - end
+
+//Content - start
+message FileMetadata {
+	string fieldname = 1;
+	string originalname = 2;
+	string encoding = 3;
+	string mimetype = 4;
+	bytes buffer = 5;
+	int32 size = 6;
+}
+message ContentRequest {
+	FileMetadata file = 1;
+	string title = 2;
+	string url = 3;
+	string summary = 4;
+	string contentType = 5;
+	string filePath = 6;
+	repeated string tags = 7;
+	string imageUrl = 8;
+	User user = 9;
+	string instancekey = 10;
+}
+
+message Viewership {
+	string user = 1;
+	string viewDate = 2;
+}
+message Feedbacks {
+	string user = 1;
+	int32 rating = 2;
+	string comment = 3;
+	string createdAt = 4;
+	string updatedAt = 5;
+	string _id = 6;
+}
+
+message UserData {
+	string _id = 1;
+	string name = 2;
+}
+
+message Content {
+	string _id = 1;
+	string title = 2;
+	string url = 3;
+	string summary = 4;
+	string contentType = 5;
+	repeated string tags = 6;
+	string imageUrl = 7;
+	int32 viewed = 8;
+	float avgRating = 9;
+	string location = 10;
+	repeated Viewership viewership = 11;
+	repeated Feedbacks feedbacks = 12;
+	string createdAt = 13;
+	string updatedAt = 14;
+	string message = 15;
+	string filePath = 16;
+	UserData user = 17;
+	string code = 18;
+	string uid = 19;
+}
+
+message GetAllContentReq {
+	string title = 1;
+	string type = 2;
+	int32 page = 3;
+	int32 limit = 4;
+	User user = 5;
+	string instancekey = 6;
+}
+message GetAllContentRes {
+	repeated Content response = 1;
+	int32 count = 2;
+}
+message CountContentRes {
+	int32 count = 1;
+}
+message GetContentByIdRequest {
+	string _id = 1;
+	string instancekey = 2;
+}
+
+message GetContentByIdResponse {
+	Content response = 1;
+}
+message UpdateContentRequest {
+	string _id = 1;
+	string title = 2;
+	string summary = 3;
+	repeated string tags = 4;
+	string instancekey = 5;
+}
+message GetContentByCodeReq {
+	string code = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+
+message ExportViewerRes {
+	repeated User response = 1;
+}
+
+message getContentsTaggedWithTopicReq {
+	string topicId = 1;
+	string contentType = 2;
+	string includeCount = 3;
+	int32 page = 4;
+	int32 limit = 5;
+	User user = 6;
+	string instancekey = 7;
+}
+message FindSubjectUnitAndTopicsReq {
+	bool accreditationEnabled = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+message SubUnitTopic {
+	string _id = 1;
+	string name = 2;
+	repeated Unit units = 3;
+	bool adaptive = 4;
+}
+message FindSubjectUnitAndTopicsRes {
+	repeated SubUnitTopic response = 1;
+}
+message UpdateContentCountReq {
+	string _id = 1;
+	string feedback = 2;
+	string rating = 3;
+	int32 viewCount = 4;
+	User user = 5;
+	string instancekey = 6;
+}
+//Content - end
+
+//File - start
+message FileRequest {
+	FileMetadata file = 1;
+	string uploadType = 2;
+	User user = 3;
+	string instancekey = 4;
+}
+message File {
+	string _id = 1;
+	string type = 2;
+	string ownerId = 3;
+	string path = 4;
+	string fileName = 5;
+	string mimeType = 6;
+	int32 size = 7;
+	string fileUrl = 8;
+	string message = 9;
+	string filePath = 10;
+}
+message DiscussionUploadReq {
+	FileMetadata file = 1;
+	string type = 2;
+	int32 CKEditorFuncNum = 3;
+	string method = 4;
+	string sender = 5;
+	User user = 6;
+	string instancekey = 7;
+}
+message DiscussionUploadRes {
+	string uploaded = 1;
+	string fileName = 2;
+	string url = 3;
+	string script = 4;
+	string error = 5;
+	User user = 6;
+	string instancekey = 7;
+}
+message CkUploadReq {
+	FileMetadata file = 1;
+	string type = 2;
+	int32 CKEditorFuncNum = 3;
+	string mode = 4;
+	string testId = 5;
+	User user = 6;
+	string instancekey = 7;
+}
+//File - end
+
+//service - start
+message CreateServiceReq {
+	string title = 1;
+	string description = 2;
+	string shortDescription = 3;
+	string type = 4;
+	string imageUrl = 5;
+	int32 duration = 6;
+	string durationUnit = 7;
+	repeated string highlights = 8;
+	repeated string tags = 9;
+	bool active = 10;
+	repeated Country country = 11;
+	User user = 12;
+	string instancekey = 13;
+}
+message Service {
+	string _id = 1;
+	string title = 2;
+	string description = 3;
+	string shortDescription = 4;
+	string type = 5;
+	string imageUrl = 6;
+	int32 duration = 7;
+	string durationUnit = 8;
+	repeated string highlights = 9;
+	repeated string tags = 10;
+	bool active = 11;
+	repeated Country countries = 12;
+	User user = 13;
+	string status = 14;
+	int32 statusCode = 15;
+	string message = 16;
+	repeated BuyerEntry buyers = 17;
+	string createdAt = 18;
+	string currency = 19;
+	int32 discountValue = 20;
+	string lastModifiedBy = 21;
+	int32 marketPlacePrice = 22;
+	int32 price = 23;
+	string statusChangedAt = 24;
+	string updatedAt = 25;
+}
+message CreateServiceRes {
+	string _id = 1;
+}
+message GetTaggingForStudentsReq {
+	repeated string students = 1;
+	string instancekey = 2;
+}
+message GetTaggingForStudentsRes {
+	message StudentServices {
+	  string _id = 1;
+	  repeated Service services = 2;
+	}
+	repeated StudentServices response = 1;
+}
+message FindServicesReq {
+	string limit = 1;
+	string skip = 2;
+	string searchText = 3;
+	string count = 4;
+	User user = 5;
+	string instancekey = 6;
+}
+message FindServicesRes {
+	repeated Service services = 1;
+	int32 count = 2;
+}
+message GetServiceMembersReq {
+	string _id = 1;
+	string limit = 2;
+	string skip = 3;
+	string searchText = 4;
+	string count = 5;
+	string instancekey = 6;
+}
+message GetServiceMembersRes {
+	repeated User users = 1;
+	int32 count = 2;
+}
+message RevokeServiceReq {
+	string _id = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+message EditServiceReq {
+	string _id = 1;
+	string title = 2;
+	string description = 3;
+	string shortDescription = 4;
+	string type = 5;
+	string imageUrl = 6;
+	int32 duration = 7;
+	string durationUnit = 8;
+	repeated string highlights = 9;
+	repeated string tags = 10;
+	bool active = 11;
+	repeated Country countries = 12;
+	string status = 13;
+	User user = 14;
+	string instancekey = 15;
+}
+message DeleteServiceReq {
+	string _id = 1;
+	User user = 2;
+	string instancekey = 3;
+}
+message GetServiceReq {
+	string _id = 1;
+	string instancekey = 3;
+}
+message GetTaggingServicesForStudentRes {
+	repeated Service response = 1;
+}
+//service - end
+
+
+//backpack - start
+message BackpackReq {
+	User user = 1;
+	string instancekey = 2;
+}
+message BackpacItem {
+	string itemId = 1;
+	string type = 2;
+	string title = 3;
+	string comment = 4;
+}
+message Backpack {
+	string _id = 1;
+	string user = 2;
+	string folderName = 3;
+	bool active = 4;
+	repeated BackpacItem items = 5;
+	string message = 6;
+}
+message GetBackpackRes {
+	repeated Backpack response = 1;
+}
+message UpdateBackpackReq {
+	string _id = 1;
+	string folderName = 2;
+	repeated BackpacItem items = 3;
+	string instancekey = 4;
+}
+message DeleteBackpackReq {
+	string _id = 1;
+	string instancekey = 2;
+}
+//backpack - end
+
+//Codesnippet - start
+message FindCodesnippetReq{
+	Query query = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+message CodeSnippet {
+	string _id = 1;
+	string title = 2;
+	repeated string tags = 3;
+	string language = 4;
+	bool active = 5;
+	string user = 6;
+	bool pairCoding = 7;
+	string code = 8;
+	string uid = 9;
+	string description = 10;
+	string userName = 11;
+}
+message FindCodesnippetRes{
+	repeated CodeSnippet snippets = 1;
+  	int32 count = 2;
+}
+message GetCodeByUIDReq{
+	string uid = 1;
+	string instancekey = 2;
+}
+message UpdateCodesnippetReq{
+	string _id = 1;
+	string instancekey = 2;
+	string code = 3;
+}
+
+message ChangePairCodingReq{
+	string _id = 1;
+	string instancekey = 2;
+	bool pairCoding = 3;
+}
+message UpdateCodesnippetRes{
+	string message = 1;
+}
+message CodesnippetBody{
+	string title = 1;
+	string description = 2;
+	string language = 3;
+	string code = 4;
+	repeated string tags = 5;
+	bool pairCoding = 6;
+	bool active = 7;
+}
+message CreateCodesnippetReq{
+	CodesnippetBody body = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+message DeleteCodesnippetReq{
+	string _id = 1;
+	string instancekey = 2;
+}
+//Codesnippet - end
+
+
+//Platfrom - start
+//HostRate - start
+message CreateHostRateReq {
+	message HostRateBody {
+		int32 rating = 1;
+		string comment = 2;
+	}
+	HostRateBody body = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+message ShareLinkReq {
+	message ShareLinkBody {
+		repeated string phones = 1;
+		repeated string emails = 2;
+	}
+	ShareLinkBody body = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+message FeedbackReq {
+	message FeedbackBody{
+		string subject = 1;
+		string message = 2;
+	}
+	FeedbackBody body = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+message TestSendMailReq {
+	string instancekey = 1;
+}
+message HostRateRes { }
+
+message GetplatformByNumbersRes { 
+	message PublishedTestCount {
+		int32 totalPracticeSet = 1;
+		int32 totalQuestion = 2;
+	}
+	int32 studentCount = 1;
+	int32 teacherCount = 2;
+	int32 attemptCount = 3;
+	PublishedTestCount publishedTestCount = 4;
+	double hoursSpent = 5;
+}
+
+message ImportGSTReq {
+	message FileMetadata {
+		string fieldname = 1;
+		string originalname = 2;
+		string encoding = 3;
+		string mimetype = 4;
+		bytes buffer = 5;
+		int32 size = 6;
+	}
+	string instancekey = 1;
+	FileMetadata file = 2;
+	string countryCode = 3;
+}
+message ImportGSTRes {
+	string message = 1;
+}
+
+message GetContactReq {
+	string instancekey = 1;
+	string contact = 2;
+}
+//HostRate - start
+
+//Provider - start
+message UserAttemptDetailsRes {
+	message AttemptDetails {
+		string attemptID = 1;
+		string email = 2;
+		string practiceTestID = 3;
+		string attemptDateTime = 4;
+		int32 questionCount = 5;
+		double timeTaken = 6;
+		double avgTime = 7;
+		double totalMarks = 8;
+		int32 correctCount = 9;
+		int32 incorrectCount = 10;
+		int32 missedCount = 11;
+	}
+	repeated AttemptDetails result = 1;
+}
+//Provider - end
+
+// Recruitment
+message GetRegionRequest {
+
+}
+
+message Region {
+	string _id = 1;
+	string name = 2;
+}
+
+message GetRegionResponse {
+	repeated Region response  = 1;
+}
+
+message GetTierRequest {
+
+}
+
+message Tier {
+	string key = 1;
+	string name = 2;
+	int32 value = 3;
+
+}
+
+message GetTierResponse {
+	repeated Tier response  = 1;
+}
+
+message GetBehaviorRequest {
+
+}
+
+message GetBehaviorResponse {
+	repeated string response = 1;
+}
+
+message GetMetadataRequest {
+
+}
+
+message College {
+    string _id = 1;
+	string institute = 2;
+}
+
+message PRT {
+    string _id = 1;
+    string name = 2;
+}
+
+message Programming {
+    string _id = 1;
+    string name = 2;
+}
+
+message CoreSubject {
+	string _id = 1;
+	string name = 2;
+}
+
+message Core {
+    string grade = 1;
+    repeated CoreSubject subjects = 2;
+}
+
+message Cert {
+    string name = 1;
+    bool active = 2;
+    string lastModified = 3;
+    repeated Certificate certificates = 4;
+}
+
+message Certificate {
+    string name = 1;
+    bool active = 2;
+    string lastModified = 3;
+}
+
+message GetMetadataResponse {
+	repeated Region regions = 1;
+    repeated Tier tiers = 2;
+    repeated College colleges = 3;
+    repeated string behavior = 4;
+    repeated PRT prt = 5;
+    repeated Programming programming = 6;
+    repeated Core cores = 7;
+    repeated Cert certs = 8;
+}
+
+message GetCollegesQuery {
+    string regions = 1;
+    string tiers = 2;
+}
+
+message GetCollegesRequest {
+    GetCollegesQuery query = 1;
+}
+
+message GetColleges {
+    string _id = 1;
+    string institute = 2;
+}
+
+message GetCollegesResponse {
+    repeated GetColleges response = 1;
+}
+
+message GetSavedSearchQuery {
+    string name = 1;
+}
+
+message GetSavedSearchRequest {
+    GetSavedSearchQuery query = 1;
+    User user = 2;
+}
+
+message GetSavedSearch {
+    string _id = 1;
+    string name = 2;
+}
+
+message GetSavedSearchResponse {
+    repeated GetSavedSearch response = 1;
+}
+
+message GetSearchDetailRequest {
+	string name = 1;
+	User user = 2;
+}
+
+message Cognitive {
+    string subject = 1;
+    string scale = 2;
+}
+
+message Behavioral {
+    string subject = 1;
+    string scale = 2;
+}
+
+message UserSearchProgramming {
+    string subject = 1;
+    string scale = 2;
+}
+
+message UserSearchCore {
+    string grade = 1;
+    string subject = 2;
+    string scale = 3;
+}
+
+message GetSearchDetailResponse {
+	string name = 1;
+    string user = 2;
+    string instanceKey = 3;
+    string createdAt = 4;
+    string updatedAt = 5;
+    bool active = 6;
+    repeated string regions = 7;
+    string notes = 8;
+    double score10th = 9;
+    double score12th = 10;
+    double scoreGrad = 11;
+    double cgpa10th = 12;
+    double cgpa12th = 13;
+    double cgpaGrad = 14;
+    double engg = 15;
+    repeated double tiers = 16;
+    repeated string institutes = 17;
+    repeated Cognitive cognitive = 18;
+    repeated Behavioral behavioral = 19;
+    repeated UserSearchProgramming programming = 20;
+    repeated UserSearchCore cores = 21;
+    repeated string certifications = 22;
+}
+
+
+message ViewProfileRequest {
+	string id = 1;
+	User user = 2;
+}
+
+message Institute {
+    string name = 1;
+    string tier = 2;
+    string region = 3;
+    string baseUrl = 4;
+}
+
+message EppAttributes {
+}
+
+message PsychoResult {
+    EppAttributes eppAttributes = 1;
+}
+
+message Competency {
+    string userId = 1;
+	string subjectId = 2;
+	string certCode = 3;
+	string subjectName = 4;
+	int32 maxLevel = 5;
+	int32 level = 6;
+	int32 updatedDate = 7;
+	int32 attemptedQuestion = 8;
+	bool accuracy = 9;
+	int32 totalQuestion = 10;
+	int32 correctQuestion = 11;
+}
+
+message Profile {
+    string id = 1;
+    Institute institute = 2;
+    PsychoResult psycho = 3;
+    repeated Competency competencies = 4;
+}
+
+message ViewProfileResponse {
+	Profile response = 1;
+}
+
+message GetGradeSummaryQuery {
+    string grade = 1;
+}
+
+message GetGradeSummaryRequest {
+    string user = 1;
+    GetGradeSummaryQuery query = 2;
+}
+
+message GetGradeSummaryResponse {
+    AggregationResult result = 1;
+}
+
+message SummaryGroupResult {
+    string _id = 1;
+    string subName = 2;
+    repeated string tests = 3;
+    repeated string attempts = 4;
+    int32 totalMarks = 5;
+    int32 obtainMark = 6;
+    int32 doQuestion = 7;
+    int32 timeEslapse = 8;
+    int32 totalTests = 9;
+    int32 totalAttempts = 10;
+    double speed = 11;
+    double acc = 12;
+}
+
+message AccTrendResult {
+    string subId = 1;
+    string subName = 2;
+    int32 day = 3;
+    int32 month = 4;
+    int32 year = 5;
+    double acc = 6;
+}
+
+message FacetResult {
+    repeated SummaryGroupResult summary = 1;
+    repeated AccTrendResult accTrend = 2;
+}
+
+message AggregationResult {
+    FacetResult facets = 1;
+}
+
+message AggregationRequest {
+    string key = 1;
+}
+
+message SubjectScale {
+    string subject = 1;
+    string scale = 2;
+}
+
+message Cores {
+    string grade = 1;
+    string subject = 2;
+    string scale = 3;
+}
+
+message SaveBody {
+    string name = 1;
+    repeated string regions = 2;
+    string notes = 3;
+    double score10th = 4;
+    double score12th = 5;
+    double scoreGrad = 6;
+    double cgpa10th = 7;
+    double cgpa12th = 8;
+    double cgpaGrad = 9;
+    repeated int32 tiers = 10;
+    repeated string institutes = 11;
+    repeated SubjectScale cognitive = 12;
+    repeated SubjectScale behavioral = 13;
+    repeated SubjectScale programming = 14;
+    repeated Cores cores = 15;
+    repeated string certifications = 16;
+}
+
+message SaveRequest {
+    SaveBody body = 1;
+	string instancekey = 2;
+	User user = 3;
+}
+
+message SaveResponse {
+    string name = 1;
+    string user = 2;
+    string instanceKey = 3;
+    int64 createdAt = 4;
+    int64 updatedAt = 5;
+    bool active = 6;
+    repeated string regions = 7; 
+    string notes = 8;
+    double score10th = 9;
+    double score12th = 10;
+    double scoreGrad = 11;
+    double cgpa10th = 12;
+    double cgpa12th = 13;
+    double cgpaGrad = 14;
+    double engg = 15;
+    repeated int32 tiers = 16;
+    repeated string institutes = 17; 
+    repeated SubjectScale cognitive = 18;
+    repeated SubjectScale behavioral = 19;
+    repeated SubjectScale programming = 20;
+    repeated Core cores = 21;
+    repeated string certifications = 22;
+}
+
+message SearchBody {
+    int32 limit = 1;
+    int32 page = 2;
+    repeated string institutes = 3;
+    repeated string certifications = 4;
+    float score10th = 5;
+    float cgpa10th = 6;
+    float score12th = 7;
+    float cgpa12th = 8;
+    float scoreGrad = 9;
+    float cgpaGrad = 10;
+    repeated SubjectScale behavioral = 11;
+    repeated SubjectScale cognitive = 12;
+    repeated Cores cores = 13;
+    repeated SubjectScale programming = 14;
+    bool includeCount = 15;
+}
+
+message SearchRequest {
+    SearchBody body = 1;
+    User user = 2;
+}
+
+message EducationDetail {
+    string educationType = 1;
+    string marksType = 2;
+    float marks = 3;
+}
+
+message SearchUser {
+    string id = 1;
+    string name = 2;
+    string coreBranch = 3;
+    string placementStatus = 4;
+    string institute = 5;
+    string tier = 6;
+    string region = 7;
+    string videoResume = 8;
+    repeated EducationDetail educationDetails = 9;
+    bool bookmark = 10;
+}
+
+message SearchResponse {
+    int32 total = 1;
+    repeated SearchUser users = 2;
+}
+
+message AddFavoriteBody {
+    string studentId = 1;
+    string notes = 2;
+}
+
+message AddFavoriteRequest {
+    User user = 1;
+    AddFavoriteBody body = 2;
+}
+
+message AddFavoriteResponse {
+    string status = 1;
+}
+
+message DeleteByIdRequest {
+	string id = 1;
+}
+
+message DeleteByIdResponse {
+	string status = 2;
+}
+
+message RemoveFavoriteRequest {
+    string studentId = 1;
+    User user = 2;
+}
+
+message RemoveFavoriteResponse {
+    string status = 1;
+}

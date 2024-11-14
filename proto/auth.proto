@@ -1,0 +1,4739 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthGrpcService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+  rpc Authenticate (Authentication) returns (UserMessage) {}
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+  rpc ConfirmEmail(ConfirmEmailReq) returns (ConfirmEmailRes){}
+  rpc RecoverPassword(RecoverPasswordReq) returns (RecoverPasswordRes){}
+  rpc ResetPassword(ResetPasswordReq) returns (ResetPasswordRes){}
+  rpc ConfirmPasswordResetToken(ConfirmPasswordResetTokenRequest) returns (ConfirmPasswordResetTokenResponse){}
+  rpc VoiceService(VoiceServiceRequest) returns (VoiceServiceResponse){}
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc UpdateUserCountry(UpdateUserCountryReq) returns (UpdateUserCountryReq) {}
+  rpc DossierStatusUpdate(DossierStatusUpdateReq) returns (DossierStatusUpdateRes) {}
+  rpc UpdateDossierComments(UpdateDossierCommentsReq) returns (UpdateDossierCommentsRes) {}
+  rpc UpdateUserStatus(UpdateUserStatusReq) returns (UpdateUserStatusRes) {}
+  rpc SendForReviewDossier(SendForReviewDossierReq) returns (SendForReviewDossierRes) {}
+  rpc Blockuser(BlockUserReq) returns (BlockUserRes){}
+  rpc AddLocation(AddLocationReq) returns (AddLocationRes) {}
+  rpc EditLocation(EditLocationReq) returns (EditLocationRes) {}
+  rpc AddSubjects(AddSubjectsReq) returns (AddSubjectsRes) {}
+  rpc ChangePassword(ChangePasswordReq) returns (ChangePasswordRes){}
+  rpc ChangeNewPassword(ChangeNewPasswordReq) returns (ChangeNewPasswordRes){}
+  rpc ExportUsers(ExportUsersReq) returns (ExportUsersRes) {}
+  rpc ExportLevelReport(Empty) returns (ExportLevelReportRes) {}
+  rpc GetCertification(GetCertificationReq) returns (GetCertificationRes) {}
+  rpc GetUserPublicProfile(GetUserPublicProfileReq) returns (GetUserPublicProfileRes) {}
+  rpc GetNewRollNumber(Empty) returns (GetNewRollNumberRes) {}
+  rpc Me(GetMeReq) returns (GetMeRes) {}
+  rpc UpdateLocationStatus(GetUpdateLocationStatusReq) returns (GetUpdateLocationStatusRes) {}
+  rpc RemoveAdditionalInfo(RemoveAdditionalInfoReq) returns (RemoveAdditionalInfoRes) {}
+  rpc LinkPreview(LinkPreviewReq) returns (LinkPreviewRes) {}
+  rpc GetPracticeSummary(GetPracticeSummaryReq) returns (GetPracticeSummaryRes) {}
+  rpc UserRecentActivity(UserRecentActivityReq) returns (UserRecentActivityRes) {}
+  rpc AddExperience(AddExperienceReq) returns (AddExperienceRes) {}
+  rpc UpdateExperience(UpdateExperienceReq) returns (UpdateExperienceRes) {}
+  rpc UpdateMentorPreferences(UpdateMentorPreferencesReq) returns (UpdateMentorPreferencesRes) {}
+  rpc AddEvents(AddEventsReq) returns (AddEventsRes) {}
+  rpc GetSuperCoinsActivities(GetSuperCoinsActivitiesReq) returns (GetSuperCoinsActivitiesRes) {}
+  rpc GetUserSuperCoinActivities(GetUserSuperCoinActivitiesReq) returns (GetUserSuperCoinActivitiesRes) {}
+  rpc GetTotalCoins(GetTotalCoinsReq) returns (GetTotalCoinsRes) {}
+  rpc RedeemCoins(RedeemCoinsReq) returns (RedeemCoinsRes) {}
+  rpc UpdateEvent(UpdateEventReq) returns (UpdateEventRes) {}
+  rpc DeleteEvent(DeleteEventReq) returns (DeleteEventRes) {}
+  rpc AwardEducoins(EducoinsReq) returns (EducoinsRes) {}
+  rpc DeductEducoins(EducoinsReq) returns (EducoinsRes) {}
+  rpc CountTotalUsers(CountTotalUsersReq) returns (CountTotalUsersRes) {}
+  rpc Unsubscribe(UnsubscribeReq) returns (UnsubscribeRes) {}
+  rpc UpdateAmbassador(UpdateAmbassadorReq) returns (UpdateAmbassadorRes) {}
+  rpc CloseUserAccount(CloseUserAccountReq) returns (CloseUserAccountRes) {}
+  rpc GetUserLevelInfo(GetUserLevelInfoReq) returns (GetUserLevelInfoRes) {}
+  rpc GetLiveBoardClassrooms(GetLiveBoardClassroomsReq) returns (GetLiveBoardClassroomsRes) {}
+  rpc GetTurnConfig(GetTurnConfigReq) returns (GetTurnConfigRes) {}
+  rpc GetTurnAuth(GetTurnAuthReq) returns (GetTurnAuthRes) {}
+  rpc RequestEmailCode(RequestEmailCodeReq) returns (RequestEmailCodeRes) {}
+  rpc UnblockUser(UnblockUserReq) returns (UnblockUserRes) {}
+  rpc ReportUser(ReportUserReq) returns (ReportUserRes) {}
+  rpc PartnerUser(PartnerUserReq) returns (PartnerUserRes) {}
+  rpc UpdateUtmStatus(UpdateUtmStatusReq) returns (UpdateUtmStatusRes) {}
+  rpc AddUtmVisitor(AddUtmVisitorReq) returns (AddUtmVisitorRes) {}
+  rpc ManageSession(ManageSessionReq) returns (ManageSessionRes) {}
+  rpc InviteUsers(InviteUsersReq) returns (InviteUsersRes) {}
+  rpc UpdateSubjects(UpdateSubjectsReq) returns (UpdateSubjectsRes) {}
+  rpc AddStudentInClassroom(AddStudentInClassroomReq) returns (AddStudentInClassroomRes) {}
+  rpc EmployabilityIndex(EmployabilityIndexReq) returns (EmployabilityIndexRes) {}
+  rpc PsychoIndex(PsychoIndexReq) returns (PsychoIndexRes) {}
+  rpc SocialLogin(SocialLoginReq) returns (SocialLoginRes) {}
+  rpc LoginAfterOauth(LoginAfterOauthReq) returns (LoginAfterOauthRes) {}
+  rpc VerifiedCode(VerifiedCodeReq) returns (VerifiedCodeRes) {}
+  rpc TempConfirmationCode(TempConfirmationCodeReq) returns (TempConfirmationCodeRes) {}
+  rpc TempSignup(TempSignupReq) returns (TempSignupRes) {}
+  rpc UpdateIdentityImage(UpdateIdentityImageReq) returns (UpdateIdentityImageRes) {}
+  rpc UpdateConnectionInfo(UpdateConnectionInfoReq) returns (UpdateConnectionInfoRes) {}
+  rpc GetEvents(GetEventsRequest) returns (GetEventsResponse) {}
+  rpc GetStudentEvents(GetStudentEventsRequest) returns (GetStudentEventsResponse) {}
+  rpc FindOnlineUsers(FindOnlineUsersRequest) returns (FindOnlineUsersResponse) {}
+  rpc StartOneOnOneWbSession(StartOneOnOneWbSessionRequest) returns (StartOneOnOneWbSessionResponse) {}
+  rpc JoinOneOnOneWbSession(JoinOneOnOneWbSessionRequest) returns (JoinOneOnOneWbSessionResponse) {}
+  rpc UpdateOptionsData(UpdateOptionsDataRequest) returns (UpdateOptionsDataResponse) {}
+  rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {}
+  rpc UpdateTempUser(UpdateTempUserRequest) returns (UpdateTempUserResponse) {}
+  rpc UpdateAdditionalData(UpdateAdditionalDataRequest) returns (UpdateAdditionalDataResponse) {}
+  rpc UserLiveBoard(UserLiveBoardRequest) returns (UserLiveBoardResponse) {}
+  rpc UpdateTest(UpdateRequest) returns (UpdateResponse) {}
+  rpc ValidateUserPicture(ValidateUserPictureRequest) returns (ValidateUserPictureResponse) {}
+  rpc RefreshToken(RefreshTokenReq) returns (RefreshTokenRes) {}
+  rpc Find(FindRequest) returns (FindResponse) {}
+
+  // User Follow - Start
+  rpc AmIFollow(AmIFollowReq) returns (AmIFollowRes) {}
+  rpc Follow(FollowReq) returns (FollowRes) {}
+  rpc FollowList(FollowListReq) returns (FollowListRes) {}
+  // User Follow - End
+
+  // Article - Start
+  rpc Index(IndexReq) returns (IndexRes) {}
+  rpc Create(CreateArticleReq) returns (CreateArticleRes) {}
+  rpc FindOne(FindOneReq) returns (FindOneRes) {}
+  rpc Vote(VoteReq) returns (VoteRes) {}
+  rpc Unvote(UnvoteReq) returns (UnvoteRes) {}
+  rpc Notvote(NotvoteReq) returns (NotvoteRes) {}
+  rpc UndoNotvote(UndoNotvoteReq) returns (UndoNotvoteRes) {}
+  rpc Update(UpdateArticleReq) returns (UpdateArticleRes) {}
+  rpc Destroy(DestroyArticleReq) returns (DestroyArticleRes) {}
+  rpc UpdateCount(UpdateCountReq) returns (UpdateCountRes) {}
+  // Article - End
+
+  // Captcha - Start
+  rpc GetKey(GetKeyReq) returns (GetKeyRes) {}
+  rpc Verify(VerifyReq) returns (VerifyRes) {}
+  // Captcha - End
+
+  // Device - Start
+  rpc InsertDevice(InsertDeviceReq) returns (InsertDeviceRes) {}
+  rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRes) {}
+  rpc RemoveDeviceToken(RemoveDeviceTokenReq) returns (RemoveDeviceTokenRes) {}
+  rpc GetAll(Empty) returns (GetAllRes) {}
+  // Device - End
+
+  // Director - Start
+  rpc GetDashboardSummary(GetDashboardSummaryReq) returns (GetDashboardSummaryRes) {}
+  rpc GetLoginTrendByClassroom(GetLoginTrendByClassroomReq) returns (GetLoginTrendByClassroomRes) {}
+  rpc GetPostTrendByLocation(GetPostTrendByLocationReq) returns (GetPostTrendByLocationRes) {}
+  rpc GetMostAttemptedStudent(GetMostAttemptedStudentReq) returns (GetMostAttemptedStudentRes) {}
+  rpc GetQuestionAddedTrend(GetQuestionAddedTrendReq) returns (GetQuestionAddedTrendRes) {}
+  rpc GetAttemptTrend(GetAttemptTrendReq) returns (GetAttemptTrendRes) {}
+  rpc GetAbandonedAttemptTrend(GetAbandonedAttemptTrendReq) returns (GetAbandonedAttemptTrendRes) {}
+  rpc GetAvgTimeSpendByCourse(GetAvgTimeSpendByCourseReq) returns (GetAvgTimeSpendByCourseRes) {}
+  rpc GetStudentOnboardingDistribution(GetStudentOnboardingDistributionReq) returns (GetStudentOnboardingDistributionRes) {}
+  rpc GetTestSeriesAttemptTrendBySubject(GetTestSeriesAttemptTrendBySubjectReq) returns (GetTestSeriesAttemptTrendBySubjectRes) {}
+  // Director - End
+
+  // Discussions - Start
+  rpc GetDiscussion(GetDiscussionReq) returns (GetDiscussionRes) {}
+  rpc GetClassroomPosts(GetClassroomPostsReq) returns (GetClassroomPostsRes) {}
+  rpc GetYourPosts(GetYourPostsReq) returns (GetYourPostsRes) {}
+  rpc GetMySavedPosts(GetMySavedPostsReq) returns (GetMySavedPostsRes) {}
+  rpc FlagDiscussion(GetFlagDiscussionReq) returns (GetFlagDiscussionRes) {}
+  rpc UnflagDiscussion(GetUnflagDiscussionReq) returns (GetUnflagDiscussionRes) {}
+  rpc GetFlaggedPost(GetFlaggedPostReq) returns (GetFlaggedPostRes) {}
+  rpc GetOneFlaggedPost(GetOneFlaggedPostReq) returns (GetOneFlaggedPostRes) {}
+  rpc GetOne(GetOneReq) returns (GetOneRes) {}
+  rpc GetComments(GetCommentsReq) returns (GetCommentsRes) {}
+  rpc CreateDiscussion(GetCreateReq) returns (Discussion) {}
+  rpc Comment(PostCommentReq) returns (PostCommentRes) {}
+  rpc UpdateDiscussion(PostUpdateReq) returns (PostUpdateRes) {}
+  rpc VoteDiscussion(GetVoteReq) returns (GetVoteRes) {}
+  rpc UnvoteDiscussion(GetUnvoteReq) returns (GetUnvoteRes) {}
+  rpc NotvoteDiscussion(GetNotvoteReq) returns (GetNotvoteRes) {}
+  rpc Undonotvote(GetUndonotvoteReq) returns (GetUndonotvoteRes) {}
+  rpc Delete(GetDeleteReq) returns (GetDeleteRes) {}
+  rpc SavePost(SavePostReq) returns (SavePostRes) {}
+  rpc UnsavedPost(UnsavedPostReq) returns (UnsavedPostRes) {}
+  rpc CreateDiscussionRespond(CreateDiscussionRespondReq) returns (CreateDiscussionRespondRes) {}
+  // Discussions - End
+
+  // Institute - Start
+  rpc GetMyInstitutes(GetMyInstitutesReq) returns (GetMyInstitutesRes) {}
+  rpc GetMyOwnInstitute(GetMyOwnInstituteReq) returns (GetMyOwnInstituteRes) {}
+  rpc GetAllLocations(GetAllLocationsReq) returns (GetAllLocationsRes) {}
+  rpc GetInstitute(GetInstituteReq) returns (GetInstituteRes) {}
+  rpc GetProfilePrograms(GetProfileProgramsReq) returns (GetProfileProgramsRes) {}
+  rpc CheckAvailibility(CheckAvailibilityReq) returns (CheckAvailibilityRes) {}
+  rpc GetPublicProfile(GetPublicProfileReq) returns (GetPublicProfileRes) {}
+  rpc GetInstituteInvitees(GetInstituteInviteesReq) returns (GetInstituteInviteesRes) {}
+  rpc CreateInstitute(CreateInstituteReq) returns (CreateInstituteRes) {}
+  rpc JoinInstitute(JoinInstituteReq) returns (JoinInstituteRes) {}
+  rpc LeaveInstitute(LeaveInstituteReq) returns (LeaveInstituteRes) {}
+  rpc SetDefault(SetDefaultReq) returns (SetDefaultRes) {}
+  rpc InviteToJoin(InviteToJoinReq) returns (InviteToJoinRes) {}
+  rpc ChangeActiveInstitute(ChangeActiveInstituteReq) returns (ChangeActiveInstituteRes) {}
+  rpc UpdateInstitute(UpdateInstituteReq) returns (UpdateInstituteRes) {}
+  rpc UpdateInstitutePrefernces(UpdateInstitutePreferncesReq) returns (UpdateInstitutePreferncesRes) {}
+  // Institute - End
+
+  // Operator - Start
+  rpc OperatorQuestionAddedTrend(OperatorQuestionAddedTrendReq) returns (OperatorQuestionAddedTrendRes) {}
+  rpc GetQuestionDistributionBySubject(GetQuestionDistributionBySubjectReq) returns (GetQuestionDistributionBySubjectRes) {}
+  // Operator - End
+
+  // Publisher - Start
+  rpc IndexPublisher(IndexPublisherReq) returns (IndexPublisherRes) {}
+  rpc GetSoldData(GetSoldDataReq) returns (GetSoldDataRes) {}
+  rpc GetCourseSubjectDistribution(GetCourseSubjectDistributionReq) returns (GetCourseSubjectDistributionRes) {}
+  rpc GetTestseriesSubjectDistribution(GetTestseriesSubjectDistributionReq) returns (GetTestseriesSubjectDistributionRes) {}
+  rpc GetAssessmetSubjectDistribution(GetAssessmetSubjectDistributionReq) returns (GetAssessmetSubjectDistributionRes) {}
+  rpc GetQuestionSubjectDistribution(GetQuestionSubjectDistributionReq) returns (GetQuestionSubjectDistributionRes) {}
+  rpc TestSeriesTrend(TestSeriesTrendReq) returns (TestSeriesTrendRes) {}
+  rpc CourseTrend(CourseTrendReq) returns (CourseTrendRes) {}
+  rpc AsessmentTrend(AsessmentTrendReq) returns (AsessmentTrendRes) {}
+  rpc GetTransactionLogs(GetTransactionLogsReq) returns (GetTransactionLogsRes) {}
+  // Publisher - End
+
+  // Supercoins - Start
+  rpc IndexSupercoins(IndexSupercoinsReq) returns (IndexSupercoinsRes) {}
+  rpc UpdateSupercoins(UpdateSupercoinsReq) returns (UpdateSupercoinsRes) {}
+  rpc CreateSupercoins(CreateSupercoinsReq) returns (CreateSupercoinsRes) {}
+  rpc RequestStudents(RequestStudentsReq) returns (RequestStudentsRes) {}
+  rpc UpdateStatus(UpdateStatusReq) returns (UpdateStatusRes) {}
+  rpc GetMembers(GetMembersReq) returns (GetMembersRes) {}
+  // Supercoins - End
+
+  // Admin - Start
+  rpc ExportExamDataWordTemplate(ExportExamDataWordTemplateReq) returns (ExportExamDataWordTemplateRes) {}
+  rpc GetReportData(GetReportDataReq) returns (GetReportDataRes) {}
+  rpc GetReports(GetReportsReq) returns (GetReportsRes) {}
+  rpc GetReport(GetReportReq) returns (Report) {}
+  rpc GetPowerBIEmbedToken(GetPowerBIEmbedTokenReq) returns (GetPowerBIEmbedTokenRes) {}
+  rpc DownloadReport(GetPowerBIEmbedTokenReq) returns (DownloadReportRes) {}
+  rpc DownloadPsychoReport(GetPowerBIEmbedTokenReq) returns (DownloadReportRes) {}
+  rpc GetMailTemplates(GetMailTemplatesReq) returns (GetMailTemplatesRes) {}
+  rpc SendBulkMail(SendBulkMailReq) returns (SendBulkMailRes) {}
+  rpc RunBulkMailDataSource(RunBulkMailDataSourceReq) returns (RunBulkMailDataSourceRes) {}
+  rpc UpdateBulkMail(UpdateBulkMailReq) returns (UpdateBulkMailRes) {}
+  rpc TestBulkMail(TestBulkMailReq) returns (TestBulkMailRes) {}
+  rpc TestMailByKey(TestMailByKeyReq) returns (TestMailByKeyRes) {}
+  rpc SendRemindProctoredTestMail(TestMailByKeyReq) returns (TestMailByKeyRes) {}
+  rpc UploadCampaignMailSource(UploadCampaignMailSourceReq) returns (UploadCampaignMailSourceRes) {}
+  rpc RemoveCampaignMailUploadedSource(GetReportReq) returns (TestMailByKeyRes) {}
+  rpc GetProgramOutcomes(GetProgramOutcomesReq) returns (ProgramOutcomesRes) {}
+  rpc CreateProgramOutcome(CreateProgramOutcomeReq) returns (CreateProgramOutcomeRes) {}
+  rpc UpdateProgramOutcome(UpdateProgramOutcomeReq) returns (CreateProgramOutcomeRes) {}
+  rpc DeleteProgramOutcome(DeleteProgramOutcomeReq) returns (CreateProgramOutcomeRes) {}
+  rpc GetCourses(GetProgramOutcomesReq) returns (GetCoursesRes) {}
+  rpc CreateCourse(CreateCourseReq) returns (CourseRes) {}
+  rpc UpdateCourse(UpdateCourseReq) returns (CourseRes) {}
+  rpc DeleteCourse(DeleteCourseReq) returns (CourseRes) {}
+  rpc GetEvaluations(GetProgramOutcomesReq) returns (GetEvaluationsRes) {}
+  rpc CreateEvaluation(CreateEvaluationReq) returns (EvaluationRes) {}
+  rpc UpdateEvaluation(UpdateEvaluationReq) returns (EvaluationRes) {}
+  rpc DeleteEvaluation(DeleteEvaluationReq) returns (EvaluationRes) {}
+  rpc GetAccreditationSettings(GetAccreditationSettingsReq) returns (GetAccreditationSettingsRes) {}
+  rpc UpdateAccreditationSetting(UpdateAccSettingReq) returns (UpdateAccSettingRes) {}
+  rpc GetAccreditationReports(GetAccReportReq) returns (GetAccReportRes) {}
+  rpc GetAccreditationAttainments(GetAccAttReq) returns (GetAccAttRes) {}
+  rpc TeacherByExam(GetReportReq) returns (TeacherByExamRes) {}
+  rpc MapTestToClassroom(MapTestToClassroomReq) returns (MapTestToClassroomRes) {}
+  rpc GetNews(GetNewssReq) returns (GetNewsRes) {}
+  rpc CreateNews(CreateNewsReq) returns (NewsRes) {}
+  rpc UpdateNews(UpdateNewsReq) returns (NewsRes) {}
+  
+  
+  
+  
+  // Admin - End
+}
+
+message Avatar {
+  string _id = 1;
+  string mimeType = 2;
+  int32 size = 3;
+  string fileUrl = 4;
+  string fileName = 5;
+  string path = 6;
+}
+
+message Empty {
+
+}
+
+message Country {
+  string name = 1;
+  string code = 2;
+  bool confirmed = 3;
+  repeated string callingCodes = 4;
+  string currency = 5;
+}
+
+message DossierUserInfo {
+  string user = 1;
+  string name = 2;
+  Avatar avatar = 3;
+}
+
+message Note {
+  int32 version = 1;
+  string comment = 2;
+  string updatedAt = 3;
+  string type = 4;
+  DossierUserInfo userInfo = 5;
+  string _id = 6;
+}
+
+message Feedback {
+  string comment = 1;
+  string updatedAt = 2;
+  string type = 3;
+  DossierUserInfo userInfo = 4;
+}
+
+message Dossier {
+  string status = 1;
+  string statusChangedAt = 2;
+  repeated Note notes = 3;
+  repeated Feedback feedback = 4;
+}
+
+message CreateUserRequest {
+  string instancekey = 1;
+  string userId = 2;
+  string password = 3;
+  bool newPassword = 4;
+  string tempPassword = 5;
+  repeated string userRoles = 6;
+  string birthdate = 7;
+  string name = 8;
+  repeated string locations = 9;
+  string seqCode = 10;
+  repeated string programs = 11;
+  Country country = 12;
+  repeated string subjects = 13;
+  Avatar avatar = 14;
+  string avatarUrl = 15;
+  string avatarUrlSM = 16;
+  string provider = 17;
+  bool isMentor = 18;
+  string passingYear = 19;
+  string emailVerifyToken = 20;
+  string emailVerifyExpired = 21;  
+  bool isVerified = 22;
+  bool whiteboard = 23;
+  bool liveboard = 24;
+  string email = 25;
+  string phoneNumber = 26;
+  string ip = 27;
+  GetUserResponse user = 28;
+  string userid = 29;
+  bool joiningInstitute = 30;
+  string instituteId = 31;
+  repeated string roles = 32;
+  bool forcePasswordReset = 33;
+  bool emailVerified = 34;
+  string createdBy = 35;
+  string activeLocation = 36;
+  bool onboarding = 37;
+}
+
+message CreateUserResponse{
+  string response = 1;
+}
+
+message ChangePasswordBody {
+  string oldPassword = 1;
+  string newPassword = 2;
+}
+
+message ChangePasswordReq {
+  string instancekey = 1;
+  string timezoneoffset = 2;
+  ReqUser user = 3;
+  ChangePasswordBody body = 4;
+  string token = 5;
+}
+
+message ChangePasswordRes {
+  string status = 1;
+}
+
+message ChangeNewPasswordBody {
+  string newPassword = 1;
+  bool refresh = 2;
+}
+
+message ChangeNewPasswordQuery {
+  bool remember = 1;
+}
+
+message ChangeNewPasswordHeaders {
+  string userAgent = 1;
+}
+
+message ChangeNewPasswordReq {
+  string instancekey = 1;
+  string id = 2;
+  ChangeNewPasswordBody body = 3;
+  string timezoneoffset = 4;
+  string ip = 5;
+  ChangeNewPasswordHeaders headers = 6;
+  ChangeNewPasswordQuery query = 7;
+  string token = 8;
+}
+
+message ChangeNewPasswordRes {
+  string status = 1;
+  GetUserResponse user = 2;
+}
+message Token {
+  string _id = 1;
+}
+
+message UpdateUserBody {
+  string name = 3;
+  string rollNumber = 4;
+  string registrationNo = 5;
+  string avatarUrl = 6;
+  Avatar avatar = 7;
+  string avatarUrlSM = 8;
+  string passingYear = 9;
+  Country country = 10;
+  string birthdate = 11;
+  string city = 12;
+  string state = 13;
+  bool isVerified = 14;
+  bool whiteboard = 15;
+  repeated string subjects = 16;
+  string newUserId = 17;
+  repeated string userRoles = 18;
+  bool forcePasswordReset = 19;
+  string placementStatus = 20;
+  string password = 21;
+  bool liveboard = 22;
+  repeated string locations = 23;
+  Dossier dossier = 25;
+  bool emailVerified = 27;
+  bool status = 28;
+  bool isActive = 29;
+  MentorInfo mentorInfo = 30;
+  Avatar avatarSM = 31;
+  Avatar avatarMD = 32;
+  string phoneNumberFull = 33;
+  bool isPublic = 34;
+  bool allowOnlineClass = 35;
+  double profileCompleted = 36;
+  int32 trainingProfileCompleted = 37;
+  repeated string programs = 38;
+  string coreBranch = 39;
+  bool managerStudent = 41;
+  bool managerPractice = 42;
+  repeated string practiceViews = 43;
+  repeated string practiceAttempted = 44;
+  repeated string emailStudents = 45;
+  string lastLogin = 46;
+  string lastAttempt = 47;
+  string theme = 48;
+  string videoResume = 49;
+  string streamUrl = 50;
+  string instagram = 51;
+  bool studentExclusive = 52;
+  string activeLocationId = 53;
+  string expertise = 55;
+  string institute = 57;
+  repeated string followings = 58;
+  int32 pin = 59;
+  string street = 60;
+  string designation = 61;
+  int32 loginCount = 62;
+  string about = 63;
+  string openai = 64;
+  repeated string interestedSubject = 65;
+  repeated string specialization = 66;
+  Preference preferences = 67;
+  repeated Experience experiences = 68;
+  string emailVerifyExpired = 69;
+  bool canCreateMultiLocations = 71;
+  string instituteUrl = 72;
+  bool isMentor = 73;
+  repeated string blockedUsers = 74;
+  string optoutDate = 75;
+  bool ambassador = 76;
+  bool onboarding = 77;
+  string optoutReason = 78;
+  bool optoutEmail = 79;
+  string createdBy = 80;
+  string createdAt = 81;
+  string updatedAt = 82;
+  repeated ProgrammingLang programmingLang = 83;
+  repeated EducationDetail educationDetails = 84;
+  repeated EntranceExam entranceExam = 85;
+  repeated AcademicProject academicProjects = 86;
+  repeated TrainingCertification trainingCertifications = 87;
+  repeated IndustryCertificate industryCertificates = 88;
+  repeated ExternalAssessment externalAssessment = 89;
+  repeated AwardAndRecognition awardsAndRecognition = 90;
+  repeated ExtraCurricularActivity extraCurricularActivities = 91;
+  repeated PackageSchedule packageSchedules = 92;
+  IdentityInfo identityInfo = 93;
+  string codingExperience = 94;
+  repeated LevelHistory levelHistory = 95;
+  repeated string followers = 96;
+  string passwordResetToken = 97;
+  string emailVerifyToken = 98;
+  string activeLocation = 99;
+  Token token = 100;
+  string hashedPassword = 101;
+  repeated string grade = 102;
+  string salt = 103;
+  Profile profile = 104;
+  Profile publicProfile = 105;
+  string lastModifiedBy = 106;
+  int32 __v = 107;
+  string passwordResetExpired = 108;
+  FieldEntry field1 = 109;
+  FieldEntry field2 = 110;
+  string coverImageUrl = 111;
+  string facebook = 112;
+  string linkedIn = 113;
+  string youtube = 114;
+  string userId = 115;
+  string phoneNumber = 116;
+  string email = 117;
+  string provider = 118;
+  repeated string roles = 119;
+  string ref = 120;
+  string gender = 121;
+  string district = 122;
+  string interest = 123;
+  string knowAboutUs = 124;
+}
+
+message UpdateUserRequest {
+  string instancekey = 1;
+  string _id = 2;
+  UpdateUserBody body = 3;
+  User user = 4;
+  string timezoneoffset = 5;
+  string token = 6;
+}
+
+message UpdateUserResponse{
+  string status = 1;
+}
+
+message GetUserRequest{
+  string instancekey = 1;
+  string _id = 2;
+}
+
+message User {
+  string _id = 1;
+  string name = 2;
+  repeated string roles = 3;
+  UserCountry country = 4;
+  string activeLocation = 5;
+  string userId = 6;
+  repeated string subjects = 7;
+  repeated string practiceViews = 8;
+  repeated string locations = 9;
+  Preference preferences = 10;
+  bool isActive = 11;
+  string email = 12;
+  string phoneNumber = 13;
+  repeated LevelHistory levelHistory = 14;
+  string createdAt = 15;
+  repeated string grade = 16;
+  repeated string blockedUsers = 17;
+}
+
+message UserCountry {
+  string code = 1;
+  string name = 2;
+  string currency = 3;
+  bool confirmed = 4;
+  repeated string callingCodes = 5;
+}
+
+message Preference {
+  string _id = 1;
+  bool publicProfile = 2;
+  bool myWatchList = 3;
+  bool leastPracticeDaily = 4;
+  bool resumesRequests = 5;
+  bool mentoringRequests = 6;
+  bool addingStudents = 7;
+  bool createAndPublishTest = 8;
+  bool viewExistingAssessment = 9;
+}
+
+message Experience {
+  string title = 1;
+  string employmentType = 2;
+  string company = 3;
+  string location = 4;
+  bool currentlyWorking = 5;
+  string startDate = 6;
+  string endDate = 7;
+  string description = 8;
+  string _id = 9;
+}
+
+message ProgrammingLang {
+  string name = 1;
+  double rating = 2;
+  string description = 3;
+  string _id = 4;
+}
+
+message MarksType {
+  repeated string enum = 1;
+}
+
+message EducationDetail {
+  string educationType = 1;
+  string board = 2;
+  string marksType = 3;
+  double marks = 4;
+  int32 passingYear = 5;
+  string stream = 6;
+  string _id = 7;
+
+}
+
+message EntranceExam {
+  string year = 1;
+  int32 rank = 2;
+  string name = 3;
+  string _id = 4;
+}
+
+message AcademicProject {
+  string name = 1;
+  string groupSize = 2;
+  string description = 3;
+  string startDate = 4;
+  string endDate = 5;
+  string document = 6;
+  string url = 7;
+  bool sysgen = 8;
+  string _id = 9;
+
+}
+
+message TrainingCertification {
+  string type = 1;
+  string provider = 2;
+  string city = 3;
+  string state = 4;
+  string startDate = 5;
+  string endDate = 6;
+  string expiredDate = 7;
+  string certificate = 8;
+  string url = 9;
+  string description = 10;
+  bool sysgen = 11;
+  string _id = 12;
+}
+
+message IndustryCertificate {
+  string name = 1;
+  string provider = 2;
+  string certificateDate = 3;
+  string expiredDate = 4;
+  string certificate = 5;
+  string url = 6;
+  bool sysgen = 7;
+  string _id = 8;
+}
+
+message ExternalAssessment {
+  string name = 1;
+  double mostRecentScore = 2;
+  int32 yearOfAssessment = 3;
+  double maximumScore = 4;
+  string _id = 5;
+}
+
+message AwardAndRecognition {
+  string awardDetails = 1;
+  string date = 2;
+  string _id = 3;
+}
+
+message ExtraCurricularActivity {
+  string activityDetails = 1;
+  string startDate = 2;
+  string endDate = 3;
+  string _id = 4;
+}
+
+message PackageSchedule {
+  string package = 1;
+  string code = 2;
+}
+
+message IdentityInfo {
+  string imageUrl = 1;
+  string fileUrl = 2;
+  double matchedPercentage = 3;
+}
+
+message LevelHistory {
+  string _id = 1;
+  string subjectId = 2;
+  int32 level = 3;
+  string updateDate = 4;
+  string gradeName = 5;
+  string gradeId = 6;
+}
+
+message MentorInfo {
+  string user = 1;
+  string name = 2;
+}
+
+message UserPreferences {
+  message Assessment {
+      bool adaptive = 1;
+      bool allowToCreate = 2;
+      bool evaluation = 3;
+      bool isShow = 4;
+      bool liveBoard = 5;
+      bool proctor = 6;
+  }
+
+  message Classroom {
+      bool assignment = 1;
+      bool folder = 2;
+      bool isShow = 3;
+  }
+
+  message Course {
+      bool allowToCreate = 1;
+      bool isShow = 2;
+  }
+
+  message General {
+      bool chat = 1;
+      bool editProfileSubject = 2;
+      bool notification = 3;
+      bool resume = 4;
+      bool sessionMangement = 5;
+      bool signup = 6;
+      bool socialSharing = 7;
+  }
+
+  message Roles {
+      bool mentor = 1;
+      bool operator = 2;
+      bool teacher = 3;
+  }
+
+  message TestSeries {
+      bool allowToCreate = 1;
+      bool isShow = 2;
+  }
+
+  Assessment assessment = 1;
+  bool classboard = 2;
+  Classroom classroom = 3;
+  bool codeEditor = 4;
+  Course course = 5;
+  General general = 6;
+  bool questionBank = 7;
+  bool reports = 8;
+  Roles roles = 9;
+  TestSeries testSeries = 10;
+}
+
+message PrimaryInstitute {
+  string logo = 1;
+  string name = 2;
+  bool owned = 3;
+  UserPreferences preferences = 4;
+}
+
+message FieldEntry {
+  string label = 1;
+  string value = 2;
+  string _id = 3;
+}
+
+message Profile {
+  string name = 1;
+  string role = 2;
+  Avatar avatar = 3;
+  string _id = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string avatarUrlMD = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
+
+message GetUserResponse{
+  string _id = 1;
+  string rollNumber = 2;
+  string registrationNo = 3;
+  Avatar avatar = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string passingYear = 7;
+  string userId = 8;
+  string phoneNumber = 9;
+  string email = 10;
+  Country country = 11;
+  string provider = 12;
+  repeated string subjects = 13;
+  repeated string roles = 14;
+  string ref = 15;
+  string birthdate = 16;
+  string gender = 17;
+  string district = 18;
+  string interest = 19;
+  string knowAboutUs = 20;
+  string city = 21;
+  string state = 22;
+  bool isVerified = 23;
+  bool whiteboard = 24;
+  Dossier dossier = 25;
+  string name = 26;
+  bool emailVerified = 27;
+  bool status = 28;
+  bool isActive = 29;
+  MentorInfo mentorInfo = 30;
+  Avatar avatarSM = 31;
+  Avatar avatarMD = 32;
+  string phoneNumberFull = 33;
+  bool isPublic = 34;
+  bool allowOnlineClass = 35;
+  int32 profileCompleted = 36;
+  int32 trainingProfileCompleted = 37;
+  repeated string programs = 38;
+  string coreBranch = 39;
+  repeated string locations = 40;
+  bool managerStudent = 41;
+  bool managerPractice = 42;
+  repeated string practiceViews = 43;
+  repeated string practiceAttempted = 44;
+  repeated string emailStudents = 45;
+  string lastLogin = 46;
+  string lastAttempt = 47;
+  string theme = 48;
+  string videoResume = 49;
+  string streamUrl = 50;
+  string instagram = 51;
+  bool studentExclusive = 52;
+  string activeLocationId = 53;
+  string placementStatus = 54;
+  string expertise = 55;
+  bool forcePasswordReset = 56;
+  string institute = 57;
+  repeated string followings = 58;
+  int32 pin = 59;
+  string street = 60;
+  string designation = 61;
+  int32 loginCount = 62;
+  string about = 63;
+  string openai = 64;
+  repeated string interestedSubject = 65;
+  repeated string specialization = 66;
+  Preference preferences = 67;
+  repeated Experience experiences = 68;
+  string emailVerifyExpired = 69;
+  bool liveboard = 70;
+  bool canCreateMultiLocations = 71;
+  string instituteUrl = 72;
+  bool isMentor = 73;
+  repeated string blockedUsers = 74;
+  string optoutDate = 75;
+  bool ambassador = 76;
+  bool onboarding = 77;
+  string optoutReason = 78;
+  bool optoutEmail = 79;
+  string createdBy = 80;
+  string createdAt = 81;
+  string updatedAt = 82;
+  repeated ProgrammingLang programmingLang = 83;
+  repeated EducationDetail educationDetails = 84;
+  repeated EntranceExam entranceExam = 85;
+  repeated AcademicProject academicProjects = 86;
+  repeated TrainingCertification trainingCertifications = 87;
+  repeated IndustryCertificate industryCertificates = 88;
+  repeated ExternalAssessment externalAssessment = 89;
+  repeated AwardAndRecognition awardsAndRecognition = 90;
+  repeated ExtraCurricularActivity extraCurricularActivities = 91;
+  repeated PackageSchedule packageSchedules = 92;
+  IdentityInfo identityInfo = 93;
+  string codingExperience = 94;
+  repeated LevelHistory levelHistory = 95;
+  repeated string followers = 96;
+  string passwordResetToken = 97;
+  string emailVerifyToken = 98;
+  string activeLocation = 99;
+  string token = 100;
+  repeated string grade = 101;
+  string lastModifiedBy = 102;
+  string passwordResetExpired = 103;
+  PrimaryInstitute primaryInstitute = 104;
+  string coverImageUrl = 105;
+  string facebook = 106;
+  FieldEntry field1 = 107;
+  FieldEntry field2 = 108;
+  string linkedIn = 109;
+  string youtube = 110;
+  Profile profile = 111;
+  Profile publicProfile = 112;
+  int32 __v = 113;
+  string hashedPassword = 114;
+  string salt = 115;
+}
+
+
+message Authentication {
+  string Authentication = 1;
+}
+
+message UserMessage {
+  string id = 1;
+  string email = 2;
+  string password = 3;
+  repeated string roles = 4;
+}
+
+message LoginHeaders {
+  string instancekey = 1;
+  string userAgent = 2;
+}
+
+message LoginRequest {
+  LoginHeaders headers = 1;
+  string ip = 2;
+  string userId = 3;
+  string password = 4;
+  // string instituteId = 4;
+}
+
+message LoginResponse {
+  string token = 1;
+  string user = 2;
+  string expiresAt = 3;
+  string type = 4;
+}
+
+message Role {
+  string name = 1;
+  repeated string permissions = 2;
+}
+
+message CreateRoleRequest {
+  Role role = 1;
+}
+
+message CreateRoleResponse {
+  Role role = 1;
+}
+
+message GetRoleRequest {
+  string _id = 1;
+}
+
+message GetRoleResponse {
+  Role role = 1;
+}
+
+message DeleteRoleRequest {
+  string _id = 1;
+}
+
+message DeleteRoleResponse {
+  bool success = 1;
+}
+
+message UpdateUserCountryReq{
+ string _id = 1;
+ string code = 2;
+ bool confirmed = 3;
+ repeated string callingCodes = 4;
+ string currency = 5;
+ string name = 6;
+}
+
+message DossierStatusUpdateReq{
+string _id = 1;
+MentorInfo mentorInfo = 2;
+Dossier dossier = 3;
+}
+
+message UpdateDossierCommentsReq{
+string _id = 1;
+Feedback feedback = 2;
+}
+
+message UpdateDossierCommentsRes{
+ GetUserResponse response = 1;
+}
+
+message DossierStatusUpdateRes{
+Dossier dossier = 1;
+}
+
+message UpdateUserStatusReq{
+  string _id = 1;
+  bool isActive = 2;
+}
+
+message UpdateUserStatusRes{
+  string response = 1;
+}
+
+message SendForReviewDossierReq{
+  string _id = 1;
+  Note notes = 2;
+}
+
+message SendForReviewDossierRes{
+  GetUserResponse response = 1;
+}
+
+message BlockUserReq{
+  string userid = 1;
+  string user = 2;
+}
+
+message BlockUserRes{
+  string response = 1;
+}
+
+message Location {
+  string user = 1;
+  string name = 2;
+  string slugfly = 3;
+  bool active = 4;
+  bool isDefault = 5;
+  repeated string programs = 6;
+  repeated string subjects = 7;
+  repeated string specialization = 8;
+  repeated string teachers = 9;
+  string type = 10;
+  Preference preferences = 11;
+  repeated string invitees = 12;
+  string createdAt = 13;
+  string updatedAt = 14;
+}
+
+message AddLocationReq{
+  string userid = 1;
+  string name = 2;
+}
+
+message AddLocationRes{
+  Location response = 1;
+}
+
+message EditLocationReq{
+  string _id = 1;
+  string name = 2;
+}
+
+message EditLocationRes{
+  Location response = 1;
+}
+
+message AddSubjectsReq {
+  string userid = 1;
+  repeated string subjects = 2;
+}
+
+message AddSubjectsRes {
+  string response = 1;
+}
+
+message ConfirmEmailReq{
+  string token = 1;
+  string userid = 2;
+  string instancekey = 3;
+}
+
+message ConfirmEmailRes{
+  string response = 1;
+}
+
+message SelectedCountry {
+  string dialCode = 1;
+  string iso2Code = 2;
+  string name = 3;
+}
+
+message RecoverPasswordReq {
+  string instancekey = 1;
+  string email = 2;
+  string phone = 3;
+  SelectedCountry selectedCountry = 4;
+  string type = 5;
+}
+
+message RecoverPasswordRes {
+  string response = 1;
+}
+
+message ResetPasswordReq{
+  string token = 1;
+  string userid = 2;
+}
+
+message ResetPasswordRes{
+  bool status = 1;
+  GetUserResponse user = 2;
+}
+
+message ConfirmPasswordResetTokenRequest {
+  string instancekey = 1;
+  string token = 2;
+}
+
+message ConfirmPasswordResetTokenResponse {
+  bool status = 1;
+  GetUserResponse user = 2;
+}
+
+message VoiceServiceHeaders {
+  string userAgent = 1;
+}
+
+message VoiceServiceRequest {
+  string email = 1;
+  VoiceServiceHeaders headers = 2;
+}
+
+message VoiceServiceResponse {
+  string token = 1;
+  string instancekey = 2;
+}
+
+message ExportUsersReq {
+  string searchText = 1;
+  string roles = 2;
+  bool lastAttempt = 3;
+}
+
+message ExportUser {
+  string name = 1;
+  string userId = 2;
+  repeated string roles = 3;
+  string createdAt = 4;
+  string lastLogin = 5;
+}
+
+message ExportUsersRes {
+  repeated ExportUser response = 1;
+}
+
+message ExportLevelReport {
+  
+}
+
+message ExportLevelReportRes {
+  repeated GetUserResponse response = 1;
+}
+
+message GetCertificationReq {
+  string code = 1;
+}
+
+message GetCertificationRes {
+  string certPath = 1;
+}
+
+message GetUserPublicProfileReq {
+  string userId = 1;
+}
+
+message GetUserPublicProfileRes {
+  GetUserResponse response = 1;
+}
+
+message GetNewRollNumberRes {
+  string response = 1;
+}
+
+message GetMeReq {
+  GetUserResponse user = 1;
+  bool isTempt = 2;
+  string instancekey = 3;
+}
+
+message GetMeRes {
+  GetUserResponse response = 1;
+}
+
+message GetUpdateLocationStatusReq {
+  string _id = 1;
+}
+
+message GetUpdateLocationStatusRes {
+  Location response = 1;
+}
+
+message RemoveAdditionalInfoReq {
+  string updatedField = 1;
+  string _id = 2;
+  GetUserResponse user = 3;
+}
+
+message RemoveAdditionalInfoRes {
+  string response = 1;
+}
+
+message LinkPreviewReq {
+  string url = 1;
+  string _id = 2;
+}
+
+message LinkPreviewRes {
+  string url = 1;
+  string description = 2;
+  string title = 3;
+  string image = 4;
+  string source = 5;
+  string type = 6;
+}
+
+message GetPracticeSummaryReq {
+  GetUserResponse user = 1;
+}
+
+message PracticeUserId {
+  string user = 1;
+}
+
+message GetPracticeSummaryRes {
+  PracticeUserId _id = 1;
+  int32 totalQuestion = 2;
+  int32 totalAnsweredQuestions = 3;
+  int32 totalTest = 4;
+  int32 overallAccuracy = 5;
+  int32 avgTime = 6;
+}
+
+message UserRecentActivityReq {
+  string studentId = 1;
+}
+
+message UserLog {
+  string _id = 1;
+  string studentName = 2;
+  string createdAt = 3;
+  string connectionInfo = 4;
+  string ip = 5;
+  int32 totalTime = 6;
+  int32 totalQuestions = 7;
+}
+
+message UserLogAttempt {
+  string _id = 1;
+  string studentName = 2;
+  string createdAt = 3;
+  string practiceSetInfoTitle = 4;
+  bool ongoing = 5;
+  bool isAbandoned = 6;
+  int32 totalTime = 7;
+  int32 totalQuestions = 8;
+  int32 userQues = 9;
+}
+
+message LocationLog {
+  string ip = 1;
+  repeated double ll = 2;
+  int32 metro = 3;
+  string city = 4;
+  string region = 5;
+  string country = 6;
+}
+
+message SystemInfo {
+  string architecture = 1;
+  string version = 2;
+  string name = 3;
+  string major = 4;
+  string model = 5;
+}
+
+message ConnectionInfo {
+  repeated LocationLog locs = 1;
+  SystemInfo cpu = 2;
+  SystemInfo os = 3;
+  SystemInfo engine = 4;
+  SystemInfo browser = 5;
+  SystemInfo device = 6;
+}
+
+message ConnectionData {
+  string _id = 1;
+  string ip = 2;
+  string createdAt = 3;
+  double totalTime = 4;
+  ConnectionInfo connectionInfo = 5;
+}
+
+message UserRecentActivityRes {
+  repeated ConnectionData logs = 1;
+  repeated UserLogAttempt attempts = 2;
+}
+
+message AddExperienceReq {
+  string startDate = 1;
+  string endDate = 2;
+  string _id = 3;
+}
+
+message AddExperienceRes {
+  GetUserResponse response = 1;
+}
+
+message UpdateExperienceReq {
+  string _id = 1;
+  Experience body = 2;
+}
+
+message UpdateExperienceRes {
+  GetUserResponse response = 1;
+}
+
+message UpdateMentorPreferencesReq {
+  string _id = 1;
+  bool isPublic = 2;
+  Preference preferences = 3;
+}
+
+message UpdateMentorPreferencesRes {
+  string response = 1;
+}
+
+message Events {
+  string startDate = 1;
+  string endDate = 2;
+  string title = 3;
+  bool allDays = 4;
+  bool allStudents = 5;
+  string type = 6;
+  string classroom = 7;
+  string students = 8;
+  bool active = 9;
+  string summary = 10;
+  string schedule = 11;
+  string createdAt = 12;
+  string updatedAt = 13;
+  string location = 14;
+}
+
+message AddEventsReq {
+  GetUserResponse user = 1;
+  Events body = 2;
+}
+
+message AddEventsRes {
+  Events response = 1;
+}
+
+message Supercoin {
+  string title = 1;
+  bool status = 2;
+  string summary = 3;
+  int32 value = 4;
+  string type = 5;
+  string tags = 6;
+  string mode = 7;
+  string lastModifiedBy = 8;
+  string createdBy = 9;
+  string _id = 10;
+  string createdAt = 11;
+  string updatedAt = 12;
+}
+
+message GetSuperCoinsActivitiesReq {
+  string tags = 1;
+  string userId = 2;
+}
+
+message GetSuperCoinsActivitiesRes {
+  repeated Supercoin response = 1;
+}
+
+message UserSuperCoin {
+  string _id = 1;
+  string activityId = 2;
+  string user = 3;
+  string activityType = 4;
+  int32 count = 5;
+  int32 coins = 6;
+  string studentMsg = 7;
+  string teacherMsg = 8;
+  string justification = 9;
+  string byAdmin = 10;
+  bool status = 11;
+  string createdAt = 12;
+  string updatedAt = 13;
+}
+
+message GetUserSuperCoinActivitiesReq {
+  string userId = 1;
+  GetUserResponse user = 2;
+  string startDate = 3;
+  string endDate = 4;
+  string timezoneoffset = 5;
+}
+
+message SupercoinVal {
+  string _id = 1;
+  string title = 2;
+  string summary = 3;
+  int32 value = 4;
+  string mode = 5;
+}
+
+message SuperCoinUserInfo {
+  string _id = 1;
+  string email = 2;
+  string name = 3;
+  string userId = 4;
+}
+
+message SuperCoinId {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+  string activityId = 4;
+  string activityType = 5;
+}
+
+message UserSuperCoinResponse {
+  SuperCoinId _id = 1;
+  int32 coins = 2;
+  int32 count = 3;
+  repeated SupercoinVal supercoins = 4;
+  string createdAt = 5;
+  string activityId = 6;
+  string activityType = 7;
+  string user = 8;
+  SuperCoinUserInfo userInfo = 9;
+}
+
+message GetUserSuperCoinActivitiesRes {
+  repeated UserSuperCoinResponse response = 1;
+}
+
+message GetTotalCoinsReq {
+  GetUserResponse user = 1;
+  string userId = 2;
+}
+
+message TotalCoinId {
+  string user = 1;
+}
+
+message TotalCoin {
+  TotalCoinId _id = 1;
+  int32 earned = 2;
+  int32 redeem = 3;
+  int32 inprocess = 4;
+}
+
+message GetTotalCoinsRes {
+  repeated TotalCoin response = 1;
+}
+
+message RedeemCoinsReq {
+  UserSuperCoin body = 1;
+  string userId = 2;
+  GetUserResponse user = 3;
+}
+
+message RedeemCoinsRes {
+  UserSuperCoin response = 1;
+}
+
+message UpdateEventReq {
+  Events body = 1;
+  GetUserResponse user = 2;
+  string id = 3;
+}
+
+message UpdateEventRes {
+  Events response = 1;
+}
+
+message DeleteEventReq {
+  GetUserResponse user = 1;
+  string id = 2;
+}
+
+message DeleteEventRes {
+  Events response = 1;
+}
+
+message Educoins {
+  string reason = 1;
+  int32 educoins = 2;
+  string studentId = 3;
+}
+
+message EducoinsReq {
+  Educoins body = 1;
+  GetUserResponse user = 2;
+}
+
+message EducoinsRes {
+  UserSuperCoin response = 1;
+}
+
+message TotalUserQuery {
+  string role = 1;
+  string user = 2;
+}
+
+message CountTotalUsersReq {
+  TotalUserQuery query = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+}
+
+message CountTotalUsersRes {
+  int32 count = 1;
+}
+
+message UnsubscribeReq {
+  string reason = 1;
+  GetUserResponse user = 2;
+}
+
+message UnsubscribeRes {
+  string response = 1;
+}
+
+message UpdateAmbassadorReq {
+  bool isEnroll = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+}
+
+message UpdateAmbassadorRes {
+  string response = 1;
+}
+
+message CloseUserAccountReq {
+  GetUserResponse user = 1;
+}
+
+message CloseUserAccountRes {
+  string response = 1;
+}
+
+message GetUserLevelInfoReq {
+  string id = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+}
+
+message GetUserLevelInfoRes {
+  int32 maxLevel = 1;
+}
+
+message GetLiveBoardClassroomsReq {
+  string status = 1;
+  GetUserResponse user = 2;
+}
+
+message GetLiveBoardClassroom {
+  string _id = 1;
+  string name = 2;
+  string imageUrl = 3;
+  string students = 4;
+  string colorCode = 5;
+}
+
+message GetLiveBoardClassroomsRes {
+  repeated GetLiveBoardClassroom response = 1;
+}
+
+message GetTurnAuthReq {
+  GetUserResponse user = 1;
+}
+
+message GetTurnAuthRes {
+  string server = 1;
+  string user = 2;
+  string pass = 3;
+}
+
+message GetTurnConfigReq {
+  string instancekey = 1;
+  GetUserResponse user = 2;
+}
+
+message TurnConfig {
+  string urls = 1;
+  string username = 2;
+  string credential = 3;
+}
+
+message GetTurnConfigRes {
+  repeated TurnConfig response = 1;
+}
+
+message RequestEmailCodeReq {
+  string id = 1;
+}
+
+message RequestEmailCodeRes {
+  string response = 1;
+}
+
+message UnblockUserReq {
+  string userId = 1;
+  GetUserResponse user = 2;
+}
+
+message UnblockUserRes {
+  string response = 1;
+}
+
+message ReportUserReq {
+  string userId = 1;
+  string reason = 2;
+  GetUserResponse user = 3;
+}
+
+message ReportUserRes {
+  string response = 1;
+}
+
+message PartnerUserBody {
+  string examSeriesCode = 1;
+  string testCode = 2;
+  string name = 3;
+  string email = 4;
+  string clientId = 5;
+  string phoneNumber = 6;
+  string clientCandidateID = 7;
+  string clientAuthorizationID = 8;
+  string registrationNo = 9;
+  string token = 10;
+}
+
+message PartnerUserReq {
+  string instancekey = 1;
+  PartnerUserBody body = 2;
+}
+
+message Practice {
+  string _id = 1;
+  string title = 2;
+  string titleLower = 3;
+  string slugfly = 4;
+}
+
+message PartnerUserRes {
+  string token = 1;
+  Practice practice = 2;
+}
+
+message UpdateUtmStatusReq {
+  string utmId = 1;
+  GetUserResponse user = 2;
+}
+
+message UpdateUtmStatusRes {
+  string response = 1;
+}
+
+message VisitUrl {
+  string url = 1;
+  string date = 2;
+}
+
+message MarketingUtm {
+  string source = 1;
+  string medium = 2;
+  string campaign = 3;
+  repeated VisitUrl visitingUrls = 4;
+  string user = 5;
+  string userId = 6;
+  string signupDate = 7;
+  string ip = 8;
+  string location = 9;
+  string savedUtm = 10;
+  string url = 11;
+}
+
+message AddUtmVisitorReq {
+  MarketingUtm body = 1;
+  string ip = 2;
+  GetUserResponse user = 3;
+}
+
+message AddUtmVisitorRes {
+  string response = 1;
+  // string _id = 2;
+}
+
+message Session {
+  string selectedSlot = 1;
+  string classrooms = 2;
+  string users = 3;
+  string setting = 4;
+  string tests = 5;
+}
+
+message PracticeSession {
+  string classRooms = 1;
+}
+
+message ManageSessionBody {
+  Session session = 1;
+  PracticeSession practice = 2;
+  bool isActive = 3;
+}
+
+message ManageSessionReq {
+  string instancekey = 1;
+  ManageSessionBody body = 2;
+}
+
+message ManageSessionRes {
+  string response = 1;
+}
+
+message InviteUsersReq {
+  repeated string emails = 1;
+  string instancekey = 2;
+  GetUserResponse user = 3;
+}
+
+message InviteUsersRes {
+  string response = 1;
+}
+
+message UpdateSubjectsReq {
+  repeated string subjects = 1;
+  string country = 2;
+  GetUserResponse user = 3;
+  string instancekey = 4;
+}
+
+message UpdateSubjectsRes {
+  string response = 1;
+}
+
+message AddStudentParam {
+  string seqCode = 1;
+}
+
+message AddStudentQuery {
+  string testCode = 1;
+  string subjects = 2;
+}
+
+message AddStudentInClassroomReq {
+  AddStudentParam params = 1;
+  AddStudentQuery query = 2;
+  GetUserResponse user = 3;
+  string instancekey = 4;
+}
+
+message AddStudentInClassroomRes {
+  string response = 1;
+}
+
+message EmployabilityIndexReq {
+  GetUserResponse user = 1;
+  string instancekey = 2;
+}
+
+message EmployabilityIndexRes {
+  string response = 1;
+}
+
+message PsychoIndexReq {
+  GetUserResponse user = 1;
+  string instancekey = 2;
+}
+
+message PsychoIndexRes {
+  string response = 1;
+}
+
+message SocialLoginBodyUser {
+  string id = 1; // facebook Id
+  string email = 2;
+  string userId = 3;
+  string name = 4;
+  string givenName = 5;
+  string familyName = 6;
+  string gender = 7;
+  string first_name = 8;
+  string last_name = 9;
+  repeated string roles = 10;
+}
+
+message SocialLoginBody {
+  SocialLoginBodyUser user = 1;
+}
+
+message SocialLoginHeaders {
+  string userAgent = 1;
+}
+
+message SocialLoginReq {
+  string instancekey = 1;
+  string provider = 2;
+  string ip = 3;
+  SocialLoginBody body = 4;
+  SocialLoginHeaders headers = 5;
+}
+
+message SocialLoginRes {
+  string token = 1;
+}
+
+message LoginAfterOauthHeader {
+  string userAgent = 1;
+}
+
+message LoginAfterOauthReq {
+  CreateUserRequest body = 1;
+  string instancekey = 2;
+  bool remember = 3;
+  LoginAfterOauthHeader headers = 4;
+}
+
+message LoginAfterOauthRes {
+  string response = 1;
+}
+
+message VerifyCodeParams {
+  string token = 1;
+}
+
+message VerifiedCodeReq {
+  VerifyCodeParams params = 1;
+  string instancekey = 2;
+}
+
+message VerifiedCodeRes {
+  string response = 1;
+}
+
+message TempConfirmationCodeReq {
+  string id = 1;
+  string instancekey = 2;
+}
+
+message TempConfirmationCodeRes {
+  string response = 1;
+}
+
+message TempSignupBody {
+  string birthdate = 1;
+  string name = 2;
+  string password = 3;
+  string userId = 4;
+  string country = 5;
+  repeated string roles = 6;
+}
+
+message TempSignupReq {
+  string instanceKey = 1;
+  TempSignupBody body = 2; 
+}
+
+message TempSignupRes {
+  GetUserResponse response = 1;
+}
+
+message UpdateIdentityImageParam {
+  string id = 1;
+}
+
+message UpdateIdentityImageBody {
+  string fileUrl = 1;
+}
+
+message UpdateIdentityImageReq {
+  UpdateIdentityImageParam params = 1;
+  UpdateIdentityImageBody body = 2;
+  string instancekey = 3;
+}
+
+message UpdateIdentityImageRes {
+  string response = 1;
+}
+
+message UpdateConnectionHeader {
+  string instancekey = 1;
+  string userAgent = 2;
+  string authToken = 3;
+}
+
+message UpdateConnectionBody {
+  string device = 1;
+  string os = 2;
+  string isMobile = 3;
+  string version = 4;
+}
+
+message UpdateConnectionInfoReq {
+  GetUserResponse user = 1;
+  UpdateConnectionHeader headers = 2;
+  UpdateConnectionBody body = 3;
+  string ip = 4;
+}
+
+message UpdateConnectionInfoRes {
+  string response = 1;
+}
+
+// User Follow - Start
+message AmIFollowParam {
+  string userId = 1;
+}
+
+message AmIFollowReq {
+  AmIFollowParam params = 1;
+  GetUserResponse user = 2;
+}
+
+message AmIFollowRes {
+  FollowDatas response = 1;
+}
+
+message FollowBody {
+  bool unfollowMe = 1;
+  string userId = 2;
+  bool state = 3;
+}
+
+message FollowDatas {
+  string _id = 1;
+  string userId = 2;
+  string followingId = 3;
+  bool status = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+}
+
+message FollowReq {
+  FollowBody body = 1;
+  GetUserResponse user = 2;
+}
+
+message FollowRes {
+  string response = 1;
+}
+
+message FollowList {
+  string userId = 1;
+  string type = 2;
+  string id = 3;
+}
+
+message FollowListReq {
+  FollowList body = 1;
+}
+
+message FollowListRes {
+  repeated FollowDatas response = 1;
+}
+// User Follow - End
+
+// Article - Start
+message IndexParam {
+  string page = 1;
+  string limit = 2;
+  string sort = 3;
+  string contentTypes = 4;
+  string searchText = 5;
+}
+
+message IndexReq {
+  IndexParam query = 1;
+  GetUserResponse user = 2;
+}
+
+message IndexRes {
+  int32 count = 1;
+  CreateArticle articles = 2;
+}
+
+message Viewership {
+  string user = 1;
+  string viewDate = 2;
+}
+
+message Feedbacks {
+  string user = 1;
+  int32 rating = 2;
+  string comment = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message CreateArticle {
+  string user = 1;
+  string description = 2;
+  string title = 3;
+  string summary = 4;
+  string link = 5;
+  int32 viewed = 6;
+  repeated string tags = 7;
+  repeated Viewership viewership = 8;
+  repeated Feedbacks feedbacks = 9;
+  int32 avgRating = 10;
+  string contentType = 11;
+  repeated string vote = 12;
+  repeated string noVote = 13;
+  string createdAt = 14;
+  string updatedAt = 15;
+  bool approved = 16;
+  bool isTop = 17;
+  bool active = 18;
+  string expiresOn = 19;
+  bool onlyVideo = 20;
+}
+
+message CreateArticleReq {
+  CreateArticle body = 1;
+  GetUserResponse user = 2;
+}
+
+message CreateArticleRes {
+  string response = 1;
+}
+
+message FindOneReq {
+  string id = 1;
+}
+
+message FindOneRes {
+  CreateArticle response = 1;
+}
+
+message VoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message VoteRes {
+  string response = 1;
+}
+
+message UnvoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message UnvoteRes {
+  string response = 1;
+}
+
+message NotvoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message NotvoteRes {
+  string response = 1;
+}
+
+message UndoNotvoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message UndoNotvoteRes {
+  string response = 1;
+}
+
+message UpdateArticleReq {
+  string id = 1;
+  CreateArticle body = 2;
+}
+
+message UpdateArticleRes {
+  CreateArticle response = 1;
+}
+
+message DestroyArticleReq {
+  string id = 1;
+}
+
+message DestroyArticleRes {
+  CreateArticle response = 1;
+}
+
+message UpdateCountBody {
+  string feedback = 1;
+  int32 rating = 2;
+  int32 viewCount = 3;
+}
+
+message UpdateCountReq {
+  GetUserResponse user = 1;
+  string id = 2;
+  UpdateCountBody body = 3;
+}
+
+message UpdateCountRes {
+  CreateArticle response = 1;
+}
+// Article - End
+
+// Captcha - Start
+message GetKeyReq {
+  string instancekey = 1;
+}
+
+message GetKeyRes {
+  string response = 1;
+}
+
+message VerifyBodyReq {
+  string response = 1;
+}
+
+message VerifyReq {
+  VerifyBodyReq body = 1;
+  string instancekey = 2;
+  string ip = 3;
+}
+
+message VerifyRes {
+  string response = 1;
+}
+// Captcha - End
+
+// Device - Start
+message InsertDeviceBody {
+  string uuid = 1;
+  string platform = 2;
+  string deviceToken = 3;
+}
+
+message InsertDeviceReq {
+  InsertDeviceBody body = 1;
+  GetUserResponse user = 2;
+}
+
+message InsertDeviceRes {
+  string response = 1;
+}
+
+message RemoveDeviceReq {
+  string id = 1;
+  string devicePlatform = 2;
+}
+
+message RemoveDeviceRes {
+  string response = 1;
+}
+
+message RemoveDeviceTokenReq {
+  string token = 1;
+  GetUserResponse user = 2;
+}
+
+message RemoveDeviceTokenRes {
+  string response = 1;
+}
+
+message Device {
+  string _id = 1;
+  string user = 2;
+  string platform = 3;
+  string deviceToken = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+}
+
+message GetAllRes {
+  repeated Device response = 1;
+}
+// Device - End
+
+// Director - Start
+message GetDashboardSummaryReq {
+  string id = 1;
+  string passingYear = 2;
+}
+
+message Summary {
+  int32 count = 1;
+  int32 diff = 2;
+}
+
+message GetDashboardSummaryRes {
+  Summary student = 1;
+  Summary teacher = 2;
+  Summary course = 3;
+  Summary attempt = 4;
+  Summary test = 5;
+}
+
+message GetLoginTrendByClassroomReq {
+  string id = 1;
+  string passingYear = 2;
+}
+
+message GetLoginTrendByClassroomRes {
+  string _id = 1;
+  repeated int32 data = 2;
+  repeated string labels = 3;
+}
+
+message GetPostTrendByLocationReq {
+  string id = 1;
+  string passingYear = 2;
+}
+
+message Label {
+  string date = 1;
+}
+
+message GetPostTrendByLocationRes {
+  string _id = 1;
+  repeated int32 data = 2;
+  repeated Label labels = 3;
+}
+
+message GetMostAttemptedStudentReq {
+  string id = 1;
+  string passingYear = 2;
+}
+
+message MostAttempt {
+  string _id = 1;
+  int32 attempts = 2;
+  int32 tests = 3;
+  string name = 4;
+}
+
+message GetMostAttemptedStudentRes {
+  repeated MostAttempt response = 1;
+}
+
+message GetQuestionAddedTrendReq {
+  string id = 1;
+}
+
+message GetQuestionAddedTrend {
+  int32 id = 1;
+  repeated int32 data = 2;
+  repeated Label labels = 3;
+}
+
+message GetQuestionAddedTrendRes {
+  GetQuestionAddedTrend response = 1;
+}
+
+message GetAttemptTrendReq {
+  string locId = 1;
+  string days = 2;
+  string passingYear = 3;
+}
+
+message GetAttemptTrendRes {
+  string _id = 1;
+  repeated int32 data = 2;
+  repeated string labels = 3;
+}
+
+message GetAbandonedAttemptTrendReq {
+  string locId = 1;
+  string days = 2;
+  string passingYear = 3;
+}
+
+message GetAbandonedAttemptTrendRes {
+  string _id = 1;
+  repeated int32 data = 2;
+  repeated string labels = 3;
+}
+
+message GetAvgTimeSpendByCourseReq {
+  string id = 1;
+  string passingYear = 2;
+  string subject = 3;
+}
+
+message GetAvgTimeSpendByCourseRes {
+  string _id = 1;
+  repeated int32 data = 2;
+  repeated string labels = 3;
+}
+
+message GetStudentOnboardingDistributionReq {
+  string id = 1;
+  string passingYear = 2;
+}
+
+message StudentOnboard {
+  string _id = 1;
+  int32 loginCount = 2;
+  int32 attemptCount = 3;
+  int32 neverLoginCount = 4;
+}
+
+message GetStudentOnboardingDistributionRes {
+  repeated StudentOnboard response = 1;
+}
+
+message GetTestSeriesAttemptTrendBySubjectReq {
+  string locId = 1;
+  string subject = 2;
+  string passingYear = 3;
+  string days = 4;
+}
+
+message GetTestSeriesAttemptTrendBySubjectRes {
+  string _id = 1;
+  repeated string students = 2;
+  repeated int32 avgTimes = 3;
+  repeated string labels = 4;
+}
+// Director - End
+
+// Discussions - Start
+message GetFilterQuery {
+  string feedType = 1;
+  string courseContent = 2;
+  bool count = 3;
+  string limit = 4;
+  string page = 5;
+  string skip = 6;
+  string sort = 7;
+}
+
+message Attachment {
+  string title = 1;
+  string type = 2;
+  string url = 3;
+  string imageUrl = 4;
+  string description = 5;
+  string _id = 6;
+}
+
+message GradeSubjectTopic {
+  string _id = 1;
+  string name = 2;
+}
+
+message GetDiscussionReq {
+  message GetDiscussionQuery {
+    string feedType = 1;
+    string courseContent = 2;
+    string myQuestionsOnly = 3;
+    string flagged = 4;
+    string date = 5;
+    string classes = 6;
+    string publicDiscussion = 7;
+    string text = 8;
+    string tags = 9;
+    bool count = 10;
+    string sort = 11;
+    string limit = 12;
+    string page = 13;
+    string skip = 14;
+  }
+  GetDiscussionQuery query = 1;
+  string instancekey = 2;
+  User user = 3;
+  map<string, string> body = 4;
+}
+message DiscussionUser {
+  string _id = 1;
+  string name = 2;
+  repeated string roles = 3;
+  Avatar avatar = 4;
+  Avatar avatarSM = 5;
+  Avatar avatarMD = 6;
+  string provider = 7;
+  string google = 8;
+  string facebook = 9;
+}
+message Comment {
+  string _id = 1;
+  string parent = 2;
+  DiscussionUser user = 3;
+  string description = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+  int32 viewed = 7;
+  int32 vote = 8;
+  int32 notVote = 9;
+  bool isComment = 10;
+  bool isReply = 11;
+  string feedType = 12;
+  repeated string attachments = 13;
+}
+message ClassRoom {
+  string _id = 1;
+  string name = 2;
+}
+message DiscussionRes {
+  string _id = 1;
+  DiscussionUser user = 2;
+  ClassRoom subject = 3;
+  ClassRoom topic = 4;
+  string description = 5;
+  string createdAt = 6;
+  string updatedAt = 7;
+  int32 viewed = 8;
+  repeated string vote = 9;
+  repeated string notVote = 10;
+  bool isComment = 11;
+  bool isReply = 12;
+  string parent = 13;
+  string feedType = 14;
+  bool allowComment = 15;
+  repeated Attachment attachments = 16;
+  repeated Comment comments = 17;
+  repeated ClassRoom classRooms = 18;
+  repeated string savedBy = 19;
+  bool active = 20;
+  bool pin = 21;
+  bool flagged = 22;
+  int32 questionNumber = 23;
+  string location = 24;
+  int32 totalComments = 25;
+  int32 commentPage = 26;
+  IdName grade = 27;
+  string courseContent = 28;
+}
+message GetDiscussionRes {
+  repeated DiscussionRes response = 1;
+  int32 total = 2;
+  int32 count = 3;
+}
+
+message CreateDiscussionReq {
+  string location = 1;
+  string courseContent = 2;
+  GradeSubjectTopic grade = 3;
+  GradeSubjectTopic subject = 4;
+  GradeSubjectTopic topic = 5;
+  string description = 6;
+  repeated string classRooms = 7;
+  repeated Attachment attachments = 8;
+  int32 viewed = 9;
+  repeated string vote = 10;
+  repeated string notVote = 11;
+  bool isComment = 12;
+  bool isReply = 13;
+  string parent = 14;
+  repeated string comments = 15;
+  repeated string savedBy = 16;
+  string feedType = 17;
+  bool active = 18;
+  bool allowComment = 19;
+  bool pin = 20;
+  bool flagged = 21;
+  int32 questionNumber = 22;
+}
+
+message GetClassroomPostsReq {
+  string id = 1;
+  GetFilterQuery query = 2;
+}
+
+message GetClassroomPostsUser {
+  string _id = 1;
+  string name = 2;
+  Avatar avatar = 3;
+  Avatar avatarSM = 4;
+  Avatar avatarMD = 5;
+  string provider = 6;
+  string google = 7;
+  string facebook = 8;
+  string role = 9;
+}
+
+message GetClassroomPosts {
+  string _id = 1;
+  GetClassroomPostsUser user = 2;
+  string courseContent = 3;
+  GradeSubjectTopic grade = 4;
+  GradeSubjectTopic subject = 5;
+  GradeSubjectTopic topic = 6;
+  string description = 7;
+  repeated IdName classRooms = 8;
+  repeated Attachment attachments = 9;
+  int32 viewed = 10;
+  repeated string vote = 11;
+  repeated string notVote = 12;
+  bool isComment = 13;
+  bool isReply = 14;
+  string parent = 15;
+  repeated Comment comments = 16;
+  repeated string savedBy = 17;
+  string feedType = 18;
+  bool active = 19;
+  bool allowComment = 20;
+  bool pin = 21;
+  bool flagged = 22;
+  int32 questionNumber = 23;
+  string location = 24;
+  string createdAt = 25;
+  string updatedAt = 26;
+  int32 totalComments = 27;
+  int32 commentPage = 28;
+}
+
+message GetClassroomPostsRes {
+  repeated GetClassroomPosts response = 1;
+}
+
+message GetYourPostsReq {
+  string id = 1;
+  GetFilterQuery query = 2;
+  GetUserResponse user = 3;
+}
+
+message IdName {
+  string _id = 1;
+  string name = 2;
+}
+
+message GetYourPosts {
+  string _id = 1;
+  DiscussionUser user = 2;
+  string description = 3;
+  repeated string classRooms = 4;
+  repeated string attachments = 5;
+  int32 viewed = 6;
+  repeated string vote = 7;
+  repeated string notVote = 8;
+  bool isComment = 9;
+  bool isReply = 10;
+  repeated string comments = 11;
+  repeated string savedBy = 12;
+  string feedType = 13;
+  bool active = 14;
+  bool allowComment = 15;
+  bool pin = 16;
+  bool flagged = 17;
+  int32 questionNumber = 18;
+  string location = 19;
+  string createdAt = 20;
+  string updatedAt = 21;
+  IdName grade = 23;
+  IdName subject = 24;
+  IdName topic = 25;
+  int32 totalComments = 26;
+  int32 commentPage = 27;
+}
+
+message GetYourPostsRes {
+  repeated GetYourPosts response = 1;
+  int32 count = 2;
+}
+
+message GetMySavedPostsReq {
+  string id = 1;
+  GetFilterQuery query = 2;
+  GetUserResponse user = 3;
+}
+
+message GetMySavedUser {
+  string _id = 1;
+  string name = 2;
+  string role = 3;
+  Avatar avatar = 4;
+  Avatar avatarSM = 5;
+  Avatar avatarMD = 6;
+  string provider = 7;
+  string google = 8;
+  string feedback = 9;
+}
+
+message Grade {
+  string _id = 1;
+  string name = 2;
+  int32 level = 3;
+}
+
+message Subject {
+  string _id = 1;
+  string name = 2;
+}
+
+message Topic {
+  string _id = 1;
+  string name = 2;
+}
+
+message GetMySavedPosts {
+  string _id = 1;
+  Grade grade = 2;
+  Subject subject = 3;
+  Topic topic = 4;
+  string description = 5;
+  repeated string classRooms = 6;
+  repeated string attachments = 7;
+  int32 viewed = 8;
+  repeated string vote = 9;
+  repeated string notVote = 10;
+  bool isComment = 11;
+  bool isReply = 12;
+  repeated string comments = 13;
+  repeated string savedBy = 14;
+  string feedType = 15;
+  bool active = 16;
+  bool allowComment = 17;
+  bool pin = 18;
+  bool flagged = 19;
+  int32 questionNumber = 20;
+  string createdAt = 21;
+  string updatedAt = 22;
+  GetMySavedUser user = 23;
+  string location = 24;
+  int32 __v = 25;
+  int32 totalComments = 26;
+  int32 commentPage = 27;
+}
+
+message GetMySavedPostsRes {
+  repeated GetMySavedPosts response = 1;
+}
+
+message GetFlagDiscussionReq {
+  string id = 1;
+}
+
+message GetFlagDiscussionRes {
+  string response = 1;
+}
+
+message GetUnflagDiscussionReq {
+  string id = 1;
+}
+
+message GetUnflagDiscussionRes {
+  string response = 1;
+}
+
+message GetFlaggedPostReq {
+  GetFilterQuery query = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+}
+
+message GetFlaggedPostRes {
+  repeated DiscussionRes posts = 1;
+  int32 count = 2;
+}
+
+message GetOneFlaggedPostReq {
+  string id = 1;
+}
+
+message GetOneFlaggedPostRes {
+  string response = 1;
+}
+
+message GetOneReq {
+  string id = 1;
+  bool loadComments = 2;
+}
+
+message GetOneRes {
+  string response = 1;
+}
+
+message GetCommentsReq {
+  string id = 1;
+  int32 page = 2;
+  GetUserResponse user = 3;
+}
+
+message GetCommentsRes {
+  string response = 1;
+}
+
+message GetCreateReq {
+  CreateDiscussionReq body = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+}
+message Discussion {
+  string _id = 1;
+  string user = 2;
+  string courseContent = 3;
+  GradeSubjectTopic grade = 4;
+  GradeSubjectTopic subject = 5;
+  GradeSubjectTopic topic = 6;
+  string description = 7;
+  repeated string classRooms = 8;
+  repeated Attachment attachments = 9;
+  int32 viewed = 10;
+  repeated string vote = 11;
+  repeated string notVote = 12;
+  bool isComment = 13;
+  bool isReply = 14;
+  string parent = 15;
+  repeated string comments = 16;
+  repeated string savedBy = 17;
+  string feedType = 18;
+  bool active = 19;
+  bool allowComment = 20;
+  bool pin = 21;
+  bool flagged = 22;
+  int32 questionNumber = 23;
+  string location = 24;
+  string createdAt = 25;
+  string updatedAt = 26;
+  int32 totalComments = 27;
+  int32 commentPage = 28;
+}
+
+message GetCreateRes {
+  string response = 1;
+}
+
+message PostCommentBody {
+  string description = 1;
+  repeated Attachment attachments = 2;
+}
+
+message PostCommentReq {
+  string id = 1;
+  PostCommentBody body = 2;
+  GetUserResponse user = 3;
+}
+
+message PostCommentRes {
+  string response = 1;
+}
+
+message PostUpdateBody {
+  int32 newViewed = 1;
+  bool pin = 2;
+  string description = 3;
+  Attachment attachments = 4;
+}
+
+message PostUpdateReq {
+  string id = 1;
+  PostUpdateBody body = 2;
+  GetUserResponse user = 3;
+}
+
+message PostUpdateRes {
+  string response = 1;
+}
+
+message GetVoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message GetVoteRes {
+  string response = 1;
+}
+
+message GetUnvoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message GetUnvoteRes {
+  string response = 1;
+}
+
+message GetNotvoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message GetNotvoteRes {
+  string response = 1;
+}
+
+message GetUndonotvoteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message GetUndonotvoteRes {
+  string response = 1;
+}
+
+message GetDeleteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message GetDeleteRes {
+  string response = 1;
+}
+
+message SavePostReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message SavePostRes {
+  string response = 1;
+}
+
+message UnsavedPostReq {
+  string id = 1;
+  GetUserRequest user = 2;
+}
+
+message UnsavedPostRes {
+  string response = 1;
+}
+
+message TeacherR {
+  string comment = 1;
+}
+
+message StudentQ {
+  string comment = 1;
+  string studentId = 2;
+  string feedbackId = 3;
+}
+
+message CreateDissRespondBody {
+  string comment = 1;
+  string feedType = 2;
+  repeated string classRooms = 3;
+  repeated StudentQ studentQ = 4;
+  TeacherR teacherR = 5;
+}
+
+message CreateDiscussionRespondReq {
+  string id = 1;
+  CreateDissRespondBody body = 2;
+  GetUserResponse user = 3;
+}
+
+message CreateDiscussionRespondRes {
+  string response = 1;
+}
+// Discussions - End
+
+// Institute - Start
+message GetMyInstitutesReq {
+  GetUserResponse user = 1;
+}
+
+message InstituteRes {
+  string _id = 1;
+  string user = 2;
+  string name = 3;
+  string code = 4;
+  bool isDefault = 5;
+}
+
+message GetMyInstitutesRes {
+  repeated InstituteRes response = 1;
+}
+
+message GetMyOwnInstituteReq {
+  GetUserResponse user = 1;
+}
+
+message GetMyOwnInstituteRes {
+  string _id = 1;
+  string user = 2;
+  string name = 3;
+  bool isDefault = 4;
+  string code = 5;
+}
+
+message GetAllLocationsReq {
+  GetUserResponse user = 1;
+}
+
+message LocationList {
+  string _id = 1;
+  string name = 2;
+}
+
+message GetAllLocationsRes {
+  repeated LocationList response = 1;
+}
+
+message GetInstituteReq {
+  message Query {
+    bool programs = 1;
+    bool subjects = 2;
+    bool teachers = 3;
+    bool preferencesOnly = 4;
+  }
+  Query query = 1;
+  string id = 2;
+  string instancekey = 3;
+}
+message Preferences {
+  string _id = 1;
+  message Assessment {
+    bool isShow = 1;
+    bool allowToCreate = 2;
+    bool adaptive = 3;
+    bool proctor = 4;
+    bool liveBoard = 5;
+    bool evaluation = 6;
+  }
+  message TestSeries {
+    bool isShow = 1;
+    bool allowToCreate = 2;
+  }
+  message Course {
+    bool isShow = 1;
+    bool allowToCreate = 2;
+  }
+  message Roles {
+    bool mentor = 1;
+    bool teacher = 2;
+    bool operator = 3;
+  }
+  message Classroom {
+    bool isShow = 1;
+    bool assignment = 2;
+    bool folder = 3;
+  }
+  message General {
+    bool editProfileSubject = 1;
+    bool resume = 2;
+    bool chat = 3;
+    bool notification = 4;
+    bool signup = 5;
+    bool sessionMangement = 6;
+    bool socialSharing = 7;
+  }
+  Assessment assessment = 2;
+  TestSeries testSeries = 3;
+  Course course = 4;
+  Roles roles = 5;
+  Classroom classroom = 6;
+  General general = 7;
+  bool questionBank = 8;
+  bool reports = 9;
+  bool codeEditor = 10;
+  bool classboard = 11;
+}
+
+message GetInstituteRes {
+  message Subject {
+    string _id = 1;
+    string name = 2;
+  }
+  message OpenAI {
+    bool active = 1;
+    string key = 2;
+  }
+  message ViewTemplate {
+    string name = 1;
+    bool active = 2;
+    bool default = 3;
+  }
+  message Teacher {
+    string _id = 1;
+    string name = 2;
+    string isActive = 3;
+    Avatar avatar = 4;
+    string provider = 5;
+  }
+  string _id = 1;
+  string user = 2;
+  string name = 3;
+  string slugfly = 4;
+  bool active = 5;
+  bool isDefault = 6;
+  repeated Subject programs = 7;
+  repeated Subject subjects = 8;
+  repeated string specialization = 9;
+  repeated Teacher teachers = 10;
+  string type = 11;
+  Preferences preferences = 12;
+  repeated string invitees = 13;
+  string createdAt = 14;
+  string updatedAt = 15;
+  int32 students = 16;
+  OpenAI openAI = 17;
+  repeated ViewTemplate viewTemplates = 18;
+  repeated string contentProviders = 19;
+  string lastModifiedBy = 20;
+}
+
+// message GetInstituteRes {
+//   AllInstituteRes response = 1;
+// }
+
+message GetProfileProgramQuery {
+  string country = 1;
+  string name = 2;
+}
+
+message GetProfileProgramsReq {
+  GetUserResponse user = 1;
+  string id = 2;
+  GetProfileProgramQuery query = 3;
+}
+
+message ProfileSubject {
+  string _id = 1;
+  string name = 2;
+}
+
+message ProfileProgramResponse {
+  string _id = 1;
+  string name = 2;
+  bool active = 3;
+  repeated Country countries = 4;
+  string updatedAt = 5;
+  string createdAt = 6;
+  repeated ProfileSubject subjects = 7;
+}
+
+message GetProfileProgramsRes {
+  repeated ProfileProgramResponse response = 1;
+}
+
+message CheckAvailibilityReq {
+  GetUserResponse user = 1;
+  string code = 2;
+}
+
+message CheckAvailibilityRes {
+  bool status = 1;
+  string message = 2;
+}
+
+message GetPublicProfileReq {
+  GetUserResponse user = 1;
+  string id = 2;
+}
+
+message GetPublicProfileRes {
+  string _id = 1;
+  string name = 2;
+  repeated string programs = 3;
+  repeated string subjects = 4;
+  repeated string specialization = 5;
+  repeated string teachers = 6;
+  string random = 7;
+  int32 students = 8;
+}
+
+message GetInstituteInviteesReq {
+  GetUserResponse user = 1;
+  string id = 2;
+}
+
+message GetInstituteInviteesRes {
+  string _id = 1;
+  string invitees = 2;
+}
+
+message CreateInstituteBody {
+  string name = 1;
+  string instituteId = 2;
+  string inviteTeachers = 3;
+}
+
+message CreateInstituteReq {
+  CreateInstituteBody body = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+  string token = 4;
+}
+
+message CreateInstituteRes {
+  string _id = 1;
+  string user = 2;
+  string name = 3;
+  string slugfly = 4;
+  bool active = 5;
+  bool isDefault = 6;
+  string code = 7;
+  repeated string programs = 8;
+  repeated string subjects = 9;
+  repeated string specialization = 10;
+  repeated string teachers = 11;
+  string type = 12;
+  Preference preferences = 13;
+  repeated string invitees = 14;
+  string createdAt = 15;
+  string updatedAt = 16;
+}
+
+message JoinInstituteBody {
+  string code = 1;
+}
+
+message JoinInstituteReq {
+  JoinInstituteBody body = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+  string token = 4;
+}
+
+message JoinInstituteRes {
+  string institute = 1;
+}
+
+message LeaveInstituteBody {
+  string id = 1;
+}
+
+message LeaveInstituteReq {
+  LeaveInstituteBody body = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+  string token = 4;
+}
+
+message LeaveInstituteRes {
+  string response = 1;
+}
+
+message SetDefaultReq {
+  GetUserResponse user = 1;
+  string instancekey = 2;
+  string token = 3;
+}
+
+message SetDefaultRes {
+  string response = 1;
+}
+
+message InviteToJoinBody {
+  repeated string emails = 1;
+}
+
+message InviteToJoinReq {
+  string id = 1;
+  InviteToJoinBody body = 2;
+  GetUserResponse user = 3;
+}
+
+message InviteToJoinRes {
+  string response = 1;
+}
+
+message ChangeActiveInstituteBody {
+  string instituteId = 1;
+}
+
+message ChangeActiveInstituteReq {
+  ChangeActiveInstituteBody body = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+  string token = 4;
+}
+
+message ChangeActiveInstituteRes {
+  string response = 1;
+}
+
+message UpdateInstituteBody {
+  string name = 1;
+  string description = 2;
+  repeated string subjects = 3;
+  Preference preferences = 4;
+  repeated string teacher = 5;
+  string imageUrl = 6;
+  string coverImageUrl = 7;
+  repeated string programs = 8;
+  repeated string specialization = 9;
+  string google = 10;
+  string twitter = 11;
+  string facebook = 12;
+  string instagram = 13;
+  string youtube = 14;
+  string linkedIn = 15;
+
+}
+
+message UpdateInstituteReq {
+  string id = 1;
+  GetUserResponse user = 2;
+  UpdateInstituteBody body = 3;
+}
+
+message UpdateInstituteRes {
+  string response = 1;
+}
+
+message UpdateInstitutePreferenceBody {
+  Preference preferences = 1;
+}
+
+message UpdateInstitutePreferncesReq {
+  string id = 1;
+  GetUserResponse user = 2;
+  UpdateInstitutePreferenceBody body = 3;
+  string instancekey = 4;
+  string token = 5;
+}
+
+message UpdateInstitutePreferncesRes {
+  string response = 1;
+}
+// Institute - End
+
+// Operator - Start
+message OperatorQuestionAddedTrendReq {
+  string id = 1;
+  GetUserResponse user = 2;
+}
+
+message OperatorQuestionAddedTrendRes {
+  int32 id = 1;
+  repeated int32 data = 2;
+  repeated string labels = 3;
+}
+
+message GetQuestionDistributionBySubjectReq {
+  string id = 1;
+  GetUserResponse user = 2;
+  string subject = 3;
+}
+
+message DataGroup {
+  string name = 1;
+  repeated int32 data = 2;
+}
+
+message GetQuestionDistributionBySubjectRes {
+  repeated string labels = 1;
+  DataGroup mcq = 2;
+  DataGroup fib = 3;
+  DataGroup code = 4;
+  DataGroup descriptive = 5;
+  DataGroup mixmatch = 6;
+}
+// Operator - End
+
+// Publisher - Start
+message IndexPublisherReq {
+  GetUserResponse user = 1;
+  string instancekey = 2;
+}
+
+message PublisherRes {
+  string _id = 1;
+  string name = 2;
+}
+
+message IndexPublisherRes {
+  repeated PublisherRes response = 1;
+}
+
+message GetSoldDataReq {
+  string userId = 1;
+  string interval = 2;
+  string instancekey = 3;
+}
+
+message SoldData {
+  int32 total = 1;
+  int32 sold = 2;
+  int32 revenue = 3;
+}
+
+message GetSoldDataRes {
+  SoldData course = 1;
+  SoldData testSeries = 2;
+  SoldData assessment = 3;
+  string message = 4;
+}
+
+message GetCourseSubjectDistributionReq {
+  string userId = 1;
+  string instancekey = 2;
+}
+
+message SubjectData {
+  string _id = 1;
+  string name = 2;
+}
+
+message CourseSubject {
+  string _id = 1;
+  SubjectData subject = 2;
+  int32 count = 3;
+}
+
+message GetCourseSubjectDistributionRes {
+  repeated CourseSubject response = 1;
+  string message = 2;
+}
+
+message GetTestseriesSubjectDistributionReq {
+  string userId = 1;
+  string instancekey = 2;
+}
+
+message GetTestseriesSubjectDistributionRes {
+  repeated CourseSubject response = 1;
+  string message = 2;
+}
+
+message GetAssessmetSubjectDistributionReq {
+  string userId = 1;
+  string instancekey = 2;
+}
+
+message GetAssessmetSubjectDistributionRes {
+  repeated CourseSubject response = 1;
+  string message = 2;
+}
+
+message GetQuestionSubjectDistributionReq {
+  string userId = 1;
+  string instancekey = 2;
+}
+
+message GetQuestionSubjectDistributionRes {
+  repeated CourseSubject response = 1;
+  string message = 2;
+}
+
+message TestSeriesTrendReq {
+  string userId = 1;
+  string instancekey = 2;
+  string dateFilter = 3;
+}
+
+message TestSeriesId {
+  string testseries = 1;
+  int32 year = 2;
+  int32 month = 3;
+  int32 day = 4;
+}
+
+message TestSeries {
+  TestSeriesId _id = 1;
+  string testseries = 2;
+  string testseriesId = 3;
+  int32 count = 4;
+}
+
+message TestSeriesTrendRes {
+  repeated TestSeries response = 1;
+}
+
+message CourseTrendReq {
+  string userId = 1;
+  string instancekey = 2;
+  string dateFilter = 3;
+}
+
+message CourseId {
+  string practiceset = 1;
+  int32 year = 2;
+  int32 month = 3;
+  int32 day = 4;
+}
+
+message Course {
+  CourseId _id = 1;
+  string courseId = 2;
+  string course = 3;
+  int32 count = 4;
+}
+
+message CourseTrendRes {
+  repeated Course response = 1;
+}
+
+message AsessmentTrendReq {
+  string userId = 1;
+  string instancekey = 2;
+  string dateFilter = 3;
+}
+
+message AsessmentId {
+  string practiceset = 1;
+  int32 year = 2;
+  int32 month = 3;
+  int32 day = 4;
+}
+
+message Asessment {
+  AsessmentId _id = 1;
+  string testId = 2;
+  string practiceset = 3;
+  int32 count = 4;
+}
+
+message AsessmentTrendRes {
+  repeated Asessment response = 1;
+}
+
+message GetTransactionLogsReq {
+  string instancekey = 1;
+  string userId = 2;
+  int32 page = 3;
+  int32 limit = 4;
+  string course = 5;
+  string testseries = 6;
+  string practice = 7;
+  string title = 8;
+  int32 count = 9;
+}
+
+message TransactionLog {
+  string name = 1;
+  MemberAvatar avatar = 2;
+  string userId = 3;
+  string createdAt = 4;
+  string type = 5;
+  int32 price = 6;
+}
+
+message GetTransactionLogsRes {
+  TransactionLog response = 1;
+  string message = 2;
+}
+// Publisher - End
+
+// Supercoins - Start
+message IndexSupercoinsReq {
+  string instancekey = 1;
+  string type = 2;
+  string searchText = 3;
+}
+
+message SupercoinsRes {
+  string _id = 1;
+  string title = 2;
+  string summary = 3;
+  int32 value = 4;
+  bool status = 5;
+  string type = 6;
+  string mode = 7;
+  string createdBy = 8;
+  string createdAt = 9;
+  string updatedAt = 10;
+  string lastModifiedBy = 11;
+  int32 __v = 12;
+}
+
+message IndexSupercoinsRes {
+  repeated SupercoinsRes response = 1;
+  string message = 2;
+}
+
+message UpdateSupercoinsBody {
+  string full = 1;
+  string title = 2;
+  string summary = 3;
+  int32 value = 4;
+  bool status = 5;
+}
+
+message UpdateSupercoinsReq {
+  string instancekey = 1;
+  string id = 2;
+  UpdateSupercoinsBody body = 3;
+  GetUserResponse user = 4;
+}
+
+message UpdateSupercoins {
+  string _id = 1;
+  string title = 2;
+  string summary = 3;
+  int32 value = 4;
+  bool status = 5;
+  string type = 6;
+  string mode = 7;
+  string lastModifiedBy = 8;
+  string updatedAt = 9;
+  string createdBy = 10;
+  string createdAt = 11;
+}
+
+message UpdateSupercoinsRes {
+  UpdateSupercoins response = 1;
+  string message = 2;
+}
+
+message CreateSupercoinsBody {
+  string title = 1;
+  string summary = 2;
+  int32 value = 3;
+  string type = 4;
+}
+
+message CreateSupercoinsReq {
+  string instancekey = 1;
+  CreateSupercoinsBody body = 2;
+  GetUserResponse user = 3;
+}
+
+message CreateSupercoinsRes {
+  string _id = 1;
+  string title = 2;
+  bool status = 3;
+  string summary = 4;
+  int32 value = 5;
+  string type = 6;
+  string createdBy = 7;
+  string updatedBy = 8;
+  string createdAt = 9;
+  string updatedAt = 10;
+  string lastModifiedBy = 11;
+}
+
+message RequestStudentsReq {
+  string instancekey = 1;
+  string activityType = 2;
+  string searchText = 3;
+}
+
+message RequestStudent {
+  string _id = 1;
+  string activityType = 2;
+  string studentId = 3;
+  string name = 4;
+  string userId = 5;
+  string studentMsg = 6;
+  Avatar avatar = 7;
+}
+
+message RequestStudentsRes {
+  repeated RequestStudent response = 1;
+  string message = 2;
+}
+
+message UpdateStatusBody {
+  string activityType = 1;
+  string teacherMsg = 2;
+  string studentId = 3;
+  string email = 4;
+}
+
+message UpdateStatusReq {
+  string instancekey = 1;
+  string id = 2;
+  UpdateStatusBody body = 3;
+  GetUserResponse user = 4;
+}
+
+message UpdateStatusRes {
+  string _id = 1;
+  bool status = 2;
+  string activityType = 3;
+  int32 count = 4;
+  int32 coins = 5;
+  string user = 6;
+  string mode = 7;
+    string activityId = 8;
+    string teacherMsg = 9;
+    string createdAt = 10;
+    string updatedAt = 11;
+    string message = 12;
+}
+
+message GetMembersReq {
+  string instancekey = 1;
+  string name = 2;
+}
+
+message MemberId {
+  string user = 1;
+}
+
+message MemberAvatar {
+  string mimeType = 1;
+  int32 size = 2;
+  string fileUrl = 3;
+  string fileName = 4;
+  string path = 5;
+  string _id = 6;
+}
+
+message GetMember {
+  MemberId _id = 1;
+  int32 earned = 2;
+  int32 redeem = 3;
+  int32 inprocess = 4;
+  string studentId = 5;
+  string name = 6;
+  string email = 7;
+  MemberAvatar avatar = 8;
+}
+
+message GetMembersRes {
+  repeated GetMember response = 1;
+}
+// Supercoins - End
+
+// Admin - Start
+message Query {
+  bool directDownload = 1;
+  bool download = 2;
+  string subject = 3;
+  string classroom = 4;
+  string text = 5;
+  string period = 6;
+  string classrooms = 7;
+  string type = 8;
+  bool active = 9;
+  int32 limit = 10;
+  int32 skip = 11;
+  string searchText = 12;
+  string deleteUrl = 13;
+}
+
+message ExportExamDataWordTemplateReq {
+  Query query = 1;
+  string instancekey = 2;
+  string _id = 3;
+}
+message ExportExamDataWordTemplateRes {
+  map<string, string> data = 1;
+  string msg = 2;
+  string downloadLink = 3;
+}
+
+message GetReportDataReq {
+  Query query = 1;
+  string instancekey = 2;
+  string api = 3;
+}
+message GetReportDataRes {
+  map<string, string> data = 1;
+  string msg = 2;
+  string downloadLink = 3;
+}
+
+message GetReportsReq {
+  Query query = 1;
+  string instancekey = 2;
+  User user = 3;
+}
+
+message Report {
+  string name = 1;
+  string description = 2;
+  string module = 3;
+  string reportAPI = 4;
+  map<string, bool> params = 5;
+  repeated string roles = 6;
+  bool active = 7;
+  bool canView = 8;
+  bool canDownload = 9;
+  int32 statusCode = 10;
+  string reportId = 11;
+  string groupId = 12;
+  string datasetId = 13;
+}
+message GetReportsRes {
+  repeated Report reports = 1;
+}
+
+message GetReportReq {
+  string _id = 1;
+  string instancekey = 2;
+}
+
+message GetPowerBIEmbedTokenReq {
+  string _id = 1;
+  string instancekey = 2;
+  Query query = 3;
+}
+message GetPowerBIEmbedTokenRes {
+  int32 statusCode = 1;
+  string message = 2;
+  Report report = 3;
+  string token = 4;
+  string page = 5;
+}
+
+message DownloadReportRes {
+  int32 statusCode = 1;
+  string message = 2;
+  string downloadLink = 3;
+  bytes response = 4;
+}
+
+message GetMailTemplatesReq {
+  Query query = 1;
+  string instancekey = 2;
+}
+message Schedule {
+  bool active = 1;
+  RepeatOn repeatOn = 2;
+  string repeatEvery = 3;
+  string endDate = 4;
+}
+message RepeatOn {
+  bool sunday = 1;
+  bool monday = 2;
+  bool tuesday = 3;
+  bool wednesday = 4;
+  bool thursday = 5;
+  bool friday = 6;
+  bool saturday = 7;
+}
+message UploadedSource {
+  string name = 1;
+  repeated UploadedSourceUser users = 2;
+}
+message UploadedSourceUser {
+  string _id = 1;
+  string email = 2;
+  string phoneNumber = 3;
+  string data = 4;
+}
+message GetMailTemplatesRes {
+  message NotificationTemplate {
+    string _id = 1;
+    string key = 2;
+    string note = 3;
+    string subject = 4;
+    string preheader = 5;
+    string body = 6;
+    string sms = 7;
+    string pushNotification = 8;
+    string dataSource = 9;
+    string dataView = 10;
+    repeated string tags = 11;
+    bool active = 12;
+    string nextRunDate = 13;
+    string lastRunResult = 14;
+    Schedule schedule = 15;
+    UploadedSource uploadedSource = 16;
+    string createdAt = 17;
+    string updatedAt = 18;
+  }
+  int32 statusCode = 1;
+  string message = 2;
+  repeated NotificationTemplate templates = 3;
+}
+
+message SendBulkMailReq {
+  message Body {
+    string instancekey = 2;
+    string body = 3;
+    string sms = 4;
+    string key = 5;
+  }
+  Body body = 1;
+  string instancekey = 2;
+}
+message SendBulkMailRes {
+  int32 statusCode = 1;
+  string message = 2;
+  map<string, string> result = 3;
+}
+
+message RunBulkMailDataSourceReq {
+  string body = 1;
+  Query query = 2;
+  string instancekey = 3;
+  User user = 4;
+}
+message RunBulkMailDataSourceRes {
+  map<string, int32> result = 1;
+  string email = 2;
+  string phone = 3;
+}
+
+message UpdateBulkMailReq {
+  string _id = 1;
+  string instancekey = 2;
+  string note = 3;
+  string subject = 4;
+  string preheader = 5;
+  string body = 6;
+  string sms = 7;
+  string dataSource = 8;
+  repeated string tags = 9;
+  Schedule schedule = 10;
+}
+message UpdateBulkMailRes {
+  int32 statusCode = 1;
+  string message = 2;
+}
+
+message TestBulkMailReq {
+  string instancekey = 1;
+  User user = 2;
+  string key = 3;
+  string subject = 4;
+  string preheader = 5;
+  string body = 6;
+  string sms = 7;
+}
+message TestBulkMailRes {
+  int32 statusCode = 1;
+  string message = 2;
+}
+
+message TestMailByKeyReq {
+  string instancekey = 1;
+  User user = 2;
+  string _id = 3;
+  string subject = 4;
+  map<string, string> body = 5;
+  string sms = 6;
+}
+message TestMailByKeyRes {
+  int32 statusCode = 1;
+  string message = 2;
+}
+
+message ProgramOutcome {
+  string _id = 1;
+  string code = 2;
+  string grade = 3;
+  string codeLower = 4;
+  string description = 5;
+  bool active = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+  string uid = 9;
+}
+message GetProgramOutcomesReq {
+  string instancekey = 1;
+}
+message ProgramOutcomesRes {
+  int32 statusCode = 1;
+  string message = 2;
+  repeated ProgramOutcome programs = 3;
+  ProgramOutcome response = 4;
+  string msg = 5;
+}
+
+message CreateProgramOutcomeReq {
+  string instancekey = 1;
+  string code = 2;
+  string description = 3;
+}
+message CreateProgramOutcomeRes {
+  int32 statusCode = 1;
+  ProgramOutcome response = 4;
+  string msg = 5;
+}
+
+message UpdateProgramOutcomeReq {
+  string instancekey = 1;
+  string code = 2;
+  string description = 3;
+  string _id = 4;
+}
+
+message DeleteProgramOutcomeReq {
+  string instancekey = 1;
+  Query query = 2;
+  string _id = 3;
+}
+
+
+message Outcome {
+  message Program {
+    string code = 1;
+    int32 weightage = 2;
+  }
+  string code = 1;
+  string description = 2;
+  repeated Program programs = 3;
+}  
+message Evaluation {
+  message QuestionWeight {
+    int32 weight = 1;
+    string question = 2;
+    string _id = 3;
+  }
+  message EvalOutcome {
+    repeated QuestionWeight questionWeights = 1;
+    int32 weightage = 2;
+    string code = 3;
+    string _id = 4;
+  }
+  string evaluationCode = 1;
+  string dataSource = 2;
+  string fileName = 3;
+  string mode = 4;
+  int32 marks = 5;
+  repeated EvalOutcome outcomes = 6;
+  string _id = 7;
+}
+message AccreditationCourse {
+  string _id = 1;
+  string subject = 2;
+  string grade = 3;
+  string status = 4;
+  string code = 5;
+  string codeLower = 6;
+  string feedback = 7;
+  string name = 8;
+  string definition = 9;
+  string createdAt = 10;
+  string updatedAt = 11;
+  bool active = 12;
+  string uid = 13;
+  repeated Outcome outcomes = 14;
+  repeated Evaluation evaluations = 15;
+}
+message GetCoursesRes {
+  int32 statusCode = 1;
+  repeated  AccreditationCourse results = 4;
+  string msg = 5;
+}
+
+message CreateCourseReq {
+  string instancekey = 1;
+  string subject = 2;
+  string code = 3;
+  string name = 4;
+  string definition = 5;
+  repeated Evaluation evaluations = 6;
+  repeated Outcome outcomes = 7;
+  string fileName = 8;
+  string feedback = 9;
+}
+
+message UpdateCourseReq {
+  string instancekey = 1;
+  string _id = 2;
+  string subject = 3;
+  string code = 4;
+  string name = 5;
+  string definition = 6;
+  repeated Evaluation evaluations = 7;
+  repeated Outcome outcomes = 8;
+  string fileName = 9;
+  string feedback = 10;
+  string status = 11;
+}
+
+message DeleteCourseReq {
+  string instancekey = 1;
+  string _id = 2;
+}
+
+message CourseRes {
+  int32 statusCode = 1;
+  string msg = 2;
+  AccreditationCourse response = 3;
+}
+
+
+message GetEvaluationsRes {
+  int32 statusCode = 1;
+  repeated  AccreditationEvaluation results = 4;
+  string msg = 5;
+}
+message AccreditationEvaluation {
+  string _id = 1;
+  string code = 2;
+  string type = 3;
+  string codeLower = 4;
+  string category = 5;
+  string createdAt = 6;
+  string mode = 7;
+  bool active = 8;
+  int32 questions = 9;
+  string updatedAt = 10;
+  string uid = 11;
+}
+message CreateEvaluationReq {
+  string instancekey = 1;
+  string code = 2;
+  string type = 3;
+  string category = 4;
+  string mode = 5;
+  int32 questions = 6;
+}
+message UpdateEvaluationReq {
+  string instancekey = 1;
+  string _id = 2;
+  string code = 3;
+  string type = 4;
+  string category = 5;
+  string mode = 6;
+  int32 questions = 7;
+}
+message DeleteEvaluationReq {
+  string instancekey = 1;
+  string _id = 2;
+  Query query = 3;
+}
+message EvaluationRes {
+  int32 statusCode = 1;
+  string msg = 2;
+  AccreditationEvaluation response = 3;
+}
+
+message GetAccreditationSettingsReq {
+  string instancekey = 1;
+}
+
+message GetAccreditationSettingsRes {
+  string _id = 1;
+  int32 targetLevel = 2;
+  int32 directFactor = 3;
+  int32 indirectFactor = 4;
+  int32 minStudentMarks = 5;
+  string createdAt = 6;
+  bool active = 7;
+  string updatedAt = 8;
+  string uid = 9;
+}
+
+message AccreditationSettings {
+  string _id = 1;
+  int32 targetLevel = 2;
+  int32 directFactor = 3;
+  int32 indirectFactor = 4;
+  int32 minStudentMarks = 5;
+  string createdAt = 6;
+  bool active = 7;
+  string updatedAt = 8;
+  string uid = 9;
+}
+
+message UpdateAccSettingReq {
+  string instancekey = 1;
+  string _id = 2;
+  int32 targetLevel = 3;
+  int32 directFactor = 4;
+  int32 indirectFactor = 5;
+  int32 minStudentMarks = 6;
+}
+message UpdateAccSettingRes {
+  AccreditationSettings response = 1;
+}
+
+
+message AccreditationReport {
+  string _id = 1;
+  string name = 2;
+  string description = 3;
+  string reportAPI = 4;
+  string createdAt = 5;
+  string grade = 6;
+  repeated string roles = 7;
+  bool active = 8;
+}
+message GetAccReportReq {
+  string instancekey = 1;
+  User user = 2;
+}
+message GetAccReportRes {
+  int32 statusCode = 1;
+  repeated  AccreditationReport results = 4;
+}
+
+message AccreditationAttainments {
+  string _id = 1;
+  string course = 2;
+  bool status = 3;
+  map<string, string> courseOutcomes = 4;
+  map<string, string> programOutcomes = 5;
+  string createdAt = 6;
+  string updatedAt = 7;
+  bool active = 8;
+}
+message GetAccAttReq {
+  string code = 1;
+  string instancekey = 2;
+}
+message GetAccAttRes {
+  int32 statusCode = 1;
+  AccreditationAttainments response = 4;
+  string message = 5;
+}
+
+message TeacherByExamRes {
+  message Teacher{
+    string _id = 1;
+    string name = 2;
+  }
+  int32 statusCode = 1;
+  repeated Teacher teacherList = 4;
+}
+
+message FileMetadata {
+	string fieldname = 1;
+	string originalname = 2;
+	string encoding = 3;
+	string mimetype = 4;
+	bytes buffer = 5;
+	int32 size = 6;
+}
+message MapTestToClassroomReq{
+  string instancekey = 1;
+	FileMetadata file = 2;
+}
+message MapTestToClassroomRes{
+  int32 testCount = 1;
+  int32 classroomCount = 2;
+  repeated string error = 3;
+}
+message UploadCampaignMailSourceReq{
+  string instancekey = 1;
+	FileMetadata file = 2;
+  string _id = 3;
+}
+message UploadCampaignMailSourceRes{
+  string name = 1;
+  int32 email = 2;
+  int32 phone = 3;
+}
+
+message GetNewssReq {
+  string instancekey = 1;
+  Query query = 2;
+  User user = 3;
+}
+message CreateNewsReq {
+  string instancekey = 1;
+  string title = 2;
+  string description = 3;
+  string link = 4;
+  string imageUrl = 5;
+  User user = 6;
+}
+message UpdateNewsReq {
+  string instancekey = 1;
+  string _id = 2;
+  string title = 3;
+  string description = 4;
+  string link = 5;
+  string imageUrl = 6;
+  bool active = 7;
+}
+message News {
+  string _id = 1;
+  string user = 2;
+  string title = 3;
+  string description = 4;
+  string link = 5;
+  string imageUrl = 6;
+  bool active = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
+message GetNewsRes {
+  repeated News results = 1;
+}
+message NewsRes {
+  News news = 1;
+  int32 statusCode = 2;
+  string message = 3;
+}
+
+// Admin - End
+
+
+message GetEventsQuery {
+  string startDate = 1;
+  string endDate = 2;
+  bool excludeCourse = 3;
+}
+
+message GetEventsHeaders {
+  string timezoneoffset = 1;
+}
+
+message GetEventsRequest {
+  string instancekey = 1;
+  User user = 2;
+  GetEventsQuery query = 3;
+  GetEventsHeaders headers = 4;
+}
+
+message GetEvents {
+  string title = 1;
+  string summary = 2;
+  string startDate = 3;
+  string endDate = 4;
+  bool allDays = 5;
+  string type = 6;
+  string id = 7;
+  string courseID = 8;
+  string courseName = 9;
+  string contentID = 10;
+  string link = 11;
+}
+
+message GetEventsResponse {
+  repeated GetEvents response = 1;
+}
+
+message GetStudentEventsHeaders {
+  string timezoneoffset = 1;
+}
+
+message GetStudentEventsQuery {
+  string startDate = 1;
+  string endDate = 2;
+  bool excludeCourse = 3;
+}
+
+message GetStudentEventsRequest {
+  string instancekey = 1;
+  string studentId = 2;
+  User user = 3;
+  GetStudentEventsQuery query = 4;
+  GetStudentEventsHeaders headers = 5;
+}
+
+message GetStudentEvents {
+  string title = 1;
+  string summary = 2;
+  string startDate = 3;
+  string endDate = 4;
+  bool allDays = 5;
+  string type = 6;
+  string id = 7;
+}
+
+message GetStudentEventsResponse {  
+  repeated GetStudentEvents response = 1;
+}
+
+message FindOnlineUsersQuery {
+  string roles = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message FindOnlineUsersRequest {
+  string instancekey = 1;
+  FindOnlineUsersQuery query = 2;
+  string token = 3;
+}
+
+message FindOnlineUsers {
+  string _id = 1;
+  string userId = 2;
+  string name = 3;
+  string createdAt = 4;
+  repeated string locations = 5;
+}
+
+message FindOnlineUsersResponse {
+  repeated FindOnlineUsers response = 1;
+}
+
+message StartOneOnOneWbSessionQuery {
+  string studentId = 1;
+}
+
+message StartOneOnOneWbSessionRequest {
+  string instancekey = 1;
+  User user = 2;
+  StartOneOnOneWbSessionQuery query = 3;
+  string token = 4;
+}
+
+message StartOneOnOneWbSessionResponse {
+}
+
+message JoinOneOnOneWbSessionQuery {
+  string meetingID = 1;
+}
+
+message JoinOneOnOneWbSessionRequest {
+  User user = 1;
+  JoinOneOnOneWbSessionQuery query = 2;
+  string instancekey = 3;
+}
+
+message JoinOneOnOneWbSessionResponse {
+  string url = 1;
+}
+
+message ReqUser {
+  string _id = 1;
+  string name = 2;
+  string email = 3;
+  bool emailVerified = 4;
+  bool status = 5;
+  bool isActive = 6;
+  repeated string roles = 7;
+  Dossier dossier = 8;
+  string userId = 9;
+  Avatar avatar = 10;
+  Avatar avatarSM = 11;
+  Avatar avatarMD = 12;
+  string phoneNumber = 13;
+  string phoneNumberFull = 14;
+  bool isPublic = 15;
+  bool allowOnlineClass = 16;
+  double profileCompleted = 17;
+  int32 trainingProfileCompleted = 18;
+  Country country = 19;
+  string city = 20;
+  string ref = 21;
+  string gender = 22;
+  string state = 23;
+  repeated string programs = 24;
+  repeated string subjects = 25;
+  repeated string locations = 26;
+  bool managerStudent = 27;
+  bool managerPractice = 28;
+  repeated string practiceViews = 29;
+  repeated string practiceAttempted = 30;
+  repeated string emailStudents = 31;
+  string lastLogin = 32;
+  string lastAttempt = 33;
+  string theme = 34;
+  string birthdate = 35;
+  string streamUrl = 36;
+  string instagram = 37;
+  bool studentExclusive = 38;
+  string activeLocation = 39;
+  string registrationNo = 40;
+  string expertise = 41;
+  bool forcePasswordReset = 42;
+  string institute = 43;
+  string district = 44;
+  int32 pin = 45;
+  string street = 46;
+  string interest = 47;
+  string knowAboutUs = 48;
+  string about = 49;
+  string openAI = 50;
+  repeated string interestedSubject = 51;
+  repeated string specialization = 52;
+  Preference preferences = 53;
+  repeated Experience experiences = 54;
+  bool whiteboard = 55;
+  bool liveboard = 56;
+  bool canCreateMultiLocations = 57;
+  string coverImageUrl = 58;
+  bool isVerified = 59;
+  bool isMentor = 60;
+  repeated string blockedUsers = 61;
+  string optoutDate = 62;
+  bool ambassador = 63;
+  bool onboarding = 64;
+  string optoutReason = 65;
+  bool optoutEmail = 66;
+  string createdBy = 67;
+  string createdAt = 68;
+  string updatedAt = 69;
+  repeated ProgrammingLang programmingLang = 70;
+  repeated EducationDetail educationDetails = 71;
+  repeated EntranceExam entranceExam = 72;
+  repeated AcademicProject academicProjects = 73;
+  repeated TrainingCertification trainingCertifications = 74;
+  repeated IndustryCertificate industryCertificates = 75;
+  repeated ExternalAssessment externalAssessment = 76;
+  repeated AwardAndRecognition awardsAndRecognition = 77;
+  repeated ExtraCurricularActivity extraCurricularActivities = 78;
+  repeated PackageSchedule packageSchedules = 79;
+  IdentityInfo identityInfo = 80;
+  string codingExperience = 81;
+  repeated LevelHistory levelHistory = 82;
+  string passingYear = 83;
+  string provider = 84;
+  string emailVerifyToken = 85;
+  string emailVerifyExpired = 86;
+  string rollNumber = 87;
+  int32 loginCount = 88;
+  string designation = 89;
+  repeated string followings = 90;
+  string passwordResetToken = 91;
+  repeated string followers = 92;
+  string instituteUrl = 93;
+  string placementStatus = 94;
+  string videoResume = 95;
+  string coreBranch = 96;
+  MentorInfo mentorInfo = 97;
+  string token = 98;
+  bool isTempt = 99;
+}
+
+message UpdateOptionsDataBody {
+  string practiceViews = 1;
+}
+
+message UpdateOptionsDataRequest {
+  string instancekey = 1;
+  UpdateOptionsDataBody body = 2;
+  User user = 3;
+}
+
+message UpdateOptionsDataResponse {
+}
+
+message UpdateRoleBody {
+  repeated string userRoles = 1;
+}
+
+message UpdateRoleRequest {
+  ReqUser user = 1;
+  string instancekey = 2;
+  UpdateRoleBody body = 3;
+}
+
+message UpdateRoleResponse {
+  string status = 1;
+}
+
+message UpdateTempUserBody {
+  string email = 1;
+  string tempPassword = 2;
+  string seqCode = 3;
+  string id = 4;
+  string name = 5;
+  string rollNumber = 6;
+  string registrationNo = 7;
+  Avatar avatar = 8;
+  string avatarUrl = 9;
+  string avatarUrlSM = 10;
+  string passingYear = 11;
+  string userId = 12;
+  string phoneNumber = 13;
+  string country = 14;
+  string password = 15;
+  string subjects = 16;
+  repeated string roles = 17;
+  string ref = 18;
+  string birthdate = 19;
+  string gender = 20;
+  string district = 21;
+  string interest = 22;
+  string knowAboutUs = 23;
+  string city = 24;
+  string state = 25;
+  bool isVerified = 26;
+  bool whiteboard = 27;
+  string provider = 28;
+  bool liveboard = 29;
+}
+
+message UpdateTempUserRequest {
+  string instancekey = 1;
+  UpdateTempUserBody body = 2;
+}
+
+message UpdateTempUserResponse {
+  string status = 1; 
+}
+
+message ToUpdateData {
+  string awardDetails = 1;
+  string date = 2;
+  string activityDetails = 3;
+  string startDate = 4;
+  string endDate = 5;
+  string educationType = 6;
+  string board = 7;
+  string marksType = 8;
+  double marks = 9;
+  int32 passingYear = 10;
+  string stream = 11;
+  string year = 12;
+  int32 rank = 13;
+  string name = 14;
+  double mostRecentScore = 15;
+  int32 yearOfAssessment = 16;
+  double maximumScore = 17;
+  string provider = 18;
+  string certificateDate = 19;
+  string expiredDate = 20;
+  string certificate = 21;
+  string url = 22;
+  bool sysgen = 23;
+  string type = 24;
+  string city = 25;
+  string state = 26;
+  string description = 27;
+  string groupSize = 28;
+  string document = 29;
+  double rating = 30;
+}
+
+message UpdateAdditionalDataBody {
+  string updatedField = 1;
+  ToUpdateData toUpdateData = 2;
+}
+
+message UpdateAdditionalDataRequest {
+  string instancekey = 1;
+  UpdateAdditionalDataBody body = 2;
+  User user = 3;
+}
+
+message UpdateAdditionalDataResponse {
+  
+}
+
+message UserLiveBoardQuery {
+  string searchText = 1;
+  string _id = 2;
+}
+
+message UserLiveBoardRequest {
+  string instancekey = 1;
+  UserLiveBoardQuery query = 2;
+}
+
+message Browser {
+  string name = 1;
+  string version = 2;
+  string major = 3;
+}
+
+message OperatingSystem {
+  string name = 1;
+  string version = 2;
+}
+
+message UserDevice {
+  string vendor = 1;
+  string model = 2;
+  string type = 3;
+}
+
+message UserLiveBoardUserLog {
+  string _id = 1;
+  string timeActive = 2;
+  Browser browser = 3;
+  OperatingSystem os = 4;
+  UserDevice device = 5;
+  LocationLog ai = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+}
+
+message UserLiveBoardTest {
+  string _id = 1;
+  string title = 2;
+  string startDate = 3;
+  int32 attemptAllowed = 4;
+  int32 totalTime = 5;
+}
+
+message UserLiveBoardClassroom {
+  string _id = 1;
+  string name = 2;
+  int32 students = 3;
+}
+
+message UserLiveBoardResponse {
+  string name = 1;
+  string userId = 2;
+  string rollNumber = 3;
+  string lastLogin = 4;
+  repeated string roles = 5;
+  string provider = 6;
+  Country country = 7;
+  Avatar avatar = 8;
+  Avatar avatarSM = 9;
+  Avatar avatarMD = 10;
+  UserLiveBoardClassroom classrooms = 11;
+  UserLiveBoardTest tests = 12;
+  Browser browser = 13;
+  string lastCity = 14;
+  string lastCountry = 15;
+  string ip = 16;
+  repeated UserLiveBoardUserLog userLogs = 17;
+}
+
+message UpdateRequest {
+  string _id = 1;
+  string rollNumber = 2;
+  string registrationNo = 3;
+  Avatar avatar = 4;
+  string avatarUrl = 5;
+  string avatarUrlSM = 6;
+  string passingYear = 7;
+  string userId = 8;
+  string phoneNumber = 9;
+  string email = 10;
+  Country country = 11;
+  string provider = 12;
+  repeated string subjects = 13;
+  repeated string roles = 14;
+  string ref = 15;
+  string birthdate = 16;
+  string gender = 17;
+  string district = 18;
+  string interest = 19;
+  string knowAboutUs = 20;
+  string city = 21;
+  string state = 22;
+  bool isVerified = 23;
+  bool whiteboard = 24;
+  Dossier dossier = 25;
+  string name = 26;
+  string emailVerified = 27;
+  bool status = 28;
+  bool isActive = 29;
+  MentorInfo mentorInfo = 30;
+  Avatar avatarSM = 31;
+  Avatar avatarMD = 32;
+  string phoneNumberFull = 33;
+  bool isPublic = 34;
+  bool allowOnlineClass = 35;
+  int32 profileCompleted = 36;
+  int32 trainingProfileCompleted = 37;
+  repeated string programs = 38;
+  string coreBranch = 39;
+  repeated string locations = 40;
+  bool managerStudent = 41;
+  bool managerPractice = 42;
+  repeated string practiceViews = 43;
+  repeated string practiceAttempted = 44;
+  repeated string emailStudents = 45;
+  string lastLogin = 46;
+  string lastAttempt = 47;
+  string theme = 48;
+  string videoResume = 49;
+  string streamUrl = 50;
+  string instagram = 51;
+  bool studentExclusive = 52;
+  string activeLocationId = 53;
+  string placementStatus = 54;
+  string expertise = 55;
+  bool forcePasswordReset = 56;
+  string institute = 57;
+  repeated string followings = 58;
+  int32 pin = 59;
+  string street = 60;
+  string designation = 61;
+  int32 loginCount = 62;
+  string about = 63;
+  string openai = 64;
+  repeated string interestedSubject = 65;
+  repeated string specialization = 66;
+  Preference preferences = 67;
+  repeated Experience experiences = 68;
+  string emailVerifyExpired = 69;
+  bool liveboard = 70;
+  bool canCreateMultiLocations = 71;
+  string instituteUrl = 72;
+  bool isMentor = 73;
+  repeated string blockedUsers = 74;
+  string optoutDate = 75;
+  bool ambassador = 76;
+  bool onboarding = 77;
+  string optoutReason = 78;
+  bool optoutEmail = 79;
+  string createdBy = 80;
+  string createdAt = 81;
+  string updatedAt = 82;
+  repeated ProgrammingLang programmingLang = 83;
+  EducationDetail educationDetails = 84;
+  EntranceExam entranceExam = 85;
+  repeated AcademicProject academicProjects = 86;
+  repeated TrainingCertification trainingCertifications = 87;
+  repeated IndustryCertificate industryCertificates = 88;
+  repeated ExternalAssessment externalAssessment = 89;
+  repeated AwardAndRecognition awardsAndRecognition = 90;
+  repeated ExtraCurricularActivity extraCurricularActivities = 91;
+  repeated PackageSchedule packageSchedules = 92;
+  IdentityInfo identityInfo = 93;
+  string codingExperience = 94;
+  repeated LevelHistory levelHistory = 95;
+  repeated string followers = 96;
+  string passwordResetToken = 97;
+  string emailVerifyToken = 98;
+  string activeLocation = 99;
+  string token = 100;
+  repeated string grade = 101;
+  string id = 102;
+  string instancekey = 103;
+  GetUserResponse user = 104;
+  bool isRequiredIdentity = 105;
+  bool approval = 106;
+}
+
+message UpdateResponse {
+  // Define fields as per your response object structure
+  // Example:
+  string msg = 1;
+}
+
+message ValidateUserPictureRequest{
+  string _id = 1;
+  GetUserResponse user = 2;
+  string instancekey = 3;
+}
+
+message ValidateUserPictureResponse {
+  bool valid = 1;
+  string reason = 2;
+  float confidence = 3;
+}
+
+message RefreshTokenReq{
+  string accesstoken = 1;
+  bool remember = 2;
+  string authtoken = 3;
+  string instancekey = 4;
+}
+message RefreshTokenRes {
+  int32 status = 1;
+  string token = 2;
+  string message = 3;
+}
+
+message FindQuery {
+  bool teacherOnly = 1;
+  string location = 2;
+  int32 page = 3;
+  int32 limit = 4;
+  string roles = 5;
+  string searchText = 6;
+  bool lastAttempt = 7;
+  bool chatSupport = 8;
+  bool count = 9;
+}
+
+message FindRequest {
+  FindQuery query = 1;
+  GetUserResponse userdata = 2;
+  string instancekey = 3;
+}
+
+message UserFind {
+  string _id = 1;
+  string name = 2;
+  string email = 3;
+  bool emailVerified = 4;
+  bool isActive = 5;
+  repeated string roles = 6;
+  string userId = 7;
+  Avatar avatar = 8;
+  Avatar avatarSM = 9;
+  Avatar avatarMD = 10;
+  Country country = 11;
+  string rollNumber = 12;
+  repeated string subjects = 13;
+  repeated string locations = 14;
+  string lastLogin = 15; 
+  string birthdate = 16;
+  int32 passingYear = 17;
+  string registrationNo = 18;
+  bool whiteboard = 19;
+  bool liveboard = 20;
+  bool isVerified = 21;
+  string createdAt = 22; 
+  string emailVerifyToken = 23;
+  bool forcePasswordReset = 24;
+  string phoneNumber = 25;
+  string lastAttempt = 26;
+  bool isOnline = 27;
+}
+
+message FindResponse {
+  repeated UserFind users = 1;
+  int32 count = 2;
+}
